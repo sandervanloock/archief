@@ -1,0 +1,9 @@
+{
+  "name": "workspace",
+  "version": "0.0.0",
+  "dependencies": {
+    "jquery": "~1.10.2",
+    "momentjs": "~2.4.0"
+  },
+  "devDependencies": {}
+}

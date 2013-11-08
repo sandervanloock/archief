@@ -1,0 +1,15 @@
+.vco-slider .slider-item .content{
+	vertical-align: none;
+}
+
+.nivo-slice{
+	display:none;
+}
+
+.slider-wrapper{
+	margin: 10px auto;
+}
+
+.vco-slider .slider-item{
+	overflow-y: hidden !important;
+}

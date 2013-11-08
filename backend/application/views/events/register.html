@@ -1,0 +1,40 @@
+		<h1>Register new event</h1>
+		{if isset($success)}
+		    The event has been added!
+		{/if}
+		{else}
+		    <form method="post">
+		        <ol>
+		   			<li>
+		                <label>
+		                    Name:
+		                    <input type="text" name="name" />
+		                    {if isset($Name_error)}
+		                        {echo $Name_error}
+		                    {/if}
+		                </label>
+		            </li>
+		            <li>
+		                <label>
+		                    Start of event:
+		                    <input type="date" data-role='datebox' type="date" name="start" data-options='{"mode": "calbox"}' />
+		                    {if isset($start_error)}
+		                        {echo $start_error}
+		                    {/if}
+		                </label>
+		            </li>  
+		            <li>
+		                <label>
+		                    End of event:
+		                    <input type="date" data-role='datebox' type="date" name="end" data-options='{"mode": "calbox"}'/>
+		                    {if isset($end_error)}
+		                        {echo $end_error}
+		                    {/if}
+		                </label>
+		            </li> 
+		            <li>
+		                <input type="submit" name="register" value="register" />
+		            </li>
+		        </ol>
+		    </form>
+		{/else}
