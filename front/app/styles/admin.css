@@ -9,7 +9,6 @@ html, body {
 	width: 100% !important;
 }
 
-.timeline{
-	padding: 40px 15px;
-	text-align: center;
+.navbar-brand{
+	margin-right: 1em;
 }
