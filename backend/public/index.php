@@ -31,6 +31,7 @@ $router = new Framework\Router(array(
     "url" => isset($_GET["url"]) ? $_GET["url"] : "home/index",
     "extension" => isset($_GET["url"]) ? $_GET["url"] : "html"
 ));
+include("routes.php");
 Framework\Registry::set("router", $router);
 
 /*$database = $database->initialize()->connect();
@@ -46,7 +47,6 @@ $user = new Event(array(
 		"connector" => $database
 ));
 $database->sync($user);*/
-
 
 // 8. dispatch the current request
 $router->dispatch();

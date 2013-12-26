@@ -1,0 +1,177 @@
+/* app css stylesheet */
+
+body {
+	padding-top: 20px;
+}
+
+.view-container {
+	margin: 2em;
+}
+
+.event-images {
+	width: 450px;
+	height: 450px;
+	overflow: hidden;
+	position: relative;
+	float: left;
+}
+
+.events {
+	list-style: none;
+}
+
+.events {
+	padding-left: 0em;
+}
+
+.thumb {
+	float: left;
+	margin: -1em 1em 1em 0em;
+	padding: 1em 1em 1em 0;
+	height: 100px;
+	width: 100px;
+}
+
+.events li {
+	clear: both;
+	height: 100px;
+	padding-top: 15px;
+}
+
+.event strong {
+	margin-bottom: 1em;
+}
+
+a:link {
+	text-decoration: none !important;
+}
+a:visited {
+	text-decoration: none !important;
+}
+a:hover {
+	text-decoration: none !important;
+}
+a:active {
+	text-decoration: none !important;
+}
+
+.photos td{
+	text-align: center;
+}
+
+.photos img{
+	cursor: pointer;
+}
+
+.modal-header .form-inline{
+	margin-bottom: 0;
+}
+
+.modal-header .form-inline input{
+	width: 80%;
+	text-align: center;
+	margin-left: 1em;
+}
+
+.modal-body.max-height{
+	max-height: none !important;
+}
+
+.inactive{
+	opacity: 0.15;
+}
+
+.icon{
+	cursor: pointer;
+}
+
+.navigation{
+	margin: 0 0.5em;
+	font-size: 1.5em;
+	cursor: pointer;
+}
+
+.select-page-form{
+	display: inline-block;	
+}
+
+.select-page-form input{
+	width: 4em;
+	margin-bottom: 8px;
+}
+
+.navigation-container{
+	text-align:center;
+}
+
+.pageSelect{
+	display: inline-block;
+}
+
+.pageNumber{
+	display: inline;	
+}
+
+.pageNumber.selected{
+	color: red;
+	font-style: bold;
+}
+
+/** Detail View **/
+img.event {
+	float: left;
+	margin-right: 3em;
+	margin-bottom: 2em;
+	background-color: white;
+	padding: 2em;
+	height: 400px;
+	width: 400px;
+}
+
+ul.event-thumbs {
+	margin: 0;
+	list-style: none;
+}
+
+ul.event-thumbs li {
+	border: 1px solid black;
+	display: inline-block;
+	margin: 1em;
+	background-color: white;
+}
+
+ul.event-thumbs img {
+	height: 100px;
+	width: 100px;
+	padding: 1em;
+}
+
+ul.event-thumbs img:hover {
+	cursor: pointer;
+}
+
+ul.specs {
+	clear: both;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+ul.specs > li {
+	display: inline-block;
+	width: 200px;
+	vertical-align: top;
+}
+
+ul.specs > li > span {
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+ul.specs dt {
+	font-weight: bold;
+}
+
+h1 {
+	border-bottom: 1px solid gray;
+}

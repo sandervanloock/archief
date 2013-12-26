@@ -1,24 +1,14 @@
 <?php
-$routes = array(
-		array(
-				"pattern" => "photos/register",
-				"controller" => "photos",
-				"action" => "register"
-		),
-		array(
-				"pattern" => "photos/register?id=*",
-				"controller" => "photos",
-				"action" => "register"
-		),
-		array(
-				"pattern" => "events/register",
-				"controller" => "events",
-				"action" => "register"
-		),
+$routes = array(		
 		array(
 				"pattern" => "users/register",
 				"controller" => "users",
 				"action" => "register"
+		),
+		array(
+				"pattern" => "events/index?q=*",
+				"controller" => "events",
+				"action" => "index"
 		),
 		array(
 				"pattern" => "events/getAllEventPhotos",
@@ -26,9 +16,19 @@ $routes = array(
 				"action" => "getAllEventPhotos"
 		),
 		array(
+				"pattern" => "photos",
+				"controller" => "photos",
+				"action" => "getEventPhotos"
+		),
+		array(
 				"pattern" => "photos/synchronizePhotos",
 				"controller" => "photos",
 				"action" => "synchronizePhotos"
+		),
+		array(
+				"pattern" => "photos/save",
+				"controller" => "photos",
+				"action" => "savePhoto"
 		)
 );
 

@@ -1,0 +1,30 @@
+<div class="container-fluid center-block">
+	<div class="modal-header">
+		<form class="form-inline">
+			<img class="icon" src="images/glyphicons/png/glyphicons_195_circle_info.png"/>
+			<input type="text" id="exampleInputEmail1" placeholder="Naam van foto" value="{{photo.title}}">
+			<img class="icon" ng-click="close()" src="images/glyphicons/png/glyphicons_192_circle_remove.png" style="float: right;"/>
+		</form>
+	</div>
+	<div class="modal-body max-height">
+		<img class="popup" ng-click="toggleState()" ng-class="{active: photo.active==1, inactive: photo.active==0}" ng-src="{{staticServer + 'data/' +  photo.directory}}" title="{{photo.title}}"/>
+	</div>
+	<div clas="modal-footer">
+		<p>
+			<button ng-click="save()" class="btn btn-block btn-primary" type="button">
+				Opslaan
+			</button>
+			<button ng-click="remove()" class="btn btn-block btn-danger" type="button">
+				Delete
+			</button>
+		</p>
+	</div>
+</div>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		console.log("resize");
+		$(".popup").photoResize({
+			bottomSpacing : 150
+		});
+	}); 
+</script>

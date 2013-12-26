@@ -56,19 +56,43 @@ class Events extends Controller
 				));
 		$this->setLayoutView($view);
 	}
+
 	
 	public function index()
 	{
-		$this->actionView->set("events", Event::all());
-		
-		$defaultPath = $this->getDefaultPath();
-		$defaultLayout = $this->getDefaultLayout();
-		$defaultExtension = $this->getDefaultExtension();
+		$where =  array(
+				"live = ?" => true,
+				"deleted = ?" => false,
+		);
+		if(isset($_GET['id'])){
+			$where['id = ?'] = $_GET['id'];
+			$event = Event::first($where);
+			$data = array();
+			$data['id'] = $event->id;
+			$data['name'] = $event->name;
+			$data['start'] = date_create($event->start)->format('Y-m-d\TH:i:sO');
+			$data['end'] = date_create($event->end)->format('Y-m-d\TH:i:sO');
+		} else{
+			$events = Event::all($where);
+			$data = array();
+			foreach ($events as $event){
+				$entry = array();
+				$entry['id'] = $event->id;
+				$entry['name'] = $event->name;
+				$entry['start'] = date_create($event->start)->format('Y-m-d\TH:i:sO');
+				$entry['end'] = date_create($event->end)->format('Y-m-d\TH:i:sO');
+				array_push($data,$entry);
+			}
+		}
 		
 		$view = new View(array(
-                    "file" => APP_PATH."/{$defaultPath}/layouts/list.{$defaultExtension}"
-                ));
+				"file" => APP_PATH."/{$defaultPath}/layouts/empty.{$defaultExtension}"
+				));
 		$this->setLayoutView($view);
+		
+		//$view->set("result", $data);
+		
+		echo json_encode($data);
 	}
 	
 	public function getAllEventPhotos()

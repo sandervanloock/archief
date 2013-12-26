@@ -53,7 +53,7 @@ namespace Framework
         /**
         * @readwrite
         */
-        protected $_defaultContentType = "text/html";
+        protected $_defaultContentType = "application/json";
         
         protected function _getExceptionForImplementation($method)
         {
@@ -78,16 +78,17 @@ namespace Framework
                 if ($doAction)
                 {
                     $view = $this->getActionView();
-                    $results = $view->render();
+                    //$results = $view->render();
                 }
                 
                 if ($doLayout)
                 {
                     $view = $this->getLayoutView();
                     $view->set("template", $results);
-                    $results = $view->render();
+                    //$results = $view->render();
                     
-                    //header("Content-type: {$defaultContentType}");
+                    header("Content-type: {$defaultContentType}");
+                    
                     echo $results;
                 }
                 else if ($doAction)
@@ -98,6 +99,7 @@ namespace Framework
                     $this->setWillRenderLayoutView(false);
                     $this->setWillRenderActionView(false);
                 }
+                header("HTTP/1.1 200 OK");
             }
             catch (\Exception $e)
             {

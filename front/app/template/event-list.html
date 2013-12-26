@@ -1,0 +1,36 @@
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span3">
+			<!--Sidebar content-->
+			<form>
+				<fieldset>
+				<input type="text" id="searchInput" ng-model="query" placeholder="Zoek op naam">
+				<label for="sortInput">Sorteer op:</label>
+				<select class="form-control" ng-model="orderProp">
+					<option value="name">Alfabetisch op naam</option>
+					<option value="start">Chronologisch oplopend</option>
+				</select>
+				</fieldset>
+			</form>
+		</div>
+		<div class="span9">
+			<!--Body content-->
+
+			<ul class="events">
+				<li ng-repeat="event in events | filter:query | orderBy:orderProp"
+					class="thumbnail event">
+					<a href="#/events/{{event.id}}" >
+						<img ng-src="{{event.imageUrl}}" class="thumb">
+						<strong>{{event.name}}</strong>
+						<p>
+							{{event.start | date:'dd/MM/yyyy'}}
+							<br/>
+							{{event.end | date:'dd/MM/yyyy'}}
+						</p>
+					</a>
+				</li>
+			</ul>
+
+		</div>
+	</div>
+</div>
