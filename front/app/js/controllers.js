@@ -27,17 +27,16 @@ appControllers.controller('EventDetailCtrl', [
 			$scope.rows = rows;
 			$scope.columns = columns;
 			$scope.staticServer = STATIC_SERVER_CONFIG;
-			
-			var opts= {
-					top:'50px'
+
+			var opts = {
+				top : '50px'
 			};
 			var spinner = new Spinner(opts).spin($("#spinner-container")[0]);
 
 			Photo.query({
 				eventId : $routeParams.eventId
 			}, function(photos) {
-				
-				
+
 				$scope.totalNumber = photos.length;
 				$scope.maxPage = Math.ceil($scope.totalNumber
 						/ (rows * columns));
@@ -109,25 +108,52 @@ appControllers.controller('PhotoCtrl', [
 			};
 		} ]);
 
-appControllers.controller('ArchiefCtrl', [ '$scope', function($scope) {
-	/*$(document).ready(function() {
-        $.ajax({
-                url : backendHost + "/public/events/getAllEventPhotos",
-                success : function(data) {
-                        var events = JSONBuilder.parseEvents(data);
-                        addEventsToTimeline(events);
-                        createStoryJS({
-                                type : 'timeline',
-                                source : timeline,
-                                embed_id : 'timeline',
-                                debug : true,
-                                css: 'styles/vendor/timeline/timeline.css',
-                                js: 'scripts/vendor/timeline/timeline.js'
-                        });
-                }
-        });
-});*/
-} ]);
+appControllers.controller('ArchiefCtrl', [
+		'$scope',
+		'STATIC_SERVER_CONFIG',
+		'Event',
+		function($scope, STATIC_SERVER_CONFIG, Event) {
+			Event.getAllEventPhotos(function(events) {
+				var timeline = {
+					timeline : {
+						header : "Digitaal archief - Chiro Elzestraat",
+						type : "default",
+
+						text : "",
+						date : []
+					}
+				};
+				for ( var i = 0; i < events.length; i++) {
+					$scope.test = "test" + i;
+					timeline.timeline.date.push({
+						startDate : new Date(moment(events[i].start)),
+						endDate : new Date(moment(events[i].end)),
+						headline : events[i].name,
+						text : "<p></p>",
+						asset : {
+							"media" : createNivoSlider(events[i].photos)
+						}
+					});
+				}
+				createStoryJS({
+					type : 'timeline',
+					source : timeline,
+					embed_id : 'timeline',
+					debug : true,
+					css : 'css/vendor/timeline/timeline.css',
+					js : 'js/vendor/timeline/timeline.js'
+				});
+			});
+			
+			createNivoSlider = function(photos){
+				var html = "<div class='slider-wrapper theme-default'><div class='ribbon'></div><div class='nivoSlider'>"; 
+				for(var i=0;i<photos.length;i++){
+					html += "<img src='" + STATIC_SERVER_CONFIG + "data/" + photos[i].directory + "' alt='" +photos[i].title+ "'/>";
+				}
+				html += "</div></div>";
+				return html;
+			};
+		} ]);
 
 appControllers.controller('PhotoListCtrl', [
 		'$scope',

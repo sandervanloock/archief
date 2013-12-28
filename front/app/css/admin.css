@@ -1,11 +1,10 @@
 /* app css stylesheet */
-
-body {
-	padding-top: 20px;
+.view-container {
+	height: 85%%;
 }
 
-.view-container {
-	margin: 2em;
+.view-frame{
+	height: 100%;
 }
 
 .event-images {
@@ -18,9 +17,6 @@ body {
 
 .events {
 	list-style: none;
-}
-
-.events {
 	padding-left: 0em;
 }
 
@@ -36,6 +32,16 @@ body {
 	clear: both;
 	height: 100px;
 	padding-top: 15px;
+	display: block;
+	max-width: 100%;
+	padding: 4px;
+	margin-bottom: 20px;
+	line-height: 1.428571429;
+	background-color: #ffffff;
+	border: 1px solid #dddddd;
+	border-radius: 4px;
+	-webkit-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
 }
 
 .event strong {
@@ -78,7 +84,11 @@ a:active {
 }
 
 .inactive{
-	opacity: 0.15;
+	-webkit-filter: sepia(100%);
+	-moz-filter: sepia(100%);
+	-ms-filter: sepia(100%);
+	-o-filter: sepia(100%);
+	filter: sepia(100%);
 }
 
 .icon{
