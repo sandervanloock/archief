@@ -6,6 +6,21 @@ $routes = array(
 				"action" => "register"
 		),
 		array(
+				"pattern" => "login",
+				"controller" => "users",
+				"action" => "login"
+		),
+		array(
+				"pattern" => "users/current-user",
+				"controller" => "users",
+				"action" => "currentUser"
+		),
+		array(
+				"pattern" => "logout",
+				"controller" => "users",
+				"action" => "logout"
+		),
+		array(
 				"pattern" => "events/index?q=*",
 				"controller" => "events",
 				"action" => "index"

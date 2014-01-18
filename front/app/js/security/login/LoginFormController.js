@@ -3,8 +3,11 @@ angular.module('security.login.form', [])
 // The LoginFormController provides the behaviour behind a reusable form to allow users to authenticate.
 // This controller and its template (login/form.tpl.html) are used in a modal dialog box by the security service.
 .controller('LoginFormController', ['$scope', 'security', function($scope, security) {
-  // The model for this form 
-  $scope.user = {};
+  // The model for this form TODO remove default values 
+  $scope.user = {
+		  email: "lierserulez@hotmail.com",
+		  password: "test"
+  };
 
   // Any error message from failing to login
   $scope.authError = null;
@@ -14,8 +17,8 @@ angular.module('security.login.form', [])
   $scope.authReason = null;
   if ( security.getLoginReason() ) {
     $scope.authReason = ( security.isAuthenticated() ) ?
-      alert('login.reason.notAuthorized') :
-    	  alert('login.reason.notAuthenticated');
+    	'login.reason.notAuthorized' :
+		'login.reason.notAuthenticated';
   }
 
   // Attempt to authenticate the user specified in the form's model
@@ -27,11 +30,11 @@ angular.module('security.login.form', [])
     security.login($scope.user.email, $scope.user.password).then(function(loggedIn) {
       if ( !loggedIn ) {
         // If we get here then the login failed due to bad credentials
-        $scope.authError = alert('login.error.invalidCredentials');
+        $scope.authError = 'login.error.invalidCredentials';
       }
     }, function(x) {
       // If we get here then there was a problem with the login request to the server
-      $scope.authError = alert('login.error.serverError', { exception: x });
+      $scope.authError = 'login.error.serverError';
     });
   };
 

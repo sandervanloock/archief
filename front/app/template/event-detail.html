@@ -1,49 +1,52 @@
-<form role="form" class="form-horizontal">
-	<div class="form-group">
-		<label for="eventName" class="col-sm-2 control-label">Naam</label>
-		<div class="col-sm-10">
-			<input type="text" id="eventName" value="{{event.name}}" class="form-control"/>
+<div class="container view-container">
+	<form class="form-horizontal">
+		<div class="control-group">
+			<label for="eventName" class="control-label">Naam</label>
+			<div class="controls">
+				<input type="text" id="eventName" value="{{event.name}}" class="form-control"/>
+			</div>
 		</div>
-	</div>
-	<div class="form-group">
-		<label for="eventStart" class="col-sm-2 control-label">Startdatum</label>
-		<div class="col-sm-10">
-			<input type="date" id="eventStart" value="{{event.start | date:'yyyy-MM-dd'}}"class="form-control"/>
+		<div class="control-group">
+			<label for="eventStart" class="control-label">Startdatum</label>
+			<div class="controls">
+				<input type="date" id="eventStart" value="{{event.start | date:'yyyy-MM-dd'}}"class="form-control"/>
+			</div>
 		</div>
-	</div>
-	<div class="form-group">
-		<label for="eventEnd" class="col-sm-2 control-label">Einddatum</label>
-		<div class="col-sm-10">
-			<input type="date" id="eventEnd" value="{{event.end | date:'yyyy-MM-dd' }}"class="form-control"/>
-		</div>
-	</div>
-</form>
-
-<div class="navigation-container">
-	<div class="pageSelect">
-		<div ng-click="page=1" class="navigation glyphicon glyphicon-backward"></div>
-		<div ng-click="decreasePage()" class="navigation glyphicon glyphicon-chevron-left"></div>
-		<div ng-repeat="n in [] | range:maxPage" class="navigation pageNumber" ng-click="changePage(n)" ng-class="{selected: n==(page-1)}">
-			{{n+1}}
-		</div>
-		<div ng-click="incrementPage()" class="navigation glyphicon glyphicon-chevron-right"></div>
-		<div ng-click="page=maxPage" class="navigation glyphicon glyphicon-forward"></div>
-	</div>
-
-	<form role="form" class="form-inline select-page-form">
-		<div class="form-group">
-			<label for="numberRows" class="sr-only">Aantal rijen: </label>
-			<input type="rows" ng-model="rows" ng-change="newNumberRows()" id="numberRows" placeholder="Aantal rijen" class="form-control"/>
+		<div class="control-group">
+			<label for="eventEnd" class="control-label">Einddatum</label>
+			<div class="controls">
+				<input type="date" id="eventEnd" value="{{event.end | date:'yyyy-MM-dd' }}"class="form-control"/>
+			</div>
 		</div>
 	</form>
+
+	<div class="navigation-container">
+		<div class="pageSelect">
+			<div class="pagination pagination-large pagination-centered">
+				<ul>
+					<li ng-click="page=1" class="navigation glyphicon glyphicon-backward"></li>
+					<li ng-click="decreasePage()" class="navigation glyphicon glyphicon-chevron-left"></li>
+					<li ng-repeat="n in [] | range:maxPage" class="navigation pageNumber" ng-click="changePage(n)" ng-class="{selected: n==(page-1)}">
+						{{n+1}}
+					</li>
+					<li ng-click="incrementPage()" class="navigation glyphicon glyphicon-chevron-right"></li>
+					<li ng-click="page=maxPage" class="navigation glyphicon glyphicon-forward"></li>			</ul>
+			</div>
+		</div>
+
+		<form class="form-inline select-page-form">
+			<div class="input-prepend">
+				<span class="add-on">Aantal rijen: </span>
+				<input type="number" ng-model="rows" ng-change="newNumberRows()" id="numberRows" placeholder="Aantal rijen" class="form-control span1"/>
+			</div>
+		</form>
+	</div>
+
+	<div id="spinner-container"></div>
+
+	<table class="photos table">
+		<tr ng-repeat="photoRow in photos | pagination:page:rows">
+			<td ng-repeat="photo in photoRow"><img ng-click="open(photo)" ng-class="{active: photo.active==1, inactive: photo.active==0}" ng-src="{{staticServer + '/thumbs' + photo.directory}}" title="{{photo.title}}"/></td>
+		</tr>
+	</table>
 </div>
-
-<div id="spinner-container"></div>
-
-<table class="photos table">
-	<tr ng-repeat="photoRow in photos | pagination:page:rows">
-		<td ng-repeat="photo in photoRow">
-			<img ng-click="open(photo)" ng-class="{active: photo.active==1, inactive: photo.active==0}" ng-src="{{staticServer + '/thumbs' + photo.directory}}" title="{{photo.title}}"/>
-		</td>
-	</tr>
-</table>

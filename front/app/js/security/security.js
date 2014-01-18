@@ -5,7 +5,8 @@ angular.module('security.service', [
   'ui.bootstrap'     // Used to display the login form as a modal dialog.
 ])
 
-.factory('security', ['$http', '$q', '$location', 'securityRetryQueue', '$modal', function($http, $q, $location, queue, $dialog) {
+.factory('security', ['$http', '$q', '$location', 'securityRetryQueue', '$modal', 'ARCHIVE_SERVER_CONFIG', 
+                      function($http, $q, $location, queue, $dialog, ARCHIVE_SERVER_CONFIG) {
 
   // Redirect to the given url (defaults to '/')
   function redirect(url) {
@@ -19,7 +20,8 @@ angular.module('security.service', [
     if ( loginDialog ) {
       throw new Error('Trying to open a dialog that is already open!');
     }
-    loginDialog = $dialog.open({templateUrl:'js/security/login/form.tpl.html', controller:'LoginFormController'}).then(onLoginDialogClose);
+    loginDialog = $dialog.open({templateUrl:'js/security/login/form.tpl.html', controller:'LoginFormController'});
+    loginDialog.result.then(onLoginDialogClose);
   }
   function closeLoginDialog(success) {
     if (loginDialog) {
@@ -58,7 +60,13 @@ angular.module('security.service', [
 
     // Attempt to authenticate a user by the given email and password
     login: function(email, password) {
-      var request = $http.post('/login', {email: email, password: password});
+      var xsrf = $.param({email: email, password: password});
+      var request = $http({
+    	  	  method: 'POST',
+    		  url: ARCHIVE_SERVER_CONFIG + 'login',
+    		  headers: {'Content-Type': 'application/x-www-form-urlencoded'}, 
+    		  data:xsrf
+	  });
       return request.then(function(response) {
         service.currentUser = response.data.user;
         if ( service.isAuthenticated() ) {
@@ -76,7 +84,7 @@ angular.module('security.service', [
 
     // Logout the current user and redirect
     logout: function(redirectTo) {
-      $http.post('/logout').then(function() {
+      $http.post(ARCHIVE_SERVER_CONFIG + 'logout').then(function() {
         service.currentUser = null;
         redirect(redirectTo);
       });
@@ -87,7 +95,7 @@ angular.module('security.service', [
       if ( service.isAuthenticated() ) {
         return $q.when(service.currentUser);
       } else {
-        return $http.get('/current-user').then(function(response) {
+        return $http.get(ARCHIVE_SERVER_CONFIG + 'users/current-user').then(function(response) {
           service.currentUser = response.data.user;
           return service.currentUser;
         });

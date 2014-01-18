@@ -23,8 +23,7 @@ $cache = new Framework\Cache();
 Framework\Registry::set("cache", $cache->initialize());
 
 // 6. load and initialize the Session class
-$session = new Framework\Session();
-Framework\Registry::set("session", $session->initialize());
+session_start();
 
 // 7. load the Router class and provide the url + extension
 $router = new Framework\Router(array(

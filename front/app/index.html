@@ -21,7 +21,7 @@
 		<!--<link rel="stylesheet" href="js/vendor/bootstrap/dist/css/bootstrap.css" type="text/css"/>-->
 		<link rel="stylesheet" href="css/main.css" type="text/css" />
 		<link rel="stylesheet" href="css/album.css" type="text/css" />
-		<link rel="stylesheet" href="css/admin" type="text/css"/>
+		<link rel="stylesheet" href="css/admin.css" type="text/css"/>
 		<!-- endbuild -->
 
 		<!-- build:js scripts/vendor.js -->
@@ -45,34 +45,49 @@
 		<script type="text/javascript" src="js/controllers.js"></script>
 		<script type="text/javascript" src="js/services.js"></script>
 		<script type="text/javascript" src="js/filters.js"></script>
+		<script type="text/javascript" src="js/security/authorization.js"></script>
+		<script type="text/javascript" src="js/security/index.js"></script>
+		<script type="text/javascript" src="js/security/interceptor.js"></script>
+		<script type="text/javascript" src="js/security/retryQueue.js"></script>
+		<script type="text/javascript" src="js/security/security.js"></script>
+		<script type="text/javascript" src="js/security/login/LoginFormController.js"></script>
+		<script type="text/javascript" src="js/security/login/login.js"></script>
+		<script type="text/javascript" src="js/security/login/toolbar.js"></script>
 		<!-- endbuild -->
 
 	</head>
-	<body>
-		<nav class="navbar">
+	<body class="container">
+		<div class="navbar" ng-controller="HeaderCtrl">
 			<div class="navbar-inner">
-				<a class="brand" href="#home">Archief Chiro Elzestraat</a>
-
-				<ul class="nav">
-					<li class="active">
-						<a href="#events">Evenementen</a>
+				<a class="brand" href="#home" ng-click="changePage('home')">Archief Chiro Elzestraat</a>
+				<ul class="nav pull-left" ng-show="isAuthenticated()">
+					<li ng-class="{active: activePage=='events'}">
+						<a href="#events" ng-click="changePage('events')">Evenementen</a>
 					</li>
 				</ul>
-				<!--<form class="navbar-form navbar-left" role="search">
-				<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search">
-				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
-				</form>-->
-				<ul class="nav pull-right">
-					<li>
-						<a href="#">Logout</a>
+				<login-toolbar></login-toolbar>
+				<!--<ul class="nav pull-right">
+					<li class="divider-vertical"></li>
+					<li ng-show="isAuthenticated()">
+						<a href="#">{{currentUser.firstName}} {{currentUser.lastName}}</a>
 					</li>
-				</ul>
+					<li ng-show="isAuthenticated()" class="logout">
+						<form class="navbar-form">
+							<button class="btn logout" ng-click="logout()">
+								Log out
+							</button>
+						</form>
+					</li>
+					<li ng-hide="isAuthenticated()" class="login">
+						<form class="navbar-form">
+							<button class="btn login" ng-click="login()">
+								Log in
+							</button>
+						</form>
+					</li>
+				</ul>-->
 			</div>
-		</nav>
-		<div class="view-container">
-			<div ng-view class="view-frame"></div>
 		</div>
+		<div ng-view class="view-frame"></div>
 	</body>
 </html>

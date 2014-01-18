@@ -1,6 +1,6 @@
 var app = angular
 		.module('app', 
-				[ 'ngRoute', 'appControllers', 'eventService', 'photoService','arrayFilters','ui.bootstrap', 'angularSpinner' ]);
+				[ 'ngRoute', 'appControllers', 'eventService', 'photoService','security','arrayFilters','ui.bootstrap', 'angularSpinner' ]);
 
 angular.module('app').constant('ARCHIVE_SERVER_CONFIG',
 		'http://localhost/Chiro/archief/backend/public/');
@@ -8,16 +8,21 @@ angular.module('app').constant('ARCHIVE_SERVER_CONFIG',
 angular.module('app').constant('STATIC_SERVER_CONFIG',
 	'http://localhost/Chiro/archief/');
 
-app.config([ '$routeProvider', function($routeProvider) {
+angular.module('app').run(['security', function(security) {
+	  // Get the current user when the application starts
+	  // (in case they are still logged in from a previous session)
+	  security.requestCurrentUser();
+}]);
+
+app.config([ '$routeProvider', 'securityAuthorizationProvider', function($routeProvider, securityAuthorizationProvider) {
 	$routeProvider.when('/events', {
 		templateUrl : 'template/event-list.html',
-		controller : 'EventListCtrl'
+		controller : 'EventListCtrl',
+		resolve: securityAuthorizationProvider.requireAdminUser
 	}).when('/events/:eventId', {
 		templateUrl : 'template/event-detail.html',
-		controller : 'EventDetailCtrl'
-	}).when('/photos/:eventId',{
-		templateUrl : 'template/photo-list.html',
-		controller : 'PhotoListCtrl'
+		controller : 'EventDetailCtrl',
+		resolve: securityAuthorizationProvider.requireAdminUser
 	}).when('/home',{
 		templateUrl : 'template/archief.html',
 		controller : 'ArchiefCtrl'

@@ -59,63 +59,39 @@ class Users extends Controller
 
     public function login()
     {
-        if (RequestMethods::post("login"))
-        {
-            $email = RequestMethods::post("email");
-            $password = RequestMethods::post("password");
-            
-            $view = $this->getActionView();
-            $error = false;
-            
-            if (empty($email))
-            {
-                $view->set("email_error", "Email not provided");
-                $error = true;
-            }
-            
-            if (empty($password))
-            {
-               $view->set("password_error", "Password not provided");
-               $error = true;
-            }
-            
-            if (!$error)
-            {
-                $user = User::first(array(
-                    "email = ?" => $email,
+        $email = RequestMethods::post("email");
+        $password = RequestMethods::post("password");
+        $user = User::first(array(
+        	        "email = ?" => $email,
                     "password = ?" => $password,
                     "live = ?" => true,
-                    "deleted = ?" => false
-                ));
-                
-                if (!empty($user))
-                {
-                    $session = Registry::get("session");
-                    $session->set("user", serialize($user));
-                    $rootUrl = str_replace(strrchr($_SERVER['REQUEST_URI'],"/"),"",$_SERVER['REQUEST_URI']);
-                    header("Location: "  . $rootUrl . "/profile.html");
-                    exit();
-                }
-                else
-                {
-                    $view->set("password_error", "Email address and/or password are incorrect");
-                } 
-            }
-        }
+            		"deleted = ?" => false
+        ));
+        
+        $jsonUser = array(
+        		"firstName" => $user->first,
+        		"lastName" => $user->last,
+        		"email" => $user->email,
+        		"admin" => true,
+       	);
+        $data = array(
+        		"user" => $jsonUser
+        );
+        $_SESSION['currentUser'] = json_encode($data);
+        header("Content-Type: application/json");
+       	echo $_SESSION['currentUser'];
     }
-
-    public function profile()
-    {
-        $session = Registry::get("session");
-        $user = unserialize($session->get("user", null));
-        
-        if (empty($user))
-        {
-            $user = new StdClass();
-            $user->first = "Mr.";
-            $user->last = "Smith";
-        }
-        
-        $this->getActionView()->set("user", $user);
+    
+    public function logout(){
+    	if (isset($_SESSION['currentUser'])) {
+    		unset($_SESSION['currentUser']);
+    	}
+    }
+    
+    
+    public function currentUser(){
+    	if (isset($_SESSION['currentUser'])){
+    		echo $_SESSION['currentUser'];
+    	}
     }
 }

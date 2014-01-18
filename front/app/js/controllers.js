@@ -108,52 +108,59 @@ appControllers.controller('PhotoCtrl', [
 			};
 		} ]);
 
-appControllers.controller('ArchiefCtrl', [
-		'$scope',
-		'STATIC_SERVER_CONFIG',
-		'Event',
-		function($scope, STATIC_SERVER_CONFIG, Event) {
-			Event.getAllEventPhotos(function(events) {
-				var timeline = {
-					timeline : {
-						header : "Digitaal archief - Chiro Elzestraat",
-						type : "default",
+appControllers.controller('ArchiefCtrl',[
+						'$scope',
+						'STATIC_SERVER_CONFIG',
+						'Event',
+						function($scope, STATIC_SERVER_CONFIG, Event) {
+							Event
+									.getAllEventPhotos(function(events) {
+										var timeline = {
+											timeline : {
+												header : "Digitaal archief - Chiro Elzestraat",
+												type : "default",
 
-						text : "",
-						date : []
-					}
-				};
-				for ( var i = 0; i < events.length; i++) {
-					$scope.test = "test" + i;
-					timeline.timeline.date.push({
-						startDate : new Date(moment(events[i].start)),
-						endDate : new Date(moment(events[i].end)),
-						headline : events[i].name,
-						text : "<p></p>",
-						asset : {
-							"media" : createNivoSlider(events[i].photos)
-						}
-					});
-				}
-				createStoryJS({
-					type : 'timeline',
-					source : timeline,
-					embed_id : 'timeline',
-					debug : true,
-					css : 'css/vendor/timeline/timeline.css',
-					js : 'js/vendor/timeline/timeline.js'
-				});
-			});
-			
-			createNivoSlider = function(photos){
-				var html = "<div class='slider-wrapper theme-default'><div class='ribbon'></div><div class='nivoSlider'>"; 
-				for(var i=0;i<photos.length;i++){
-					html += "<img src='" + STATIC_SERVER_CONFIG + "data/" + photos[i].directory + "' alt='" +photos[i].title+ "'/>";
-				}
-				html += "</div></div>";
-				return html;
-			};
-		} ]);
+												text : "",
+												date : []
+											}
+										};
+										for ( var i = 0; i < events.length; i++) {
+											$scope.test = "test" + i;
+											timeline.timeline.date
+													.push({
+														startDate : new Date(
+																moment(events[i].start)),
+														endDate : new Date(
+																moment(events[i].end)),
+														headline : events[i].name,
+														text : "<p></p>",
+														asset : {
+															"media" : createNivoSlider(events[i].photos)
+														}
+													});
+										}
+										createStoryJS({
+											type : 'timeline',
+											source : timeline,
+											embed_id : 'timeline',
+											debug : false,
+											css : 'css/vendor/timeline/timeline.css',
+											js : 'js/vendor/timeline/timeline.js'
+										});
+									});
+
+							createNivoSlider = function(photos) {
+								var html = "<div class='slider-wrapper theme-default'><div class='ribbon'></div><div class='nivoSlider'>";
+								for ( var i = 0; i < photos.length; i++) {
+									html += "<img src='" + STATIC_SERVER_CONFIG
+											+ "data/" + photos[i].directory
+											+ "' alt='" + photos[i].title
+											+ "'/>";
+								}
+								html += "</div></div>";
+								return html;
+							};
+						} ]);
 
 appControllers.controller('PhotoListCtrl', [
 		'$scope',
@@ -207,3 +214,15 @@ appControllers.controller('PhotoListCtrl', [
 				$location.path("/photos/" + $scope.event);
 			};
 		} ]);
+
+appControllers.controller('HeaderCtrl', ['$scope', 'security', function($scope, security) {
+
+	$scope.activePage = 'home';
+
+	$scope.changePage = function(page) {
+		$scope.activePage = page;
+	};
+	 $scope.isAuthenticated = security.isAuthenticated;
+	 $scope.isAdmin = security.isAdmin;
+
+} ]);

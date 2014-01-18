@@ -122,7 +122,9 @@ class Events extends Controller
 				array_push($photoEntries,$photoEntry);
 			}
 			$entry['photos'] = $photoEntries;
-			array_push($data,$entry);
+			if(count($photos)>0){
+				array_push($data,$entry);
+			}
 		}
 		
 		$view = new View(array(
