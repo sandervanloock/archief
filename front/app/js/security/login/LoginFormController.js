@@ -17,8 +17,8 @@ angular.module('security.login.form', [])
   $scope.authReason = null;
   if ( security.getLoginReason() ) {
     $scope.authReason = ( security.isAuthenticated() ) ?
-    	'login.reason.notAuthorized' :
-		'login.reason.notAuthenticated';
+    	'U bent niet geauthorizeerd!' :
+		'U bent niet geauthenticeerd!';
   }
 
   // Attempt to authenticate the user specified in the form's model
@@ -30,11 +30,11 @@ angular.module('security.login.form', [])
     security.login($scope.user.email, $scope.user.password).then(function(loggedIn) {
       if ( !loggedIn ) {
         // If we get here then the login failed due to bad credentials
-        $scope.authError = 'login.error.invalidCredentials';
+        $scope.authError = 'Ongeldige aanmeld gegevens!';
       }
     }, function(x) {
       // If we get here then there was a problem with the login request to the server
-      $scope.authError = 'login.error.serverError';
+      $scope.authError = 'Error,  problemen met de website!';
     });
   };
 
