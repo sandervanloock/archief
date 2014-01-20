@@ -85,12 +85,12 @@ class Events extends Controller
 			}
 		}
 		
-		$view = new View(array(
-				"file" => APP_PATH."/{$defaultPath}/layouts/empty.{$defaultExtension}"
-				));
-		$this->setLayoutView($view);
-		
-		//$view->set("result", $data);
+//		$view = new View(array(
+//				"file" => APP_PATH."/views/layouts/empty.html"
+//				));
+//		$this->setLayoutView($view);
+//
+//		$view->set("result", $data);
 		
 		echo json_encode($data);
 	}
@@ -127,10 +127,10 @@ class Events extends Controller
 			}
 		}
 		
-		$view = new View(array(
-				"file" => APP_PATH."/{$defaultPath}/layouts/empty.{$defaultExtension}"
-				));
-		$this->setLayoutView($view);
+//		$view = new View(array(
+//				"file" => APP_PATH."/{$defaultPath}/layouts/empty.{$defaultExtension}"
+//				));
+//		$this->setLayoutView($view);
 		
 		echo json_encode($data);
 	}

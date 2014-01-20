@@ -9,7 +9,7 @@ use Framework\View as View;
 class Photos extends Controller
 {
 	public function synchronizePhotos(){
-		/*$reader = new DirectoryReader("../../data");
+		$reader = new DirectoryReader("../../data");
 		$events = Event::all(array(
 				"live = ?" => true,
 				"deleted = ?" => false,
@@ -21,12 +21,14 @@ class Photos extends Controller
 					"deleted = ?" => false,
 					"directory = ?" => $dir
 			)) == null){
+                echo "insert photo " + $dir;
 				$this->insertPhotoFromEvent($dir,$events);
+		        echo "OK";
 			}
-		}*/
+		}
 		$this->synchronizeThumbs();
 	}
-	
+
 	public function synchronizeThumbs(){
 		$reader = new DirectoryReader("../../data");
 		foreach($reader->dirs as &$dir){
@@ -46,36 +48,39 @@ class Photos extends Controller
 		$arr_image_details = getimagesize("$destDir" . "$img");
 		$original_width = $arr_image_details[0];
 		$original_height = $arr_image_details[1];
-		if ($original_width > $original_height) {
-			$new_width = $thumbnail_width;
-			$new_height = intval($original_height * $new_width / $original_width);
-		} else {
-			$new_height = $thumbnail_height;
-			$new_width = intval($original_width * $new_height / $original_height);
-		}
-		$dest_x = intval(($thumbnail_width - $new_width) / 2);
-		$dest_y = intval(($thumbnail_height - $new_height) / 2);
-		if ($arr_image_details[2] == 1) {
-			$imgt = "ImageGIF";
-			$imgcreatefrom = "ImageCreateFromGIF";
-		}
-		if ($arr_image_details[2] == 2) {
-			$imgt = "ImageJPEG";
-			$imgcreatefrom = "ImageCreateFromJPEG";
-		}
-		if ($arr_image_details[2] == 3) {
-			$imgt = "ImagePNG";
-			$imgcreatefrom = "ImageCreateFromPNG";
-		}
-		if ($imgt) {
-			$old_image = $imgcreatefrom("$destDir" . "$img");
-			$new_image = imagecreatetruecolor($thumbnail_width, $thumbnail_height);
-			imagecopyresized($new_image, $old_image, $dest_x, $dest_y, 0, 0, $new_width, $new_height, $original_width, $original_height);
-			if (!file_exists("$upDir")) {
-				mkdir("$upDir", 0777, true);
-			}
-			$imgt($new_image, "$upDir" . "$img");
-		}
+        if($original_width != 0 && $original_height != 0){
+            if ($original_width > $original_height) {
+                $new_width = $thumbnail_width;
+                $new_height = intval($original_height * $new_width / $original_width);
+            } else {
+                $new_height = $thumbnail_height;
+                $new_width = intval($original_width * $new_height / $original_height);
+            }
+            $dest_x = intval(($thumbnail_width - $new_width) / 2);
+            $dest_y = intval(($thumbnail_height - $new_height) / 2);
+            $imgt = null;
+            if ($arr_image_details[2] == 1) {
+                $imgt = "ImageGIF";
+                $imgcreatefrom = "ImageCreateFromGIF";
+            }
+            if ($arr_image_details[2] == 2) {
+                $imgt = "ImageJPEG";
+                $imgcreatefrom = "ImageCreateFromJPEG";
+            }
+            if ($arr_image_details[2] == 3) {
+                $imgt = "ImagePNG";
+                $imgcreatefrom = "ImageCreateFromPNG";
+            }
+            if ($imgt) {
+                $old_image = $imgcreatefrom("$destDir" . "$img");
+                $new_image = imagecreatetruecolor($thumbnail_width, $thumbnail_height);
+                imagecopyresized($new_image, $old_image, $dest_x, $dest_y, 0, 0, $new_width, $new_height, $original_width, $original_height);
+                if (!file_exists("$upDir")) {
+                    mkdir("$upDir", 0777, true);
+                }
+                $imgt($new_image, "$upDir" . "$img");
+            }
+        }
 	}
 	
 	private function insertPhotoFromEvent($dir, $events){
@@ -146,10 +151,10 @@ class Photos extends Controller
 			$entry['active'] = $row->live;
 			array_push($data,$entry);
 		}
-		$view = new View(array(
-				"file" => APP_PATH."/{$defaultPath}/layouts/empty.{$defaultExtension}"
-				));
-		$this->setLayoutView($view);
+//		$view = new View(array(
+//				"file" => APP_PATH."/{$defaultPath}/layouts/empty.{$defaultExtension}"
+//				));
+//		$this->setLayoutView($view);
 		header("Content-Type: application/json");
 		echo json_encode($data);
 	}
