@@ -215,9 +215,9 @@ appControllers.controller('PhotoListCtrl', [
 			};
 		} ]);
 
-appControllers.controller('HeaderCtrl', ['$scope', 'security', function($scope, security) {
+appControllers.controller('HeaderCtrl', ['$scope', '$location', 'security', function($scope, $location, security) {
 
-	$scope.activePage = 'home';
+	$scope.activePage = $location.path() != null ? $location.path().substring(1) :  'home';
 
 	$scope.changePage = function(page) {
 		$scope.activePage = page;

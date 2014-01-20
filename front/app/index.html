@@ -63,15 +63,18 @@
 			<div class="navbar-inner">
 				<a class="brand" href="#home" ng-click="changePage('home')">Archief Chiro Elzestraat</a>
 				<ul class="nav pull-left" ng-show="isAuthenticated()">
-					<li ng-class="{active: activePage=='events'}">
-						<a href="#events" ng-click="changePage('events')">Evenementen</a>
-					</li>
                     <li ng-class="{active: activePage=='users'}">
 						<a href="#users" ng-click="changePage('users')">Gebruikers</a>
 					</li>
                     <li ng-class="{active: activePage=='photos'}">
 						<a href="#photos" ng-click="changePage('photos')">Foto's</a>
 					</li>
+					<li ng-class="{active: activePage=='events'}">
+						<a href="#events" ng-click="changePage('events')">Evenementen</a>
+					</li>
+                    <li ng-class="{active: activePage=='stories'}">
+                        <a href="#stories" ng-click="changePage('stories')">Verhalen</a>
+                    </li>
 				</ul>
 				<login-toolbar></login-toolbar>
 			</div>
