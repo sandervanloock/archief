@@ -1,8 +1,10 @@
 <div class="container view-container">
-    <table class="table users">
+    <table class="table table-hover users">
         <tr ng-repeat="user in users" class="user">
+            <td></td>
             <td>{{user.firstName}}</td>
             <td>{{user.lastName}}</td>
+            <td>{{user.email}}</td>
         </tr>
     </table>
 </div>

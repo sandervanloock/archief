@@ -127,6 +127,7 @@ class Users extends Controller
         $data['id'] = $event->id;
         $data['firstName'] = $event->first;
         $data['lastName'] = $event->last;
+        $data['email'] = $event->email;
         return $data;
     }
 }
