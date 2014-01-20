@@ -6,6 +6,29 @@ use Framework\RequestMethods as RequestMethods;
 
 class Users extends Controller
 {
+    public function index()
+    {
+        $where =  array(
+            "live = ?" => true,
+            "deleted = ?" => false,
+        );
+        if(isset($_GET['id'])){
+            $where['id = ?'] = $_GET['id'];
+            $event = User::first($where);
+            $data = $this->getUserEntry($event);
+        } else{
+            $events = User::all($where);
+            $data = array();
+            foreach ($events as $event){
+                $entry = array();
+                $entry = $this->getUserEntry($event);
+                array_push($data,$entry);
+            }
+        }
+
+        echo json_encode($data);
+    }
+
     public function register()
     {
         if (RequestMethods::post("register"))
@@ -88,10 +111,22 @@ class Users extends Controller
     	}
     }
     
-    
     public function currentUser(){
     	if (isset($_SESSION['currentUser'])){
     		echo $_SESSION['currentUser'];
     	}
+    }
+
+    /**
+     * @param $event
+     * @return array
+     */
+    private function getUserEntry($event)
+    {
+        $data = array();
+        $data['id'] = $event->id;
+        $data['firstName'] = $event->first;
+        $data['lastName'] = $event->last;
+        return $data;
     }
 }

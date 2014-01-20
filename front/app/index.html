@@ -42,6 +42,7 @@
 
 		<!-- build:js scripts/main.js -->
 		<script type="text/javascript" src="js/app.js"></script>
+		<script type="text/javascript" src="js/properties.js"></script>
 		<script type="text/javascript" src="js/controllers.js"></script>
 		<script type="text/javascript" src="js/services.js"></script>
 		<script type="text/javascript" src="js/filters.js"></script>
@@ -53,6 +54,7 @@
 		<script type="text/javascript" src="js/security/login/LoginFormController.js"></script>
 		<script type="text/javascript" src="js/security/login/login.js"></script>
 		<script type="text/javascript" src="js/security/login/toolbar.js"></script>
+		<script type="text/javascript" src="js/users/users.js"></script>
 		<!-- endbuild -->
 
 	</head>
@@ -64,28 +66,14 @@
 					<li ng-class="{active: activePage=='events'}">
 						<a href="#events" ng-click="changePage('events')">Evenementen</a>
 					</li>
+                    <li ng-class="{active: activePage=='users'}">
+						<a href="#users" ng-click="changePage('users')">Gebruikers</a>
+					</li>
+                    <li ng-class="{active: activePage=='photos'}">
+						<a href="#photos" ng-click="changePage('photos')">Foto's</a>
+					</li>
 				</ul>
 				<login-toolbar></login-toolbar>
-				<!--<ul class="nav pull-right">
-					<li class="divider-vertical"></li>
-					<li ng-show="isAuthenticated()">
-						<a href="#">{{currentUser.firstName}} {{currentUser.lastName}}</a>
-					</li>
-					<li ng-show="isAuthenticated()" class="logout">
-						<form class="navbar-form">
-							<button class="btn logout" ng-click="logout()">
-								Log out
-							</button>
-						</form>
-					</li>
-					<li ng-hide="isAuthenticated()" class="login">
-						<form class="navbar-form">
-							<button class="btn login" ng-click="login()">
-								Log in
-							</button>
-						</form>
-					</li>
-				</ul>-->
 			</div>
 		</div>
 		<div ng-view class="view-frame"></div>
