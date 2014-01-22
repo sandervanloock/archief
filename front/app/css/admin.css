@@ -8,9 +8,6 @@
 	margin-bottom: 0px !important;
 }
 
-.navbar .nav a{
-	padding: 1.15em !important;
-}
 
 .navbar .login, .navbar .logout{
 	margin-top: 0.3em;
@@ -207,6 +204,21 @@ h1 {
 .user{
     cursor:pointer;
 }
+
+.user-search{
+    margin: 1em;
+}
+
+.add-button{
+    float: right;
+    width: 1em;
+    border-radius: 15px;
+}
+
+.user-detail{
+    margin: 1em;
+}
+
 
 /* -------------- USERS -------------------- */
 
