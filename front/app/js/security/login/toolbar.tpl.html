@@ -1,17 +1,20 @@
 <ul class="nav pull-right">
-  <li class="divider-vertical"></li>
-  <li ng-show="isAuthenticated()">
-      <a href="#">{{currentUser.firstName}} {{currentUser.lastName}}</a>
-  </li>
-  <li ng-show="isAuthenticated()" class="logout">
-      <form class="navbar-form">
-          <button class="btn logout" ng-click="logout()">Log out</button>
-      </form>
-  </li>
-  <li ng-hide="isAuthenticated()" class="login">
-      <form class="navbar-form">
-          <button class="btn login" ng-click="login()">Log in</button>
-          <a href="" class="btn btn-link">Registreer</a>
-      </form>
-  </li>
+    <li class="divider-vertical"></li>
+    <li ng-show="isAuthenticated()">
+        <div class="btn btn-link">
+            <div class="home-icon glyphicon glyphicon-home"></div>
+            <div href="#" class="home-user" ng-click="openProfile()">{{currentUser.firstName}} {{currentUser.lastName}}</div>
+        </div>
+    </li>
+    <li ng-show="isAuthenticated()" class="logout">
+        <form class="navbar-form">
+            <button class="btn logout" ng-click="logout()">Log out</button>
+        </form>
+    </li>
+    <li ng-hide="isAuthenticated()" class="login">
+        <form class="navbar-form">
+            <button class="btn login" ng-click="login()">Log in</button>
+            <a href="" class="btn btn-link">Registreer</a>
+        </form>
+    </li>
 </ul>

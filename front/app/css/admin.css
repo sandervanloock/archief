@@ -8,6 +8,19 @@
 	margin-bottom: 0px !important;
 }
 
+.navbar .nav a{
+    padding: 1.15em !important;
+}
+
+.home-icon{
+    padding-right: 0.5em;
+    font-size: 1.6em;
+}
+
+.home-user{
+    vertical-align: super;
+    display:inline;
+}
 
 .navbar .login, .navbar .logout{
 	margin-top: 0.3em;

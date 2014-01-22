@@ -92,6 +92,7 @@ class Users extends Controller
         ));
         
         $jsonUser = array(
+                "id" => $user->id,
         		"firstName" => $user->first,
         		"lastName" => $user->last,
         		"email" => $user->email,
@@ -104,13 +105,13 @@ class Users extends Controller
         header("Content-Type: application/json");
        	echo $_SESSION['currentUser'];
     }
-    
+
     public function logout(){
     	if (isset($_SESSION['currentUser'])) {
     		unset($_SESSION['currentUser']);
     	}
     }
-    
+
     public function currentUser(){
     	if (isset($_SESSION['currentUser'])){
     		echo $_SESSION['currentUser'];
