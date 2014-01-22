@@ -9,18 +9,25 @@ angular.module('users', ['userService', 'security.authorization'])
                     return Users.query();
                 }],
                 authenticatedUser: securityAuthorizationProvider.requireAuthenticatedUser
-            }
-        }).when('/users/:userId', {
+            }}).when('/users/:userId', {
                 templateUrl: 'js/users/user-detail.html',
                 controller: 'UserDetailCtrl',
                 resolve: securityAuthorizationProvider.requireAdminUser
+            }).when('/register', {
+                templateUrl: 'js/users/user-detail.html',
+                controller: 'RegisterUserCtrl'
             });
+    }])
+
+    .controller('RegisterUserCtrl', ['$scope', function ($scope) {
+        $scope.users = {};
+
     }])
 
     .controller('UsersViewCtrl', ['$scope', '$location', 'users', function ($scope, $location, users) {
         $scope.users = users;
         $scope.createUser = function () {
-            $location.path("/users/-1");
+            $location.path("/register");
         }
 
         $scope.editUser = function (id) {

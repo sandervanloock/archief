@@ -12,6 +12,9 @@ angular.module('security.login.toolbar', [])
                 $scope.isAuthenticated = security.isAuthenticated;
                 $scope.login = security.showLogin;
                 $scope.logout = security.logout;
+                $scope.register = function(){
+                    $location.path("/register");
+                };
                 $scope.openProfile = function () {
                     security.requestCurrentUser().then(function(currentUser){
                         $location.path("/users/" + currentUser.id);

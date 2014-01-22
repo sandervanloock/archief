@@ -12,6 +12,10 @@
     padding: 1.15em !important;
 }
 
+.sidebar-button{
+    width: 100%;
+}
+
 .home-icon{
     padding-right: 0.5em;
     font-size: 1.6em;
