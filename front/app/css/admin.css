@@ -120,6 +120,7 @@ a:active {
 
 .icon{
 	cursor: pointer;
+    vertical-align: middle;
 }
 
 .navigation{
