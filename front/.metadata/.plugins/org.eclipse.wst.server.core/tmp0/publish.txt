@@ -1,4 +1,0 @@
-#Tomcat publish data
-#Tue Aug 27 22:51:08 CEST 2013
-org.eclipse.jst.jee.server\:spring-petclinic=/home/sander/SpringSource/vfabric-tc-server-developer-2.9.2.RELEASE/base-instance/wtpwebapps/spring-petclinic
-org.eclipse.jst.jee.server\:/binary\:/home/sander/.m2/repository/org/springframework/spring-web/3.2.4.RELEASE/spring-web-3.2.4.RELEASE.jar=/home/sander/SpringSource/vfabric-tc-server-developer-2.9.2.RELEASE/base-instance/wtpwebapps/spring-petclinic/WEB-INF/lib/spring-web-3.2.4.RELEASE.jar

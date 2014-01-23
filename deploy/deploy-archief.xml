@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<project name="Deploy archive to FTP-server" basedir="../" default="deploy.archieve.front">
+
+    <property name="ftp.host" value="ftp.chiroelzestraat.be"/>
+    <property name="ftp.dir" value="/archief"/>
+    <property name="ftp.user" value="chiroelzestraat.be"/>
+    <property name="ftp.password" value="leider"/>
+    <property name="module.api" value="backend"/>
+    <property name="module.front" value="front"/>
+
+    <target name="deploy.archieve.front" description="Puts all the resouce files on ftp server">
+        <ftp server="${ftp.host}"
+             remotedir="${ftp.dir}/front"
+             userid="${ftp.user}"
+             password="${ftp.password}"
+             verbose="yes">
+            <fileset dir="front/app/js">
+                <include name="**/*.html"/>
+                <exclude name="properties.js"/>
+                <include name="**/*.js"/>
+                <include name="**/*.css"/>
+            </fileset>
+            <!--vendor CSS images-->
+            <fileset dir="front/app/css/vendor/">
+                <include name="**/*.png"/>
+                <include name="**/*.gif"/>
+            </fileset>
+            <!--vendor js images and fonts-->
+            <fileset dir="front/app/js/vendor/">
+                <include name="**/*.png"/>
+                <include name="**/*.gif"/>
+                <include name="**/*.eot"/>
+                <include name="**/*.svg"/>
+                <include name="**/*.ttf"/>
+                <include name="**/*.woff"/>
+            </fileset>
+        </ftp>
+    </target>
+
+    <target name="deploy.archieve.backend" description="Puts all the resouce files on ftp server">
+        <ftp server="${ftp.host}"
+             remotedir="${ftp.dir}/backend"
+             userid="${ftp.user}"
+             password="${ftp.password}"
+             verbose="yes">
+            <fileset dir="backend">
+                <include name="**/*.php"/>
+                <!--<include name="**/*.ini"/> EXCLUDE INIT FILES OR MANUALLY COPY DATABASE PRODUCTION FILES-->
+                <include name="**/*.htaccess"/>
+            </fileset>
+        </ftp>
+    </target>
+</project>

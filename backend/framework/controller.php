@@ -87,7 +87,7 @@ namespace Framework
                     $view->set("template", $results);
                     //$results = $view->render();
                     
-                    header("Content-type: {$defaultContentType}");
+//                    header("Content-type: {$defaultContentType}");
                     
                     echo $results;
                 }
@@ -99,7 +99,7 @@ namespace Framework
                     $this->setWillRenderLayoutView(false);
                     $this->setWillRenderActionView(false);
                 }
-                header("HTTP/1.1 200 OK");
+//                header("HTTP/1.1 200 OK");
             }
             catch (\Exception $e)
             {

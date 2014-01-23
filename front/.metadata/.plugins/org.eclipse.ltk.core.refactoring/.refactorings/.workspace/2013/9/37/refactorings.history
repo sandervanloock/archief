@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Delete 6 resources" deleteContents="false" description="Delete 6 resources" element1="/Chiro/chirojongens/includes/pagina/groepen.php~" element2="/Chiro/chirojongens/includes/pagina/index.php~" element3="/Chiro/chirojongens/includes/pagina/leiding.php~" element4="/Chiro/chirojongens/includes/pagina/media.php~" element5="/Chiro/chirojongens/includes/pagina/overons.php~" element6="/Chiro/chirojongens/includes/pagina/verhuur.php~" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="6" stamp="1378750970504"/>
-</session>
