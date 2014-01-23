@@ -91,7 +91,8 @@ class Photos extends Controller
 				$photo = new Photo(array(
 						"title" => substr($dir,strripos($dir,'/')+1),
 						"directory" => $dir,
-						"event" => $event->id
+						"event" => $event->id,
+                        "live" => 0
 				));
 				$photo->save();
 			}
