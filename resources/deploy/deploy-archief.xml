@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="Deploy archive to FTP-server" basedir="../" default="deploy.archieve.front">
+<project name="Deploy archive to FTP-server" basedir="../../" default="deploy.archieve.front">
 
     <property name="ftp.host" value="ftp.chiroelzestraat.be"/>
     <property name="ftp.dir" value="/archief"/>
@@ -14,21 +14,15 @@
              userid="${ftp.user}"
              password="${ftp.password}"
              verbose="yes">
-            <fileset dir="front/app/js">
+            <fileset dir="front">
                 <include name="**/*.html"/>
                 <exclude name="properties.js"/>
                 <include name="**/*.js"/>
                 <include name="**/*.css"/>
-            </fileset>
-            <!--vendor CSS images-->
-            <fileset dir="front/app/css/vendor/">
+                <!--vendor CSS images-->
                 <include name="**/*.png"/>
                 <include name="**/*.gif"/>
-            </fileset>
-            <!--vendor js images and fonts-->
-            <fileset dir="front/app/js/vendor/">
-                <include name="**/*.png"/>
-                <include name="**/*.gif"/>
+                <!--vendor fonts-->
                 <include name="**/*.eot"/>
                 <include name="**/*.svg"/>
                 <include name="**/*.ttf"/>
@@ -43,7 +37,7 @@
              userid="${ftp.user}"
              password="${ftp.password}"
              verbose="yes">
-            <fileset dir="backend">
+            <fileset dir="../../backend">
                 <include name="**/*.php"/>
                 <!--<include name="**/*.ini"/> EXCLUDE INIT FILES OR MANUALLY COPY DATABASE PRODUCTION FILES-->
                 <include name="**/*.htaccess"/>

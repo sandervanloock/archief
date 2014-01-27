@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<project name="archief" basedir=".">
+
+    <property name="properties.file">${environment}.properties</property>
+    <available file="${properties.file}" property="properties.file.found"/>
+
+    <property file="${properties.file}"/>
+
+    <path id="library.path">
+        <fileset file="lib/liquibase.jar"/>
+    </path>
+
+    <target name="update-database">
+        <fail unless="${properties.file.found}">properties file not found: ${properties.file}</fail>
+        <fail unless="database.url">database.url not set</fail>
+        <fail unless="database.username">database.username not set</fail>
+        <fail unless="database.password">database.password not set</fail>
+
+        <taskdef resource="liquibasetasks.properties">
+            <classpath refid="library.path"/>
+        </taskdef>
+
+        <updateDatabase
+                changeLogFile="scripts/master.xml"
+                driver="com.mysql.jdbc.Driver"
+                url="${database.url}"
+                username="${database.username}"
+                password="${database.password}"
+                promptOnNonLocalDatabase="true"
+                dropFirst="false"
+                classpathref="library.path"
+                />
+    </target>
+
+</project>
