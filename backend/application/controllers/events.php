@@ -62,8 +62,15 @@ class Events extends Controller
 	{
 		$where =  array(
 				"live = ?" => true,
-				"deleted = ?" => false,
+				"deleted = ?" => false
 		);
+//        if(isset($_GET['type'])){
+//            $eventtype = Event_type::first(array(
+//                "name = ?" => $_GET['type']
+//            ));
+//            echo $eventtype;
+//            $where["eventtype = ?"] = $eventtype->id;
+//        }
 		if(isset($_GET['id'])){
 			$where['id = ?'] = $_GET['id'];
 			$event = Event::first($where);

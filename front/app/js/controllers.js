@@ -1,9 +1,11 @@
 var appControllers = angular.module('appControllers', []);
 
-appControllers.controller('EventListCtrl', [ '$scope', 'Event',
-		function($scope, Event) {
-			$scope.events = Event.query();
-			$scope.orderProp = 'start';
+appControllers.controller('EventListCtrl', [ '$scope', '$location','Event',
+		function($scope, $location, Event) {
+			$scope.events = Event.query({
+                type: $location.search().page
+            });
+			$scope.orderProp = 'stasqjflkmqdsjfrt';
 		} ]);
 
 appControllers.controller('EventDetailCtrl', [
@@ -19,7 +21,6 @@ appControllers.controller('EventDetailCtrl', [
 			$scope.event = Event.get({
 				id : $routeParams.eventId
 			});
-
 			var rows = 5;
 			var columns = 7;
 			$scope.page = 1;

@@ -23,7 +23,13 @@ class Event extends Shared\Model
     * @readwrite
     * @type datetime
     */
-    protected $_end; 
-     
+    protected $_end;
+
+    /**
+     * @column
+     * @readwrite
+     * @type integer
+     */
+    protected $_eventtype;
     
 }

@@ -1,81 +1,90 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html ng-app="app" lang="nl">
-	<!--<![endif]-->
-	<head>
-		<title>Archief - Chirojongens Elzestraat</title>
-		<meta charset="utf-8">
-		<meta name="description" content="Archief van Chirojongens en Chiromeisjes van Elzestraat">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-touch-fullscreen" content="yes">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-		<!-- build:css(.tmp) styles/main.css -->
-		<link rel="stylesheet" href="css/vendor/bootstrapv2/css/bootstrap.css" type="text/css"/>
-		<link rel="stylesheet" href="css/vendor/nivo-slider/nivo-slider.css" type="text/css"/>
-		<link rel="stylesheet" href="css/vendor/nivo-slider/style.css" type="text/css"/>
-		<link rel="stylesheet" href="css/vendor/nivo-slider/themes/default/default.css" type="text/css"/>
-		<!--<link rel="stylesheet" href="js/vendor/bootstrap/dist/css/bootstrap.css" type="text/css"/>-->
-		<link rel="stylesheet" href="css/main.css" type="text/css" />
-		<link rel="stylesheet" href="css/album.css" type="text/css" />
-		<link rel="stylesheet" href="css/admin.css" type="text/css"/>
-		<!-- endbuild -->
+<!--<![endif]-->
+<head>
+    <title>Archief - Chirojongens Elzestraat</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Archief van Chirojongens en Chiromeisjes van Elzestraat">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="css/vendor/bootstrapv2/css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="css/vendor/nivo-slider/nivo-slider.css" type="text/css"/>
+    <link rel="stylesheet" href="css/vendor/nivo-slider/style.css" type="text/css"/>
+    <link rel="stylesheet" href="css/vendor/nivo-slider/themes/default/default.css" type="text/css"/>
+    <!--<link rel="stylesheet" href="js/vendor/bootstrap/dist/css/bootstrap.css" type="text/css"/>-->
+    <link rel="stylesheet" href="css/main.css" type="text/css"/>
+    <link rel="stylesheet" href="css/album.css" type="text/css"/>
+    <link rel="stylesheet" href="css/admin.css" type="text/css"/>
+    <!-- endbuild -->
 
-		<!-- build:js scripts/vendor.js -->
-		<script src="js/vendor/jquery/jquery.js"></script>
-		<script src="js/vendor/jquery/jquery-photo-resize.js"></script>
-		<script src="js/vendor/angular/angular.js"></script>
-		<script src="js/vendor/angular/angular-route.js"></script>
-		<script src="js/vendor/angular/angular-resource.js"></script>
-		<script src="js/vendor/angular-spinner/angular-spinner.js"></script>
-		<script src="js/vendor/angular-spinner/spin.js"></script>
-		<script src="js/vendor/angular-ui/bootstrap/ui-bootstrap-custom-0.1.0-SNAPSHOT.js"></script>
-		<script src="js/vendor/bootstrapv2/bootstrap.js"></script>
-		<script src="js/vendor/momentjs/moment.js"></script>
-		<script src="js/vendor/timeline/timeline.js"></script>
-		<script src="js/vendor/timeline/storyjs-embed.js"></script>
-		<script src="js/vendor/nivo-slider/jquery.nivo.slider.pack.js"></script>
-		<!-- endbuild -->
+    <!-- build:js scripts/vendor.js -->
+    <script src="js/vendor/jquery/jquery.js"></script>
+    <script src="js/vendor/jquery/jquery-photo-resize.js"></script>
+    <script src="js/vendor/angular/angular.js"></script>
+    <script src="js/vendor/angular/angular-route.js"></script>
+    <script src="js/vendor/angular/angular-resource.js"></script>
+    <script src="js/vendor/angular-spinner/angular-spinner.js"></script>
+    <script src="js/vendor/angular-spinner/spin.js"></script>
+    <script src="js/vendor/angular-ui/bootstrap/ui-bootstrap-custom-0.1.0-SNAPSHOT.js"></script>
+    <script src="js/vendor/bootstrapv2/bootstrap.js"></script>
+    <script src="js/vendor/momentjs/moment.js"></script>
+    <script src="js/vendor/timeline/timeline.js"></script>
+    <script src="js/vendor/timeline/storyjs-embed.js"></script>
+    <script src="js/vendor/nivo-slider/jquery.nivo.slider.pack.js"></script>
+    <!-- endbuild -->
 
-		<!-- build:js scripts/main.js -->
-		<script type="text/javascript" src="js/app.js"></script>
-		<script type="text/javascript" src="js/properties.js"></script>
-		<script type="text/javascript" src="js/controllers.js"></script>
-		<script type="text/javascript" src="js/services.js"></script>
-		<script type="text/javascript" src="js/filters.js"></script>
-		<script type="text/javascript" src="js/security/authorization.js"></script>
-		<script type="text/javascript" src="js/security/index.js"></script>
-		<script type="text/javascript" src="js/security/interceptor.js"></script>
-		<script type="text/javascript" src="js/security/retryQueue.js"></script>
-		<script type="text/javascript" src="js/security/security.js"></script>
-		<script type="text/javascript" src="js/security/login/LoginFormController.js"></script>
-		<script type="text/javascript" src="js/security/login/login.js"></script>
-		<script type="text/javascript" src="js/security/login/toolbar.js"></script>
-		<script type="text/javascript" src="js/users/users.js"></script>
-		<!-- endbuild -->
+    <!-- build:js scripts/main.js -->
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/properties.js"></script>
+    <script type="text/javascript" src="js/controllers.js"></script>
+    <script type="text/javascript" src="js/services.js"></script>
+    <script type="text/javascript" src="js/filters.js"></script>
+    <script type="text/javascript" src="js/security/authorization.js"></script>
+    <script type="text/javascript" src="js/security/index.js"></script>
+    <script type="text/javascript" src="js/security/interceptor.js"></script>
+    <script type="text/javascript" src="js/security/retryQueue.js"></script>
+    <script type="text/javascript" src="js/security/security.js"></script>
+    <script type="text/javascript" src="js/security/login/LoginFormController.js"></script>
+    <script type="text/javascript" src="js/security/login/login.js"></script>
+    <script type="text/javascript" src="js/security/login/toolbar.js"></script>
+    <script type="text/javascript" src="js/users/users.js"></script>
+    <!-- endbuild -->
 
-	</head>
-	<body class="container">
-		<div class="navbar" ng-controller="HeaderCtrl">
-			<div class="navbar-inner">
-				<a class="brand" href="#home" ng-click="changePage('home')">Archief Chiro Elzestraat</a>
-				<ul class="nav pull-left" ng-show="isAuthenticated()">
-                    <li ng-class="{active: activePage=='users'}">
-						<a href="#users" ng-click="changePage('users')">Gebruikers</a>
-					</li>
-                    <li ng-class="{active: activePage=='photos'}">
-						<a href="#photos" ng-click="changePage('photos')">Foto's</a>
-					</li>
-					<li ng-class="{active: activePage=='events'}">
-						<a href="#events" ng-click="changePage('events')">Evenementen</a>
-					</li>
-				</ul>
-				<login-toolbar></login-toolbar>
-			</div>
-		</div>
-		<div ng-view class="view-frame"></div>
-	</body>
+</head>
+<body class="container">
+<div class="navbar" ng-controller="HeaderCtrl">
+    <div class="navbar-inner">
+        <a class="brand" href="#home" ng-click="changePage('home')">Archief Chiro Elzestraat</a>
+        <ul class="nav pull-left" ng-show="isAuthenticated()">
+            <li ng-class="{active: activePage=='users'}">
+                <a href="#users" ng-click="changePage('users')">Gebruikers</a>
+            </li>
+            <li ng-class="{active: activePage=='photos'}">
+                <a href="#photos" ng-click="changePage('photos')">Foto's</a>
+            </li>
+            <li ng-class="{active: activePage=='events'}" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Evenementen</a>
+                <ul class="dropdown-menu">
+                    <li><a ng-click="changePage('events')" href="#events?page=chiro">Chirojaren</a></li>
+                    <li><a ng-click="changePage('events')" href="#events?page=kamp">Kampen</a></li>
+                    <li><a ng-click="changePage('events')" href="#events?page=feest">Feest</a></li>
+                    <li><a ng-click="changePage('events')" href="#events?page=andere">Andere</a></li>
+                </ul>
+            </li>
+        </ul>
+        <login-toolbar></login-toolbar>
+    </div>
+</div>
+<div ng-view class="view-frame"></div>
+</body>
 </html>

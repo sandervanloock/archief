@@ -48,6 +48,11 @@ $routes = array(
         "pattern" => "photos/save",
         "controller" => "photos",
         "action" => "savePhoto"
+    ),
+    array(
+        "pattern" => "events?type=*",
+        "controller" => "events",
+        "action" => "index"
     )
 );
 

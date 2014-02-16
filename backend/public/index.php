@@ -33,19 +33,23 @@ $router = new Framework\Router(array(
 include("routes.php");
 Framework\Registry::set("router", $router);
 
-/*$database = $database->initialize()->connect();
-$user = new User(array(
+$database = $database->initialize()->connect();
+/*$user = new User(array(
     "connector" => $database
 ));
 $database->sync($user);
 $user = new Photo(array(
 		"connector" => $database
 ));
-$database->sync($user);
-$user = new Event(array(
-		"connector" => $database
-));
-$database->sync($user);*/
+$database->sync($user); */
+//$user = new Event(array(
+//		"connector" => $database
+//));
+//$database->sync($user);
+//$user = new Event_type(array(
+//		"connector" => $database
+//));
+//$database->sync($user);
 
 // 8. dispatch the current request
 $router->dispatch();

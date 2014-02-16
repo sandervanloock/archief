@@ -334,18 +334,19 @@ namespace Framework
                 ->connector
                 ->query()
                 ->from($this->table, $fields);
-            
+
             foreach ($where as $clause => $value)
             {
                 $query->where($clause, $value);
             }
-            
+
             if ($order != null)
             {
                 $query->order($order, $direction);
             }
-            
+
             $first = $query->first();
+            echo $first;
             $class = get_class($this);
             
             if ($first)
