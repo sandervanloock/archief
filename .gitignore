@@ -1,3 +1,5 @@
 *.ini
 data/
 thumbs/
+ZendFramework/
+ZendSkeletonApplication-master/
