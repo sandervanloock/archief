@@ -1,3 +1,11 @@
-.sponsor-container{
+.sponsor-container {
     margin-bottom: 1em;
+}
+
+.logo-preview {
+    margin: 1em;
+}
+
+.logo-preview img {
+    max-width: 100px !important;
 }

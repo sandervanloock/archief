@@ -7,7 +7,7 @@
     <form role="form">
         <div class="form-group">
             <label for="sponsorName">Naam</label>
-            <input type="text" class="form-control" id="sponsorName" placeholder="Sponsornaam">
+            <input type="text" class="form-control" name="sponsorName" id="sponsorName" placeholder="Sponsornaam">
         </div>
         <div class="radio">
             <label>
@@ -30,7 +30,7 @@
         <div ng-show="sponsor.amount==0">
             <div class="form-group" >
                 <label for="sponsorObject">Wijze van sponsering</label>
-                <input type="text" class="form-control" id="sponsorObject" placeholder="Wijze van sponsering">
+                <input type="text" class="form-control" name="sponsorObject" id="sponsorObject" placeholder="Wijze van sponsering">
             </div>
             <div class="radio">
                 <label>
@@ -47,7 +47,13 @@
         </div>
         <div class="form-group">
             <label for="sponsorLogo">Logo</label>
-            <input type="file" id="sponsorLogo">
+            <input type="file" name="sponsorLogo" id="sponsorLogo" ng-file-select="onFileSelect($files)">
+        </div>
+        <div class="logo-preview">
+            <i ng-hide="imageSrc">Nog geen logo gekozen...</i>
+            <img ng-src="{{imageSrc}}" /><br/>
+            <!--<b>Progress:</b>-->
+            <!--<progress value="{{progress}}"></progress>-->
         </div>
         <button type="submit" class="btn btn-default">Toevoegen</button>
     </form>
