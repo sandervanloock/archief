@@ -11,7 +11,9 @@
             <column name="id" type="int"/>
             <column name="name" type="varchar(255)"/>
             <column name="amount" type="int"/>
-            <column name="dimension" type="int"/>
+            <column name="dimension" type="varchar(255)"/>
+            <column name="object" type="varchar(255)"/>
+            <column name="logo" type="varchar(255)"/>
         </createTable>
         <addPrimaryKey columnNames="id"
                        tableName="sponsor"/>

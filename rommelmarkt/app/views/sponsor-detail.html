@@ -4,10 +4,12 @@
 </div>
 
 <div class="sponsor-container">
-    <form role="form">
+    <!-- SHOW ERROR/SUCCESS MESSAGES -->
+    <div id="messages" ng-show="message">{{ message }}</div>
+    <form role="form" ng-submit="submitSponsor()">
         <div class="form-group">
             <label for="sponsorName">Naam</label>
-            <input type="text" class="form-control" name="sponsorName" id="sponsorName" placeholder="Sponsornaam">
+            <input type="text" class="form-control" name="sponsorName" id="sponsorName" placeholder="Sponsornaam" ng-model="sponsor.name">
         </div>
         <div class="radio">
             <label>
@@ -30,24 +32,24 @@
         <div ng-show="sponsor.amount==0">
             <div class="form-group" >
                 <label for="sponsorObject">Wijze van sponsering</label>
-                <input type="text" class="form-control" name="sponsorObject" id="sponsorObject" placeholder="Wijze van sponsering">
+                <input type="text" class="form-control" name="sponsorObject" id="sponsorObject" placeholder="Wijze van sponsering" ng-model="sponsor.object">
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="sponsorDimension" id="sponsorDimension1" value="1" ng-model="sponsor.dimension" checked>
+                    <input type="radio" name="sponsorDimension" id="sponsorDimension1" value="1" ng-model="sponsor.dimension" checked ng-model="sponsor.dimension">
                     4 cm x 4 cm
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="sponsorDimension" id="sponsorDimension2" value="2" ng-model="sponsor.dimension">
+                    <input type="radio" name="sponsorDimension" id="sponsorDimension2" value="2" ng-model="sponsor.dimension" ng-model="sponsor.dimension">
                     4 cm x 8 cm
                 </label>
             </div>
         </div>
         <div class="form-group">
             <label for="sponsorLogo">Logo</label>
-            <input type="file" name="sponsorLogo" id="sponsorLogo" ng-file-select="onFileSelect($files)">
+            <input type="file" name="sponsorLogo" id="sponsorLogo" ng-file-select="onFileSelect($files)" ng-model="sponsor.logo">
         </div>
         <div class="logo-preview">
             <i ng-hide="imageSrc">Nog geen logo gekozen...</i>
