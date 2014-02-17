@@ -1,0 +1,59 @@
+<div class="header">
+    <h3 class="text-muted">Rommelmarkt 17/05/2014 - Sponsering</h3>
+    <a href="#">Terug</a>
+</div>
+
+<div class="sponsor-container">
+    <form role="form">
+        <div class="form-group">
+            <label for="sponsorName">Naam</label>
+            <input type="text" class="form-control" id="sponsorName" placeholder="Sponsornaam">
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="sponsorAmount" id="sponsorAmount50" value="50" ng-model="sponsor.amount" checked>
+                € 50
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="sponsorAmount" id="sponsorAmount100" value="100" ng-model="sponsor.amount">
+                € 100
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="sponsorAmount" id="sponsorAmount0" value="0" ng-model="sponsor.amount">
+                Andere
+            </label>
+        </div>
+        <div ng-show="sponsor.amount==0">
+            <div class="form-group" >
+                <label for="sponsorObject">Wijze van sponsering</label>
+                <input type="text" class="form-control" id="sponsorObject" placeholder="Wijze van sponsering">
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="sponsorDimension" id="sponsorDimension1" value="1" ng-model="sponsor.dimension" checked>
+                    4 cm x 4 cm
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="sponsorDimension" id="sponsorDimension2" value="2" ng-model="sponsor.dimension">
+                    4 cm x 8 cm
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="sponsorLogo">Logo</label>
+            <input type="file" id="sponsorLogo">
+        </div>
+        <button type="submit" class="btn btn-default">Toevoegen</button>
+    </form>
+</div>
+
+
+<div class="footer">
+    <p>Chiro Elzestraat</p>
+</div>

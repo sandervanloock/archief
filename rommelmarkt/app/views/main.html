@@ -1,36 +1,23 @@
 <div class="header">
-  <ul class="nav nav-pills pull-right">
-    <li class="active"><a ng-href="#">Home</a></li>
-    <li><a ng-href="#">About</a></li>
-    <li><a ng-href="#">Contact</a></li>
-  </ul>
-  <h3 class="text-muted">rommelmarkt</h3>
+  <h3 class="text-muted">Rommelmarkt 17/05/2014 - Sponsering</h3>
+  <a href="#/sponsor">Toevoegen</a>
 </div>
 
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
-</div>
-
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
+<ul class="sponsors">
+    <li ng-repeat="sponsor in sponsors" class="sponsor media">
+        <a class="pull-left" href="{{sponsor.logo}}">
+            <img class="media-object" style="width: 100px; height: 100px;">
+        </a>
+        <div class="media-body">
+            <h4 class="media-heading">{{sponsor.name}}</h4>
+            <p>
+                {{sponsor.amount}}
+                {{sponsor.dimension}}
+            </p>
+        </div>
+    </li>
+</ul>
 
 <div class="footer">
-  <p>♥ from the Yeoman team</p>
+  <p>Chiro Elzestraat</p>
 </div>
