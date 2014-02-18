@@ -5,15 +5,17 @@
 
 <ul class="sponsors">
     <li ng-repeat="sponsor in sponsors" class="sponsor media">
-        <a class="pull-left" href="{{sponsor.logo}}">
-            <img class="media-object" style="width: 100px; height: 100px;">
-        </a>
+        <div class="pull-left">
+            <img class="media-object" style="width: 100px;" ng-src="{{staticServer + sponsor.logo}}">
+        </div>
         <div class="media-body">
-            <h4 class="media-heading">{{sponsor.name}}</h4>
-            <p>
-                {{sponsor.amount}}
-                {{sponsor.dimension}}
-            </p>
+
+            <h4 class="media-heading">Naam: {{sponsor.name}}</h4>
+            <dl class="dl-horizontal">
+                <dt>Bedrag</dt><dd>{{sponsor.amount}}</dd>
+                <dt>Dimensie</dt><dd>{{sponsor.dimension}}</dd>
+                <dt>Wijze van sponsering</dt><dd>{{sponsor.object}}</dd>
+            </dl>
         </div>
     </li>
 </ul>
