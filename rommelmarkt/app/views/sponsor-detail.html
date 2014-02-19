@@ -11,6 +11,8 @@
             <label for="sponsorName">Naam</label>
             <input type="text" class="form-control" name="sponsorName" id="sponsorName" placeholder="Sponsornaam" ng-model="sponsor.name">
         </div>
+
+        <label>Bedrag</label>
         <div class="radio">
             <label>
                 <input type="radio" name="sponsorAmount" id="sponsorAmount50" value="50" ng-model="sponsor.amount" checked>
@@ -29,23 +31,24 @@
                 Andere
             </label>
         </div>
-        <div ng-show="sponsor.amount==0">
-            <div class="form-group" >
-                <label for="sponsorObject">Wijze van sponsering</label>
-                <input type="text" class="form-control" name="sponsorObject" id="sponsorObject" placeholder="Wijze van sponsering" ng-model="sponsor.object">
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="sponsorDimension" id="sponsorDimension1" value="1" ng-model="sponsor.dimension" checked ng-model="sponsor.dimension">
-                    4 cm x 4 cm
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="sponsorDimension" id="sponsorDimension2" value="2" ng-model="sponsor.dimension" ng-model="sponsor.dimension">
-                    4 cm x 8 cm
-                </label>
-            </div>
+        <div class="form-group" ng-show="sponsor.amount==0">
+            <label for="sponsorObject">Wijze van sponsering</label>
+            <input type="text" class="form-control" name="sponsorObject" id="sponsorObject" placeholder="Wijze van sponsering" ng-model="sponsor.object">
+        </div>
+        <!--TODO if amount==50 => set dimension=1 && disable sponsorDimension-->
+        <label>Dimensie</label>
+        <div class="radio">
+            <label>
+                <input type="radio" name="sponsorDimension" id="sponsorDimension1" value="1" ng-model="sponsor.dimension" checked ng-model="sponsor.dimension">
+                4 cm x 4 cm
+            </label>
+        </div>
+        <!--TODO if amount==100 => set dimension=2 && disable sponsorDimension-->
+        <div class="radio">
+            <label>
+                <input type="radio" name="sponsorDimension" id="sponsorDimension2" value="2" ng-model="sponsor.dimension" ng-model="sponsor.dimension">
+                4 cm x 8 cm
+            </label>
         </div>
         <img ng-show="sponsor.logo" ng-src="{{staticServer + sponsor.logo}}" />
         <div class="form-group">
@@ -59,6 +62,7 @@
             <!--<progress value="{{progress}}"></progress>-->
         </div>
         <button type="submit" class="btn btn-default">Bewaren</button>
+        <button class="btn btn-default" ng-click="removeSponsor()">Verwijderen</button>
     </form>
 </div>
 

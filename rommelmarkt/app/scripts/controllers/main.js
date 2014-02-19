@@ -13,13 +13,12 @@ angular.module('rommelmarktApp')
 
 angular.module('rommelmarktApp')
     .controller('SponsorCtrl', [ '$scope', '$upload', '$http', '$routeParams', 'fileReader', 'Sponsor', 'BACKEND_SERVER_CONFIG', 'STATIC_SERVER_CONFIG',
-        function ($scope, $upload, $http, $routeParams, fileReader, Sponsor, BACKEND_SERVER_CONFIG,STATIC_SERVER_CONFIG) {
+        function ($scope, $upload, $http, $routeParams, fileReader, Sponsor, BACKEND_SERVER_CONFIG, STATIC_SERVER_CONFIG) {
             $scope.staticServer = STATIC_SERVER_CONFIG;
             $scope.sponsor = {};
             if ($routeParams.sponsorId != -1) {
-                Sponsor.query({},function(sponsors)
-                {
-                    angular.forEach(sponsors,function(sponsor) {
+                Sponsor.query({}, function (sponsors) {
+                    angular.forEach(sponsors, function (sponsor) {
                         if (sponsor.id == $routeParams.sponsorId) {
                             $scope.sponsor = sponsor;
                         }
@@ -38,7 +37,7 @@ angular.module('rommelmarktApp')
             });
 
             $scope.submitSponsor = function () {
-                //TODO validaition
+                //TODO validation
                 var sponsor = $scope.sponsor;
                 if (sponsor.amount != 0) {
                     sponsor.object = "CASH";
@@ -49,12 +48,12 @@ angular.module('rommelmarktApp')
                         case "100":
                             sponsor.dimension = 2;
                             break;
-                            otherwise:
-                                sponsor.dimension = -1;
+                        default:
+                            sponsor.dimension = -1;
                     }
                 }
                 $scope.upload = $upload.upload({
-                    url: BACKEND_SERVER_CONFIG + 'sponsor/add',
+                    url: BACKEND_SERVER_CONFIG + 'sponsor',
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },  // set the headers so angular passing info as form data (not request payload)
                     data: sponsor,  // pass in data as strings
@@ -69,6 +68,10 @@ angular.module('rommelmarktApp')
                             $scope.message = data.message;
                         }
                     });
+            }
+            $scope.removeSponsor = function () {
+                Sponsor.delete({id: $scope.sponsor.id});
+                window.location = '#/';
             }
         } ]);
 
