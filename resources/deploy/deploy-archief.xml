@@ -33,13 +33,35 @@
 
     <target name="deploy.archieve.backend" description="Puts all the resouce files on ftp server">
         <ftp server="${ftp.host}"
-             remotedir="${ftp.dir}/backend"
+             remotedir="${ftp.dir}/front"
              userid="${ftp.user}"
              password="${ftp.password}"
              verbose="yes">
-            <fileset dir="../../backend">
-                <include name="**/*.php"/>
-                <!--<include name="**/*.ini"/> EXCLUDE INIT FILES OR MANUALLY COPY DATABASE PRODUCTION FILES-->
+            <fileset dir="backend">
+                <include name="**/*.rar"/>
+            </fileset>
+        </ftp>
+    </target>
+
+    <target name="deploy.archieve.rommelmarkt" description="Puts all the rommelmarkt resouce files on ftp server">
+        <ftp server="${ftp.host}"
+             remotedir="${ftp.dir}/rommelmarkt"
+             userid="${ftp.user}"
+             password="${ftp.password}"
+             verbose="yes">
+            <fileset dir="rommelmarkt/dist">
+                <include name="**/*.html"/>
+                <exclude name="properties.js"/>
+                <include name="**/*.js"/>
+                <include name="**/*.css"/>
+                <!--vendor CSS images-->
+                <include name="**/*.png"/>
+                <include name="**/*.gif"/>
+                <!--vendor fonts-->
+                <include name="**/*.eot"/>
+                <include name="**/*.svg"/>
+                <include name="**/*.ttf"/>
+                <include name="**/*.woff"/>
                 <include name="**/*.htaccess"/>
             </fileset>
         </ftp>

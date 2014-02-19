@@ -8,6 +8,7 @@
 
     <path id="library.path">
         <fileset file="lib/liquibase.jar"/>
+        <fileset file="lib/mysql-connector-java-5.0.8-bin.jar"/>
     </path>
 
     <target name="update-database">
@@ -26,7 +27,7 @@
                 url="${database.url}"
                 username="${database.username}"
                 password="${database.password}"
-                promptOnNonLocalDatabase="true"
+                promptOnNonLocalDatabase="false"
                 dropFirst="false"
                 classpathref="library.path"
                 />
