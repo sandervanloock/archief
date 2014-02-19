@@ -47,17 +47,18 @@
                 </label>
             </div>
         </div>
+        <img ng-show="sponsor.logo" ng-src="{{staticServer + sponsor.logo}}" />
         <div class="form-group">
             <label for="sponsorLogo">Logo</label>
             <input type="file" name="sponsorLogo" id="sponsorLogo" ng-file-select="onFileSelect($files)">
         </div>
-        <div class="logo-preview">
+        <div ng-hide="sponsor.logo" class="logo-preview">
             <i ng-hide="imageSrc">Nog geen logo gekozen...</i>
-            <img ng-src="{{imageSrc}}" /><br/>
+            <img ng-src="{{imageSrc}}" /> <br/>
             <!--<b>Progress:</b>-->
             <!--<progress value="{{progress}}"></progress>-->
         </div>
-        <button type="submit" class="btn btn-default">Toevoegen</button>
+        <button type="submit" class="btn btn-default">Bewaren</button>
     </form>
 </div>
 

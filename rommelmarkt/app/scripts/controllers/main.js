@@ -2,16 +2,30 @@
 
 
 angular.module('rommelmarktApp')
-    .controller('MainCtrl', [ '$scope', '$location', 'Sponsor','STATIC_SERVER_CONFIG',
-        function ($scope, $location, Sponsor,STATIC_SERVER_CONFIG) {
+    .controller('MainCtrl', [ '$scope', '$location', 'sponsorService', 'Sponsor', 'STATIC_SERVER_CONFIG',
+        function ($scope, $location, SponsorService, Sponsor, STATIC_SERVER_CONFIG) {
             $scope.staticServer = STATIC_SERVER_CONFIG;
-            $scope.sponsors = Sponsor.query({ });
+            $scope.sponsors = Sponsor.query({});
+            $scope.showSponsor = function (sponsorId) {
+                window.location = '#/sponsor/' + sponsorId;
+            }
         } ]);
 
 angular.module('rommelmarktApp')
-    .controller('SponsorCtrl', [ '$scope', '$upload', '$http', 'fileReader', 'BACKEND_SERVER_CONFIG',
-        function ($scope, $upload, $http, fileReader, BACKEND_SERVER_CONFIG) {
+    .controller('SponsorCtrl', [ '$scope', '$upload', '$http', '$routeParams', 'fileReader', 'Sponsor', 'BACKEND_SERVER_CONFIG', 'STATIC_SERVER_CONFIG',
+        function ($scope, $upload, $http, $routeParams, fileReader, Sponsor, BACKEND_SERVER_CONFIG,STATIC_SERVER_CONFIG) {
+            $scope.staticServer = STATIC_SERVER_CONFIG;
             $scope.sponsor = {};
+            if ($routeParams.sponsorId != -1) {
+                Sponsor.query({},function(sponsors)
+                {
+                    angular.forEach(sponsors,function(sponsor) {
+                        if (sponsor.id == $routeParams.sponsorId) {
+                            $scope.sponsor = sponsor;
+                        }
+                    })
+                });
+            }
             $scope.getFile = function () {
                 $scope.progress = 0;
                 fileReader.readAsDataUrl($scope.file, $scope)

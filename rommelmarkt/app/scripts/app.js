@@ -1,21 +1,21 @@
 'use strict';
 
-angular.module('rommelmarktApp', [
+var app = angular.module('rommelmarktApp', [
         'ngCookies',
         'ngResource',
         'ngSanitize',
         'ngRoute',
-        'sponsorService',
+        'sponsorModule',
         'angularFileUpload'
+    ]);
 
-    ])
-    .config(function ($routeProvider) {
+app.config(function ($routeProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl'
             })
-            .when('/sponsor', {
+            .when('/sponsor/:sponsorId', {
                 templateUrl: 'views/sponsor-detail.html',
                 controller: 'SponsorCtrl'
             })
@@ -24,7 +24,7 @@ angular.module('rommelmarktApp', [
             });
     });
 
-angular.module('rommelmarktApp').directive("ngFileSelect",function(){
+app.directive("ngFileSelect",function(){
 
     return {
         link: function($scope,el){
