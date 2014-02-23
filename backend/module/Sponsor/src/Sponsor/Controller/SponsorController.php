@@ -50,17 +50,16 @@ class SponsorController extends AbstractRestfulController
         //TODO validation
         if (true) {
             $file = $this->params()->fromFiles('file');
-
             $upload = new \Zend\File\Transfer\Adapter\Http();
             $upload->addValidator('Count', false, array('min' => 1, 'max' => 1))
-                ->addValidator('Size', false, array('max' => '512kB'))
-                ->setDestination(__DIR__ . './../../../../../uploads');
+                ->addValidator('Size', false, array('max' => '2mB'))
+                ->setDestination('uploads');
             if (!$upload->isValid()) {
                 throw new Exception('Bad image data: ' . implode(',', $upload->getMessages()));
             }
             try {
                 $upload->receive($file['name']);
-            } catch (Zend_File_Transfer_Exception $e) {
+            } catch (\Zend\File\Transfer\Exception $e) {
                 throw new Exception('Bad image data: ' . $e->getMessage());
             }
             $sponsor = new Sponsor();

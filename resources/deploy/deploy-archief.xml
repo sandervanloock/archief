@@ -45,7 +45,7 @@
 
     <target name="deploy.archieve.rommelmarkt" description="Puts all the rommelmarkt resouce files on ftp server">
         <ftp server="${ftp.host}"
-             remotedir="${ftp.dir}/rommelmarkt"
+             remotedir="${ftp.dir}/rommelmarkt/dist"
              userid="${ftp.user}"
              password="${ftp.password}"
              verbose="yes">
