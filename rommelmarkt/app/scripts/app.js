@@ -6,7 +6,8 @@ var app = angular.module('rommelmarktApp', [
         'ngSanitize',
         'ngRoute',
         'sponsorModule',
-        'angularFileUpload'
+        'angularFileUpload',
+        'services.config'
     ]);
 
 app.config(function ($routeProvider) {

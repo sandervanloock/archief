@@ -3,9 +3,9 @@
 }
 
 .logo-preview {
-    margin: 1em;
+    margin-bottom: 1em;
 }
 
 .logo-preview img {
-    max-width: 100px !important;
+    max-width: 500px !important;
 }

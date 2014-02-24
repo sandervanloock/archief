@@ -6,9 +6,9 @@ sponsorService.service('sponsorService', [function(){
         this.selectedSponsor = sponsor;
     }
 }]);
-sponsorService.factory('Sponsor', ['$resource', 'BACKEND_SERVER_CONFIG',
-    function ($resource,BACKEND_SERVER_CONFIG) {
-        return $resource(BACKEND_SERVER_CONFIG + 'sponsor', {}, {
+sponsorService.factory('Sponsor', ['$resource', 'configuration',
+    function ($resource,configuration){
+        return $resource(configuration.BACKEND_SERVER_CONFIG + 'sponsor', {}, {
             query: {method: 'GET', isArray: true}
         });
     }]);
