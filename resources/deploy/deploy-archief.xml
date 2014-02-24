@@ -8,6 +8,8 @@
     <property name="module.api" value="backend"/>
     <property name="module.front" value="front"/>
 
+    <property name="module.to.deploy">${module}</property>
+
     <target name="deploy.archieve.front" description="Puts all the resouce files on ftp server">
         <ftp server="${ftp.host}"
              remotedir="${ftp.dir}/front"
@@ -33,12 +35,15 @@
 
     <target name="deploy.archieve.backend" description="Puts all the resouce files on ftp server">
         <ftp server="${ftp.host}"
-             remotedir="${ftp.dir}/front"
+             remotedir="${ftp.dir}/backend/module/${module.to.deploy}"
              userid="${ftp.user}"
              password="${ftp.password}"
              verbose="yes">
-            <fileset dir="backend">
-                <include name="**/*.rar"/>
+            <fileset dir="backend/module/${module.to.deploy}">
+                <include name="**/*.php"/>
+                <include name="**/*.phtml"/>
+                <include name="**/*.mo"/>
+                <include name="**/*.po"/>
             </fileset>
         </ftp>
     </target>
