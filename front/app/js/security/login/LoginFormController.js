@@ -5,7 +5,7 @@ angular.module('security.login.form', [])
 .controller('LoginFormController', ['$scope', 'security', function($scope, security) {
   // The model for this form TODO remove default values 
   $scope.user = {
-		  email: "lierserulez@hotmail.com",
+		  login: "admin",
 		  password: "test"
   };
 
@@ -27,7 +27,7 @@ angular.module('security.login.form', [])
     $scope.authError = null;
 
     // Try to login
-    security.login($scope.user.email, $scope.user.password).then(function(loggedIn) {
+    security.login($scope.user.login, $scope.user.password).then(function(loggedIn) {
       if ( !loggedIn ) {
         // If we get here then the login failed due to bad credentials
         $scope.authError = 'Ongeldige aanmeld gegevens!';

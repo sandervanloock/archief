@@ -5,7 +5,7 @@ appControllers.controller('EventListCtrl', [ '$scope', '$location','Event',
 			$scope.events = Event.query({
                 type: $location.search().page
             });
-			$scope.orderProp = 'stasqjflkmqdsjfrt';
+			$scope.orderProp = 'start';
 		} ]);
 
 appControllers.controller('EventDetailCtrl', [

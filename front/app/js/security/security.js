@@ -62,11 +62,11 @@ angular.module('security.service', [
                 },
 
                 // Attempt to authenticate a user by the given email and password
-                login: function (email, password) {
-                    var xsrf = $.param({email: email, password: password});
+                login: function (login, password) {
+                    var xsrf = $.param({login: login, password: password});
                     var request = $http({
                         method: 'POST',
-                        url: ARCHIVE_SERVER_CONFIG + 'login',
+                        url: ARCHIVE_SERVER_CONFIG + 'user/auth/login',
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                         data: xsrf
                     });
@@ -87,7 +87,7 @@ angular.module('security.service', [
 
                 // Logout the current user and redirect
                 logout: function (redirectTo) {
-                    $http.post(ARCHIVE_SERVER_CONFIG + 'logout').then(function () {
+                    $http.post(ARCHIVE_SERVER_CONFIG + 'user/auth/logout').then(function () {
                         service.currentUser = null;
                         redirect(redirectTo);
                     });
@@ -98,7 +98,7 @@ angular.module('security.service', [
                     if (service.isAuthenticated()) {
                         return $q.when(service.currentUser);
                     } else {
-                        return $http.get(ARCHIVE_SERVER_CONFIG + 'users/current-user').then(function (response) {
+                        return $http.get(ARCHIVE_SERVER_CONFIG + 'user/auth/currentUser').then(function (response) {
                             service.currentUser = response.data.user;
                             return service.currentUser;
                         });
