@@ -11,6 +11,7 @@ class Event implements InputFilterAwareInterface
     public $name;
     public $start;
     public $end;
+    public $photos;
     protected $inputFilter;
 
     public function exchangeArray($data)
@@ -24,6 +25,10 @@ class Event implements InputFilterAwareInterface
     public function getArrayCopy()
     {
         return get_object_vars($this);
+    }
+
+    public function setPhotos($photos){
+        $this->photos = $photos;
     }
 
     public function setInputFilter(InputFilterInterface $inputFilter)

@@ -4,8 +4,8 @@ return array(
     'modules' => array(
         'Application',
 //        'Album',
-//        'Photo',
-//        'Event',
+        'Photo',
+        'Event',
         'Sponsor',
         'User'
     ),

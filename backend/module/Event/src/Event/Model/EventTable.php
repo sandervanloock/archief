@@ -2,6 +2,7 @@
 namespace Event\Model;
 
 use Zend\Db\TableGateway\TableGateway;
+use Zend\Db\Sql\Sql;
 
 class EventTable
 {
@@ -16,6 +17,19 @@ class EventTable
     {
         $resultSet = $this->eventGateway->select();
         return $resultSet;
+    }
+
+    public function fetchAllLiveEventPhotos($id)
+    {
+        $adapter = $this->eventGateway->getAdapter();
+        $sql = new Sql($adapter);
+        $select = $sql->select();
+        $select->from(array('p'=>'photo'));
+        $select->where(array('p.live = 1','p.event = '.$id));
+
+        $selectString = $sql->getSqlStringForSqlObject($select);
+        $photos = $adapter->query($selectString, $adapter::QUERY_MODE_EXECUTE);
+        return $photos;
     }
 
     public function getEvent($id)
