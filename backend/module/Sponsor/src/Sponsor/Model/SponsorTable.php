@@ -2,6 +2,7 @@
 namespace Sponsor\Model;
 
 use Zend\Db\TableGateway\TableGateway;
+use Zend\Db\Sql\Sql;
 
 class SponsorTable
 {
