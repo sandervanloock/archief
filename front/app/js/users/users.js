@@ -41,9 +41,9 @@ angular.module('users', ['userService', 'security.authorization'])
 
 angular.module('userService', ['ngResource']);
 
-angular.module('userService').factory('Users', ['$resource', 'ARCHIVE_SERVER_CONFIG',
-    function ($resource, ARCHIVE_SERVER_CONFIG) {
-        return $resource(ARCHIVE_SERVER_CONFIG + 'users', {}, {
+angular.module('userService').factory('Users', ['$resource', 'configuration',
+    function ($resource, configuration) {
+        return $resource(configuration.ARCHIVE_SERVER_CONFIG + 'user', {}, {
             query: {method: 'GET', isArray: true}
         });
     }]);

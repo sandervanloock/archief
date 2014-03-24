@@ -5,8 +5,8 @@ angular.module('security.service', [
         'ui.bootstrap'     // Used to display the login form as a modal dialog.
     ])
 
-    .factory('security', ['$http', '$q', '$location', 'securityRetryQueue', '$modal', 'ARCHIVE_SERVER_CONFIG',
-        function ($http, $q, $location, queue, $dialog, ARCHIVE_SERVER_CONFIG) {
+    .factory('security', ['$http', '$q', '$location', 'securityRetryQueue', '$modal', 'configuration',
+        function ($http, $q, $location, queue, $dialog, configuration) {
 
             // Redirect to the given url (defaults to '/')
             function redirect(url) {
@@ -66,7 +66,7 @@ angular.module('security.service', [
                     var xsrf = $.param({login: login, password: password});
                     var request = $http({
                         method: 'POST',
-                        url: ARCHIVE_SERVER_CONFIG + 'user/auth/login',
+                        url: configuration.ARCHIVE_SERVER_CONFIG + 'user/auth/login',
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                         data: xsrf
                     });
@@ -87,7 +87,7 @@ angular.module('security.service', [
 
                 // Logout the current user and redirect
                 logout: function (redirectTo) {
-                    $http.post(ARCHIVE_SERVER_CONFIG + 'user/auth/logout').then(function () {
+                    $http.post(configuration.ARCHIVE_SERVER_CONFIG + 'user/auth/logout').then(function () {
                         service.currentUser = null;
                         redirect(redirectTo);
                     });
@@ -98,7 +98,7 @@ angular.module('security.service', [
                     if (service.isAuthenticated()) {
                         return $q.when(service.currentUser);
                     } else {
-                        return $http.get(ARCHIVE_SERVER_CONFIG + 'user/auth/currentUser').then(function (response) {
+                        return $http.get(configuration.ARCHIVE_SERVER_CONFIG + 'user/auth/currentUser').then(function (response) {
                             service.currentUser = response.data.user;
                             return service.currentUser;
                         });

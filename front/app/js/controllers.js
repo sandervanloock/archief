@@ -15,9 +15,8 @@ appControllers.controller('EventDetailCtrl', [
 		'$modal',
 		'Photo',
 		'Event',
-		'STATIC_SERVER_CONFIG',
-		function($scope, $routeParams, $location, $modal, Photo, Event,
-				STATIC_SERVER_CONFIG) {
+        'configuration',
+		function($scope, $routeParams, $location, $modal, Photo, Event,configuration) {
 			$scope.event = Event.get({
 				id : $routeParams.eventId
 			});
@@ -27,7 +26,7 @@ appControllers.controller('EventDetailCtrl', [
 
 			$scope.rows = rows;
 			$scope.columns = columns;
-			$scope.staticServer = STATIC_SERVER_CONFIG;
+			$scope.staticServer = configuration.STATIC_SERVER_CONFIG;
 
 			var opts = {
 				top : '50px'
@@ -86,11 +85,11 @@ appControllers.controller('PhotoCtrl', [
 		'$modalInstance',
 		'Photo',
 		'selectedPhoto',
-		'STATIC_SERVER_CONFIG',
+		'configuration',
 		function($scope, $modalInstance, Photo, selectedPhoto,
-				STATIC_SERVER_CONFIG) {
+                 configuration) {
 			$scope.photo = selectedPhoto;
-			$scope.staticServer = STATIC_SERVER_CONFIG;
+			$scope.staticServer = configuration.STATIC_SERVER_CONFIG;
 			$scope.toggleState = function() {
 				$scope.photo.active = !$scope.photo.active;
 			};
@@ -111,9 +110,9 @@ appControllers.controller('PhotoCtrl', [
 
 appControllers.controller('ArchiefCtrl',[
 						'$scope',
-						'STATIC_SERVER_CONFIG',
+						'configuration',
 						'Event',
-						function($scope, STATIC_SERVER_CONFIG, Event) {
+						function($scope, configuration, Event) {
 							Event
 									.getAllEventPhotos(function(events) {
 										var timeline = {
@@ -153,7 +152,7 @@ appControllers.controller('ArchiefCtrl',[
 							createNivoSlider = function(photos) {
 								var html = "<div class='slider-wrapper theme-default'><div class='ribbon'></div><div class='nivoSlider'>";
 								for ( var i = 0; i < photos.length; i++) {
-									html += "<img src='" + STATIC_SERVER_CONFIG
+									html += "<img src='" + configuration.STATIC_SERVER_CONFIG
 											+ "data/" + photos[i].directory
 											+ "' alt='" + photos[i].title
 											+ "'/>";
@@ -169,9 +168,9 @@ appControllers.controller('PhotoListCtrl', [
 		'$location',
 		'Photo',
 		'Event',
-		'STATIC_SERVER_CONFIG',
+		'configuration',
 		function($scope, $routeParams, $location, Photo, Event,
-				STATIC_SERVER_CONFIG) {
+                 configuration) {
 			$scope.events = Event.query(function(events) {
 				$scope.event = $routeParams.eventId;
 			});
@@ -182,7 +181,7 @@ appControllers.controller('PhotoListCtrl', [
 
 			$scope.rows = rows;
 			$scope.columns = columns;
-			$scope.staticServer = STATIC_SERVER_CONFIG;
+			$scope.staticServer = configuration.STATIC_SERVER_CONFIG;
 
 			Photo.query({
 				eventId : $routeParams.eventId

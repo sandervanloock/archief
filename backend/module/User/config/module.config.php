@@ -20,6 +20,7 @@ return array(
                         'controller' => 'User\Controller\User',
                     ),
                 ),
+                'may_terminate' => true,
                 'child_routes' => array(
                     'auth' => array(
                         'type'    => 'segment',

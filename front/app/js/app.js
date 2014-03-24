@@ -1,5 +1,5 @@
 var app = angular.module('app',
-        [ 'ngRoute', 'appControllers', 'eventService', 'photoService', 'users','security', 'arrayFilters', 'ui.bootstrap', 'angularSpinner' ]);
+        [ 'ngRoute', 'appControllers', 'eventService', 'photoService', 'users','security', 'arrayFilters', 'ui.bootstrap', 'angularSpinner','services.config' ]);
 
 angular.module('app').run(['security', function (security) {
     // Get the current user when the application starts
