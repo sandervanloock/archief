@@ -1,10 +1,10 @@
 <?php
 namespace Event\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Mvc\Controller\AbstractRestfulController;
 use Zend\View\Model\JsonModel;
 
-class EventController extends AbstractActionController
+class EventController extends AbstractRestfulController
 {
     protected $eventTable;
 
@@ -17,7 +17,7 @@ class EventController extends AbstractActionController
         return $this->eventTable;
     }
 
-    public function indexAction()
+    public function getList()
     {
         $events = $this->getEventTable()->fetchAll();
         $variables = array();
@@ -29,57 +29,36 @@ class EventController extends AbstractActionController
         return $json;
     }
 
-    public function addAction()
+    public function get($id)
+    {
+        $event = $this->getEventTable()->getEvent($id);
+        $event->setPhotos($this->getEventTable()->fetchAllEventPhotos($id)->toArray());
+        return new JsonModel(array("event" => $event));
+    }
+
+    public function create()
     {
     }
 
-    public function editAction()
+    public function update()
     {
     }
 
-    public function deleteAction()
+    public function delete()
     {
     }
 
-    public function getAllEventPhotosAction(){
+    public function getAllEventPhotos(){
         $events = $this->getEventTable()->fetchAll  ();
         $variables = array();
         $json = new JsonModel( );
         foreach($events as $event){
-            $event->setPhotos($this->getEventTable()->fetchAllLiveEventPhotos($event->id)->toArray());
+            $event->setPhotos($this->getEventTable()->fetchAllLiveEventPhotos($event->id,1)->toArray());
             array_push($variables,$event);
         }
         $json->setVariables($variables);
         return $json;
-//        $data = array();
-//        foreach ($events as $event){
-//            $entry = array();
-//            $entry['name'] = $event->name;
-//            $entry['start'] = $event->start;
-//            $entry['end'] = $event->end;
-//            $photos = Photo::all(array(
-//                "live = ?" => true,
-//                "deleted = ?" => false,
-//                "event = ?" => $event->id
-//            ),array("title","directory"));
-//            $photoEntries = array();
-//            foreach ($photos as $photo){
-//                $photoEntry = array();
-//                $photoEntry['title'] = $photo->title;
-//                $photoEntry['directory'] = $photo->directory;
-//                array_push($photoEntries,$photoEntry);
-//            }
-//            $entry['photos'] = $photoEntries;
-//            if(count($photos)>0){
-//                array_push($data,$entry);
-//            }
-//        }
-//
-////		$view = new View(array(
-////				"file" => APP_PATH."/{$defaultPath}/layouts/empty.{$defaultExtension}"
-////				));
-////		$this->setLayoutView($view);
-//
-//        echo json_encode($data);
     }
+
+
 }

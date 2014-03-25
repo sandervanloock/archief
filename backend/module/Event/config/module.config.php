@@ -11,14 +11,12 @@ return array(
             'event' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/event[/:action][/:id]',
+                    'route'    => '/event[/:id]',
                     'constraints' => array(
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id'     => '[0-9]+',
                     ),
                     'defaults' => array(
                         'controller' => 'Event\Controller\Event',
-                        'action'     => 'index',
                     ),
                 ),
             ),

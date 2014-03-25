@@ -1,11 +1,11 @@
 <?php
 namespace Photo\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Mvc\Controller\AbstractRestfulController;
 use Photo\Model\Photo;
 use Zend\View\Model\JsonModel;
 
-class PhotoController extends AbstractActionController
+class PhotoController extends AbstractRestfulController
 {
     protected $photoTable;
 
@@ -18,27 +18,48 @@ class PhotoController extends AbstractActionController
         return $this->photoTable;
     }
 
-    public function indexAction()
+    public function getList()
     {
-        $albums = $this->getPhotoTable()->fetchAll();
+        $photos = $this->getPhotoTable()->fetchAll();
         $variables = array();
         $json = new JsonModel( );
-        foreach($albums as $album){
+        foreach($photos as $album){
              array_push($variables,$album);
         }
         $json->setVariables($variables);
         return $json;
     }
 
-    public function addAction()
+    public function get($id)
     {
     }
 
-    public function editAction()
+    public function create($data)
     {
+        $data['id']=0;
+        $album = new Photo();
+        //TODO validation
+        $album->exchangeArray($data);
+        $id = $this->getPhotoTable()->savePhoto($album);
+        return new JsonModel(array(
+            'photo' => $id,
+        ));
     }
 
-    public function deleteAction()
+    public function update($id, $data)
+    {
+        $data['id'] = $id;
+        $newPhoto = new Photo();
+        //TODO validation
+        $newPhoto->exchangeArray($data);
+        $id = $this->getPhotoTable()->savePhoto($newPhoto);
+
+        return new JsonModel(array(
+            'photo' => $id,
+        ));
+    }
+
+    public function delete()
     {
     }
 }

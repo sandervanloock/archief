@@ -11,14 +11,12 @@ return array(
             'photo' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/photo[/:action][/:id]',
+                    'route'    => '/photo[/:id]',
                     'constraints' => array(
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id'     => '[0-9]+',
                     ),
                     'defaults' => array(
                         'controller' => 'Photo\Controller\Photo',
-                        'action'     => 'index',
                     ),
                 ),
             ),

@@ -19,13 +19,26 @@ class EventTable
         return $resultSet;
     }
 
-    public function fetchAllLiveEventPhotos($id)
+    public function fetchAllEventPhotos($id)
     {
         $adapter = $this->eventGateway->getAdapter();
         $sql = new Sql($adapter);
         $select = $sql->select();
         $select->from(array('p'=>'photo'));
-        $select->where(array('p.live = 1','p.event = '.$id));
+        $select->where(array('p.event = '.$id));
+
+        $selectString = $sql->getSqlStringForSqlObject($select);
+        $photos = $adapter->query($selectString, $adapter::QUERY_MODE_EXECUTE);
+        return $photos;
+    }
+
+    public function fetchAllLiveEventPhotos($id, $isLive)
+    {
+        $adapter = $this->eventGateway->getAdapter();
+        $sql = new Sql($adapter);
+        $select = $sql->select();
+        $select->from(array('p'=>'photo'));
+        $select->where(array('p.live = '.$isLive,'p.event = '.$id));
 
         $selectString = $sql->getSqlStringForSqlObject($select);
         $photos = $adapter->query($selectString, $adapter::QUERY_MODE_EXECUTE);

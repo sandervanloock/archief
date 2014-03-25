@@ -34,6 +34,10 @@ class PhotoTable
         $data = array(
             'title'  => $photo->title,
             'directory'  => $photo->directory,
+            'live'  => $photo->live,
+            'deleted'  => $photo->deleted,
+            'created'  => $photo->created,
+            'modified'  => $photo->modified,
         );
 
         $id = (int) $photo->id;
@@ -46,6 +50,7 @@ class PhotoTable
                 throw new \Exception('Photo id does not exist');
             }
         }
+        return $id;
     }
 
     public function deletePhoto($id)

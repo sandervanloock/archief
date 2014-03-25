@@ -7,7 +7,7 @@
 		</form>
 	</div>
 	<div class="modal-body max-height">
-		<img class="popup" ng-click="toggleState()" ng-class="{active: photo.active==1, inactive: photo.active==0}" ng-src="{{staticServer + 'data/' +  photo.directory}}" title="{{photo.title}}"/>
+		<img class="popup" ng-click="toggleState()" ng-class="{active: photo.live==1, inactive: photo.live==0}" ng-src="{{staticServer + 'data/' +  photo.directory}}" title="{{photo.title}}"/>
 	</div>
 	<div clas="modal-footer">
 		<p>
