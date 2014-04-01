@@ -20,6 +20,7 @@
     <!-- endbuild -->
 
     <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="bower_components/fancybox/source/jquery.fancybox.css" type="text/css"/>
     <link rel="stylesheet" href="css/vendor/bootstrapv2/css/bootstrap.css" type="text/css"/>
     <link rel="stylesheet" href="css/vendor/nivo-slider/nivo-slider.css" type="text/css"/>
     <link rel="stylesheet" href="css/vendor/nivo-slider/style.css" type="text/css"/>
@@ -93,6 +94,7 @@
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/momentjs/moment.js"></script>
+<script src="bower_components/fancybox/source/jquery.fancybox.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
@@ -123,5 +125,17 @@
 <script type="text/javascript" src="js/users/users.js"></script>
 <script type="text/javascript" src="js/services/config.js"></script>
 <!-- endbuild -->
+
+<script>
+    $(document).ready(function() {
+        $("a.popup-image").fancybox({
+            'transitionIn'	:	'elastic',
+            'transitionOut'	:	'elastic',
+            'speedIn'		:	600,
+            'speedOut'		:	200,
+            'overlayShow'	:	false
+        });
+    });
+</script>
 </body>
 </html>

@@ -126,8 +126,7 @@ appControllers.controller('ArchiefCtrl', [
     'configuration',
     'Event',
     function ($scope, configuration, Event) {
-        Event
-            .getAllEventPhotos(function (events) {
+        Event.query(function (events) {
                 var timeline = {
                     timeline: {
                         header: "Digitaal archief - Chiro Elzestraat",
@@ -138,7 +137,6 @@ appControllers.controller('ArchiefCtrl', [
                     }
                 };
                 for (var i = 0; i < events.length; i++) {
-                    $scope.test = "test" + i;
                     timeline.timeline.date
                         .push({
                             startDate: new Date(
@@ -165,10 +163,11 @@ appControllers.controller('ArchiefCtrl', [
         createNivoSlider = function (photos) {
             var html = "<div class='slider-wrapper theme-default'><div class='ribbon'></div><div class='nivoSlider'>";
             for (var i = 0; i < photos.length; i++) {
-                html += "<img src='" + configuration.STATIC_SERVER_CONFIG
-                    + "data/" + photos[i].directory
+            var photoDir = configuration.STATIC_SERVER_CONFIG + "data/" + photos[i].directory;
+                html += "<a class='popup-image' href='" + photoDir + "'>" +
+                    "<img src='" + photoDir
                     + "' alt='" + photos[i].title
-                    + "'/>";
+                    + "'/></a>";
             }
             html += "</div></div>";
             return html;

@@ -21,9 +21,13 @@ class EventController extends AbstractRestfulController
     {
         $events = $this->getEventTable()->fetchAll();
         $variables = array();
-        $json = new JsonModel( );
-        foreach($events as $album){
-             array_push($variables,$album);
+        $json = new JsonModel();
+        foreach ($events as $event) {
+            $eventPhotos = $this->getEventTable()->fetchAllLiveEventPhotos($event->id, 1);
+            $event->setPhotos($eventPhotos->toArray());
+            if (count($event->photos) > 0) {
+                array_push($variables, $event);
+            }
         }
         $json->setVariables($variables);
         return $json;
@@ -32,7 +36,7 @@ class EventController extends AbstractRestfulController
     public function get($id)
     {
         $event = $this->getEventTable()->getEvent($id);
-        $event->setPhotos($this->getEventTable()->fetchAllEventPhotos($id)->toArray());
+        $event->setPhotos($this->getEventTable()->fetchAllLEventPhotos($id)->toArray());
         return new JsonModel(array("event" => $event));
     }
 
@@ -48,13 +52,14 @@ class EventController extends AbstractRestfulController
     {
     }
 
-    public function getAllEventPhotos(){
-        $events = $this->getEventTable()->fetchAll  ();
+    public function getAllEventPhotos()
+    {
+        $events = $this->getEventTable()->fetchAll();
         $variables = array();
-        $json = new JsonModel( );
-        foreach($events as $event){
-            $event->setPhotos($this->getEventTable()->fetchAllLiveEventPhotos($event->id,1)->toArray());
-            array_push($variables,$event);
+        $json = new JsonModel();
+        foreach ($events as $event) {
+            $event->setPhotos($this->getEventTable()->fetchAllLiveEventPhotos($event->id, 1)->toArray());
+            array_push($variables, $event);
         }
         $json->setVariables($variables);
         return $json;

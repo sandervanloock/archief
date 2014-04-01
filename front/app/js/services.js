@@ -5,7 +5,7 @@ eventService.factory('Event', ['$resource', 'configuration',
         return $resource(configuration.ARCHIVE_SERVER_CONFIG + 'event/:eventId', {}, {
             query: {method: 'GET', isArray: true},
             get: {url: configuration.ARCHIVE_SERVER_CONFIG + 'event/:id', method: 'GET'},
-            getAllEventPhotos: {url: configuration.ARCHIVE_SERVER_CONFIG + 'event/getAllEventPhotos', isArray: true, method: 'GET'}
+//            getAllEventPhotos: {url: configuration.ARCHIVE_SERVER_CONFIG + 'event/getAllEventPhotos', isArray: true, method: 'GET'}
         });
     }]);
 
