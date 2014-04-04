@@ -79,4 +79,43 @@
             </fileset>
         </ftp>
     </target>
+
+    <target name="build.grunt">
+        <exec executable="cmd.exe" dir="C:\Projects\archief\front">
+            <arg value="grunt replace:production"/>
+        </exec>
+    </target>
+
+    <target name="grunt.build">
+        <exec-node module="grunt">
+            <arg value="build" />
+        </exec-node>
+    </target>
+
+    <macrodef name="exec-node">
+        <attribute name="module" description="The name of the NodeJS module to execute"/>
+        <attribute name="failonerror" default="true" description="Fail if the exit code is not 0"/>
+        <element name="args" implicit="yes" description="Argument to pass to the exec task"/>
+        <sequential>
+            <exec executable="cmd.exe" failonerror="@{failonerror}" osfamily="winnt" dir="C:\Projects\archief\front">
+                <arg line="/c  @{module}" />
+                <args/>
+
+                <!-- Windows cmd output workaround: http://stackoverflow.com/a/10359327/227349 -->
+                <!-- Forces node's stderror and stdout to a temporary file -->
+                <!--<arg line=" &gt; _tempfile.out 2&lt;&amp;1"/>-->
+
+                <!-- If command exits with an error, then output the temporary file        -->
+                <!-- to stdout delete the temporary file and finally exit with error level 1  -->
+                <!-- so that the apply task can catch the error if @failonerror="true"        -->
+                <!--<arg line=" || (type _tempfile.out &amp; del _tempfile.out &amp; exit /b 1)"/>-->
+
+                <!-- Otherwise, just type the temporary file and delete it-->
+                <!--<arg line=" &amp; type _tempfile.out &amp; del _tempfile.out &amp;"/>-->
+            </exec>
+            <exec executable="@{module}" failonerror="@{failonerror}" osfamily="unix">
+                <args/>
+            </exec>
+        </sequential>
+    </macrodef>
 </project>
