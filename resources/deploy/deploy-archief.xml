@@ -15,10 +15,16 @@
              remotedir="${ftp.dir}/front"
              userid="${ftp.user}"
              password="${ftp.password}"
-             verbose="yes">
+             verbose="yes"
+             passive="yes"
+             depends="yes">
             <fileset dir="front">
                 <include name="**/*.html"/>
                 <exclude name="properties.js"/>
+                <exclude name=".tmp/**"/>
+                <exclude name="dist/**"/>
+                <exclude name="node_modules/**"/>
+                <exclude name="test/**"/>
                 <include name="**/*.js"/>
                 <include name="**/*.css"/>
                 <!--vendor CSS images-->
@@ -38,7 +44,8 @@
              remotedir="${ftp.dir}/backend/module/${module.to.deploy}"
              userid="${ftp.user}"
              password="${ftp.password}"
-             verbose="yes">
+             verbose="yes"
+             passive="yes">
             <fileset dir="backend/module/${module.to.deploy}">
                 <include name="**/*.php"/>
                 <include name="**/*.phtml"/>
@@ -53,7 +60,8 @@
              remotedir="${ftp.dir}/rommelmarkt/dist"
              userid="${ftp.user}"
              password="${ftp.password}"
-             verbose="yes">
+             verbose="yes"
+             passive="yes">
             <fileset dir="rommelmarkt/dist">
                 <include name="**/*.html"/>
                 <exclude name="properties.js"/>

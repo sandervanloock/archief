@@ -36,7 +36,7 @@ class EventController extends AbstractRestfulController
     public function get($id)
     {
         $event = $this->getEventTable()->getEvent($id);
-        $event->setPhotos($this->getEventTable()->fetchAllLEventPhotos($id)->toArray());
+        $event->setPhotos($this->getEventTable()->fetchAllEventPhotos($id)->toArray());
         return new JsonModel(array("event" => $event));
     }
 
