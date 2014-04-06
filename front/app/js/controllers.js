@@ -3,7 +3,7 @@ var appControllers = angular.module('appControllers', []);
 appControllers.controller('EventListCtrl', [ '$scope', '$location', 'Event',
     function ($scope, $location, Event) {
         $scope.events = Event.query({
-            type: $location.search().page
+            type: $location.search().type
         });
         $scope.orderProp = 'start';
     } ]);

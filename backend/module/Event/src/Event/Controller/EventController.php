@@ -19,16 +19,31 @@ class EventController extends AbstractRestfulController
 
     public function getList()
     {
-        $events = $this->getEventTable()->fetchAll();
         $variables = array();
         $json = new JsonModel();
-        foreach ($events as $event) {
-            $eventPhotos = $this->getEventTable()->fetchAllLiveEventPhotos($event->id, 1);
-            $event->setPhotos($eventPhotos->toArray());
-            if (count($event->photos) > 0) {
+        $type = $this->getRequest()->getQuery()->type;
+
+        //event for timeline,  all events with live photos
+        if(empty($type)){
+            $events = $this->getEventTable()->fetchAll();
+            foreach ($events as $event) {
+                $eventPhotos = $this->getEventTable()->fetchAllLiveEventPhotos($event->id, 1);
+                $event->setPhotos($eventPhotos->toArray());
+                if (count($event->photos) > 0) {
+                    array_push($variables, $event);
+                }
+            }
+        }
+        //event for admin from a specific type
+        else{
+            $events = $this->getEventTable()->fetchAllFromType($type);
+            foreach ($events as $event) {
+                $eventPhotos = $this->getEventTable()->fetchAllEventPhotos($event->id);
+                $event->setPhotos($eventPhotos->toArray());
                 array_push($variables, $event);
             }
         }
+
         $json->setVariables($variables);
         return $json;
     }

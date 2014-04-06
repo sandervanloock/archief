@@ -12,6 +12,7 @@ class Event implements InputFilterAwareInterface
     public $start;
     public $end;
     public $photos;
+    public $eventtype;
     protected $inputFilter;
 
     public function exchangeArray($data)
@@ -20,6 +21,7 @@ class Event implements InputFilterAwareInterface
         $this->name  = (!empty($data['name'])) ? $data['name'] : null;
         $this->start = (!empty($data['start'])) ? $data['start'] : null;
         $this->end = (!empty($data['end'])) ? $data['end'] : null;
+        $this->eventtype = (!empty($data['eventtype'])) ? $data['eventtype'] : null;
     }
 
     public function getArrayCopy()

@@ -19,6 +19,11 @@ class EventTable
         return $resultSet;
     }
 
+    public function fetchAllFromType($type)
+    {
+        return $this->eventGateway->select(array('eventtype'=>$type));
+    }
+
     public function fetchAllEventPhotos($id)
     {
         $adapter = $this->eventGateway->getAdapter();
