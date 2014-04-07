@@ -8,6 +8,8 @@ class EventController extends AbstractRestfulController
 {
     protected $eventTable;
 
+    public function create($data){}
+
     public function getEventTable()
     {
         if (!$this->eventTable) {
@@ -55,17 +57,11 @@ class EventController extends AbstractRestfulController
         return new JsonModel(array("event" => $event));
     }
 
-    public function create()
+    public function update($id,$data)
     {
     }
 
-    public function update()
-    {
-    }
-
-    public function delete()
-    {
-    }
+    public function delete($id){}
 
     public function getAllEventPhotos()
     {
