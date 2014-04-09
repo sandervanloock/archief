@@ -19,8 +19,16 @@ angular.module('users', ['userService', 'security.authorization'])
             });
     }])
 
-    .controller('RegisterUserCtrl', ['$scope', function ($scope) {
-        $scope.users = {};
+    .controller('RegisterUserCtrl', ['$scope', 'Users', function ($scope, Users) {
+        $scope.user = {
+            first: "pieter",
+            last: "pauwels      ",
+            email: "test@hotmail.com",
+            password: "pass"
+        };
+        $scope.saveUser = function () {
+            Users.save($scope.user);
+        }
 
     }])
 
@@ -29,14 +37,15 @@ angular.module('users', ['userService', 'security.authorization'])
         $scope.createUser = function () {
             $location.path("/register");
         }
-
         $scope.editUser = function (id) {
             $location.path("/users/" + id);
         }
     }])
 
-    .controller('UserDetailCtrl', ['$scope', '$routeParams', 'Users', function ($scope,  $routeParams,  Users) {
-        $scope.user = Users.get({id: $routeParams.userId})
+    .controller('UserDetailCtrl', ['$scope', '$routeParams', '$http', 'Users', 'configuration', function ($scope, $routeParams, $http, Users) {
+        Users.get({id: $routeParams.userId},function(data){
+            $scope.user = data.user;
+        });
     }]);
 
 angular.module('userService', ['ngResource']);
@@ -44,6 +53,7 @@ angular.module('userService', ['ngResource']);
 angular.module('userService').factory('Users', ['$resource', 'configuration',
     function ($resource, configuration) {
         return $resource(configuration.ARCHIVE_SERVER_CONFIG + 'user', {}, {
-            query: {method: 'GET', isArray: true}
+            query: {method: 'GET', isArray: true},
+            get: {url: configuration.ARCHIVE_SERVER_CONFIG + 'user/:id', method: 'GET'}
         });
     }]);

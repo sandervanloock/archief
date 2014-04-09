@@ -36,8 +36,7 @@ class UserController extends AbstractRestfulController
     public function get($id)
     {
         $user = $this->getUserTable()->getUser($id);
-
-        return new JsonModel($user);
+        return new JsonModel(array("user" => $user));
     }
 
     public function create($data)

@@ -41,16 +41,21 @@ class UserTable
 
     public function saveUser(User $user)
     {
+        //no id because it is inserted afterwards
         $data = array(
-            'name'  => $user->first,
-            'amount'  => $user->last,
-            'dimension'  => $user->email,
-            'object'  => $user->password,
-            'logo'  => $user->live,
+            'first'  => $user->first,
+            'last'  => $user->last,
+            'email'  => $user->email,
+            'login'  => $user->login,
+            'password'  => $user->password,
+            'modified'  => date("Y-m-d H:i:s"),
+            'live'  => 1,
+            'deleted'  => 0,
         );
 
         $id = (int) $user->id;
         if ($id == 0) {
+            $data["created"] = date("Y-m-d H:i:s");
             $this->userGateway->insert($data);
         } else {
             if ($this->getUser($id)) {

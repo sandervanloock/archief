@@ -6,24 +6,34 @@
                 <li class="nav-header">Gegevens</li>
                 <li class="active"><div class="btn btn-link disabled sidebar-button">Contact</div></li>
                 <li><div class="btn btn-link disabled sidebar-button">Chiro carrière</div></li>
-                <li><div class="btn btn-link disabled sidebar-button">60 Jaar Chiro</div></li>
             </ul>
         </div>
         <div class="span10">
             <!--Body content-->
             <form class="user-detail">
                 <fieldset>
-                    <label class="control-label" for="firstName">Voornaam</label>
-                    <input type="text" id="firstName" value="{{user.firstName}}">
-                    <label class="control-label" for="lastName">Achternaam</label>
-                    <input type="text" id="lastName" value="{{user.lastName}}">
-                    <label class="control-label" for="email">Emailadres</label>
-                    <input type="email" id="email" value="{{user.email}}">
-                    <label class="control-label" for="phone">Telefoonnummer</label>
-                    <input type="tel" id="phone" value="{{user.phone}}">
-                    <label class="control-label" for="address">Adres</label>
-                    <textarea rows="2" id="address" value="{{user.address}}"></textarea>
-                    <button type="submit" class="btn">Verzenden</button>
+                    <label class="control-label" for="firstName">Voornaam</label><input type="text" id="firstName" value="{{user.first}}" required />
+                    <label class="control-label" for="lastName">Achternaam</label><input type="text" id="lastName" value="{{user.last}}" required />
+                    <label class="control-label" for="password">Paswoord</label><input type="password" id="password" value="{{user.password}}" required />
+                    <label class="control-label" for="email">Emailadres</label><input type="email" id="email" value="{{user.email}}" required />
+                    <label class="control-label" for="phone">Telefoonnummer</label><input type="tel" id="phone" value="{{user.phone}}" />
+                    <label class="control-label" for="street">Straat</label><input type="text" id="street" value="{{user.street}} "/>
+                    <label class="control-label" for="housenumber">Nummer</label><input type="text" id="housenumber" value="{{user.housenumber}}" />
+                    <label class="control-label" for="postalbox">Bus</label><input type="text" id="postalbox" value="{{user.postalbox}}"/>
+                    <label class="control-label" for="postalcode">Postcode</label><input type="number" id="postalcode" value="{{user.postalcode}}"/>
+                    <label class="control-label" for="city">Stad</label><input type="text" id="city" value="{{user.city}}"/>
+
+                    <label class="checkbox">
+                        <input type="checkbox" value="">
+                        Ik zal aanwezig zijn op de zondagmiddag 14/09
+                    </label>
+
+                    <label class="checkbox">
+                        <input type="checkbox" value="">
+                        Ik ben geïnteresseerd in het DOL fotoboek
+                    </label>
+
+                    <button ng-click="saveUser()" class="btn">Verzenden</button>
                 </fieldset>
             </form>
         </div>
