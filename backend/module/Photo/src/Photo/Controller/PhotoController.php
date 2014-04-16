@@ -59,7 +59,15 @@ class PhotoController extends AbstractRestfulController
         ));
     }
 
-    public function delete()
+    public function delete($id)
     {
+        if($this->getPhotoTable()->deletePhoto($id) > 0){
+            return new JsonModel(array(
+                'data' => 'deleted',
+            ));
+        }
+        return new JsonModel(array(
+            'data' => 'error',
+        ));
     }
 }

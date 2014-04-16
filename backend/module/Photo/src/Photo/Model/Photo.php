@@ -21,8 +21,8 @@ class Photo implements InputFilterAwareInterface
         $this->id     = (!empty($data['id'])) ? $data['id'] : null;
         $this->title  = (!empty($data['title'])) ? $data['title'] : null;
         $this->directory = (!empty($data['directory'])) ? $data['directory'] : null;
-        $this->live = $data['live'];
-        $this->deleted = $data['deleted'];
+        $this->live = isset($data['live']) ? $data['live'] : 1;
+        $this->deleted = isset($data['deleted']) ? $data['deleted'] : 0;
         $this->created = (!empty($data['created'])) ? $data['created'] : null;
         $this->modified = (!empty($data['modified'])) ? $data['modified'] : null;
     }

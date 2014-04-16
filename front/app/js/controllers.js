@@ -13,10 +13,9 @@ appControllers.controller('EventDetailCtrl', [
     '$routeParams',
     '$location',
     '$modal',
-    'Photo',
     'Event',
     'configuration',
-    function ($scope, $routeParams, $location, $modal, Photo, Event, configuration) {
+    function ($scope, $routeParams, $location, $modal, Event, configuration) {
         var rows = 5;
         var columns = 7;
         $scope.page = 1;
@@ -78,9 +77,10 @@ appControllers.controller('PhotoCtrl', [
     '$scope',
     '$modalInstance',
     '$http',
+    'photoService',
     'selectedPhoto',
     'configuration',
-    function ($scope, $modalInstance, $http, selectedPhoto, configuration) {
+    function ($scope, $modalInstance, $http, photoService,selectedPhoto, configuration) {
         $scope.photo = selectedPhoto;
         $scope.staticServer = configuration.STATIC_SERVER_CONFIG;
         $scope.toggleState = function () {
@@ -116,7 +116,8 @@ appControllers.controller('PhotoCtrl', [
             $modalInstance.dismiss('saved');
         };
         $scope.remove = function () {
-            $scope.photo.$delete();
+            location.reload(true);
+            photoService.remove({photoId: $scope.photo.id});
             $modalInstance.dismiss('deleted');
         };
     } ]);

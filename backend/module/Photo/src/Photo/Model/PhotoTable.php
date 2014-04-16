@@ -55,6 +55,6 @@ class PhotoTable
 
     public function deletePhoto($id)
     {
-        $this->photoGateway->delete(array('id' => (int) $id));
+        return $this->photoGateway->delete(array('id' => (int) $id));
     }
 }

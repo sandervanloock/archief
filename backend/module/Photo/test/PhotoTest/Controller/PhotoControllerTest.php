@@ -18,10 +18,7 @@ class PhotoControllerTest extends AbstractHttpControllerTestCase
         );
         $this->data = array(
             'id' => 123,
-            'name' => 'some photo',
-            'end' => '2004-07-16 00:00:00',
-            'start' => '2004-07-15 00:00:00',
-            'phototype' => 1);
+        );
         $this->photo = new Photo();
         $this->photo->exchangeArray($this->data);
         parent::setUp();
@@ -52,5 +49,17 @@ class PhotoControllerTest extends AbstractHttpControllerTestCase
         $data = $this->data;
         $photo = $this->photo;
         $this->assertSame($data['id'],$photo->id,'"id" was not set correctly');
+    }
+
+    public function testDeleteCanBeAccessed()
+    {
+        $this->getRequest()->setMethod('delete');
+        $this->dispatch('/photo/10');
+
+        $this->assertModuleName('Photo');
+        $this->assertControllerName('Photo\Controller\Photo');
+        $this->assertControllerClass('PhotoController');
+        $response = $this->getResponse();
+        $this->assertEquals(200, $response->getStatusCode());
     }
 }

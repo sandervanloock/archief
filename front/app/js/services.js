@@ -7,3 +7,10 @@ eventService.factory('Event', ['$resource', 'configuration',
             get: {url: configuration.ARCHIVE_SERVER_CONFIG + 'event/:id', method: 'GET'}
         });
     }]);
+
+var photoService = angular.module('photoService', ['ngResource']);
+
+photoService.factory('photoService', ['$resource', 'configuration', function ($resource, configuration) {
+    return $resource(configuration.ARCHIVE_SERVER_CONFIG + 'photo/:photoId', {}, {
+    });
+}]);
