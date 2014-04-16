@@ -46,7 +46,7 @@
 
 	<table class="photos table">
 		<tr ng-repeat="photoRow in photos | pagination:page:rows">
-			<td ng-repeat="photo in photoRow"><img ng-click="open(photo)" ng-class="{active: photo.live==1, inactive: photo.live==0}" ng-src="{{staticServer + '/thumbs' + photo.directory}}" title="{{photo.title}}"/></td>
+			<td ng-repeat="photo in photoRow"><img ng-click="open(photo)" ng-class="{active: photo.live==1, inactive: photo.live==0}" ng-src="{{staticServer + 'thumbs' + photo.directory}}" title="{{photo.title}}"/></td>
 		</tr>
 	</table>
 </div>

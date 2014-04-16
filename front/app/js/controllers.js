@@ -1,7 +1,8 @@
 var appControllers = angular.module('appControllers', []);
 
-appControllers.controller('EventListCtrl', [ '$scope', '$location', 'Event',
-    function ($scope, $location, Event) {
+appControllers.controller('EventListCtrl', [ '$scope', '$location', 'Event', 'configuration',
+    function ($scope, $location, Event,configuration) {
+        $scope.staticServer = configuration.STATIC_SERVER_CONFIG;
         $scope.events = Event.query({
             type: $location.search().type
         });

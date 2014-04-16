@@ -20,7 +20,7 @@
 				<li ng-repeat="event in events | filter:query | orderBy:orderProp"
 				class="event media">
 					<a class="pull-left" href="#/events/{{event.id}}"> 
-						<img class="media-object" style="width: 100px; height: 100px;"> 
+						<img class="media-object" style="width: 100px; height: 100px;" ng-src="{{staticServer + 'thumbs' + event.photos[0].directory}}">
 					</a>
 					<div class="media-body">
 						<h4 class="media-heading">{{event.name}}</h4>
