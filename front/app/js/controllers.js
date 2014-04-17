@@ -17,19 +17,29 @@ appControllers.controller('EventDetailCtrl', [
     'Event',
     'configuration',
     function ($scope, $routeParams, $location, $modal, Event, configuration) {
-        var rows = 5;
+        var rows = 20;
         var columns = 7;
         $scope.page = 1;
 
         $scope.rows = rows;
         $scope.columns = columns;
         $scope.staticServer = configuration.STATIC_SERVER_CONFIG;
+        $scope.dateFormat = "DD/MM/YYYY";
+
+//        initialize the start enddate with the current date because otherwise, the two way data binding does not work :)
+        $scope.event = {};
+        $scope.event.start = moment().toDate();
+        $scope.event.end = moment().toDate();
+
         var spinner = new Spinner({top: '50px'}).spin($("#spinner-container")[0]);
         Event.get({
             id: $routeParams.eventId
         },function (data) {
             spinner.stop();
             $scope.event = data.event;
+//            reformat the date to a js date so the directive works :)
+            $scope.event.start = moment($scope.event.start).toDate();
+            $scope.event.end = moment($scope.event.end).toDate();
             var photos = data.event.photos;
             $scope.totalNumber = photos.length;
             $scope.maxPage = Math.ceil($scope.totalNumber
@@ -42,8 +52,13 @@ appControllers.controller('EventDetailCtrl', [
                 photoArrays[photoArrays.length - 1].push(photos[i]);
             }
             $scope.photos = photoArrays;
-        }).event;
+        });
 
+        $scope.save = function(){
+            $scope.event.start = moment($scope.event.start).format("YYYY-MM-DD HH:mm:ss");
+            $scope.event.end = moment($scope.event.end).format("YYYY-MM-DD HH:mm:ss");
+            Event.update({eventId: $scope.event.id},$scope.event);
+        };
 
         $scope.incrementPage = function () {
             $scope.page = Math.min($scope.page + 1, $scope.maxPage);

@@ -64,8 +64,10 @@ class EventTable
     public function saveEvent(Event $event)
     {
         $data = array(
-            'title'  => $event->title,
-            'directory'  => $event->directory,
+            'name'  => $event->name,
+            'start'  => $event->start,
+            'end'  => $event->end,
+            'eventtype'  => $event->eventtype,
         );
 
         $id = (int) $event->id;

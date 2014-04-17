@@ -19,8 +19,8 @@ class Event implements InputFilterAwareInterface
     {
         $this->id     = (!empty($data['id'])) ? $data['id'] : null;
         $this->name  = (!empty($data['name'])) ? $data['name'] : null;
-        $this->start = (!empty($data['start'])) ? $data['start'] : null;
-        $this->end = (!empty($data['end'])) ? $data['end'] : null;
+        $this->start = (!empty($data['start'])) ? date_create($data['start'])->format('Y-m-d\TH:i:sO') : null;
+        $this->end = (!empty($data['end'])) ? date_create($data['end'])->format('Y-m-d\TH:i:sO') : null;
         $this->eventtype = (!empty($data['eventtype'])) ? $data['eventtype'] : null;
     }
 

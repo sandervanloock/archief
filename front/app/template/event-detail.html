@@ -1,23 +1,26 @@
-<div class="container view-container">
+<div class="container view-container" ng-controller="EventDetailCtrl">
 	<form class="form-horizontal">
 		<div class="control-group">
 			<label for="eventName" class="control-label">Naam</label>
 			<div class="controls">
-				<input type="text" id="eventName" value="{{event.name}}" class="form-control"/>
+				<input type="text" id="eventName" ng-model="event.name" class="form-control"/>
 			</div>
 		</div>
 		<div class="control-group">
 			<label for="eventStart" class="control-label">Startdatum</label>
 			<div class="controls">
-				<input type="date" id="eventStart" value="{{event.start | date:'yyyy-MM-dd'}}"class="form-control"/>
+                <input type="text" id="eventStart" ng-init="localScopeDateStart = event.start" ng-model="localScopeDateStart" mo-change-proxy="event.start" mo-date-input="{{dateFormat}}" class="datepicker"/>
 			</div>
 		</div>
 		<div class="control-group">
 			<label for="eventEnd" class="control-label">Einddatum</label>
 			<div class="controls">
-				<input type="date" id="eventEnd" value="{{event.end | date:'yyyy-MM-dd' }}"class="form-control"/>
+				<input type="text" id="eventEnd" ng-init="localScopeDate = event.end" ng-model="localScopeDate" mo-change-proxy="event.end" mo-date-input="{{dateFormat}}" class="datepicker"/>
 			</div>
 		</div>
+        <button ng-click="save()" class="btn btn-block btn-primary" type="button" style="margin-bottom: 1em;">
+            Opslaan
+        </button>
 	</form>
 
 	<div class="navigation-container">

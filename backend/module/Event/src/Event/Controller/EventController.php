@@ -59,6 +59,16 @@ class EventController extends AbstractRestfulController
 
     public function update($id,$data)
     {
+        $event = $this->getEventTable()->getEvent($id);
+        //TODO validation
+        if (true) {
+            $event->exchangeArray($data);
+            $this->getEventTable()->saveEvent($event);
+        }
+
+        return new JsonModel(array(
+            'data' => $this->get($id),
+        ));
     }
 
     public function delete($id){}

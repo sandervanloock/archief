@@ -5,8 +5,8 @@ angular.module('security.login.form', [])
 .controller('LoginFormController', ['$scope', 'security', function($scope, security) {
   // The model for this form TODO remove default values 
   $scope.user = {
-		  login: "admin",
-		  password: "test"
+		  login: "",
+		  password: ""
   };
 
   // Any error message from failing to login
