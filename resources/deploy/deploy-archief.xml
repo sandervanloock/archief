@@ -10,7 +10,10 @@
 
     <property name="module.to.deploy">${module}</property>
 
-    <target name="deploy.archieve.front" description="Puts all the resouce files on ftp server">
+    <target name="deploy.archive.front" description="Puts all the resouce files on ftp server">
+        <antcall target="grunt.build">
+            <param name="param1" value="production"/>
+        </antcall>
         <ftp server="${ftp.host}"
              remotedir="${ftp.dir}/front"
              userid="${ftp.user}"
@@ -37,9 +40,12 @@
                 <include name="**/*.woff"/>
             </fileset>
         </ftp>
+        <antcall target="grunt.build">
+            <param name="param1" value="development"/>
+        </antcall>
     </target>
 
-    <target name="deploy.archieve.backend" description="Puts all the resouce files on ftp server">
+    <target name="deploy.module.archive.backend" description="Puts all the resouce files on ftp server">
         <ftp server="${ftp.host}"
              remotedir="${ftp.dir}/backend/module/${module.to.deploy}"
              userid="${ftp.user}"
@@ -55,7 +61,22 @@
         </ftp>
     </target>
 
-    <target name="deploy.archieve.rommelmarkt" description="Puts all the rommelmarkt resouce files on ftp server">
+    <target name="deploy.archive.backend" description="Deploys all archive backend modules">
+        <antcall target="deploy.module.archive.backend">
+            <param name="module.to.deploy" value="User"/>
+        </antcall>
+        <antcall target="deploy.module.archive.backend">
+            <param name="module.to.deploy" value="Photo"/>
+        </antcall>
+        <antcall target="deploy.module.archive.backend">
+            <param name="module.to.deploy" value="Event"/>
+        </antcall>
+        <antcall target="deploy.module.archive.backend">
+            <param name="module.to.deploy" value="Sponsor"/>
+        </antcall>
+    </target>
+
+    <target name="deploy.archive.rommelmarkt" description="Puts all the rommelmarkt resouce files on ftp server">
         <ftp server="${ftp.host}"
              remotedir="${ftp.dir}/rommelmarkt/dist"
              userid="${ftp.user}"
@@ -80,15 +101,9 @@
         </ftp>
     </target>
 
-    <target name="build.grunt">
-        <exec executable="cmd.exe" dir="C:\Projects\archief\front">
-            <arg value="grunt replace:production"/>
-        </exec>
-    </target>
-
     <target name="grunt.build">
         <exec-node module="grunt">
-            <arg value="build" />
+            <arg value="replace:${param1}" />
         </exec-node>
     </target>
 
