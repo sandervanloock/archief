@@ -16,6 +16,10 @@ app.config([ '$routeProvider', 'securityAuthorizationProvider', function ($route
             templateUrl: 'template/event-detail.html',
             controller: 'EventDetailCtrl',
             resolve: securityAuthorizationProvider.requireAdminUser
+        }).when('/event/new', {
+            templateUrl: 'template/event-create.html',
+            controller: 'EventCreateCtrl',
+            resolve: securityAuthorizationProvider.requireAdminUser
         }).when('/home', {
             templateUrl: 'template/archief.html',
             controller: 'ArchiefCtrl'

@@ -2,7 +2,7 @@
 	<div class="row-fluid">
 		<div class="span3">
 			<!--Sidebar content-->
-			<form>
+			<form class="margin1">
 				<fieldset>
 					<input type="text" id="searchInput" ng-model="query" placeholder="Zoek op naam">
 					<label for="sortInput">Sorteer op:</label>
@@ -10,6 +10,9 @@
 						<option value="name">Alfabetisch op naam</option>
 						<option value="start">Chronologisch oplopend</option>
 					</select>
+                    <button ng-click="create()" class="btn btn-block btn-primary" type="button" >
+                        Aanmaken
+                    </button>
 				</fieldset>
 			</form>
 		</div>

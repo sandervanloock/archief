@@ -48,7 +48,8 @@
 
 .events {
 	list-style: none;
-	padding-left: 0em;
+	padding-left: 1em;
+    padding-right: 1em;
 }
 
 .thumb {
@@ -66,7 +67,6 @@
 	display: block;
 	max-width: 100%;
 	padding: 4px;
-	margin-bottom: 20px;
 	line-height: 1.428571429;
 	background-color: #ffffff;
 	border: 1px solid #dddddd;
@@ -164,6 +164,9 @@ a:active {
 }
 
 /** Detail View **/
+.margin1{
+    margin-left: 1em;
+}
 img.event {
 	float: left;
 	margin-right: 3em;

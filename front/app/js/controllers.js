@@ -7,6 +7,18 @@ appControllers.controller('EventListCtrl', [ '$scope', '$location', 'Event', 'co
             type: $location.search().type
         });
         $scope.orderProp = 'start';
+
+        $scope.create = function(){
+            $location.path("/event/new");
+        }
+    } ]);
+
+appControllers.controller('EventCreateCtrl',[ '$scope', 'Event', 'configuration',
+    function ($scope, Event,configuration) {
+        $scope.event = {};
+        $scope.create = function(){
+            Event.create($scope.event);
+        }
     } ]);
 
 appControllers.controller('EventDetailCtrl', [

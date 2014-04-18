@@ -3,12 +3,25 @@ namespace Event\Controller;
 
 use Zend\Mvc\Controller\AbstractRestfulController;
 use Zend\View\Model\JsonModel;
+use Event\Model\Event;
 
 class EventController extends AbstractRestfulController
 {
     protected $eventTable;
 
-    public function create($data){}
+    public function create($data)
+    {
+        $event = new Event();
+        //TODO validation
+        if (true) {
+            $event->exchangeArray($data);
+            $this->getEventTable()->saveEvent($event);
+        }
+
+        return new JsonModel(array(
+            'data' => $event,
+        ));
+    }
 
     public function getEventTable()
     {
