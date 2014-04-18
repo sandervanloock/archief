@@ -4,12 +4,20 @@
 	padding-top: 1em !important;
 }
 
-.navbar{
-	margin-bottom: 0px !important;
+.navbar-inner{
+    height: 40px !important;
 }
 
-.navbar .nav a{
-    padding: 1.15em !important;
+.container{
+
+}
+
+.navbar .brand{
+    padding: 4px 20px !important;
+}
+
+.navbar{
+	margin-bottom: 0px !important;
 }
 
 .sidebar-button{
@@ -25,10 +33,6 @@
     vertical-align: super;
     display:inline;
 }
-
-.navbar .login, .navbar .logout{
-	margin-top: 0.3em;
-} 
 
 .view-frame{
 	height: 100%;
