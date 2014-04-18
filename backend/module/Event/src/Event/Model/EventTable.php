@@ -68,6 +68,7 @@ class EventTable
             'start'  => $event->start,
             'end'  => $event->end,
             'eventtype'  => $event->eventtype,
+            'description'  => $event->description,
         );
 
         $id = (int) $event->id;

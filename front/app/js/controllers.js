@@ -156,12 +156,10 @@ appControllers.controller('ArchiefCtrl', [
                 for (var i = 0; i < events.length; i++) {
                     timeline.timeline.date
                         .push({
-                            startDate: new Date(
-                                moment(events[i].start)),
-                            endDate: new Date(
-                                moment(events[i].end)),
+                            startDate: moment(events[i].start).format("YYYY,MM,DD"),
+                            endDate: moment(events[i].end).format("YYYY,MM,DD"),
                             headline: events[i].name,
-                            text: "<p></p>",
+                            text: events[i].description,
                             asset: {
                                 "media": createNivoSlider(events[i].photos)
                             }

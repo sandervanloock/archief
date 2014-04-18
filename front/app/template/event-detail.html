@@ -18,6 +18,12 @@
 				<input type="text" id="eventEnd" ng-init="localScopeDate = event.end" ng-model="localScopeDate" mo-change-proxy="event.end" mo-date-input="{{dateFormat}}" class="datepicker"/>
 			</div>
 		</div>
+        <div class="control-group">
+            <label for="description" class="control-label">Beschrijving</label>
+            <div class="controls">
+                <textarea id="description" rows="3" ng-model="event.description"></textarea>
+            </div>
+        </div>
         <button ng-click="save()" class="btn btn-block btn-primary" type="button" style="margin-bottom: 1em;">
             Opslaan
         </button>
