@@ -26,12 +26,14 @@
         </div>
         <div class="control-group">
             <label for="eventtype" class="control-label">Type evenement</label>
-            <select id="eventtype" ng-model="event.eventtype">
-                <option value="1">Chirojaren</option>
-                <option value="2">Kampen</option>
-                <option value="3">Feest</option>
-                <option value="4">Andere</option>
-            </select>
+            <div class="controls">
+                <select id="eventtype" ng-model="event.eventtype">
+                    <option value="1">Chirojaren</option>
+                    <option value="2">Kampen</option>
+                    <option value="3">Feest</option>
+                    <option value="4">Andere</option>
+                </select>
+            </div>
         </div>
         <button ng-click="create()" class="btn btn-block btn-primary" type="button" style="margin-bottom: 1em;">
             Opslaan

@@ -85,6 +85,6 @@ class EventTable
 
     public function deleteEvent($id)
     {
-        $this->eventGateway->delete(array('id' => (int) $id));
+        return $this->eventGateway->delete(array('id' => (int) $id));
     }
 }

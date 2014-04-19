@@ -84,7 +84,16 @@ class EventController extends AbstractRestfulController
         ));
     }
 
-    public function delete($id){}
+    public function delete($id){
+        if($this->getEventTable()->deleteEvent($id) > 0){
+            return new JsonModel(array(
+                'data' => 'deleted',
+            ));
+        }
+        return new JsonModel(array(
+            'data' => 'error',
+        ));
+    }
 
     public function getAllEventPhotos()
     {

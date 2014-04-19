@@ -88,6 +88,10 @@ appControllers.controller('EventDetailCtrl', [
         $scope.changeEvent = function () {
             $location.path("/photos/" + $scope.event);
         };
+        $scope.delete = function(){
+            Event.remove({eventId: $scope.event.id});
+            $location.path("/events");
+        }
         var modalInstance = $scope.open = function (photo) {
             $modal.open({
                 templateUrl: 'template/photo-detail.html',
