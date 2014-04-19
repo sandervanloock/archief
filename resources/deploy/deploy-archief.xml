@@ -10,6 +10,11 @@
 
     <property name="module.to.deploy">${module}</property>
 
+    <target name="deploy.archive" description="Deploy backend and frontend to production">
+        <antcall target="deploy.archive.backend"/>
+        <antcall target="deploy.archive.front"/>
+    </target>
+
     <target name="deploy.archive.front" description="Puts all the resouce files on ftp server">
         <antcall target="grunt.build">
             <param name="param1" value="production"/>
