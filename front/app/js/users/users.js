@@ -21,10 +21,10 @@ angular.module('users', ['userService', 'security.authorization'])
 
     .controller('RegisterUserCtrl', ['$scope', 'Users', function ($scope, Users) {
         $scope.user = {
-            first: "pieter",
-            last: "pauwels      ",
-            email: "test@hotmail.com",
-            password: "pass"
+//            first: "pieter",
+//            last: "pauwels      ",
+//            email: "test@hotmail.com",
+//            password: "pass"
         };
         $scope.saveUser = function () {
             Users.save($scope.user);
