@@ -164,6 +164,11 @@ a:active {
 }
 
 /** Detail View **/
+.controls.datepicker th{
+    vertical-align: middle;
+}
+
+
 .margin1{
     margin-left: 1em;
 }

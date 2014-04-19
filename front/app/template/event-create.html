@@ -1,33 +1,39 @@
 <div class="container view-container" ng-controller="EventCreateCtrl">
-	<form class="form-horizontal">
+	<form class="form-horizontal" style="float:left;">
 		<div class="control-group">
 			<label for="eventName" class="control-label">Naam</label>
 			<div class="controls">
-				<input type="text" id="eventName" ng-model="event.name" class="form-control"/>
+				<input type="text" id="eventName" ng-model="event.name" class="form-control" required/>
 			</div>
 		</div>
 		<div class="control-group">
 			<label for="eventStart" class="control-label">Startdatum</label>
-			<div class="controls">
-                <input type="text" id="eventStart" ng-init="localScopeDateStart = event.start" ng-model="localScopeDateStart" mo-change-proxy="event.start" mo-date-input="{{dateFormat}}" class="datepicker"/>
+			<div class="controls datepicker">
+                <p class="input-append">
+                    <input type="text" class="form-control span3" datepicker-popup="{{dateFormat}}" ng-model="event.start" datepicker-options="dateOptions" is-open="openedStart" ng-required="true" close-text="Sluiten" />
+                    <button class="btn btn-default" ng-click="open($event, 'openedStart')"><i class="glyphicon glyphicon-calendar"></i></button>
+                </p>
 			</div>
 		</div>
 		<div class="control-group">
 			<label for="eventEnd" class="control-label">Einddatum</label>
 			<div class="controls">
-				<input type="text" id="eventEnd" ng-init="localScopeDate = event.end" ng-model="localScopeDate" mo-change-proxy="event.end" mo-date-input="{{dateFormat}}" class="datepicker"/>
+                <p class="input-append">
+                    <input type="text" class="form-control span3" datepicker-popup="{{dateFormat}}" ng-model="event.end" datepicker-options="dateOptions" is-open="openedEnd" ng-required="true" close-text="Sluiten" />
+                    <button class="btn btn-default" ng-click="open($event, 'openedEnd')"><i class="glyphicon glyphicon-calendar"></i></button>
+                </p>
 			</div>
 		</div>
         <div class="control-group">
             <label for="description" class="control-label">Beschrijving</label>
             <div class="controls">
-                <textarea id="description" rows="3" ng-model="event.description"></textarea>
+                <textarea id="description" rows="3" ng-model="event.description" required></textarea>
             </div>
         </div>
         <div class="control-group">
             <label for="eventtype" class="control-label">Type evenement</label>
             <div class="controls">
-                <select id="eventtype" ng-model="event.eventtype">
+                <select id="eventtype" ng-model="event.eventtype" required>
                     <option value="1">Chirojaren</option>
                     <option value="2">Kampen</option>
                     <option value="3">Feest</option>
@@ -39,4 +45,5 @@
             Opslaan
         </button>
 	</form>
+    <div class="span5" style="float:right;">{{event | json }}</div>
 </div>

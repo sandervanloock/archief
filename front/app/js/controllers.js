@@ -16,9 +16,20 @@ appControllers.controller('EventListCtrl', [ '$scope', '$location', 'Event', 'co
 appControllers.controller('EventCreateCtrl',[ '$scope', 'Event', 'configuration',
     function ($scope, Event,configuration) {
         $scope.event = {};
+        $scope.dateFormat = "dd/MM/yyyy";
         $scope.create = function(){
             Event.create($scope.event);
-        }
+        };
+        $scope.dateOptions = {
+            'year-format': "'yyyy'",
+            'starting-day': 1,
+        };
+        $scope.open = function($event, opened) {
+            $event.preventDefault();
+            $event.stopPropagation();
+
+            $scope[opened] = true;
+        };
     } ]);
 
 appControllers.controller('EventDetailCtrl', [
