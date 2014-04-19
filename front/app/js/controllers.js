@@ -203,6 +203,9 @@ appControllers.controller('ArchiefCtrl', [
             });
 
         createNivoSlider = function (photos) {
+            if(photos.length==0){
+                return "";
+            }
             var html = "<div class='slider-wrapper theme-default'><div class='ribbon'></div><div class='nivoSlider'>";
             for (var i = 0; i < photos.length; i++) {
             var photoDir = configuration.STATIC_SERVER_CONFIG + "data/" + photos[i].directory;

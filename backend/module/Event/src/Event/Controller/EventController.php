@@ -44,7 +44,7 @@ class EventController extends AbstractRestfulController
             foreach ($events as $event) {
                 $eventPhotos = $this->getEventTable()->fetchAllLiveEventPhotos($event->id, 1);
                 $event->setPhotos($eventPhotos->toArray());
-                if (count($event->photos) > 0) {
+                if (count($event->photos) > 0 || isset($event->description)) {
                     array_push($variables, $event);
                 }
             }
