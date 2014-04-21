@@ -47,10 +47,19 @@ class UserTable
             'last'  => $user->last,
             'email'  => $user->email,
             'login'  => $user->login,
-            'password'  => $user->password,
             'modified'  => date("Y-m-d H:i:s"),
             'live'  => 1,
             'deleted'  => 0,
+        	'birthDate'  => $user->birthDate,
+        	'city'  => $user->city,
+        	'postalCode'  => $user->postalCode,
+        	'street'  => $user->street,
+        	'houseNumber' => $user->houseNumber,
+        	'postalBox'  => $user->postalBox,
+        	'phone'  => $user->phone,
+        	'mobilePhone'  => $user->mobilePhone,
+        	'presentOnReunion'  => $user->presentOnReunion,
+        	'isPhotoBookCandidate'  => $user->isPhotoBookCandidate
         );
 
         $id = (int) $user->id;

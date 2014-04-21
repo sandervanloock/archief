@@ -21,12 +21,23 @@ angular.module('users', ['userService', 'security.authorization'])
 
     .controller('RegisterUserCtrl', ['$scope', 'Users', function ($scope, Users) {
         $scope.user = {
-//            first: "pieter",
-//            last: "pauwels      ",
-//            email: "test@hotmail.com",
-//            password: "pass"
+           first: "pieter",
+           last:  "pauwels",
+           email: "test@hotmail.com"
+        };
+        $scope.dateOptions = {
+                'year-format': "'yyyy'",
+                'starting-day': 1,
+            };
+        $scope.dateFormat = "dd/MM/yyyy";
+        $scope.open = function ($event, opened) {
+            $event.preventDefault();
+            $event.stopPropagation();
+
+            $scope[opened] = true;
         };
         $scope.saveUser = function () {
+        	$scope.user.birthDate = moment($scope.user.birthDate).format("YYYY-MM-DD HH:mm:ss");
             Users.save($scope.user);
         }
 
