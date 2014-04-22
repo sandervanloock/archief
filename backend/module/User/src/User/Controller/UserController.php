@@ -36,6 +36,8 @@ class UserController extends AbstractRestfulController
     public function get($id)
     {
         $user = $this->getUserTable()->getUser($id);
+        $user->presentOnReunion = $user->presentOnReunion == "1";
+        $user->isPhotoBookCandidate = $user->isPhotoBookCandidate == "1";
         return new JsonModel(array("user" => $user));
     }
 
