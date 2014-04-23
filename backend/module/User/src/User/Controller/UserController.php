@@ -66,14 +66,16 @@ class UserController extends AbstractRestfulController
 
     public function update($id, $data)
     {
-        $data['id'] = $id;
         $user = $this->getUserTable()->getUser($id);
         //TODO validation
         if (true) {
-            $id = $this->getUserTable()->saveUser($data);
+            $user->exchangeArray($data);
+            $this->getUserTable()->saveUser($user);
         }
 
-        return new JsonModel($this->get($id));
+        return new JsonModel(array(
+            'data' => $this->get($id),
+        ));
     }
 
     public function delete($id)

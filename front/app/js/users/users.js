@@ -20,14 +20,9 @@ angular.module('users', ['userService', 'security.authorization'])
     }])
 
     .controller('RegisterUserCtrl', ['$scope', 'Users', function ($scope, Users) {
-        $scope.user = {
-           first: "pieter",
-           last:  "pauwels",
-           email: "test@hotmail.com"
-        };
         $scope.dateOptions = {
                 'year-format': "'yyyy'",
-                'starting-day': 1,
+                'starting-day': 1
             };
         $scope.dateFormat = "dd/MM/yyyy";
         $scope.open = function ($event, opened) {
@@ -37,7 +32,6 @@ angular.module('users', ['userService', 'security.authorization'])
             $scope[opened] = true;
         };
         $scope.saveUser = function () {
-        	$scope.user.birthDate = moment($scope.user.birthDate).format("YYYY-MM-DD HH:mm:ss");
             Users.save($scope.user);
         }
 
@@ -54,9 +48,24 @@ angular.module('users', ['userService', 'security.authorization'])
     }])
 
     .controller('UserDetailCtrl', ['$scope', '$routeParams', '$http', 'Users', 'configuration', function ($scope, $routeParams, $http, Users) {
+        $scope.dateOptions = {
+            'year-format': "'yyyy'",
+            'starting-day': 1
+        };
+        $scope.dateFormat = "dd/MM/yyyy";
+        $scope.open = function ($event, opened) {
+            $event.preventDefault();
+            $event.stopPropagation();
+
+            $scope[opened] = true;
+        };
         Users.get({id: $routeParams.userId},function(data){
             $scope.user = data.user;
         });
+        $scope.saveUser = function () {
+            console.log("updating user with id " + $scope.user.id);
+            Users.update({userId: $scope.user.id}, $scope.user);
+        }
     }]);
 
 angular.module('userService', ['ngResource']);
@@ -65,6 +74,7 @@ angular.module('userService').factory('Users', ['$resource', 'configuration',
     function ($resource, configuration) {
         return $resource(configuration.ARCHIVE_SERVER_CONFIG + 'user', {}, {
             query: {method: 'GET', isArray: true},
-            get: {url: configuration.ARCHIVE_SERVER_CONFIG + 'user/:id', method: 'GET'}
+            get: {url: configuration.ARCHIVE_SERVER_CONFIG + 'user/:id', method: 'GET'},
+            update: {method: 'PUT', url: configuration.ARCHIVE_SERVER_CONFIG + 'user/:userId'}
         });
     }]);
