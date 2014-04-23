@@ -27,6 +27,8 @@ class UserController extends AbstractRestfulController
         $json = new JsonModel();
         foreach ($users as $user) {
             //TODO make this cleaner
+            $user->presentOnReunion = (isset($user->presentOnReunion) and $user->presentOnReunion == "1") ? true : false;
+            $user->isPhotoBookCandidate = (isset($user->isPhotoBookCandidate) and $user->isPhotoBookCandidate == "1") ? true : false;
             array_push($variables, $user);
         }
         $json->setVariables($variables);
@@ -36,8 +38,8 @@ class UserController extends AbstractRestfulController
     public function get($id)
     {
         $user = $this->getUserTable()->getUser($id);
-        $user->presentOnReunion = $user->presentOnReunion == "1";
-        $user->isPhotoBookCandidate = $user->isPhotoBookCandidate == "1";
+        $user->presentOnReunion = (isset($user->presentOnReunion) and $user->presentOnReunion == "1") ? true : false;
+        $user->isPhotoBookCandidate = (isset($user->isPhotoBookCandidate) and $user->isPhotoBookCandidate == "1") ? true : false;
         return new JsonModel(array("user" => $user));
     }
 
