@@ -47,14 +47,16 @@ angular.module('users', ['userService', 'security.authorization'])
         }
     }])
 
-    .controller('UserDetailCtrl', ['$scope', '$routeParams', '$http',  '$location','Users', 'configuration',
-        function ($scope, $routeParams, $http,  $location, Users) {
+    .controller('UserDetailCtrl', ['$scope', '$routeParams', '$http', '$location','Users', 'Event',
+        function ($scope, $routeParams, $http,  $location, Users, Events) {
+
+
         $scope.dateOptions = {
             'year-format': "'yyyy'",
             'starting-day': 1
         };
         $scope.dateFormat = "dd/MM/yyyy";
-        $scope.open = function ($event, opened) {
+            $scope.open = function ($event, opened) {
             $event.preventDefault();
             $event.stopPropagation();
 
@@ -62,6 +64,8 @@ angular.module('users', ['userService', 'security.authorization'])
         };
         Users.get({id: $routeParams.userId},function(data){
             $scope.user = data.user;
+            $scope.user.milestones = [];
+            addNewMileStone($scope.user.milestones);
         });
         $scope.saveUser = function () {
             Users.update({userId: $scope.user.id}, $scope.user);
@@ -69,6 +73,20 @@ angular.module('users', ['userService', 'security.authorization'])
         $scope.removeUser = function () {
             Users.remove({userId: $scope.user.id});
             $location.path("/users");
+        }
+        $scope.checkNewMileStone = function(){
+            var numberOfMilestones = $scope.user.milestones.length;
+            var lastMilestone = $scope.user.milestones[numberOfMilestones - 1];
+            //the alst milestone must be completely filled in
+            if(lastMilestone.group && lastMilestone.from && lastMilestone.to){
+                //retrieve the events from the last milestones
+                var fromFormatted = moment(lastMilestone.from).format("YYYY-MM");
+                var toFormatted = moment(lastMilestone.to).format("YYYY-MM");
+                Events.query({from: fromFormatted, to: toFormatted},function(events){
+                    $scope.user.milestones[numberOfMilestones-1].events = events;
+                });
+                addNewMileStone($scope.user.milestones);
+            }
         }
     }]);
 
@@ -82,3 +100,16 @@ angular.module('userService').factory('Users', ['$resource', 'configuration',
             update: {method: 'PUT', url: configuration.ARCHIVE_SERVER_CONFIG + 'user/:userId'}
         });
     }]);
+
+addNewMileStone =  function(milestones){
+    milestones.push({
+        group: "0",
+//        from: moment(new Date()).format("MM/YYYY"),
+//        to: moment(new Date()).format("MM/YYYY"),
+//        events: [{
+//            wasPresent: true,
+//            name: "",
+//            extraInfo: ""
+//        }]
+    });
+}

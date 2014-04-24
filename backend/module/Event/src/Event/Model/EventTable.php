@@ -24,6 +24,11 @@ class EventTable
         return $this->eventGateway->select(array('eventtype'=>$type));
     }
 
+    public function fetchAllLiveEventsInRange($from,$to)
+    {
+        return $this->eventGateway->select(array('start > \'' . $from .'\' and end < \''.$to.'\''));//->and()->where('end < ?',$to);
+    }
+
     public function fetchAllEventPhotos($id)
     {
         $adapter = $this->eventGateway->getAdapter();

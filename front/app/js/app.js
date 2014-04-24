@@ -28,6 +28,24 @@ app.config([ '$routeProvider', 'securityAuthorizationProvider', function ($route
         });
 } ]);
 
+app.directive('monthYearInput', function() {
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function(scope, element, attrs, ngModelCtrl) {
+            element.datetimepicker({
+                format: "MM/yyyy",
+                viewMode: "months",
+                minViewMode: "months",
+                pickTime: false,
+            }).on('changeDate', function(e) {
+                    ngModelCtrl.$setViewValue(e.date);
+                    scope.$apply();
+                });
+        }
+    };
+});
+
 
 app.directive('moDateInput', function ($window) {
     return {
