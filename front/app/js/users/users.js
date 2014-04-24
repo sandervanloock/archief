@@ -47,7 +47,8 @@ angular.module('users', ['userService', 'security.authorization'])
         }
     }])
 
-    .controller('UserDetailCtrl', ['$scope', '$routeParams', '$http', 'Users', 'configuration', function ($scope, $routeParams, $http, Users) {
+    .controller('UserDetailCtrl', ['$scope', '$routeParams', '$http',  '$location','Users', 'configuration',
+        function ($scope, $routeParams, $http,  $location, Users) {
         $scope.dateOptions = {
             'year-format': "'yyyy'",
             'starting-day': 1
@@ -63,8 +64,11 @@ angular.module('users', ['userService', 'security.authorization'])
             $scope.user = data.user;
         });
         $scope.saveUser = function () {
-            console.log("updating user with id " + $scope.user.id);
             Users.update({userId: $scope.user.id}, $scope.user);
+        }
+        $scope.removeUser = function () {
+            Users.remove({userId: $scope.user.id});
+            $location.path("/users");
         }
     }]);
 
@@ -72,7 +76,7 @@ angular.module('userService', ['ngResource']);
 
 angular.module('userService').factory('Users', ['$resource', 'configuration',
     function ($resource, configuration) {
-        return $resource(configuration.ARCHIVE_SERVER_CONFIG + 'user', {}, {
+        return $resource(configuration.ARCHIVE_SERVER_CONFIG + 'user/:userId', {}, {
             query: {method: 'GET', isArray: true},
             get: {url: configuration.ARCHIVE_SERVER_CONFIG + 'user/:id', method: 'GET'},
             update: {method: 'PUT', url: configuration.ARCHIVE_SERVER_CONFIG + 'user/:userId'}
