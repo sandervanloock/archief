@@ -16,3 +16,10 @@ photoService.factory('photoService', ['$resource', 'configuration', function ($r
     return $resource(configuration.ARCHIVE_SERVER_CONFIG + 'photo/:photoId', {}, {
     });
 }]);
+
+var groupService = angular.module('groupService', ['ngResource']);
+
+groupService.factory('Groups', ['$resource', 'configuration', function ($resource, configuration) {
+    return $resource(configuration.ARCHIVE_SERVER_CONFIG + 'group/:photoId', {}, {
+    });
+}]);

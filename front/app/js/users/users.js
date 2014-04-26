@@ -47,10 +47,8 @@ angular.module('users', ['userService', 'security.authorization'])
         }
     }])
 
-    .controller('UserDetailCtrl', ['$scope', '$routeParams', '$http', '$location','Users', 'Event',
-        function ($scope, $routeParams, $http,  $location, Users, Events) {
-
-
+    .controller('UserDetailCtrl', ['$scope', '$routeParams', '$http', '$location','Users', 'Event', 'Groups',
+        function ($scope, $routeParams, $http,  $location, Users, Events, Groups) {
         $scope.dateOptions = {
             'year-format': "'yyyy'",
             'starting-day': 1
@@ -69,11 +67,11 @@ angular.module('users', ['userService', 'security.authorization'])
         });
         $scope.saveUser = function () {
             Users.update({userId: $scope.user.id}, $scope.user);
-        }
+        };
         $scope.removeUser = function () {
             Users.remove({userId: $scope.user.id});
             $location.path("/users");
-        }
+        };
         $scope.checkNewMileStone = function(){
             var numberOfMilestones = $scope.user.milestones.length;
             var lastMilestone = $scope.user.milestones[numberOfMilestones - 1];
@@ -87,7 +85,8 @@ angular.module('users', ['userService', 'security.authorization'])
                 });
                 addNewMileStone($scope.user.milestones);
             }
-        }
+        };
+        $scope.groups = Groups.query();
     }]);
 
 angular.module('userService', ['ngResource']);
@@ -103,7 +102,7 @@ angular.module('userService').factory('Users', ['$resource', 'configuration',
 
 addNewMileStone =  function(milestones){
     milestones.push({
-        group: "0",
+        group: "0"
 //        from: moment(new Date()).format("MM/YYYY"),
 //        to: moment(new Date()).format("MM/YYYY"),
 //        events: [{

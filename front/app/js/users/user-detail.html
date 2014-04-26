@@ -82,13 +82,7 @@
                         <div class="control-group span4">
                             <p class="">Chirogroep</p>
                             <select id="chiroGroup" class="span10" ng-model="milestone.group" ng-change="checkNewMileStone()">
-                                <option value="0"></option>
-                                <option value="1">Speelclub</option>
-                                <option value="2">Rakkers</option>
-                                <option value="3">Toppers</option>
-                                <option value="4">Kerels</option>
-                                <option value="5">Aspiranten</option>
-                                <option value="6">Leiding</option>
+                                <option ng-repeat="group in groups" value="{{group.id}}">{{group.name}}</option>
                             </select>
                         </div>
                         <div class="control-group span4">

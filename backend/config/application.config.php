@@ -6,7 +6,8 @@ return array(
         'Photo',
         'Event',
         'Sponsor',
-        'User'
+        'User',
+        'Group'
     ),
 
     // These are various options for the listeners attached to the ModuleManager
