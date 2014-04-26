@@ -1,7 +1,9 @@
 <?php
 namespace User;
 
+use User\Model\MilestoneTable;
 use User\Model\User;
+use User\Model\Milestone;
 use User\Model\UserTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
@@ -41,6 +43,17 @@ class Module
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new User());
                     return new TableGateway('user', $dbAdapter, null, $resultSetPrototype);
+                },
+                'User\Model\MilestoneTable' =>  function($sm) {
+                    $milestoneGateway = $sm->get('MilestoneTableGateway');
+                    $table = new MilestoneTable($milestoneGateway);
+                    return $table;
+                },
+                'MilestoneTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Milestone());
+                    return new TableGateway('milestone', $dbAdapter, null, $resultSetPrototype);
                 },
             ),
         );

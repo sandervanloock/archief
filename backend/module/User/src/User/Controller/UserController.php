@@ -3,6 +3,7 @@ namespace User\Controller;
 
 use Framework\Template\Exception;
 use User\Model\User;
+use User\Model\Milestone;
 use Zend\Mvc\Controller\AbstractRestfulController;
 use Zend\Validator\File\Size;
 use Zend\View\Model\JsonModel;
@@ -10,6 +11,7 @@ use Zend\View\Model\JsonModel;
 class UserController extends AbstractRestfulController
 {
     protected $userTable;
+    protected $milestoneTable;
 
     public function getUserTable()
     {
@@ -18,6 +20,15 @@ class UserController extends AbstractRestfulController
             $this->userTable = $sm->get('User\Model\UserTable');
         }
         return $this->userTable;
+    }
+
+    public function getMilestoneTable()
+    {
+        if (!$this->milestoneTable) {
+            $sm = $this->getServiceLocator();
+            $this->milestoneTable = $sm->get('User\Model\MilestoneTable');
+        }
+        return $this->milestoneTable;
     }
 
     public function getList()
@@ -40,6 +51,12 @@ class UserController extends AbstractRestfulController
         $user = $this->getUserTable()->getUser($id);
         $user->presentOnReunion = (isset($user->presentOnReunion) and $user->presentOnReunion == "1") ? true : false;
         $user->isPhotoBookCandidate = (isset($user->isPhotoBookCandidate) and $user->isPhotoBookCandidate == "1") ? true : false;
+        $milestonesFromUser = $this->getMilestoneTable()->getMilestonesFromUser($id);
+        $milestoneAsArray = array();
+        foreach($milestonesFromUser as $milestone){
+            array_push($milestoneAsArray,$milestone);
+        }
+        $user->setMilestones($milestoneAsArray);
         return new JsonModel(array("user" => $user));
     }
 
@@ -70,12 +87,25 @@ class UserController extends AbstractRestfulController
         //TODO validation
         if (true) {
             $user->exchangeArray($data);
+            $this->updateUserMilestones($data['milestones'],$id);
             $this->getUserTable()->saveUser($user);
         }
 
         return new JsonModel(array(
             'data' => $this->get($id),
         ));
+    }
+
+    private function updateUserMilestones($milestones,$userid){
+        foreach($milestones as $milestone){
+            foreach($milestone['events'] as $event){
+                $milestone = new Milestone();
+                $milestone->userid =$userid;
+                $milestone->eventid =$event['id'];
+                $milestone->remarks =$event['description'];
+                $this->getMilestoneTable()->saveMilestone($milestone);
+            }
+        }
     }
 
     public function delete($id)
