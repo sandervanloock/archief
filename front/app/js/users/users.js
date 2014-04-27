@@ -65,7 +65,6 @@ angular.module('users', ['userService', 'security.authorization'])
             if(!$scope.user.memberships){
                 $scope.user.memberships = [];
             }
-            addNewMembership($scope.user.memberships);
         });
         $scope.saveUser = function () {
             Users.update({userId: $scope.user.id}, $scope.user);
@@ -78,15 +77,35 @@ angular.module('users', ['userService', 'security.authorization'])
             var numberOfMemberships = $scope.user.memberships.length;
             var lastMembership = $scope.user.memberships[numberOfMemberships - 1];
             //the alst milestone must be completely filled in
-            if(lastMembership.group && lastMembership.from && lastMembership.to){
+            if(lastMembership.groupid && lastMembership.from && lastMembership.to){
                 //retrieve the events from the last memberships
                 var fromFormatted = moment(lastMembership.from).format("YYYY-MM");
                 var toFormatted = moment(lastMembership.to).format("YYYY-MM");
                 Events.query({from: fromFormatted, to: toFormatted},function(events){
-                    $scope.user.memberships[numberOfMemberships-1].events = events;
+                	var milestones = [];
+                	events.forEach(function(event){
+                		milestones.push({
+                			eventid: event.id,
+                			name: event.name,
+                			start: event.start,
+                			end: event.end,
+                		});
+                	});
+                    $scope.user.memberships[numberOfMemberships-1].milestones = milestones;
                 });
-                addNewMembership($scope.user.memberships);
             }
+        };
+        $scope.addNewMembership = function(){
+        	$scope.user.memberships.push({
+                groupdid: "0"
+//                  from: moment(new Date()).format("MM/YYYY"),
+//                  to: moment(new Date()).format("MM/YYYY"),
+//                  events: [{
+//                      wasPresent: true,
+//                      name: "",
+//                      extraInfo: ""
+//                  }]
+              });
         };
         $scope.groups = Groups.query();
     }]);
@@ -101,16 +120,3 @@ angular.module('userService').factory('Users', ['$resource', 'configuration',
             update: {method: 'PUT', url: configuration.ARCHIVE_SERVER_CONFIG + 'user/:userId'}
         });
     }]);
-
-addNewMembership =  function(milestones){
-    milestones.push({
-        group: "0"
-//        from: moment(new Date()).format("MM/YYYY"),
-//        to: moment(new Date()).format("MM/YYYY"),
-//        events: [{
-//            wasPresent: true,
-//            name: "",
-//            extraInfo: ""
-//        }]
-    });
-}
