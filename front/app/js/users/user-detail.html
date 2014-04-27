@@ -78,17 +78,17 @@
                 <h2>Chiro carrière</h2>
                 <ul class="nav nav-list"><li class="divider"></li></ul>
                 <fieldset>
-                    <div class="well span12" ng-repeat="milestone in user.milestones" style="margin-left:0px;">
+                    <div class="well span12" ng-repeat="membership in user.memberships" style="margin-left:0px;">
                         <div class="control-group span4">
                             <p class="">Chirogroep</p>
-                            <select id="chiroGroup" class="span10" ng-model="milestone.group" ng-change="checkNewMileStone()">
-                                <option ng-repeat="group in groups" value="{{group.id}}">{{group.name}}</option>
+                            <select id="chiroGroup" class="span10" ng-model="membership.group" ng-change="checkNewmembership()">
+                                <option ng-repeat="group in groups" value="{{group.id}}" ng-model="membership">{{group.name}}</option>
                             </select>
                         </div>
                         <div class="control-group span4">
                             <label for="birthDate" class="control-label">Van...</label>
-                            <div class="input-append span10" ng-model="milestone.from" month-year-input ng-change="checkNewMileStone()">
-                                <input data-format="MM/yyyy" type="text" id="chiroFrom" name="chiroFrom" class="span10" ng-model="milestone.from"/>
+                            <div class="input-append span10" ng-model="membership.from" month-year-input ng-change="checkNewmembership()">
+                                <input data-format="MM/yyyy" type="text" id="chiroFrom" name="chiroFrom" class="span10" ng-model="membership.from"/>
                                   <span class="add-on">
                                     <i class="glyphicon glyphicon-calendar"></i>
                                   </span>
@@ -96,8 +96,8 @@
                         </div>
                         <div class="control-group span4">
                             <label for="birthDate" class="control-label">Tot...</label>
-                            <div id="date" class="input-append span10" ng-model="milestone.to" month-year-input ng-change="checkNewMileStone()">
-                                <input data-format="MM/yyyy" type="text" id="chiroTo" name="chiroTo" class="span10" ng-model="milestone.to"/>
+                            <div id="date" class="input-append span10" ng-model="membership.to" month-year-input ng-change="checkNewmembership()">
+                                <input data-format="MM/yyyy" type="text" id="chiroTo" name="chiroTo" class="span10" ng-model="membership.to"/>
                                   <span class="add-on">
                                     <i class="glyphicon glyphicon-calendar"></i>
                                   </span>
@@ -109,13 +109,13 @@
                                     <th>Bevestig aanwezigheid</th>
                                     <th>Extra info (optioneel)</th>
                                 </tr>
-                                <tr ng-repeat="event in milestone.events">
+                                <tr ng-repeat="milestone in membership.milestones">
                                     <td>
-                                        <label class="checkbox"><input type="checkbox" ng-model="event.wasPresent">{{event.name}}</label>
-                                        {{event.start | date:'dd/MM/yyyy'}} - {{event.end | date:'dd/MM/yyyy'}}
+                                        <label class="checkbox"><input type="checkbox" ng-model="milestone.wasPresent">{{milestone.name}}</label>
+                                        {{milestone.start | date:'dd/MM/yyyy'}} - {{milestone.end | date:'dd/MM/yyyy'}}
                                     </td>
                                     <td>
-                                        <input type="text" class="span5" ng-model="event.extraInfo"/>
+                                        <input type="text" class="span5" ng-model="milestone.extraInfo"/>
                                     </td>
                                 </tr>
                             </table>

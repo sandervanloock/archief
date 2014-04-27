@@ -62,8 +62,10 @@ angular.module('users', ['userService', 'security.authorization'])
         };
         Users.get({id: $routeParams.userId},function(data){
             $scope.user = data.user;
-            $scope.user.milestones = [];
-            addNewMileStone($scope.user.milestones);
+            if(!$scope.user.memberships){
+                $scope.user.memberships = [];
+            }
+            addNewMembership($scope.user.memberships);
         });
         $scope.saveUser = function () {
             Users.update({userId: $scope.user.id}, $scope.user);
@@ -72,18 +74,18 @@ angular.module('users', ['userService', 'security.authorization'])
             Users.remove({userId: $scope.user.id});
             $location.path("/users");
         };
-        $scope.checkNewMileStone = function(){
-            var numberOfMilestones = $scope.user.milestones.length;
-            var lastMilestone = $scope.user.milestones[numberOfMilestones - 1];
+        $scope.checkNewmembership = function(){
+            var numberOfMemberships = $scope.user.memberships.length;
+            var lastMembership = $scope.user.memberships[numberOfMemberships - 1];
             //the alst milestone must be completely filled in
-            if(lastMilestone.group && lastMilestone.from && lastMilestone.to){
-                //retrieve the events from the last milestones
-                var fromFormatted = moment(lastMilestone.from).format("YYYY-MM");
-                var toFormatted = moment(lastMilestone.to).format("YYYY-MM");
+            if(lastMembership.group && lastMembership.from && lastMembership.to){
+                //retrieve the events from the last memberships
+                var fromFormatted = moment(lastMembership.from).format("YYYY-MM");
+                var toFormatted = moment(lastMembership.to).format("YYYY-MM");
                 Events.query({from: fromFormatted, to: toFormatted},function(events){
-                    $scope.user.milestones[numberOfMilestones-1].events = events;
+                    $scope.user.memberships[numberOfMemberships-1].events = events;
                 });
-                addNewMileStone($scope.user.milestones);
+                addNewMembership($scope.user.memberships);
             }
         };
         $scope.groups = Groups.query();
@@ -100,7 +102,7 @@ angular.module('userService').factory('Users', ['$resource', 'configuration',
         });
     }]);
 
-addNewMileStone =  function(milestones){
+addNewMembership =  function(milestones){
     milestones.push({
         group: "0"
 //        from: moment(new Date()).format("MM/YYYY"),

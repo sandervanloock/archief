@@ -4,6 +4,7 @@ namespace User\Controller;
 use Framework\Template\Exception;
 use User\Model\User;
 use User\Model\Milestone;
+use User\Model\Membership;
 use Zend\Mvc\Controller\AbstractRestfulController;
 use Zend\Validator\File\Size;
 use Zend\View\Model\JsonModel;
@@ -12,6 +13,8 @@ class UserController extends AbstractRestfulController
 {
     protected $userTable;
     protected $milestoneTable;
+    protected $membershipTable;
+    protected $eventTable;
 
     public function getUserTable()
     {
@@ -22,6 +25,15 @@ class UserController extends AbstractRestfulController
         return $this->userTable;
     }
 
+    public function getEventTable()
+    {
+        if (!$this->eventTable) {
+            $sm = $this->getServiceLocator();
+            $this->eventTable = $sm->get('Event\Model\EventTable');
+        }
+        return $this->eventTable;
+    }
+
     public function getMilestoneTable()
     {
         if (!$this->milestoneTable) {
@@ -29,6 +41,15 @@ class UserController extends AbstractRestfulController
             $this->milestoneTable = $sm->get('User\Model\MilestoneTable');
         }
         return $this->milestoneTable;
+    }
+
+    public function getMembershipTable()
+    {
+        if (!$this->membershipTable) {
+            $sm = $this->getServiceLocator();
+            $this->membershipTable = $sm->get('User\Model\MembershipTable');
+        }
+        return $this->membershipTable;
     }
 
     public function getList()
@@ -51,12 +72,23 @@ class UserController extends AbstractRestfulController
         $user = $this->getUserTable()->getUser($id);
         $user->presentOnReunion = (isset($user->presentOnReunion) and $user->presentOnReunion == "1") ? true : false;
         $user->isPhotoBookCandidate = (isset($user->isPhotoBookCandidate) and $user->isPhotoBookCandidate == "1") ? true : false;
-        $milestonesFromUser = $this->getMilestoneTable()->getMilestonesFromUser($id);
-        $milestoneAsArray = array();
-        foreach($milestonesFromUser as $milestone){
-            array_push($milestoneAsArray,$milestone);
+        $membershipsFromUser = $this->getMembershipTable()->getMembershipsFromUser($id);
+        $membershipsFromUserArray = array();
+        foreach($membershipsFromUser as $membership){
+            $milestonesFromUser = $this->getMilestoneTable()->getMilestonesFromUserAndGroup($id,$membership->groupid);
+            $milestoneAsArray = array();
+            foreach($milestonesFromUser as $milestone){
+                $event = $this->getEventTable()->getEvent($milestone->eventid);
+                $milestone->name = $event->name;
+                $milestone->start = $event->start;
+                $milestone->end = $event->end;
+                $milestone->wasPresent = true;
+                array_push($milestoneAsArray,$milestone);
+            }
+            $membership->setMilestones($milestoneAsArray);
+            array_push($membershipsFromUserArray,$membership);
         }
-        $user->setMilestones($milestoneAsArray);
+        $user->setMemberships($membershipsFromUserArray);
         return new JsonModel(array("user" => $user));
     }
 
@@ -98,6 +130,12 @@ class UserController extends AbstractRestfulController
 
     private function updateUserMilestones($milestones,$userid){
         foreach($milestones as $milestone){
+            $membership = new Membership();
+            $membership->userid = $userid;
+            $membership->groupid=$milestone['group'];
+            $membership->from=$milestone['from'];
+            $membership->to=$milestone['to'];
+            $this->getMembershipTable()->saveMembership($membership);
             foreach($milestone['events'] as $event){
                 $milestone = new Milestone();
                 $milestone->userid =$userid;

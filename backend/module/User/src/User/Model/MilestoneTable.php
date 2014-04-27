@@ -18,8 +18,8 @@ class MilestoneTable
         return $resultSet;
     }
 
-    public function getMilestonesFromUser($userid){
-        return $this->milestoneGateway->select(array('userid'=>(int)$userid));
+    public function getMilestonesFromUserAndGroup($userid,$groupid){
+        return $this->milestoneGateway->select(array('userid'=>(int)$userid, 'groupid'=>(int)$groupid));
     }
 
     public function existingMilestone($userid, $eventid)
@@ -38,6 +38,7 @@ class MilestoneTable
     {
         $data = array(
             'remarks'  => $milestone->remarks,
+            'groupid'  => $milestone->groupid,
             'userid'  => $milestone->userid,
             'eventid'  => $milestone->eventid,
         );
@@ -54,6 +55,6 @@ class MilestoneTable
 
     public function deleteMilestone($userid,$eventid)
     {
-        $this->milestoneGateway->delete(array('userid' => (int) $userid, 'eventid' => $eventid));
+        $this->milestoneGateway->delete(array('userid' => (int) $userid, 'eventid' => (int) $eventid));
     }
 }

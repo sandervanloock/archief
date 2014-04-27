@@ -23,7 +23,7 @@ class User implements InputFilterAwareInterface
     public $mobilePhone;
     public $presentOnReunion;
     public $isPhotoBookCandidate;
-    public $milestones;
+    public $memberships;
 
     public function exchangeArray($data)
     {
@@ -54,8 +54,8 @@ class User implements InputFilterAwareInterface
         throw new \Exception("Not used");
     }
 
-    public function setMilestones($milestones){
-        $this->milestones = $milestones;
+    public function setMemberships($memberships){
+        $this->memberships = $memberships;
     }
 
     public function getInputFilter()

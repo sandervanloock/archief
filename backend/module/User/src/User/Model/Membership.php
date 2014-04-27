@@ -5,19 +5,24 @@ use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface;
 
-class Milestone implements InputFilterAwareInterface
+class Membership implements InputFilterAwareInterface
 {
     public $userid;
-    public $eventid;
-    public $remarks;
     public $groupid;
+    public $from;
+    public $to;
+    public $milestones;
 
     public function exchangeArray($data)
     {
         $this->userid     = (!empty($data['userid'])) ? $data['userid'] : null;
-        $this->eventid  = (!empty($data['eventid'])) ? $data['eventid'] : null;
-        $this->remarks  = (!empty($data['remarks'])) ? $data['remarks'] : null;
         $this->groupid  = (!empty($data['groupid'])) ? $data['groupid'] : null;
+        $this->from  = (!empty($data['from'])) ? $data['from'] : null;
+        $this->to  = (!empty($data['to'])) ? $data['to'] : null;
+    }
+
+    public function setMilestones($milestones){
+        $this->milestones = $milestones;
     }
 
     public function getArrayCopy()

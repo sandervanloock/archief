@@ -5,6 +5,8 @@ use User\Model\MilestoneTable;
 use User\Model\User;
 use User\Model\Milestone;
 use User\Model\UserTable;
+use User\Model\Membership;
+use User\Model\MembershipTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 
@@ -54,6 +56,17 @@ class Module
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Milestone());
                     return new TableGateway('milestone', $dbAdapter, null, $resultSetPrototype);
+                },
+                'User\Model\MembershipTable' =>  function($sm) {
+                    $membershipGateway = $sm->get('MembershipTableGateway');
+                    $table = new MembershipTable($membershipGateway);
+                    return $table;
+                },
+                'MembershipTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Membership());
+                    return new TableGateway('membership', $dbAdapter, null, $resultSetPrototype);
                 },
             ),
         );
