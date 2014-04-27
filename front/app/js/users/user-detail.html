@@ -81,8 +81,8 @@
                     <div class="well span12" ng-repeat="membership in user.memberships" style="margin-left:0px;">
                         <div class="control-group span4">
                             <p class="">Chirogroep</p>
-                            <select id="chiroGroup" class="span10" ng-model="membership.group" ng-change="checkNewmembership()">
-                                <option ng-repeat="group in groups" value="{{group.id}}" ng-model="membership">{{group.name}}</option>
+                            <select id="chiroGroup" class="span10" ng-change="checkNewmembership()">
+                                <option ng-repeat="group in groups" value="{{group.id}}" ng-model="membership.groupid">{{group.name}}</option>
                             </select>
                         </div>
                         <div class="control-group span4">
@@ -115,7 +115,7 @@
                                         {{milestone.start | date:'dd/MM/yyyy'}} - {{milestone.end | date:'dd/MM/yyyy'}}
                                     </td>
                                     <td>
-                                        <input type="text" class="span5" ng-model="milestone.extraInfo"/>
+                                        <input type="text" class="span5" ng-model="milestone.remarks"/>
                                     </td>
                                 </tr>
                             </table>
