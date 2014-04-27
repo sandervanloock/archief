@@ -15,5 +15,6 @@ return array(
 	'db' => array(
         'username' => '',
         'password' => '',
+        'dsn'      => 'mysql:dbname=chiroelzestraat;host=127.0.0.1',
     ),
 );
