@@ -15,26 +15,8 @@ angular.module('users', ['userService', 'security.authorization'])
                 resolve: securityAuthorizationProvider.requireAdminUser
             }).when('/register', {
                 templateUrl: 'js/users/user-detail.html',
-                controller: 'RegisterUserCtrl'
+                controller: 'UserDetailCtrl'
             });
-    }])
-
-    .controller('RegisterUserCtrl', ['$scope', 'Users', function ($scope, Users) {
-        $scope.dateOptions = {
-                'year-format': "'yyyy'",
-                'starting-day': 1
-            };
-        $scope.dateFormat = "dd/MM/yyyy";
-        $scope.open = function ($event, opened) {
-            $event.preventDefault();
-            $event.stopPropagation();
-
-            $scope[opened] = true;
-        };
-        $scope.saveUser = function () {
-            Users.save($scope.user);
-        }
-
     }])
 
     .controller('UsersViewCtrl', ['$scope', '$location', 'users', function ($scope, $location, users) {
@@ -54,20 +36,24 @@ angular.module('users', ['userService', 'security.authorization'])
             'starting-day': 1
         };
         $scope.dateFormat = "dd/MM/yyyy";
-            $scope.open = function ($event, opened) {
+        $scope.open = function ($event, opened) {
             $event.preventDefault();
             $event.stopPropagation();
 
             $scope[opened] = true;
         };
-        Users.get({id: $routeParams.userId},function(data){
-            $scope.user = data.user;
-            if(!$scope.user.memberships){
-                $scope.user.memberships = [];
-            }
-        });
+        $scope.user = {};
+        if($routeParams.userId){
+            Users.get({id: $routeParams.userId},function(data){
+                $scope.user = data.user;
+            });
+        }
         $scope.saveUser = function () {
-            Users.update({userId: $scope.user.id}, $scope.user);
+            if($scope.user.id){
+                Users.update({userId: $scope.user.id}, $scope.user);
+            } else{
+                Users.save($scope.user);
+            }
         };
         $scope.removeUser = function () {
             Users.remove({userId: $scope.user.id});
@@ -88,7 +74,7 @@ angular.module('users', ['userService', 'security.authorization'])
                 			eventid: event.id,
                 			name: event.name,
                 			start: event.start,
-                			end: event.end,
+                			end: event.end
                 		});
                 	});
                     $scope.user.memberships[numberOfMemberships-1].milestones = milestones;
@@ -96,15 +82,11 @@ angular.module('users', ['userService', 'security.authorization'])
             }
         };
         $scope.addNewMembership = function(){
+            if(!$scope.user.memberships){
+                $scope.user.memberships = [];
+            }
         	$scope.user.memberships.push({
-                groupdid: "0"
-//                  from: moment(new Date()).format("MM/YYYY"),
-//                  to: moment(new Date()).format("MM/YYYY"),
-//                  events: [{
-//                      wasPresent: true,
-//                      name: "",
-//                      extraInfo: ""
-//                  }]
+                groupid: "0"
               });
         };
         $scope.groups = Groups.query();

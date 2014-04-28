@@ -82,7 +82,7 @@ class UserController extends AbstractRestfulController
                 $milestone->name = $event->name;
                 $milestone->start = $event->start;
                 $milestone->end = $event->end;
-                $milestone->wasPresent = true;
+                $milestone->wasPresent = (isset($milestone->wasPresent) and $milestone->wasPresent == "1") ? true : false;
                 array_push($milestoneAsArray,$milestone);
             }
             $membership->setMilestones($milestoneAsArray);
@@ -101,6 +101,8 @@ class UserController extends AbstractRestfulController
             $user = new User();
             $user->exchangeArray($data);
             $this->getUserTable()->saveUser($user);
+            $user = $this->getUserTable()->getUserByLogin($user->login);
+            $this->updateUserMilestones($data['memberships'],$user->id);
             $variables["success"] = "true";
             $variables["message"] = "User toegevoegd";
         } else {
@@ -119,7 +121,7 @@ class UserController extends AbstractRestfulController
         //TODO validation
         if (true) {
             $user->exchangeArray($data);
-            $this->updateUserMilestones($data['milestones'],$id);
+            $this->updateUserMilestones($data['memberships'],$id);
             $this->getUserTable()->saveUser($user);
         }
 
@@ -128,19 +130,21 @@ class UserController extends AbstractRestfulController
         ));
     }
 
-    private function updateUserMilestones($milestones,$userid){
-        foreach($milestones as $milestone){
+    private function updateUserMilestones($memberships,$userid){
+        foreach($memberships as $jsonMembership){
             $membership = new Membership();
             $membership->userid = $userid;
-            $membership->groupid=$milestone['group'];
-            $membership->from=$milestone['from'];
-            $membership->to=$milestone['to'];
+            $membership->groupid=$jsonMembership['groupid'];
+            $membership->from=$jsonMembership['from'];
+            $membership->to=$jsonMembership['to'];
             $this->getMembershipTable()->saveMembership($membership);
-            foreach($milestone['events'] as $event){
+            foreach($jsonMembership['milestones'] as $jsonMilestone){
                 $milestone = new Milestone();
                 $milestone->userid =$userid;
-                $milestone->eventid =$event['id'];
-                $milestone->remarks =$event['description'];
+                $milestone->eventid =$jsonMilestone['eventid'];
+                $milestone->remarks =isset($jsonMilestone['remarks']) ? $jsonMilestone['remarks'] : "";
+                $milestone->wasPresent = (isset($jsonMilestone['wasPresent']) and $jsonMilestone['wasPresent']) ? true : false;
+                $milestone->groupid =$jsonMembership['groupid'];
                 $this->getMilestoneTable()->saveMilestone($milestone);
             }
         }
@@ -153,9 +157,5 @@ class UserController extends AbstractRestfulController
         return new JsonModel(array(
             'data' => 'deleted',
         ));
-    }
-
-    public function login(){
-        echo("OK");
     }
 }

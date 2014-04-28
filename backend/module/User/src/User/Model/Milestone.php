@@ -11,6 +11,7 @@ class Milestone implements InputFilterAwareInterface
     public $eventid;
     public $remarks;
     public $groupid;
+    public $wasPresent;
 
     public function exchangeArray($data)
     {
@@ -18,6 +19,7 @@ class Milestone implements InputFilterAwareInterface
         $this->eventid  = (!empty($data['eventid'])) ? $data['eventid'] : null;
         $this->remarks  = (!empty($data['remarks'])) ? $data['remarks'] : null;
         $this->groupid  = (!empty($data['groupid'])) ? $data['groupid'] : null;
+        $this->wasPresent  = isset($data['wasPresent']) ? $data['wasPresent'] : false;
     }
 
     public function getArrayCopy()

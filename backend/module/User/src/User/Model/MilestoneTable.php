@@ -41,6 +41,7 @@ class MilestoneTable
             'groupid'  => $milestone->groupid,
             'userid'  => $milestone->userid,
             'eventid'  => $milestone->eventid,
+            'wasPresent'  => $milestone->wasPresent,
         );
 
         $userid = (int)$milestone->userid;
