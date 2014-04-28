@@ -79,6 +79,9 @@
         <antcall target="deploy.module.archive.backend">
             <param name="module.to.deploy" value="Sponsor"/>
         </antcall>
+        <antcall target="deploy.module.archive.backend">
+            <param name="module.to.deploy" value="Group"/>
+        </antcall>
     </target>
 
     <target name="deploy.archive.rommelmarkt" description="Puts all the rommelmarkt resouce files on ftp server">
