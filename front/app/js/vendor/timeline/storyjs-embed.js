@@ -140,7 +140,7 @@ function createStoryJS(e, t) {
 		base : embed_path,
 		css : embed_path + "css/",
 		js : embed_path + "js/",
-		locale : embed_path + "js/locale/",
+		locale : embed_path + "js/vendor/timeline/locale/",
 		jquery : "scripts/vendor/jquery/jquery.js",
 		font : {
 			google : !1,
