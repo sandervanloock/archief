@@ -103,7 +103,7 @@ appControllers.controller('EventDetailCtrl', [
             Event.remove({eventId: $scope.event.id});
             $location.path("/events");
         }
-        var modalInstance = $scope.open = function (photo) {
+        $scope.open = function (photo) {
             $modal.open({
                 templateUrl: 'template/photo-detail.html',
                 controller: 'PhotoCtrl',

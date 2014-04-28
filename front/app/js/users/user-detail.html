@@ -1,94 +1,96 @@
 <div class="fluid-container view-container">
-	<div class="row-fluid">
-		<div class="span2">
-			<!--Sidebar content-->
-			<!--<ul class="nav nav-list">-->
-				<!--<li class="nav-header">-->
-					<!--Gegevens-->
-				<!--</li>-->
-				<!--<li class="active">-->
-					<!--<div class="btn btn-link disabled sidebar-button">-->
-						<!--Contact-->
-					<!--</div>-->
-				<!--</li>-->
-				<!--<li>-->
-					<!--<div class="btn btn-link disabled sidebar-button">-->
-						<!--Chiro carrière-->
-					<!--</div>-->
-				<!--</li>-->
-			<!--</ul>-->
-		</div>
-		<div class="span10">
-			<!--Body content-->
-			<form class="user-detail">
+    <div class="row-fluid">
+        <div class="span2">
+            <!--Sidebar content-->
+            <!--<ul class="nav nav-list">-->
+            <!--<li class="nav-header">-->
+            <!--Gegevens-->
+            <!--</li>-->
+            <!--<li class="active">-->
+            <!--<div class="btn btn-link disabled sidebar-button">-->
+            <!--Contact-->
+            <!--</div>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<div class="btn btn-link disabled sidebar-button">-->
+            <!--Chiro carrière-->
+            <!--</div>-->
+            <!--</li>-->
+            <!--</ul>-->
+        </div>
+        <div class="span10">
+            <!--Body content-->
+            <form class="user-detail">
 
                 <h2>Contactgegevens</h2>
-                <ul class="nav nav-list"><li class="divider"></li></ul>
-				<fieldset>
+                <ul class="nav nav-list">
+                    <li class="divider"></li>
+                </ul>
+                <fieldset>
                     <label class="control-label" for="firstName">Voornaam</label>
-					<input type="text" id="firstName" ng-model="user.first" required />
-					<label class="control-label" for="lastName">Achternaam</label>
-					<input type="text" id="lastName" ng-model="user.last" required />
-					<div class="control-group">
-						<label for="birthDate" class="control-label">Geboortedatum</label>
-						<div class="controls datepicker">
-							<p class="input-append">
-								<input id="birthDate" type="text" class="form-control" datepicker-popup="{{dateFormat}}" ng-model="user.birthDate" datepicker-options="dateOptions" is-open="openedBirthDate" close-text="Sluiten" />
-								<button class="btn btn-default" ng-click="open($event, 'openedBirthDate')">
-									<i class="glyphicon glyphicon-calendar"></i>
-								</button>
-							</p>
-						</div>
-					</div>
-					<label class="control-label" for="email">Emailadres</label>
-					<input type="email" id="email" ng-model="user.email" required />
-					<label class="control-label" for="phone">Telefoonnummer</label>
-					<input type="tel" id="phone" ng-model="user.phone" />
-					<label class="control-label" for="mobilePhone">GSM-nummer</label>
-					<input type="tel" id="mobilePhone" ng-model="user.mobilePhone" />
+                    <input type="text" id="firstName" ng-model="user.first" required/>
+                    <label class="control-label" for="lastName">Achternaam</label>
+                    <input type="text" id="lastName" ng-model="user.last" required/>
+
+                    <div class="control-group">
+                        <label for="birthDate" class="control-label">Geboortedatum</label>
+
+                        <div class="controls datepicker">
+                            <p class="input-append">
+                                <input id="birthDate" type="text" class="form-control" datepicker-popup="{{dateFormat}}"
+                                       ng-model="user.birthDate" datepicker-options="dateOptions"
+                                       is-open="openedBirthDate" close-text="Sluiten"/>
+                                <button class="btn btn-default" ng-click="open($event, 'openedBirthDate')">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </p>
+                        </div>
+                    </div>
+                    <label class="control-label" for="email">Emailadres</label>
+                    <input type="email" id="email" ng-model="user.email" required/>
+                    <label class="control-label" for="phone">Telefoonnummer</label>
+                    <input type="tel" id="phone" ng-model="user.phone"/>
+                    <label class="control-label" for="mobilePhone">GSM-nummer</label>
+                    <input type="tel" id="mobilePhone" ng-model="user.mobilePhone"/>
                 </fieldset>
 
                 <h2>Adres</h2>
-                <ul class="nav nav-list"><li class="divider"></li></ul>
+                <ul class="nav nav-list">
+                    <li class="divider"></li>
+                </ul>
                 <fieldset>
                     <label class="control-label" for="street">Straat</label>
-					<input type="text" id="street" ng-model="user.street"/>
-					<label class="control-label" for="housenumber">Nummer</label>
-					<input type="text" id="housenumber" ng-model="user.houseNumber" />
-					<label class="control-label" for="postalbox">Bus</label>
-					<input type="text" id="postalbox" ng-model="user.postalBox"/>
-					<label class="control-label" for="postalcode">Postcode</label>
-					<input type="text" id="postalcode" ng-model="user.postalCode"/>
-					<label class="control-label" for="city">Stad</label>
-					<input type="text" id="city" ng-model="user.city"/>
-                </fieldset>
-
-                <h2>60 jaar Chiro Elzestraat</h2>
-                <ul class="nav nav-list"><li class="divider"></li></ul>
-                <fieldset>
-					<label class="checkbox">
-						<input type="checkbox" ng-model="user.presentOnReunion">
-						Ik zal aanwezig zijn op de zondagmiddag 14/09 </label>
-
-					<label class="checkbox">
-						<input type="checkbox" ng-model="user.isPhotoBookCandidate">
-						Ik ben geïnteresseerd in het DOL fotoboek </label>
+                    <input type="text" id="street" ng-model="user.street"/>
+                    <label class="control-label" for="housenumber">Nummer</label>
+                    <input type="text" id="housenumber" ng-model="user.houseNumber"/>
+                    <label class="control-label" for="postalbox">Bus</label>
+                    <input type="text" id="postalbox" ng-model="user.postalBox"/>
+                    <label class="control-label" for="postalcode">Postcode</label>
+                    <input type="text" id="postalcode" ng-model="user.postalCode"/>
+                    <label class="control-label" for="city">Stad</label>
+                    <input type="text" id="city" ng-model="user.city"/>
                 </fieldset>
 
                 <h2>Chiro carrière</h2>
-                <ul class="nav nav-list"><li class="divider"></li></ul>
+                <ul class="nav nav-list">
+                    <li class="divider"></li>
+                </ul>
                 <fieldset>
                     <div class="well span12" ng-repeat="membership in user.memberships" style="margin-left:0px;">
                         <div class="control-group span4">
                             <p class="">Chirogroep</p>
-                            <select id="chiroGroup" class="span10" ng-change="checkNewmembership()" ng-model="membership.groupid">
-                                <option ng-repeat="group in groups" value="{{group.id}}" >{{group.name}}</option>
+                            <select id="chiroGroup" class="span10" ng-change="checkNewmembership()"
+                                    ng-model="membership.groupid">
+                                <option ng-repeat="group in groups" value="{{group.id}}">{{group.name}}</option>
                             </select>
                         </div>
                         <div class="control-group span4">
                             <label for="birthDate" class="control-label">Van...</label>
-                            <div class="input-append span10" ng-model="membership.from" month-year-input ng-change="checkNewmembership()">
-                                <input data-format="MM/yyyy" type="text" id="chiroFrom" name="chiroFrom" class="span10" ng-model="membership.from"/>
+
+                            <div class="input-append span10" ng-model="membership.from" month-year-input
+                                 ng-change="checkNewmembership()">
+                                <input data-format="MM/yyyy" type="text" id="chiroFrom" name="chiroFrom" class="span10"
+                                       ng-model="membership.from"/>
                                   <span class="add-on">
                                     <i class="glyphicon glyphicon-calendar"></i>
                                   </span>
@@ -96,13 +98,19 @@
                         </div>
                         <div class="control-group span4">
                             <label for="birthDate" class="control-label">Tot...</label>
-                            <div id="date" class="input-append span10" ng-model="membership.to" month-year-input ng-change="checkNewmembership()">
-                                <input data-format="MM/yyyy" type="text" id="chiroTo" name="chiroTo" class="span10" ng-model="membership.to"/>
+
+                            <div id="date" class="input-append span10" ng-model="membership.to" month-year-input
+                                 ng-change="checkNewmembership()">
+                                <input data-format="MM/yyyy" type="text" id="chiroTo" name="chiroTo" class="span10"
+                                       ng-model="membership.to"/>
                                   <span class="add-on">
                                     <i class="glyphicon glyphicon-calendar"></i>
                                   </span>
                             </div>
                         </div>
+                        <button ng-click="openRemoveMembershipDialog(membership)" class="btn btn-danger" style="float:right;border-radius: 15px;margin-right: -10px;margin-top: -80px;">
+                            <i class="glyphicon glyphicon-remove"></i>
+                        </button>
                         <div id="chiroEvents">
                             <table class="table">
                                 <tr>
@@ -121,24 +129,40 @@
                             </table>
                         </div>
                     </div>
-                    
-                <button ng-click="addNewMembership()" class="btn btn-block" type="button" style="margin-bottom: 1em;">
-					Nieuwe Milestone
-				</button>
 
+                    <button ng-click="addNewMembership()" class="btn btn-primary" type="button"
+                            style="margin-bottom: 1em;float:right;">
+                        Nieuwe chirogroep
+                    </button>
                 </fieldset>
-                
 
+                <h2>60 jaar Chiro Elzestraat</h2>
+                <ul class="nav nav-list">
+                    <li class="divider"></li>
+                </ul>
+                <fieldset>
+                    <label class="checkbox">
+                        <input type="checkbox" ng-model="user.presentOnReunion">
+                        Ik zal aanwezig zijn op de zondagmiddag 14/09 </label>
+                    <label class="checkbox">
+                        <input type="checkbox" ng-model="user.isPhotoBookCandidate">
+                        Ik ben geïnteresseerd in het DOL fotoboek </label>
+                </fieldset>
 
-            <fieldset>
-					<button ng-click="saveUser()" class="btn btn-block btn-primary" type="button" style="margin-bottom: 1em;">
-						Opslaan
-					</button>
+                <ul class="nav nav-list">
+                    <li class="divider"></li>
+                </ul>
+
+                <fieldset>
+                    <button ng-click="saveUser()" class="btn btn-block btn-primary" type="button"
+                            style="margin-bottom: 1em;">
+                        Opslaan
+                    </button>
                     <button ng-click="removeUser()" class="btn btn-block btn-danger" type="button">
                         Verwijderen
                     </button>
-            </fieldset>
-			</form>
-		</div>
-	</div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
 </div>

@@ -29,8 +29,8 @@ angular.module('users', ['userService', 'security.authorization'])
         }
     }])
 
-    .controller('UserDetailCtrl', ['$scope', '$routeParams', '$http', '$location','Users', 'Event', 'Groups',
-        function ($scope, $routeParams, $http,  $location, Users, Events, Groups) {
+    .controller('UserDetailCtrl', ['$scope', '$routeParams', '$http', '$location', '$modal','Users', 'Event', 'Groups',
+        function ($scope, $routeParams, $http,  $location, $modal, Users, Events, Groups) {
         $scope.dateOptions = {
             'year-format': "'yyyy'",
             'starting-day': 1
@@ -90,6 +90,32 @@ angular.module('users', ['userService', 'security.authorization'])
               });
         };
         $scope.groups = Groups.query();
+        $scope.openRemoveMembershipDialog = function(membership, groupName){
+            var openRemoveMembershipDialogInstance = $modal.open({
+                templateUrl: 'js/users/membership-remove.html',
+                controller: 'RemoveMembershipCtrl',
+                resolve: {
+                    membership: function () {
+                        return membership;
+                    },
+                    group: function(){
+                        return $.grep($scope.groups, function(e){ return e.id == membership.groupid; })[0];
+                    }
+                },
+                backdrop: false
+            });
+        };
+    }])
+    .controller('RemoveMembershipCtrl',['$scope', '$modalInstance', 'membership', 'group', 'Users', function($scope, $modalInstance, membership,group,Users){
+        $scope.membership = membership;
+        $scope.group = group;
+        $scope.removeMembership = function(membership){
+            //TODO remove membership and milestone in cascade
+            $modalInstance.dismiss('saved');
+        };
+        $scope.close = function () {
+            $modalInstance.dismiss('cancel');
+        };
     }]);
 
 angular.module('userService', ['ngResource']);
