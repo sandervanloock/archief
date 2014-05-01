@@ -6,7 +6,11 @@ angular.module('photos', ['security.authorization', 'ngResource'])
             controller: 'PhotoUploadCtrl'
         })
     }])
-    .controller('PhotoUploadCtrl', ['$scope', 'fileReader', function ($scope,fileReader) {
+    .controller('PhotoUploadCtrl', ['$scope', 'fileReader', 'Event', function ($scope,fileReader,Events) {
+        $scope.events = Events.query({
+            type: 0
+        });
+
         $scope.progress = function (percentDone) {
             console.log("progress: " + percentDone + "%");
         };
@@ -19,7 +23,9 @@ angular.module('photos', ['security.authorization', 'ngResource'])
 
         $scope.getData = function (files) {
             //this data will be sent to the server with the files
-            return {msg: "from the client", date: new Date()};
+            return {
+                eventid: $scope.eventid
+            };
         };
 
         $scope.error = function (files, type, msg) {

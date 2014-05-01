@@ -36,7 +36,8 @@ class PhotoTable
             'directory'  => $photo->directory,
             'live'  => $photo->live,
             'deleted'  => $photo->deleted,
-            'modified'  => date("Y-m-d H:i:s")
+            'modified'  => date("Y-m-d H:i:s"),
+            'event' => $photo->event
         );
 
         $id = (int) $photo->id;

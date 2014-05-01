@@ -56,6 +56,7 @@ class PhotoController extends AbstractRestfulController
                 $data['title'] = $oneFile['name'];
                 $data['live'] = 1;
                 $data['deleted'] = 0;
+                $data['event'] = $data['eventid'];
                 $photo = new Photo();
                 $photo->exchangeArray($data);
                 $this->getPhotoTable()->savePhoto($photo);

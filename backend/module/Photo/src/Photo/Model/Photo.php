@@ -14,6 +14,7 @@ class Photo implements InputFilterAwareInterface
     public $deleted;
     public $created;
     public $modified;
+    public $event;
     protected $inputFilter;
 
     public function exchangeArray($data)
@@ -25,6 +26,7 @@ class Photo implements InputFilterAwareInterface
         $this->deleted = isset($data['deleted']) ? $data['deleted'] : 0;
         $this->created = (!empty($data['created'])) ? $data['created'] : null;
         $this->modified = (!empty($data['modified'])) ? $data['modified'] : null;
+        $this->event = (!empty($data['event'])) ? $data['event'] : null;
     }
 
     public function getArrayCopy()
