@@ -10,13 +10,6 @@ eventService.factory('Event', ['$resource', 'configuration',
         });
     }]);
 
-var photoService = angular.module('photoService', ['ngResource']);
-
-photoService.factory('photoService', ['$resource', 'configuration', function ($resource, configuration) {
-    return $resource(configuration.ARCHIVE_SERVER_CONFIG + 'photo/:photoId', {}, {
-    });
-}]);
-
 var groupService = angular.module('groupService', ['ngResource']);
 
 groupService.factory('Groups', ['$resource', 'configuration', function ($resource, configuration) {

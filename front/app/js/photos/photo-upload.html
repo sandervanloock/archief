@@ -1,0 +1,25 @@
+<div class="container view-container">
+    <div class="row-fluid">
+        <form class="user-detail" style="width: 50%;margin: auto;">
+            <lvl-file-upload
+                    auto-upload='false'
+                    choose-file-button-text='Kies afbeeldingen'
+                    upload-file-button-text='Afbeeldingen uploaden'
+                    max-files='10'
+                    max-file-size-mb='500'
+                    get-additional-data='getData(files)'
+                    on-done='done(files, data)'
+                    on-progress='progress(percentDone)'
+                    on-error='error(files, type, msg)'
+                    on-preview='previewImage(file)'/>
+        </form>
+    </div>
+    <ul class="thumbnails">
+        <li class="span3" ng-repeat="image in images">
+            <div class="thumbnail">
+                <img ng-src="{{image}}"/>
+            </div>
+        </li>
+    </ul>
+
+</div>
