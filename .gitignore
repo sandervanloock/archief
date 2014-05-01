@@ -1,6 +1,6 @@
 *.ini
-data/
-thumbs/
+backend/data/
+backend/thumbs/
 ZendFramework/
 front/app/bower_components/
 front/config/environments/development.json
