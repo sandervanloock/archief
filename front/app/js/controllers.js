@@ -219,7 +219,7 @@ appControllers.controller('ArchiefCtrl', [
             }
             var html = "<div class='slider-wrapper theme-default'><div class='ribbon'></div><div class='nivoSlider'>";
             for (var i = 0; i < photos.length; i++) {
-                var photoDir = configuration.STATIC_SERVER_CONFIG + "data/" + photos[i].directory;
+                var photoDir = configuration.STATIC_SERVER_CONFIG + "data" + photos[i].directory;
                 html += "<a class='popup-image' href='" + photoDir + "'>" +
                     "<img src='" + photoDir
                     + "' alt='" + photos[i].title

@@ -175,7 +175,7 @@ angular.module("lvl.directives.fileupload", ['photos'])
                 fileLabel.attr("for", fileId);
 
                 return function postLink(scope, el, attrs, ctl) {
-                    var uploadUrl = configuration.ARCHIVE_SERVER_CONFIG + 'photo/upload';
+                    var uploadUrl = configuration.ARCHIVE_SERVER_CONFIG + 'photo';
                     scope.files = [];
                     scope.showUploadButton = false;
 

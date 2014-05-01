@@ -4,6 +4,8 @@ namespace Photo\Controller;
 use Zend\Mvc\Controller\AbstractRestfulController;
 use Photo\Model\Photo;
 use Zend\View\Model\JsonModel;
+use Zend\Validator\File\Size;
+use Framework\Template\Exception;
 
 class PhotoController extends AbstractRestfulController
 {
@@ -37,12 +39,32 @@ class PhotoController extends AbstractRestfulController
     public function create($data)
     {
         $data['id']=0;
-        $album = new Photo();
-        //TODO validation
-        $album->exchangeArray($data);
-        $id = $this->getPhotoTable()->savePhoto($album);
+        $file = $this->params()->fromFiles();
+        $upload = new \Zend\File\Transfer\Adapter\Http();
+        $uploadDirectory = 'data\\uploads\\' . date_create()->format("Y-m-d");
+        if(!is_dir($uploadDirectory)){
+            mkdir($uploadDirectory);
+        }
+        $upload->setDestination($uploadDirectory);
+        if (!$upload->isValid()) {
+            throw new Exception('Bad image data: ' . implode(',', $upload->getMessages()));
+        }
+        try {
+            foreach($file as $oneFile){
+                $upload->receive($oneFile['name']);
+                $data['directory'] = $uploadDirectory.'\\'.$oneFile['name'];
+                $data['title'] = $oneFile['name'];
+                $data['live'] = 1;
+                $data['deleted'] = 0;
+                $photo = new Photo();
+                $photo->exchangeArray($data);
+                $this->getPhotoTable()->savePhoto($photo);
+            }
+        } catch (\Zend\File\Transfer\Exception $e) {
+            throw new Exception('Bad image data: ' . $e->getMessage());
+        }
         return new JsonModel(array(
-            'photo' => $id,
+            'photo' => 'ok',
         ));
     }
 

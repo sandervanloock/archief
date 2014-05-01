@@ -36,12 +36,12 @@ class PhotoTable
             'directory'  => $photo->directory,
             'live'  => $photo->live,
             'deleted'  => $photo->deleted,
-            'created'  => $photo->created,
-            'modified'  => $photo->modified,
+            'modified'  => date("Y-m-d H:i:s")
         );
 
         $id = (int) $photo->id;
         if ($id == 0) {
+            $data["created"] = date("Y-m-d H:i:s");
             $this->photoGateway->insert($data);
         } else {
             if ($this->getPhoto($id)) {
