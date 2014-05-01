@@ -50,7 +50,8 @@ class EventController extends AbstractRestfulController
         if(!empty($type)){
             $events = $this->getEventTable()->fetchAllFromType($type);
             foreach ($events as $event) {
-                $eventPhotos = $this->getEventTable()->fetchAllEventPhotos($event->id);
+                //only get first live foto to show in list of admin
+                $eventPhotos = $this->getEventTable()->fetchAllLiveEventPhotos($event->id, 1);
                 $event->setPhotos($eventPhotos->toArray());
                 array_push($variables, $event);
             }
@@ -59,8 +60,8 @@ class EventController extends AbstractRestfulController
         else if(!empty($from) and !empty($to)){
             $events = $this->getEventTable()->fetchAllLiveEventsInRange($from,$to);
             foreach ($events as $event) {
-                $eventPhotos = $this->getEventTable()->fetchAllLiveEventPhotos($event->id, 1);
-                $event->setPhotos($eventPhotos->toArray());
+//                $eventPhotos = $this->getEventTable()->fetchAllLiveEventPhotos($event->id, 1);
+//                $event->setPhotos($eventPhotos->toArray());
                 array_push($variables, $event);
             }
         }
