@@ -98,7 +98,8 @@ class PhotoController extends AbstractRestfulController
             foreach($file as $oneFile){
                 $upload->receive($oneFile['name']);
                 $this->createThumbnail($uploadDirectory.'/',$oneFile['name'],$thumbDirectory.'/');
-                $data['directory'] = '/'.$oneFile['name'];
+                $directory = substr($uploadDirectory,strpos($uploadDirectory,'/'),strlen($uploadDirectory));
+                $data['directory'] = $directory.'/'.$oneFile['name'];
                 $data['title'] = $oneFile['name'];
                 $data['live'] = 1;
                 $data['deleted'] = 0;
