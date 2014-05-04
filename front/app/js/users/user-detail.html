@@ -80,8 +80,7 @@
                         <div class="control-group span4">
                             <p class="">Chirogroep</p>
                             <select id="chiroGroup" class="span10" ng-change="checkNewmembership()"
-                                    ng-model="membership.groupid">
-                                <option ng-repeat="group in groups" value="{{group.id}}">{{group.name}}</option>
+                                    ng-model="membership.groupid" ng-options="opt as opt.name for opt in groups">
                             </select>
                         </div>
                         <div class="control-group span4">

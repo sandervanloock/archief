@@ -46,14 +46,26 @@ angular.module('users', ['userService', 'security.authorization'])
         if($routeParams.userId){
             Users.get({id: $routeParams.userId},function(data){
                 $scope.user = data.user;
+                Groups.query({},function(groups){
+                    $scope.groups = groups;
+                    $scope.user.memberships.forEach(function(membership){
+                        membership.groupid = $.grep($scope.groups, function(e){ return e.id == membership.groupid; })[0];
+                    })
+                });
             });
         }
         $scope.saveUser = function () {
+            $scope.user.memberships.forEach(function(membership){
+                membership.groupid = membership.groupid.id;
+            })
             if($scope.user.id){
                 Users.update({userId: $scope.user.id}, $scope.user);
             } else{
                 Users.save($scope.user);
             }
+            $scope.user.memberships.forEach(function(membership){
+                membership.groupid = $.grep($scope.groups, function(e){ return e.id == membership.groupid; })[0];
+            })
         };
         $scope.removeUser = function () {
             Users.remove({userId: $scope.user.id});
@@ -89,7 +101,6 @@ angular.module('users', ['userService', 'security.authorization'])
                 groupid: "0"
               });
         };
-        $scope.groups = Groups.query();
         $scope.openRemoveMembershipDialog = function(membership, groupName){
             var openRemoveMembershipDialogInstance = $modal.open({
                 templateUrl: 'js/users/membership-remove.html',
