@@ -1,9 +1,20 @@
 <div class="container-fluid center-block">
 	<div class="modal-header">
-		<form class="form-inline">
-			<img class="icon" src="images/glyphicons/png/glyphicons_195_circle_info.png"/>
-			<input type="text" id="exampleInputEmail1" placeholder="Naam van foto" value="{{photo.title}}">
-			<img class="icon" ng-click="close()" src="images/glyphicons/png/glyphicons_192_circle_remove.png" style="float: right;"/>
+		<form class="form-horizontal photoForm">
+            <table class="container-fluid" style="display:table; width: 100%;">
+                <tr class="row-fluid" style="display:table-row;">
+                    <td class="span1"><img class="icon" src="images/glyphicons/png/glyphicons_195_circle_info.png"/></td>
+                    <td class="span5">
+                        <input type="text" style="width:90%;" id="exampleInputEmail1" placeholder="Naam van foto" value="{{photo.title}}">
+                    </td>
+                    <td class="span5">
+                        <select id="chiroGroup" ng-model="eventid" style="width:90%;">
+                            <option ng-repeat="event in events" value="{{event.id}}">{{event.name}}</option>
+                        </select>
+                    </td>
+                    <td class="span1"><img class="icon" ng-click="close()" src="images/glyphicons/png/glyphicons_192_circle_remove.png"/></td>
+                </tr>
+            </table>
 		</form>
 	</div>
 	<div class="modal-body max-height">

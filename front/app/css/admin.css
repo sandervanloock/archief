@@ -8,10 +8,6 @@
     height: 40px !important;
 }
 
-.container{
-
-}
-
 .navbar .brand{
     padding: 4px 20px !important;
 }
@@ -98,6 +94,10 @@ a:active {
 
 .photos img{
 	cursor: pointer;
+}
+
+.photoForm td{
+    display: table-cell;
 }
 
 .modal-header .form-inline{

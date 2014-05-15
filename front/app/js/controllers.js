@@ -120,10 +120,14 @@ appControllers.controller('PhotoCtrl', [
     '$scope',
     '$modalInstance',
     '$http',
+    'Event',
     'photoService',
     'selectedPhoto',
     'configuration',
-    function ($scope, $modalInstance, $http, photoService, selectedPhoto, configuration) {
+    function ($scope, $modalInstance, $http, Events, photoService, selectedPhoto, configuration) {
+        $scope.events = Events.query({
+            type: 0
+        });
         $scope.photo = selectedPhoto;
         $scope.staticServer = configuration.STATIC_SERVER_CONFIG;
         $scope.toggleState = function () {

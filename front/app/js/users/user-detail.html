@@ -20,7 +20,7 @@
         </div>
         <div class="span10">
             <!--Body content-->
-            <form class="user-detail">
+            <form class="user-detail" name="user-form">
 
                 <h2>Contactgegevens</h2>
                 <ul class="nav nav-list">
@@ -80,7 +80,8 @@
                         <div class="control-group span4">
                             <p class="">Chirogroep</p>
                             <select id="chiroGroup" class="span10" ng-change="checkNewmembership()"
-                                    ng-model="membership.groupid" ng-options="opt as opt.name for opt in groups">
+                                    ng-model="membership.groupid">
+                                <option ng-repeat="group in groups" value="{{group.id}}">{{group.name}}</option>
                             </select>
                         </div>
                         <div class="control-group span4">
@@ -107,7 +108,7 @@
                                   </span>
                             </div>
                         </div>
-                        <button ng-click="openRemoveMembershipDialog(membership)" class="btn btn-danger" style="float:right;border-radius: 15px;margin-right: -10px;margin-top: -80px;">
+                        <button ng-click="openRemoveMembershipDialog(membership,$index)" class="btn btn-danger" style="float:right;border-radius: 15px;margin-right: -10px;margin-top: -80px;">
                             <i class="glyphicon glyphicon-remove"></i>
                         </button>
                         <div id="chiroEvents">
@@ -153,10 +154,15 @@
                 </ul>
 
                 <fieldset>
-                    <button ng-click="saveUser()" class="btn btn-block btn-primary" type="button"
+                    <div class="alert alert-success" ng-show="showSuccessSubmit">
+                        <strong>Klaar!</strong> U bent met succes geregistreerd.
+                    </div>
+                    <div class="alert alert-error" ng-show="showSuccessFailure">
+                        <strong>Error!</strong> Er is iets misgegaan,  probeer het later opniew.
+                    </div>
+                    <input type="submit" ng-click="saveUser()" class="btn btn-block btn-primary"
                             style="margin-bottom: 1em;">
-                        Opslaan
-                    </button>
+                    </input>
                     <button ng-click="removeUser()" class="btn btn-block btn-danger" type="button">
                         Verwijderen
                     </button>

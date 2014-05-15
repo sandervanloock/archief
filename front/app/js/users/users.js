@@ -46,26 +46,41 @@ angular.module('users', ['userService', 'security.authorization'])
         if($routeParams.userId){
             Users.get({id: $routeParams.userId},function(data){
                 $scope.user = data.user;
-                Groups.query({},function(groups){
-                    $scope.groups = groups;
-                    $scope.user.memberships.forEach(function(membership){
-                        membership.groupid = $.grep($scope.groups, function(e){ return e.id == membership.groupid; })[0];
-                    })
-                });
+//                Groups.query({},function(groups){
+//                    $scope.groups = groups;
+//                    $scope.user.memberships.forEach(function(membership){
+//                        membership.groupid = $.grep($scope.groups, function(e){ return e.id == membership.groupid; })[0];
+//                    })
+//                });
             });
+        } else {
+            //retrieve all chiro groups
         }
+        Groups.query({},function(groups){
+            $scope.groups = groups;
+        });
         $scope.saveUser = function () {
-            $scope.user.memberships.forEach(function(membership){
-                membership.groupid = membership.groupid.id;
-            })
+//            if($scope.user.memberships){
+//                $scope.user.memberships.forEach(function(membership){
+//                    membership.groupid = membership.groupid.id;
+//                })
+//            }
             if($scope.user.id){
                 Users.update({userId: $scope.user.id}, $scope.user);
             } else{
-                Users.save($scope.user);
+                Users.save($scope.user,function(){
+                    $scope.showSuccessSubmit = true;
+                    $scope.showSuccessFailure = false;
+                },function(){
+                    $scope.showSuccessSubmit = false;
+                    $scope.showSuccessFailure   = true;
+                });
             }
-            $scope.user.memberships.forEach(function(membership){
-                membership.groupid = $.grep($scope.groups, function(e){ return e.id == membership.groupid; })[0];
-            })
+//            if($scope.user.memberships){
+//                $scope.user.memberships.forEach(function(membership){
+//                    membership.groupid = $.grep($scope.groups, function(e){ return e.id == membership.groupid; })[0];
+//                })
+//            }
         };
         $scope.removeUser = function () {
             Users.remove({userId: $scope.user.id});
@@ -101,20 +116,21 @@ angular.module('users', ['userService', 'security.authorization'])
                 groupid: "0"
               });
         };
-        $scope.openRemoveMembershipDialog = function(membership, groupName){
-            var openRemoveMembershipDialogInstance = $modal.open({
-                templateUrl: 'js/users/membership-remove.html',
-                controller: 'RemoveMembershipCtrl',
-                resolve: {
-                    membership: function () {
-                        return membership;
-                    },
-                    group: function(){
-                        return $.grep($scope.groups, function(e){ return e.id == membership.groupid; })[0];
-                    }
-                },
-                backdrop: false
-            });
+        $scope.openRemoveMembershipDialog = function(membership, index){
+            $scope.user.memberships.splice(index,1);
+//            var openRemoveMembershipDialogInstance = $modal.open({
+//                templateUrl: 'js/users/membership-remove.html',
+//                controller: 'RemoveMembershipCtrl',
+//                resolve: {
+//                    membership: function () {
+//                        return membership;
+//                    },
+//                    group: function(){
+//                        return $.grep($scope.groups, function(e){ return e.id == membership.groupid; })[0];
+//                    }
+//                },
+//                backdrop: false
+//            });
         };
     }])
     .controller('RemoveMembershipCtrl',['$scope', '$modalInstance', 'membership', 'group', 'Users', function($scope, $modalInstance, membership,group,Users){
