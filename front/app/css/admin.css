@@ -246,7 +246,7 @@ h1 {
 }
 
 .user-detail{
-    /*margin: 4em;*/
+    margin: 4em;
 }
 
 .carrier-container{
@@ -263,10 +263,6 @@ h1 {
 .user-detail h2{
      font-size: 20px;
  }
-.user-detail [class*="span"]{
-    margin-left: 10px !important;
-}
-
 
 /* -------------- USERS -------------------- */
 
