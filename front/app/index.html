@@ -44,13 +44,13 @@
         <a class="brand" href="#home" ng-click="changePage('home')">Archief Chiro Elzestraat</a>
         <ul class="nav pull-left" ng-show="isAuthenticated()">
             <li ng-class="{active: activePage=='users'}">
-                <a href="#users" ng-click="changePage('users')">Gebruikers</a>
+                <a href="#users" ng-click="changePage('users')" ng-cloak>Gebruikers</a>
             </li>
             <li ng-class="{active: activePage=='photos'}">
-                <a href="#photos" ng-click="changePage('photos')">Foto's</a>
+                <a href="#photos" ng-click="changePage('photos')" ng-cloak>Foto's</a>
             </li>
             <li ng-class="{active: activePage=='events'}" class="dropdown">
-                <a class="dropdown-toggle" href="#events" ng-click="changePage('events')">Evenementen</a>
+                <a class="dropdown-toggle" href="#events" ng-click="changePage('events')" ng-cloak>Evenementen</a>
                 <ul class="dropdown-menu">
                     <li><a ng-click="changePage('events')" href="#events?type=1">Chirojaren</a></li>
                     <li><a ng-click="changePage('events')" href="#events?type=2">Kampen</a></li>
