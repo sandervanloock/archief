@@ -1,6 +1,6 @@
 <form name="form" novalidate class="login-form">
     <div class="modal-header">
-        <h4>Sign in</h4>
+        <h4>Aanmelden</h4>
     </div>
     <div class="modal-body">
         <div class="alert alert-warning" ng-show="authReason">
@@ -9,15 +9,15 @@
         <div class="alert alert-error" ng-show="authError">
             {{authError}}
         </div>
-        <div class="alert alert-info">Please enter your login details</div>
-        <label>User</label>
+        <div class="alert alert-info">Gelieve u inloggegevens in te voeren</div>
+        <label>E-mailadres</label>
         <input name="login" type="text" ng-model="user.login" required autofocus>
-        <label>Password</label>
+        <label>Paswoord</label>
         <input name="pass" type="password" ng-model="user.password" required>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary login" ng-click="login()" ng-disabled='form.$invalid'>Sign in</button>
-        <button class="btn clear" ng-click="clearForm()">Clear</button>
-        <button class="btn btn-warning cancel" ng-click="cancelLogin()">Cancel</button>
+        <button class="btn btn-primary login" ng-click="login()" ng-disabled='form.$invalid'>Login</button>
+        <button class="btn clear" ng-click="clearForm()">Wissen</button>
+        <button class="btn btn-warning cancel" ng-click="cancelLogin()">Annuleren</button>
     </div>
 </form>
