@@ -39,7 +39,6 @@ angular.module('users', ['userService', 'security.authorization'])
         $scope.open = function ($event, opened) {
             $event.preventDefault();
             $event.stopPropagation();
-
             $scope[opened] = true;
         };
         $scope.user = {};
@@ -132,6 +131,7 @@ angular.module('users', ['userService', 'security.authorization'])
 //                backdrop: false
 //            });
         };
+        $scope.addNewMembership();
     }])
     .controller('RemoveMembershipCtrl',['$scope', '$modalInstance', 'membership', 'group', 'Users', function($scope, $modalInstance, membership,group,Users){
         $scope.membership = membership;
