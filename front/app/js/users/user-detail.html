@@ -39,16 +39,17 @@
                     <li class="divider"></li>
                 </ul>
                 <fieldset>
-                    <label class="control-label" for="street">Straat</label>
-                    <input type="text" id="street" ng-model="user.street"/>
-                    <label class="control-label" for="housenumber">Nummer</label>
-                    <input type="text" id="housenumber" ng-model="user.houseNumber"/>
-                    <label class="control-label" for="postalbox">Bus</label>
-                    <input type="text" id="postalbox" ng-model="user.postalBox"/>
-                    <label class="control-label" for="postalcode">Postcode</label>
-                    <input type="text" id="postalcode" ng-model="user.postalCode"/>
-                    <label class="control-label" for="city">Stad</label>
-                    <input type="text" id="city" ng-model="user.city"/>
+                    <!--<label class="control-label" for="street">Straat</label>-->
+                    <!--<input type="text" id="street" ng-model="user.street"/>-->
+                    <!--<label class="control-label" for="housenumber">Nummer</label>-->
+                    <!--<input type="text" id="housenumber" ng-model="user.houseNumber"/>-->
+                    <!--<label class="control-label" for="postalbox">Bus</label>-->
+                    <!--<input type="text" id="postalbox" ng-model="user.postalBox"/>-->
+                    <!--<label class="control-label" for="postalcode">Postcode</label>-->
+                    <!--<input type="text" id="postalcode" ng-model="user.postalCode"/>-->
+                    <!--<label class="control-label" for="city">Stad</label>-->
+                    <!--<input type="text" id="city" ng-model="user.city"/>-->
+                    <input type="text" id="address" ng-autocomplete="user.address" ng-model="user.address" details="user.addressDetails" options="{country:'be'}" class="span10" placeholder="Geef uw adres op"/>
                 </fieldset>
 
                 <h2>Chiro carrière</h2>

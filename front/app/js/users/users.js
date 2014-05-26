@@ -85,6 +85,35 @@ angular.module('users', ['userService', 'security.authorization'])
             Users.remove({userId: $scope.user.id});
             $location.path("/users");
         };
+        $scope.$watch('user.addressDetails',function(){
+            var componentForm = {
+                street_number: 'short_name',
+                route: 'long_name',
+                locality: 'long_name',
+                administrative_area_level_1: 'short_name',
+                country: 'long_name',
+                postal_code: 'short_name'
+            };
+            var place = $scope.user.addressDetails;
+            if($scope.user.addressDetails){
+                for (var i = 0; i < place.address_components.length; i++) {
+                    var addressType = place.address_components[i].types[0];
+                    if (componentForm[addressType]) {
+                        var val =  place.address_components[i][componentForm[addressType]];
+                        switch(addressType){
+                            case 'street_number':
+                                $scope.user.houseNumber =  val;
+                            case 'route':
+                                $scope.user.street = val;
+                            case 'locality':
+                                $scope.user.city = val;
+                            case 'postal_code':
+                                $scope.user.postalCode = val;
+                        }
+                    }
+                }
+            }
+        });
         $scope.checkNewmembership = function(){
             var numberOfMemberships = $scope.user.memberships.length;
             var lastMembership = $scope.user.memberships[numberOfMemberships - 1];

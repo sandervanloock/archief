@@ -1,5 +1,5 @@
 var app = angular.module('app',
-    [ 'ngRoute', 'appControllers', 'eventService', 'photos', 'users', 'groupService', 'security', 'arrayFilters', 'ui.bootstrap', 'angularSpinner', 'services.config', 'lvl.directives.fileupload' ]);
+    [ 'ngRoute', 'appControllers', 'eventService', 'photos', 'users', 'groupService', 'security', 'arrayFilters', 'ui.bootstrap', 'angularSpinner', 'services.config', 'lvl.directives.fileupload', 'ngAutocomplete' ]);
 
 angular.module('app').run(['security', function (security) {
     // Get the current user when the application starts
@@ -28,17 +28,17 @@ app.config([ '$routeProvider', 'securityAuthorizationProvider', function ($route
         });
 } ]);
 
-app.directive('monthYearInput', function() {
+app.directive('monthYearInput', function () {
     return {
         restrict: 'A',
         require: 'ngModel',
-        link: function(scope, element, attrs, ngModelCtrl) {
+        link: function (scope, element, attrs, ngModelCtrl) {
             element.datetimepicker({
                 format: "MM/yyyy",
                 viewMode: "months",
                 minViewMode: "months",
                 pickTime: false,
-            }).on('changeDate', function(e) {
+            }).on('changeDate', function (e) {
                     ngModelCtrl.$setViewValue(e.date);
                     scope.$apply();
                 });
@@ -49,9 +49,9 @@ app.directive('monthYearInput', function() {
 
 app.directive('moDateInput', function ($window) {
     return {
-        require:'^ngModel',
-        restrict:'A',
-        link:function (scope, elm, attrs, ctrl) {
+        require: '^ngModel',
+        restrict: 'A',
+        link: function (scope, elm, attrs, ctrl) {
             var moment = $window.moment;
             var dateFormat = attrs.moMediumDate;
             attrs.$observe('moDateInput', function (newValue) {
@@ -78,9 +78,9 @@ app.directive('moDateInput', function ($window) {
 
 app.directive('moChangeProxy', function ($parse) {
     return {
-        require:'^ngModel',
-        restrict:'A',
-        link:function (scope, elm, attrs, ctrl) {
+        require: '^ngModel',
+        restrict: 'A',
+        link: function (scope, elm, attrs, ctrl) {
             var proxyExp = attrs.moChangeProxy;
             var modelExp = attrs.ngModel;
             scope.$watch(proxyExp, function (nVal) {
@@ -89,8 +89,8 @@ app.directive('moChangeProxy', function ($parse) {
             });
             elm.bind('blur', function () {
                 var proxyVal = scope.$eval(proxyExp);
-                if(ctrl.$modelValue != proxyVal) {
-                    scope.$apply(function(){
+                if (ctrl.$modelValue != proxyVal) {
+                    scope.$apply(function () {
                         $parse(proxyExp).assign(scope, ctrl.$modelValue);
                     });
                 }
