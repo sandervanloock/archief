@@ -2,14 +2,14 @@
     <div class="row-fluid">
         <div class="span2"></div>
         <div class="span10">
-            <form class="user-detail" name="user-form">
+            <form class="user-detail" name="user-form" ng-submit="saveUser()">
                 <h2>Contactgegevens</h2>
                 <ul class="nav nav-list">
                     <li class="divider"></li>
                 </ul>
                 <fieldset>
                     <label class="control-label" for="firstName">Voornaam</label>
-                    <input type="text" id="firstName" ng-model="user.first" required autofocus placeholder="Voornaam"/>
+                    <input type="text" id="firstName" name="firstName" ng-model="user.first" required placeholder="Voornaam"/>
                     <label class="control-label" for="lastName">Achternaam</label>
                     <input type="text" id="lastName" ng-model="user.last" required placeholder="Achternaam"/>
                     <label class="control-label" for="email">E-mail adres</label>
@@ -27,9 +27,9 @@
                         </div>
                     </div>
                     <label class="control-label" for="phone">Telefoonnummer</label>
-                    <input type="tel" id="phone" ng-model="user.phone"/>
+                    <input type="tel" id="phone" ng-model="user.phone" placeholder="000 00 00 00"/>
                     <label class="control-label" for="mobilePhone">GSM-nummer</label>
-                    <input type="tel" id="mobilePhone" ng-model="user.mobilePhone"/>
+                    <input type="tel" id="mobilePhone" ng-model="user.mobilePhone" placeholder="0000 00 00 00"/>
                 </fieldset>
 
                 <h2>Adres</h2>
@@ -37,7 +37,23 @@
                     <li class="divider"></li>
                 </ul>
                 <fieldset>
-                    <input type="text" id="address" ng-autocomplete="user.address" ng-model="user.address" details="user.addressDetails" options="{country:'be'}" class="span10" placeholder="Geef uw adres op" autocomplete="on"/>
+                    <input type="text" id="address" ng-autocomplete="user.address" ng-model="user.address" details="user.addressDetails" options="{country:'be'}" class="span12" placeholder="Geef uw adres op" autocomplete="on"/>
+                    <div style="float:right;">
+                        <div id="map_canvas" ui-map="model.myMap" style="width: 430px;height: 230px;" ui-options="mapOptions">
+                        </div>
+                        <div ng-repeat="marker in myMarkers" ui-map-marker="myMarkers[$index]">
+                        </div>
+                    </div>
+                    <label class="control-label" for="street">Straat</label>
+                    <input type="text" id="street" ng-model="user.street" disabled/>
+                    <label class="control-label" for="housenumber">Nummer</label>
+                    <input type="text" id="housenumber" ng-model="user.houseNumber" disabled/>
+                    <!--<label class="control-label" for="postalbox">Bus</label>-->
+                    <!--<input type="text" id="postalbox" ng-model="user.postalBox" disabled/>-->
+                    <label class="control-label" for="postalcode">Postcode</label>
+                    <input type="text" id="postalcode" ng-model="user.postalCode" disabled/>
+                    <label class="control-label" for="city">Stad</label>
+                    <input type="text" id="city" ng-model="user.city" disabled/>
                 </fieldset>
 
                 <h2>Chiro carrière</h2>
@@ -49,8 +65,7 @@
                         <div class="control-group span4">
                             <p class="">Chirogroep</p>
                             <select id="chiroGroup" class="span10" ng-change="checkNewmembership()"
-                                    ng-model="membership.groupid">
-                                <option ng-repeat="group in groups" value="{{group.id}}">{{group.name}}</option>
+                                    ng-model="membership.groupid" ng-options="opt.id as opt.name for opt in groups">
                             </select>
                         </div>
                         <div class="control-group span4">
@@ -80,10 +95,10 @@
                         <button ng-click="openRemoveMembershipDialog(membership,$index)" class="btn btn-danger" style="float:right;border-radius: 15px;margin-right: -10px;margin-top: -80px;">
                             <i class="glyphicon glyphicon-remove"></i>
                         </button>
-                        <div id="chiroEvents">
+                        <div id="chiroEvents" ng-show="membership.milestones.length>0">
                             <table class="table">
                                 <tr>
-                                    <th>Bevestig aanwezigheid</th>
+                                    <th>Was je hier aanwezig?</th>
                                     <th>Extra info (optioneel)</th>
                                 </tr>
                                 <tr ng-repeat="milestone in membership.milestones">
@@ -92,7 +107,7 @@
                                         {{milestone.start | date:'dd/MM/yyyy'}} - {{milestone.end | date:'dd/MM/yyyy'}}
                                     </td>
                                     <td>
-                                        <input type="text" class="span5" ng-model="milestone.remarks"/>
+                                        <input type="text" class="span8" ng-model="milestone.remarks"/>
                                     </td>
                                 </tr>
                             </table>
@@ -129,7 +144,7 @@
                     <div class="alert alert-error" ng-show="showSuccessFailure">
                         <strong>Error!</strong> Er is iets misgegaan,  probeer het later opniew.
                     </div>
-                    <input type="submit" ng-click="saveUser()" class="btn btn-block btn-primary"
+                    <input type="submit" class="btn btn-block btn-primary"
                            style="margin-bottom: 1em;">
                     </input>
                     <button ng-click="removeUser()" class="btn btn-block btn-danger" type="button">
