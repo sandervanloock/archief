@@ -28,6 +28,24 @@ app.config([ '$routeProvider', 'securityAuthorizationProvider', function ($route
         });
 } ]);
 
+app.directive('birthdayInput', function () {
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function (scope, element, attrs, ngModelCtrl) {
+            element.datetimepicker({
+                format: "dd/MM/yyyy",
+//                viewMode: "months",
+//                minViewMode: "months",
+                pickTime: false
+            }).on('changeDate', function (e) {
+                    ngModelCtrl.$setViewValue(e.date);
+                    scope.$apply();
+                });
+        }
+    };
+});
+
 app.directive('monthYearInput', function () {
     return {
         restrict: 'A',
@@ -37,7 +55,7 @@ app.directive('monthYearInput', function () {
                 format: "MM/yyyy",
                 viewMode: "months",
                 minViewMode: "months",
-                pickTime: false,
+                pickTime: false
             }).on('changeDate', function (e) {
                     ngModelCtrl.$setViewValue(e.date);
                     scope.$apply();

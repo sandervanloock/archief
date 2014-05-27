@@ -12,26 +12,24 @@
                     <input type="text" id="firstName" ng-model="user.first" required autofocus placeholder="Voornaam"/>
                     <label class="control-label" for="lastName">Achternaam</label>
                     <input type="text" id="lastName" ng-model="user.last" required placeholder="Achternaam"/>
-                    <label class="control-label" for="email">Emailadres</label>
+                    <label class="control-label" for="email">E-mail adres</label>
                     <input type="email" id="email" ng-model="user.email" required placeholder="naam@email.com"/>
+                    <div class="control-group">
+                        <label for="birthDate" class="control-label">Geboortedatum</label>
+
+                        <div class="input-append" ng-model="user.birthDate" birthday-input
+                             ng-change="checkNewmembership()">
+                            <input data-format="dd/MM/yyyy" type="text" id="birthDate" name="birthDate"
+                                   ng-model="user.birthDate" placeholder="dd/MM/yyyy"/>
+                                  <span class="add-on">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                  </span>
+                        </div>
+                    </div>
                     <label class="control-label" for="phone">Telefoonnummer</label>
                     <input type="tel" id="phone" ng-model="user.phone"/>
                     <label class="control-label" for="mobilePhone">GSM-nummer</label>
                     <input type="tel" id="mobilePhone" ng-model="user.mobilePhone"/>
-                    <div class="control-group">
-                        <label for="birthDate" class="control-label">Geboortedatum</label>
-
-                        <div class="controls datepicker">
-                            <p class="input-append">
-                                <input id="birthDate" type="text" class="form-control" datepicker-popup="{{dateFormat}}"
-                                       ng-model="user.birthDate" datepicker-options="dateOptions"
-                                       is-open="openedBirthDate" close-text="Sluiten" placeholder="{{dateFormat}}"/>
-                                <button class="btn btn-default" ng-click="open($event, 'openedBirthDate')">
-                                    <i class="glyphicon glyphicon-calendar"></i>
-                                </button>
-                            </p>
-                        </div>
-                    </div>
                 </fieldset>
 
                 <h2>Adres</h2>
@@ -39,17 +37,7 @@
                     <li class="divider"></li>
                 </ul>
                 <fieldset>
-                    <!--<label class="control-label" for="street">Straat</label>-->
-                    <!--<input type="text" id="street" ng-model="user.street"/>-->
-                    <!--<label class="control-label" for="housenumber">Nummer</label>-->
-                    <!--<input type="text" id="housenumber" ng-model="user.houseNumber"/>-->
-                    <!--<label class="control-label" for="postalbox">Bus</label>-->
-                    <!--<input type="text" id="postalbox" ng-model="user.postalBox"/>-->
-                    <!--<label class="control-label" for="postalcode">Postcode</label>-->
-                    <!--<input type="text" id="postalcode" ng-model="user.postalCode"/>-->
-                    <!--<label class="control-label" for="city">Stad</label>-->
-                    <!--<input type="text" id="city" ng-model="user.city"/>-->
-                    <input type="text" id="address" ng-autocomplete="user.address" ng-model="user.address" details="user.addressDetails" options="{country:'be'}" class="span10" placeholder="Geef uw adres op"/>
+                    <input type="text" id="address" ng-autocomplete="user.address" ng-model="user.address" details="user.addressDetails" options="{country:'be'}" class="span10" placeholder="Geef uw adres op" autocomplete="on"/>
                 </fieldset>
 
                 <h2>Chiro carrière</h2>
