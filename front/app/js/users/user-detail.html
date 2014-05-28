@@ -98,16 +98,16 @@
                         <div id="chiroEvents" ng-show="membership.milestones.length>0">
                             <table class="table">
                                 <tr>
-                                    <th>Was je hier aanwezig?</th>
-                                    <th>Extra info (optioneel)</th>
+                                    <th class="span4">Was je hier aanwezig?</th>
+                                    <th class="span8">Extra info (optioneel) <span popover="Alle extra informatie en/of anekdotes dat u hier kan neerschrijven zijn handig om ons archief uit te bouwen" popover-trigger="mouseenter" class="glyphicon icon-question-sign" ng-mouseover/></th>
                                 </tr>
                                 <tr ng-repeat="milestone in membership.milestones">
-                                    <td>
+                                    <td class="span4">
                                         <label class="checkbox"><input type="checkbox" ng-model="milestone.wasPresent">{{milestone.name}}</label>
-                                        {{milestone.start | date:'dd/MM/yyyy'}} - {{milestone.end | date:'dd/MM/yyyy'}}
+                                        <div class="milestoneDate">({{milestone.start | date:'dd/MM/yyyy'}} - {{milestone.end | date:'dd/MM/yyyy'}})</div>
                                     </td>
-                                    <td>
-                                        <input type="text" class="span8" ng-model="milestone.remarks"/>
+                                    <td class="span8">
+                                        <textarea ng-model="milestone.remarks" rows="2" cols="20" style="width:100%"></textarea>
                                     </td>
                                 </tr>
                             </table>
@@ -127,10 +127,12 @@
                 <fieldset>
                     <label class="checkbox">
                         <input type="checkbox" ng-model="user.presentOnReunion">
-                        Ik zal aanwezig zijn op de zondagmiddag 14/09 </label>
+                        Ik zal aanwezig zijn op de zondagmiddag 14/09
+                    <span popover="Van vrijdag 12 tot en met 14 september organiseren we met Chiro Elzestraat het 60-jarig bestaan van onze jeugdbeweging.  Op zondag 14 september vanaf 10 uur 's morgens maken we dit officiëel door alle oud-leider/leden in de bloemetjes te zetten.  Om een overzicht te krijgen van alle aanwezigen vragen we op voorhand te registreren.  Dat kan door deze optie aan te vinken." popover-trigger="mouseenter" class="glyphicon icon-question-sign" ng-mouseover/></label>
                     <label class="checkbox">
                         <input type="checkbox" ng-model="user.isPhotoBookCandidate">
-                        Ik ben geïnteresseerd in het DOL fotoboek </label>
+                        Ik ben geïnteresseerd in het "60 jaar chiro Elzestraat" fotoboek
+                        <span popover="Afhankelijk van het aantal geïnteresseerden zullen we een fotoboek samenstellen die onze rijke chiro-geschiedenis in beeld brengt.  De kostprijs zal afhankelijk zijn van het aantal bestellingen.  Door deze optie aan te duiden laat u uw interesse voor dit fotoboek blijken,  dit is echter geen officiele bestelling." popover-trigger="mouseenter" class="glyphicon icon-question-sign" ng-mouseover/></label>
                 </fieldset>
 
                 <ul class="nav nav-list">

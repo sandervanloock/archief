@@ -2,6 +2,6 @@
 
 angular.module('services.config', [])
   .constant('configuration', {
-        ARCHIVE_SERVER_CONFIG: 'http://www.chiroelzestraat.be/archief/backend/public/',
-        STATIC_SERVER_CONFIG: 'http://www.chiroelzestraat.be/archief/backend/'
+        ARCHIVE_SERVER_CONFIG: 'http://localhost:8081/backend/public/',
+        STATIC_SERVER_CONFIG: 'http://chiroelzestraat.be/archief/backend/'
   });

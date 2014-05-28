@@ -263,6 +263,11 @@ h1 {
 .user-detail h2{
      font-size: 20px;
  }
+.milestoneDate{
+    font-style: italic;
+    font-size: smaller;
+    padding: 5px 0;
+}
 
 /* -------------- USERS -------------------- */
 
