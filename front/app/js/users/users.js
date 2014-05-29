@@ -121,16 +121,18 @@ angular.module('users', ['userService', 'security.authorization'])
             }
             $scope.getLocation();
             $scope.saveUser = function () {
-                if ($scope.user.id) {
-                    Users.update({userId: $scope.user.id}, $scope.user);
-                } else {
-                    Users.save($scope.user, function () {
-                        $scope.showSuccessSubmit = true;
-                        $scope.showSuccessFailure = false;
-                    }, function () {
-                        $scope.showSuccessSubmit = false;
-                        $scope.showSuccessFailure = true;
-                    });
+                if($scope.userform.$valid){
+                    if ($scope.user.id) {
+                        Users.update({userId: $scope.user.id}, $scope.user);
+                    } else {
+                        Users.save($scope.user, function () {
+                            $scope.showSuccessSubmit = true;
+                            $scope.showSuccessFailure = false;
+                        }, function () {
+                            $scope.showSuccessSubmit = false;
+                            $scope.showSuccessFailure = true;
+                        });
+                    }
                 }
             };
             $scope.removeUser = function () {
