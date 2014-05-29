@@ -45,22 +45,15 @@ angular.module('users', ['userService', 'security.authorization'])
             if ($routeParams.userId) {
                 Users.get({id: $routeParams.userId}, function (data) {
                     $scope.user = data.user;
-                    //retrieve all chiro groups and bind the membership to the correct user
-                    Groups.query({}, function (groups) {
-                        $scope.groups = groups;
-                        $scope.user.memberships.forEach(function (membership) {
-                            membership.groupid = $.grep($scope.groups, function (e) {
-                                return e.id == membership.groupid;
-                            })[0];
-                        })
-                    });
-                });
-            } else {
-                //retrieve all chiro groups
-                Groups.query({}, function (groups) {
-                    $scope.groups = groups;
                 });
             }
+
+            //retrieve all chiro groups
+            Groups.query({}, function (groups) {
+                $scope.groups = groups;
+            });
+
+            //google maps info
             $scope.lat = "0";
             $scope.lng = "0";
             $scope.accuracy = "0";
