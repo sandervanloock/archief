@@ -20,18 +20,21 @@
             <param name="param1" value="production"/>
         </antcall>
         <ftp server="${ftp.host}"
-             remotedir="${ftp.dir}/front"
+             remotedir="${ftp.dir}/front/app"
              userid="${ftp.user}"
              password="${ftp.password}"
              verbose="yes"
              passive="yes"
              depends="yes">
-            <fileset dir="front">
+            <fileset dir="front/app">
                 <include name="**/*.html"/>
                 <exclude name="properties.js"/>
                 <exclude name=".tmp/**"/>
                 <exclude name="dist/**"/>
                 <exclude name="node_modules/**"/>
+                <exclude name="js/vendor/**"/>
+                <exclude name="css/vendor/**"/>
+                <exclude name="bower_components/**"/>
                 <exclude name="test/**"/>
                 <include name="**/*.js"/>
                 <include name="**/*.css"/>
