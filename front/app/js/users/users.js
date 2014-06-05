@@ -116,7 +116,13 @@ angular.module('users', ['userService', 'security.authorization'])
             $scope.saveUser = function () {
                 if($scope.userform.$valid){
                     if ($scope.user.id) {
-                        Users.update({userId: $scope.user.id}, $scope.user);
+                        Users.update({userId: $scope.user.id}, $scope.user, function(){
+                            $scope.showSuccessSubmit = true;
+                            $scope.showSuccessFailure = false;
+                        },function(){
+                            $scope.showSuccessSubmit = false;
+                            $scope.showSuccessFailure = true;
+                        });
                     } else {
                         Users.save($scope.user, function () {
                             $scope.showSuccessSubmit = true;
@@ -198,35 +204,11 @@ angular.module('users', ['userService', 'security.authorization'])
                     groupid: "0"
                 });
             };
-            $scope.openRemoveMembershipDialog = function (membership, index) {
+            $scope.removeMemberhsip = function (membership, index) {
                 $scope.user.memberships.splice(index, 1);
-//            var openRemoveMembershipDialogInstance = $modal.open({
-//                templateUrl: 'js/users/membership-remove.html',
-//                controller: 'RemoveMembershipCtrl',
-//                resolve: {
-//                    membership: function () {
-//                        return membership;
-//                    },
-//                    group: function(){
-//                        return $.grep($scope.groups, function(e){ return e.id == membership.groupid; })[0];
-//                    }
-//                },
-//                backdrop: false
-//            });
             };
             $scope.addNewMembership();
-        }])
-    .controller('RemoveMembershipCtrl', ['$scope', '$modalInstance', 'membership', 'group', 'Users', function ($scope, $modalInstance, membership, group, Users) {
-        $scope.membership = membership;
-        $scope.group = group;
-        $scope.removeMembership = function (membership) {
-            //TODO remove membership and milestone in cascade
-            $modalInstance.dismiss('saved');
-        };
-        $scope.close = function () {
-            $modalInstance.dismiss('cancel');
-        };
-    }]);
+        }]);
 
 angular.module('userService', ['ngResource']);
 
