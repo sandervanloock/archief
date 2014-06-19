@@ -47,6 +47,16 @@ angular.module('users', ['userService', 'security.authorization'])
                     $scope.user = data.user;
                 });
             }
+            $("#birthDateInput").datetimepicker({
+                format: "dd/MM/yyyy",
+                pickTime: false,
+                autoclose: true,
+                language: 'nl',
+                weekStart: 1
+            }).on('changeDate', function (e) {
+                    $scope.user.birthDate=moment(e.date).format("DD/MM/YYYY");
+                    $scope.$apply();
+            });
 
             //retrieve all chiro groups
             Groups.query({}, function (groups) {
@@ -70,7 +80,6 @@ angular.module('users', ['userService', 'security.authorization'])
                 zoom: 15,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
-
             $scope.showPosition = function (position) {
                 $scope.lat = position.coords.latitude;
                 $scope.lng = position.coords.longitude;
@@ -82,7 +91,6 @@ angular.module('users', ['userService', 'security.authorization'])
                 $scope.model.myMap.setCenter(latlng);
                 $scope.myMarkers.push(new google.maps.Marker({ map: $scope.model.myMap, position: latlng }));
             }
-
             $scope.showError = function (error) {
                 switch (error.code) {
                     case error.PERMISSION_DENIED:
@@ -100,7 +108,6 @@ angular.module('users', ['userService', 'security.authorization'])
                 }
                 $scope.$apply();
             }
-
             $scope.getLocation = function () {
                 if(!$scope.model.myMap){
                     $scope.model.myMap = new google.maps.Map(document.getElementById("map_canvas"),$scope.mapOptions);
