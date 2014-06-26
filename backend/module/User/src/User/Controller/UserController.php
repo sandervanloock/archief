@@ -133,8 +133,11 @@ class UserController extends AbstractRestfulController
     private function updateUserMilestones($memberships,$userid){
         foreach($memberships as $jsonMembership){
             $membership = new Membership();
-            $membership->userid = $userid;
             $membership->groupid=$jsonMembership['groupid'];
+            if($membership->groupid == 0){
+                continue;
+            }
+            $membership->userid = $userid;
             $membership->from=$jsonMembership['from'];
             $membership->to=$jsonMembership['to'];
             $this->getMembershipTable()->saveMembership($membership);
