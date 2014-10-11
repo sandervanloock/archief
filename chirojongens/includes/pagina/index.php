@@ -1,6 +1,6 @@
 <script type="text/javascript">
 	$('#home_right').ready(function() {
-		initActivities("algemeen");
+        initGeneralSlider();
 	});
 </script>
 
@@ -14,7 +14,7 @@
 <div id="in_de_kijker" class="gridbox right" >
  	<h2>In de Kijker</h2>
     <!-- Zet hier altijd dezelfde foto van grootte: 518 breed 250 hoog, in jpg formaat-->
-    <strong style="width:518px; height:250px; padding-top:5px; padding-left:6px;"><img src="uploads/indekijkerRommelmarkt2014.jpeg" alt="In de kijker" style="width: 100%;margin: 0 auto;display: block"/></strong>
+    <strong style="width:518px; height:250px; padding-top:5px; padding-left:6px;"><img src="uploads/banner kamp 2014.jpg" alt="In de kijker" style="width: 100%;margin: 0 auto;display: block"/></strong>
 </div>
 
 <div id="activiteiten" class="gridbox right" style="float:right;">

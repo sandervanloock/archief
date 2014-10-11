@@ -43,6 +43,7 @@ include ("includes/functions.php");
 
 
 <script type="text/javascript">
+    $("#tweets").addClass("loading");
      jQuery(function($){
         $("#tweets").tweet({
           username:"chiroelzestraat",

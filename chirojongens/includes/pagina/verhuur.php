@@ -34,12 +34,17 @@
 <div class="gridbox" style="float:left; margin-bottom:10px;">
 <h2>Prijs</h2> 
 	<p>
-	De vaste kosten zijn vastgelegd op 80 EURO tot 15 personen. Bij meer dan 15 personen wordt er per persoon 5 EURO extra betaald.  Het verbruik van gas en elektriciteit wordt berekend door middel van de meterstanden.<br />
-	</p><p><br /></p>
+	De vaste kosten zijn vastgelegd op 125 EURO tot 20 personen. Vanaf 21 personen tot maximaal 40 personen bedragen de vaste kosten 200 euro. Het verbruik van gas en elektriciteit wordt berekend door middel van de meterstanden.<br />
+	
+	</p>
+	<p>Het contract vindt u <a href="uploads/Huurcontract Chirojongens Elzestraat.pdf">hier</a>.</p>
+	<p><br /></p>
 	<h2>Waarborg</h2>
-	<p>De waarborg van 150 euro wordt ten laatste twee weken op voorhand betaald op rekeningnummer <B></b>04 8508 4961 6631
+	<p>De waarborg van 150 euro wordt ten laatste twee weken op voorhand betaald op rekeningnummer <B></b>BE16 3631 3876 1974
 
-Indien de huurder het weekend annuleert tot een termijn van 1 week op voorhand, wordt de waarborg teruggestort aan de huurder. Gebeurt de opzegging later dan wordt de waarborg niet teruggestort.</p><p><br /></p>
+Indien de huurder het weekend annuleert tot een termijn van 1 week op voorhand, wordt de waarborg teruggestort aan de huurder. Gebeurt de opzegging later dan wordt de waarborg niet teruggestort.
+
+</p><p><br /></p>
 	
 </div>
 </div>
@@ -59,7 +64,7 @@ Indien de huurder het weekend annuleert tot een termijn van 1 week op voorhand, 
         });
     });
  </script>
-<iframe src="http://www.chiroelzestraat.be/chirojongens/images/Verhuur/" frameborder="0" style="height:600px; width:840px; margin:0 50px;"></iframe><!--
+<iframe src="http://www.chiroelzestraat.be/chirojongens/images/Verhuur/" frameborder="0" style="height:600px; width:840px; margin:0 50px;"></iframe><!--
 <div class="slider-wrapper theme-dark" style="margin-left:120px;padding-bottom:20px;">
 	<div class="ribbon"></div>
 	<div id="slider" class="nivoSlider adaptingSlider">

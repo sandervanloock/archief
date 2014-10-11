@@ -39,10 +39,15 @@ if (isset($_POST['submitknop'])) {
 <div id='algemeen_contact' class='grid' style='float:left; width:47%;'>
 	<h1>Algemeen Contact</h1>
 	<hr/><br />
-	 <h3>Groepsleider</h3>
-	 Naam: Sander Grielens<br />
-	 Gsmnummer: 0497 29 44 07<br />
-	 Emailadres: sandergr@chiroelzestraat.be<br />
+	 <h3>Groepsleiders</h3>
+	 Naam: Thomas Marien<br />
+	 Gsmnummer: 0499 26 04 09<br />
+	 Emailadres: thomas@chiroelzestraat.be<br />
+		<br />
+	 Naam: Tomas Van Rompaey<br />
+	 Gsmnummer: 0496 25 44 37<br />
+	 Emailadres: tomas@chiroelzestraat.be<br />	
+	
 	 <hr /><br />
 	 <h3>Volwassen Begeleider</h3>
 	 Naam: Dirk Feremans<br />
