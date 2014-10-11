@@ -1,0 +1,97 @@
+#main{
+	min-height:600px;
+	margin-top:10px;
+}
+
+#main #left{
+	position:relative;
+	float:left;
+	width:75%;
+	min-height:598px;
+	margin-bottom:10px;
+}
+
+#main #right{
+	position:relative;
+	float:right;
+	width:24%;
+	min-height:598px;
+}
+
+.gridbox{
+	margin-top:10px;
+	border:1px solid #0d0d0d;
+	background-color:#0d0d0d;
+	border-radius:12px;
+	padding:0px 5px 5px 5px;
+	box-shadow: 0px 0px 0px 1px #2b2b2b;
+	-moz-box-shadow: 0px 0px 0px 1px #2b2b2b;
+	-webkit-box-shadow: 0px 0px 0px 1px #2b2b2b;
+}
+
+.gridbox h2{	
+	padding-top:12px;
+	padding-left:6px;
+}
+
+#activiteiten.gridbox h2{
+	padding-top:0px !important;
+	padding-left:0px !important;
+}
+
+.gridbox.left{
+	float:left;
+	width:350px;
+}
+
+.gridbox.right{
+	float:right;
+	width:530px;	
+	padding-left:10px;
+}
+
+.TabbedPanelsTab{
+	border:1px solid #0d0d0d;
+	background:url("images/box-tail.gif") 0 0 repeat-x #0d0d0d;
+	border-radius:12px;
+	padding:0px 20px 5px 5px;
+	box-shadow: 0px 0px 0px 1px #2b2b2b;
+	-moz-box-shadow: 0px 0px 0px 1px #2b2b2b;
+	-webkit-box-shadow: 0px 0px 0px 1px #2b2b2b;
+}
+
+.TabbedPanelsContentGroup{
+	width:838px;
+	padding-left:40px;
+}
+
+.TabbedPanelsTabGroup li{
+	list-style-type:none;
+	display:inline-table;
+	min-height:100px;
+	width:250px;
+}
+
+.TabbedPanelsContent{
+	min-height:400px;	
+}
+
+.TabbedPanelsTabGroup{
+	margin: 10px 50px 0px 40px;	
+	padding-bottom:5px;
+}
+
+.TabbedPanelsTab {
+	cursor:pointer;	
+	}
+
+.TabbedPanelsTab .icon{
+	width:75px;
+	height:75px;
+	float:left;
+	padding: 10px 10px;
+}
+
+#TabbedPanelsTabGroup li a:hover{
+	cursor:move;	
+}

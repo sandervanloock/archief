@@ -1,0 +1,1 @@
+<div class="fb-like" data-href="https://www.facebook.com/pages/Chirojongens-Elzestraat/234251636629703" data-send="false" data-width="260" data-show-faces="true" data-colorscheme="dark"></div> 

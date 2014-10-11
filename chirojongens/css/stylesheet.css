@@ -1,0 +1,255 @@
+*{
+	outline:0;
+	margin:0;
+	padding:0;
+	border:0;
+}
+
+body{
+	background-color: #0d0d0d;	
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#fff;
+}
+
+#contentwrapper{
+	width:1240px;
+	min-height:800px;
+	margin: 0px auto;
+	border-radius: 12px;
+	-moz-border-radius: 12px; 
+	padding: 0px 5px;
+	background:url("images/bg.jpg") no-repeat;
+	/*--werkt niet background-attachment:fixed;*/
+}
+#header{
+	width:auto;
+	height:125px;
+	background:url("images/banner.png") no-repeat;
+	border-radius: 12px;
+	-moz-border-radius: 12px; 
+}
+	
+#header h1{
+	display:none;
+}
+	
+#menu{
+	height:55px;
+	}
+	
+#menu ul{
+	list-style-type:none;
+	margin:1px 0px;
+
+}
+#menu ul li{
+	display:inline;
+	float:left; 
+	position:relative;
+	padding-left:2px;
+	background:url("images/menu-spacer.gif") no-repeat;
+}
+
+#menu ul li.first{
+	background:none;
+}
+
+#menu ul li a{
+	font-size:20px;
+	padding:14px 90px 15px 90px;
+	text-decoration:none;
+	line-height:55px;
+	background-image:url("images/menu-a.png");
+	background-color:#fff;
+	background-repeat:repeat-x;
+	background-position:0 -57px;
+	color:#0d0d0d;	
+}
+
+#menu ul li a:hover{
+	background-position:57px 0px;
+	color:#fff;
+}
+#menu ul li a.first{
+  -webkit-border-radius: 12px 0px 0px 12px; 
+  -moz-border-radius: 12px 0px 0px 12px; 
+  border-radius: 12px 0px 0px 12px; 
+  -moz-background-clip: padding; 
+  -webkit-background-clip: padding-box; 
+  background-clip: padding-box;
+}
+#menu ul li a.last{
+  -webkit-border-radius: 0px 12px 12px 0px; 
+  -moz-border-radius: 0px 12px 12px 0px; 
+  border-radius: 0px 12px 12px 0px; 
+  -moz-background-clip: padding; 
+  -webkit-background-clip: padding-box; 
+  background-clip: padding-box;
+}
+
+#menu ul li a.active{
+	background-position:57px 0px;
+	color:#fff;
+}
+
+#calender{
+	position:relative;
+}
+#groepen{
+	position:relative;
+}
+
+#overons h1{
+	padding-top:10px;
+}
+
+.orangeul ul{
+	list-style-image:url("images/pijl-lijst.gif");
+	padding-left:12px;
+	margin-top:10px;
+}
+.orangeul ul li a{
+	font-size:16px;
+	line-height:22px;
+	color:white;
+	text-decoration:none;
+	background:none;
+}
+.orangeul ul li a:visited{
+	color:white;
+}
+.orangeul ul li a:hover{
+	font-style:oblique;
+}
+.orangeul ul li a.active{
+	font-style:italic;
+}
+
+#program{
+	margin-top:10px;
+	position:relative;
+}
+
+.pdfimg {
+	float:left; 
+	margin:3px 20px 0px 0;
+}	
+
+.orangeTitle {
+	font-size:25px; 
+	line-height:1.2em; 
+	margin-bottom:-10px;
+	color:#eb3c03;
+	text-transform:uppercase;
+	letter-spacing:-2px;
+}
+
+.subTitle{
+	padding-top:30px;
+	font-size:18px; 
+	line-height:1.2em; 
+	color:#fff;
+	text-transform:uppercase;
+	letter-spacing:-2px;
+}
+
+#program a{
+	text-decoration:none;
+	font-size:17px;
+	color:#fff;
+	font-weight:bold;
+}
+
+#contactinfo{
+	margin-top:10px;
+	position:relative;
+}
+	
+#contactinfo ul.social-icons  li{
+	display:inline;
+	margin-right:5px;
+	border:none;
+}
+
+
+#contactinfo ul.social-icons li img{
+	width:32px;
+	height:32px;
+}
+
+#contactinfo ul.social-icons {
+	margin-bottom:10px;
+}
+
+#contactinfo .social-icons{
+	padding-top:10px;
+	padding-left:60px;
+}
+
+#login{
+	margin:10px 0px;
+	position:relative;
+}
+
+.grid{
+	position:relative;
+	overflow:hidden;
+	border:1px solid #0d0d0d;
+	background:url("images/box-tail.gif") 0 0 repeat-x #0d0d0d;
+	border-radius:12px;
+	padding:0px 5px 5px 5px;
+	box-shadow: 0px 0px 0px 1px #2b2b2b;
+	-moz-box-shadow: 0px 0px 0px 1px #2b2b2b;
+	-webkit-box-shadow: 0px 0px 0px 1px #2b2b2b;--> 
+	
+}
+
+.grid h1{
+	font-size:25px;
+	line-height:1.2em;
+	color:#e7e7e7;
+	margin-top:5px;
+	letter-spacing:-1px;
+	padding-bottom:10px;
+}
+
+.grid p{
+	font-size:0.99em;
+	color:#666;
+}
+
+.grid .TabbedPanelsContent img{
+	width:200px;
+	height:200px;
+}
+
+
+
+#footer{
+		clear:both;
+		position:relative;
+		border:1px white solid;
+		color:#0d0d0d;
+		background:url("images/footer-tail.gif") center top repeat-x;
+		text-align:center;
+		border-radius: 12px;
+		-moz-border-radius: 12px; 
+		color:#8F8686;
+		font-size:10px;
+}
+
+#footer p{
+	margin: 10px 10px 10px 10px;
+}
+
+#playeryou {
+			padding-top:20px;
+		    width: 95%;
+		    height: 420px;
+		    overflow: hidden;
+		    background: #0d0d0d;
+		    position: absolute;
+		    border: solid 1px #0d0d0d;
+		    clear: both;
+}
