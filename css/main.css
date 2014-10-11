@@ -69,37 +69,6 @@ textarea {
 .margin1{
     margin-top: 1em;
 }
-@media (max-width: 767px){
-    .logo._60jaar  {
-        max-width: 300px;
-        float: right;
-        margin-right: 0;
-    }
-
-    .logo._60jaar .img{
-        width: 500px;
-        height: 354px;
-        background-image: url('../img/60JAAR_LOGO.png');
-    }
-}
-
-.logo._60jaar .img{
-    height: 354px;
-    background-image: url("../img/60JAAR_LOGO_ORIGINAL.png");
-    background-size: 500px 354px;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.redirect_container{
-    float: right;
-    /*margin-top: -23em;*/
-    margin-right: 2em;
-}
-
-.first-row{
-    padding-top: 1em;
-}
 
 .right{
     text-align: right;
@@ -107,11 +76,6 @@ textarea {
 .left{
     text-align: left;
 }
-
-.last-row{
-    padding-left: 1.1em;
-}
-
 .thumbnail i{
     margin-top: 20px;
 }
@@ -165,6 +129,23 @@ a:active {
 
 .fa-facebook-square{
     color: #3B5998;
+}
+
+.large-font{
+    font-size: 3em !important;
+}
+
+.redirect-container{
+    margin: 1em;
+}
+
+.chiro-logo{
+    background-image: url('../img/chiro_logo.png');
+    width: 400px;
+    height: 400px;
+    background-size: 400px;
+    background-repeat: no-repeat;
+    margin: 0 auto;
 }
 
 /* ==========================================================================
