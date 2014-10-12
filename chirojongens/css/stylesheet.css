@@ -127,7 +127,6 @@ body{
 }
 
 #program{
-	margin-top:10px;
 	position:relative;
 }
 
@@ -193,6 +192,7 @@ body{
 }
 
 .grid{
+    margin-top:10px;
 	position:relative;
 	overflow:hidden;
 	border:1px solid #0d0d0d;

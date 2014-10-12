@@ -26,9 +26,4 @@
 		</div>	
 	</div>
 </div>
-<!--
-<div id="chiropromo" class="gridbox left" style="min-height:292px;">
-	<h2>Wat is Chiro?!</h2>
-		<iframe  src="http://player.vimeo.com/video/9671922" width="350" height="210" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen>
-		</iframe>
-</div>-->
+
