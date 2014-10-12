@@ -256,8 +256,13 @@ body{
 
 .program-links{
     text-align: center;
+    margin-top:1em;
 }
 
 .program-links a {
     padding: 0 1em;
+}
+
+.program-title{
+    margin-top:3px;
 }
