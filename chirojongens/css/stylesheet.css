@@ -253,3 +253,11 @@ body{
 		    border: solid 1px #0d0d0d;
 		    clear: both;
 }
+
+.program-links{
+    text-align: center;
+}
+
+.program-links a {
+    padding: 0 1em;
+}
