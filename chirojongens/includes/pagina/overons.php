@@ -123,58 +123,63 @@ Op kamp mogen Kerels,  Aspiranten en Leiding na elke maaltijd 1 sigaret roken bu
 		*/
 ?>
 <div id="OverOnsPanel" class="TabbedPanels">
-  <ul class="TabbedPanelsTabGroup">
-    <li class="TabbedPanelsTab" tabindex="0">	
-    	<img src="images/historie.png" class="icon" alt="Onze geschiedenis" />
-    	<strong class="orangeTitle">Geschiedenis</strong></br>
-    	<strong class="subTitle">Interview met vorige generaties</strong></br>
-		<img src="css/images/pijl-lijst.gif"></img>
-    </li>
-    <li class="TabbedPanelsTab" tabindex="1">
-    	<img src="images/jaarthema.png" class="icon" alt="Onze geschiedenis" />
-		<strong class="orangeTitle">Jaarthema</strong></br>
-		<strong class="subTitle">Armoede is een onrecht</strong></br>
-		<img src="css/images/pijl-lijst.gif"></img>
-    </li>
-    <li class="TabbedPanelsTab" tabindex="2">
-    	<img src="images/dol.png" class="icon" alt="Onze geschiedenis" />
-		<strong class="orangeTitle">DOL</strong></br>
-		<strong class="subTitle">Webstek van oud leiding</strong></br>
-		<img src="css/images/pijl-lijst.gif"></img>	
-    </li>
-  </ul>
-  
-  
-  <div class="TabbedPanelsContentGroup" >
-    <div class="TabbedPanelsContent grid">
-    	<iframe src="http://archief.chiroelzestraat.be" frameborder="0" style="height:800px; width:850px;"></iframe>
+    <ul class="TabbedPanelsTabGroup">
+        <li class="TabbedPanelsTab" tabindex="0">
+            <img src="images/historie.png" class="icon" alt="Onze geschiedenis"/>
+            <strong class="orangeTitle">Geschiedenis</strong></br>
+            <strong class="subTitle">Interview met vorige generaties</strong></br>
+            <img src="css/images/pijl-lijst.gif"></img>
+        </li>
+        <li class="TabbedPanelsTab" tabindex="1">
+            <img src="images/chiromantiek_logo.png" class="icon" alt="Jaarthema"/>
+            <strong class="orangeTitle">Jaarthema</strong></br>
+            <strong class="subTitle">Chiromantiek</strong></br>
+            <img src="css/images/pijl-lijst.gif"></img>
+        </li>
+        <li class="TabbedPanelsTab" tabindex="2">
+            <img src="images/dol.png" class="icon" alt="Onze geschiedenis"/>
+            <strong class="orangeTitle">DOL</strong></br>
+            <strong class="subTitle">Webstek van oud leiding</strong></br>
+            <img src="css/images/pijl-lijst.gif"></img>
+        </li>
+    </ul>
+
+
+    <div class="TabbedPanelsContentGroup">
+        <div class="TabbedPanelsContent grid">
+            <iframe src="http://archief.chiroelzestraat.be" frameborder="0" style="height:800px; width:850px;"></iframe>
+        </div>
+        <div class="TabbedPanelsContent grid">
+            <h1>Jaarthema</h1>
+            <p>Onder de slogan "Armoede is een onrecht. Maak er spel van!" gaat in september voor zeven jeugdbewegingen
+                een actiejaar over armoede en sociale uitsluiting van start. Door middel van informatieve spelen en
+                speelse actie vragen wij, de jeugdbewegingen, aandacht voor een problematiek die vaak verborgen
+                blijft.</p>
+
+            <h2>Een jaar vol Chiromantiek<img height="227" width="321"
+                                              style="line-height: 1.2em; font-size: 13px; width: 321px; height: 227px; float: right;"
+                                              class="media-element file-default"
+                                              src="https://chiro.be/sites/default/files/chiromantiek_logo.png" alt=""/>
+            </h2>
+
+            <p>Ik zie u graag. Leuk dat je in mijn team zit! Het is altijd fijn met jou erbij,..<br/>Heb je dat vandaag
+                al eens gezegd? Nog niet? Awel, dan is het tijd om dat nu te doen. Of nog beter, het is tijd om hier
+                eens een jaar lang extra aandacht aan te besteden! <br/>Bij Chiromantiek denk je misschien al meteen aan
+                roze hartjes, kussende koppels bij zonsondergang of een slow op een melig muziekje op de Chirofuif. Maar
+                Chiromantiek gaat over veel meer dan dat. <br/>We zijn met superveel in de Chiro en we zien mekaar
+                allemaal graag! Er zijn dan ook super veel graag-zien-relaties mogelijk in de Chiro: de leden zien
+                elkaar graag maar ook hun leiding, de leiding ziet de leden graag en ook hun medeleiding en de
+                gewesters,.. en zo kunnen we nog wel even doorgaan.<br/>De Chiro zit boordevol Chiromantiek. Het vloeit
+                doorheen onze werking en we zien het elke dag weer op de verschillende niveaus. Dit jaar zetten we dat
+                in de kijker en pikken we er een heleboel relaties uit waar we expliciet willen tonen dat we onszelf
+                graag zien, mekaar graag zien of respect hebben voor andere relaties.</p>
+        </div>
+        <div class="TabbedPanelsContent grid">
+            <h1>De Oud Leiding</h1>
+            <?php require_once("dol.php"); ?>
+        </div>
     </div>
-    <div class="TabbedPanelsContent grid">	
-    	<h1>Jaarthema</h1> 
-		<img src="images/dassel2web.png" style="float:right; margin:0px 5px 0px 5px;">	    	
-    	<p>Onder de slogan "Armoede is een onrecht. Maak er spel van!" gaat in september voor zeven jeugdbewegingen een actiejaar over armoede en sociale uitsluiting van start. Door middel van informatieve spelen en speelse actie vragen wij, de jeugdbewegingen, aandacht voor een problematiek die vaak verborgen blijft.</p>	
-		<h3>Armoede is een onrecht</h3>
-		<p>Arm en rijk, da's toch simpel: "arm" betekent dat je weinig hebt en "rijk" betekent het tegenovergestelde.
-		Niet?<br />
-		Armoede is helaas veel meer dan geen geld hebben of onder een brug moeten slapen. Gezinnen in armoede komen meer hindernissen tegen dan alleen "te weinig geld": moeilijkheden op school, weinig kansen op de arbeidsmarkt, een klein inkomen, een ongezonde woning, een moeilijke thuissituatie, …</p>
-		<h3>Een voorbeeldje om dit te illustreren:</h3>
-		<p>Eén kind op zes woont in een huis met een lekkend dak, schimmels, vocht of rottende ramen en deuren. Wie in zo\'n huis woont, is vaker ziek. Als er andere dringende kosten zijn, stel je een doktersbezoek al eens uit. Maar wie niet naar de dokter gaat, blijft langer ziek en kan blijvende gezondheidsproblemen oplopen. Een kind dat daardoor vaak afwezig is op school loopt een leerachterstand op. Zo belandt hij of zij in een zwakkere positie aan het begin van de arbeidsloopbaan en loopt meer risico op een slecht betaalde job of werkloosheid. Een mooi huis zonder lekkend dak, schimmels, vocht of rottende ramen en deuren wordt dan iets moeilijker…
-		Al die elementen kunnen zowel oorzaak als gevolg zijn en beïnvloeden en versterken elkaar. En zo wordt armoede een kluwen waar je nog moeilijk uitgeraakt. Jan Vranken, professor gespecialiseerd in de armoedeproblematiek, spreekt over een kringloop van armoede. Wanneer een probleem ontstaat, heeft dit invloed op andere situaties, zowel in positieve als negatieve zin. Armoede wordt ook gemakkelijk doorgegeven van ouders op kinderen. Dat noemen we generatiearmoede.
-		Wil je nog meer weten over armoede en sociale uitsluiting? Lees dan zeker verder!</p>
-		<img src="images/moemso2web.png" style="float:left; margin:0px 5px 0px 5px;">		
-		<h3>Maak er spel van!</h3>
-		<p>Je zult maar het geluk hebben om in België geboren te worden. Een land waar er voedsel genoeg is, waar je ziekenhuizen hebt in elke stad, waar er scholen zijn in elk dorp. Geen kinderen met opgezwollen buikjes in onze straten, geen hutjes van golfplaten in onze steden. En toch … groeit bijna één kind op vijf in België op in armoede. Soms zichtbaar, maar vaak verborgen achter muren en deuren, ook in onze eigen straat.
-		Met dit jaarthema willen we heel duidelijk maken dat we het een schande vinden dat één op vijf van alle Belgische kinderen en jongeren in armoede leeft. In een rijk land zoals het onze is dat onaanvaardbaar. Armoede is een onrecht! En dat laten we niet zomaar gebeuren:we maken er spel van! Als jeugdbeweging zijn we een deel van de samenleving. Samen zijn we met meer dan 250.000 kinderen en jongeren. We dromen van een samenleving zonder armoede en uitsluiting en zullen dit luidkeels verkondigen tot iedereen ons hoort. Ouders, buren, pers en politici: iedereen zal weten dat we vinden dat het armoedeprobleem structureel moet aangepakt worden. We gaan voor maatregelen die armoede echt oplossen, geen doekjes voor het bloeden!
-		Maar wie de wereld wil veranderen, begint altijd best bij zichzelf. Want eerlijk: kennen we de armoedeproblematiek allemaal wel zo goed? Betrappen we onszelf al niet eens op een vooroordeel hier en daar? Ook bij ons is er dus werk aan de winkel. En dat doen we op onze eigen typische jeugdbewegingsmanier: we maken er een spel van. Niet van de armoede zelf natuurlijk, maar we proberen door informatieve spelen en speelse actie onszelf en onze leden meer bewust te maken van de armoedeproblematiek
-		We moeten ook toegeven dat we als jeugdbewegingen uitsluiting soms mee in stand houden. Ook wij slagen er (nog) niet in kinderen en jongeren in armoede talrijk in onze jeugdbeweging te betrekken. We maken er ook voor hun spel van. Laat ons eens kritisch naar onszelf kijken. Welke drempels houden wij mee in stand? Wat kunnen we hier aan doen? Dat doen we beter niet alleen. Samen staan we sterker. We doen het samen, over de koepels van de jeugdbewegingen heen en met partnerorganisaties uit de armoedesector. We maken er ons spel van.</p>
-		<h4>meer info op <a href="http://www.maakerspelvan.be" target="blank">www.maakerspelvan.be</a></h4>
-    </div>
-    <div class="TabbedPanelsContent grid">
-    	<h1>De Oud Leiding</h1>
-    	<?php require_once ("dol.php");?>
-    </div>
-  </div>
 </div>
 <script type="text/javascript">
-	var TabbedPanels1 = new Spry.Widget.TabbedPanels("OverOnsPanel");
+    var TabbedPanels1 = new Spry.Widget.TabbedPanels("OverOnsPanel");
 </script>
