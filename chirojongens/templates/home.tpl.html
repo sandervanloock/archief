@@ -15,7 +15,7 @@
             style="width: 100%;margin: 0 auto;display: block"/></strong>
 </div>
 
-<div id="activiteiten" class="gridbox right" ng-controller="GroupCalendarController" style="float:right;">
+<div id="activiteiten" class="gridbox right" ng-controller="GeneralCalendarController" style="float:right;">
     <h2>Opkomende activiteiten</h2>
 
     <div class="slider-wrap">
@@ -25,10 +25,12 @@
                     <div class="wrapper">
                         <h2>{{event.summary}}</h2>
                         <img class="left png" ng-src="{{event.image}}" alt="logo"/>
+
                         <p class="description">{{event.description}}</p><br/>
                         <span style="top:130px;" id="start" class="date">Van: {{entry.start.dateTime | date : 'dd/M/yyyy H:mm' }}</span><br>
                         <span style="top:145px;" id="end"
                               class="date">Tot: {{entry.end.dateTime | date : 'dd/M/yyyy H:mm' }}</span>
+
                         <p class="slider_links"></p>
                     </div>
                 </div>
@@ -36,4 +38,3 @@
         </div>
     </div>
 </div>
-
