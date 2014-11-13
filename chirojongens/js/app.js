@@ -6,56 +6,21 @@ var app = angular.module('app', ['ngRoute'], function ($locationProvider) {
 
 app.controller('NavController', function ($scope, $location) {
     console.log('NavController init');
-    $scope.currentPage = $location.url().substring(13);
+    $scope.isActivePage = function(page){
+        return page == $location.url().substring(13);
+    }
 });
 
-app.controller('GroupNavController', function ($scope) {
+app.controller('GroupNavController', function ($scope, $routeParams) {
     console.log('GroupNavController init');
-    $scope.currentGroup = 'speelclub';
+    $scope.isActivePage = function(page){
+        return page == $routeParams.groupname;
+    }
 });
 
 app.controller('GroupController', function ($scope, $routeParams) {
     console.log('GroupController init');
     console.log('found', $routeParams, 'in URL');
-});
-
-app.controller('GeneralCalendarController', function ($scope) {
-    console.log('GeneralCalendarController init');
-})
-
-app.controller('GroupCalendarController', function ($scope, $location, CalendarService) {
-    console.log("CalendarController init");
-    var urlGroup = $location.search()['groep'];
-    console.log("found group", urlGroup);
-    $scope.group = urlGroup;
-    CalendarService.getFutureEventsFromGroup($scope);
-});
-
-app.factory('CalendarService', function (Constants) {
-    function convertDates(data) {
-        angular.forEach(data, function (event) {
-            if (event.start.dateTime) {
-                event.start.dateTime = moment(event.start.dateTime).toDate();
-            }
-            if (event.end.dateTime) {
-                event.end.dateTime = moment(event.end.dateTime).toDate();
-            }
-        });
-    };
-    return {
-        getFutureEventsFromGroup: function (scope) {
-            gapi.client.calendar.events.list({
-                calendarId: Constants.speelclubCalendarId,
-                timeMin: moment().toJSON()
-            }).then(function (data) {
-                scope.calendar = {};
-                scope.calendar.events = data.result.items;
-                convertDates(scope.calendar.events);
-                scope.$apply();
-                $("#slider1").codaSlider();
-            });
-        }
-    }
 });
 
 app.constant('Constants',
@@ -68,28 +33,23 @@ app.constant('Constants',
 app.config(function ($routeProvider) {
     $routeProvider
         .when('/chirojongens/', {
-            templateUrl: 'templates/home.tpl.html',
-            controller: 'NavController'
+            templateUrl: 'templates/home.tpl.html'
+        })
+        .when('/chirojongens/overons', {
+            templateUrl: '/chirojongens/templates/overons.tpl.html'
+        })
+        .when('/chirojongens/media', {
+            templateUrl: '/chirojongens/templates/media.tpl.html'
+        })
+        .when('/chirojongens/verhuur', {
+            templateUrl: '/chirojongens/templates/verhuur.tpl.html'
+        })
+        .when('/chirojongens/contact', {
+            templateUrl: '/chirojongens/templates/contact.tpl.html'
         })
         .when('/chirojongens/groepen/:groupname', {
             templateUrl: '/chirojongens/templates/groepen.tpl.html',
             controller: 'GroupController'
-        })
-        .when('/chirojongens/overons', {
-            templateUrl: '/chirojongens/templates/overons.tpl.html',
-            controller: 'NavController'
-        })
-        .when('/chirojongens/media', {
-            templateUrl: '/chirojongens/templates/media.tpl.html',
-            controller: 'NavController'
-        })
-        .when('/chirojongens/verhuur', {
-            templateUrl: '/chirojongens/templates/verhuur.tpl.html',
-            controller: 'NavController'
-        })
-        .when('/chirojongens/contact', {
-            templateUrl: '/chirojongens/templates/contact.tpl.html',
-            controller: 'NavController'
         })
         .otherwise({
             template: 'No route matches'

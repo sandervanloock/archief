@@ -235,14 +235,12 @@ AddDefaultCharset utf-8
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # Option 1: rewrite www.example.com → example.com
-<IfModule mod_rewrite.c>
+<ifModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /
-    RewriteRule ^index\.html$ - [L]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^.*[js]$ /chirojongens/index.html [L]
- </IfModule>
+    RewriteRule (.*) /chirojongens/ [L]
+</ifModule>
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
