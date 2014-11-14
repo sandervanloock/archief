@@ -23,12 +23,6 @@ app.controller('GroupController', function ($scope, $routeParams) {
     console.log('found', $routeParams, 'in URL');
 });
 
-app.constant('Constants',
-    {
-        speelclubCalendarId: 'ofnonpgnb4affnd6t51e48fsdo@group.calendar.google.com'
-    }
-);
-
 
 app.config(function ($routeProvider) {
     $routeProvider
