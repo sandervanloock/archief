@@ -1,9 +1,6 @@
 app.controller('GeneralCalendarController', function ($scope, $routeParams, CalendarService) {
     console.log("CalendarController init");
-    var urlGroup = $routeParams.groupname;
-    console.log("found group", urlGroup);
-    $scope.group = urlGroup;
-    CalendarService.getFutureEventsFromGroup($scope, urlGroup);
+    CalendarService.getFutureEventsFromAllGroups($scope);
 })
 
 app.controller('GroupCalendarController', function ($scope, $routeParams, CalendarService) {
@@ -25,18 +22,42 @@ app.factory('CalendarService', function (Constants) {
             }
         });
     };
+    function getCalendarEvents(calendarId, callback) {
+        gapi.client.calendar.events.list({
+            calendarId: calendarId,
+            timeMin: moment().toJSON()
+        }).then(function (data) {
+            var events = data.result.items;
+            convertDates(events);
+            callback(events);
+        });
+    }
+
     return {
         getFutureEventsFromGroup: function (scope, group) {
-            gapi.client.calendar.events.list({
-                calendarId: Constants.calendarIds[group],
-                timeMin: moment().toJSON()
-            }).then(function (data) {
-                scope.calendar = {};
-                scope.calendar.events = data.result.items;
-                convertDates(scope.calendar.events);
+            scope.calendar = {};
+            var callback = function (events) {
+                scope.calendar.events = events;
                 scope.$apply();
                 $("#slider1").codaSlider();
-            });
+            }
+            getCalendarEvents(Constants.calendarIds[group], callback);
+        },
+        getFutureEventsFromAllGroups: function (scope) {
+            scope.calendar = {};
+            scope.calendar.events = [];
+            angular.forEach(Constants.calendarIds, function (calendarId) {
+                var callback = function (events) {
+                    if (events && events[0]) {
+                        scope.calendar.events.push(events[0]);
+                    }
+                    if(scope.calendar.events.length == Object.keys(Constants.calendarIds).length-1){
+                        scope.$apply();
+                        $("#slider1").codaSlider();
+                    }
+                }
+                getCalendarEvents(calendarId, callback);
+            })
         }
     }
 })
