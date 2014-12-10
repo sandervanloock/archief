@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration("file:src/main/webapp/WEB-INF/spring-rest-servlet.xml")
+@ContextConfiguration("classpath:**/test-application-context.xml")
 public class TestApiController {
 
     @Autowired
@@ -36,7 +36,7 @@ public class TestApiController {
     }
 
     @Test
-    public void getAllMediaTest1() throws Exception {
+    public void getAllRankings() throws Exception {
         mockMvc.perform(get("/ranking"))
                 .andExpect(status().isOk())
                 .andExpect((org.springframework.test.web.servlet.ResultMatcher) jsonPath("$.type", equals("Dames 1")));
