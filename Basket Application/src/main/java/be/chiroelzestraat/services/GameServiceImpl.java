@@ -19,7 +19,7 @@ import java.util.*;
 public class GameServiceImpl implements GameService {
 
     private Map<String, String> postData;
-    DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy kk.mm");
+    DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy kk.mm");
 
     @PostConstruct
     public void setup() {
@@ -40,28 +40,44 @@ public class GameServiceImpl implements GameService {
             postData.put("__EVENTVALIDATION", eventValidation);
             postData.put("__VIEWSTATE", viewState);
             postData.put("__VIEWSTATEGENERATOR", viewStateGenerator);
-            postData.put("ctl00$MainContent$cboWeekend", "2");
-            doc = Jsoup.connect("http://www.kavvv-basket.be/kavvv/results.aspx")
-                    .header("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36")
-                    .data(postData)
-                    .post();
-            Elements rankingTable = doc.select("table");
-            Iterator<Element> rows = rankingTable.select("tr").iterator();
-            Ranking.Type rankingType = null;
-            while (rows.hasNext()) {
-                Element row = rows.next();
-                Elements th = row.select("th");
-                if (th.size() == 1) {
-                    String name = th.get(0).html();
-                    rankingType = Ranking.Type.fromName(name);
-                }
-                if (rankingType != null) {
-                    tryParse(row, result, rankingType);
+            for (int weekend = 1; weekend <= 37; weekend++) {
+                postData.put("ctl00$MainContent$cboWeekend", Integer.toString(weekend));
+                doc = Jsoup.connect("http://www.kavvv-basket.be/kavvv/results.aspx")
+                        .header("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36")
+                        .data(postData)
+                        .post();
+                Elements rankingTable = doc.select("table");
+                Iterator<Element> rows = rankingTable.select("tr").iterator();
+                Ranking.Type rankingType = null;
+                while (rows.hasNext()) {
+                    Element row = rows.next();
+                    Elements th = row.select("th");
+                    if (th.size() == 1) {
+                        String name = th.get(0).html();
+                        rankingType = Ranking.Type.fromName(name);
+                    }
+                    if (rankingType != null) {
+                        tryParse(row, result, rankingType);
+                    }
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Collections.sort(result, new Comparator<Game>() {
+            @Override
+            public int compare(Game o1, Game o2) {
+                if(o1.getType() != o2.getType()){
+                    return o1.getType().compareTo(o2.getType());
+                }
+                return o1.getDate().compareTo(o2.getDate());
+            }
+
+            @Override
+            public boolean equals(Object obj) {
+                return false;
+            }
+        });
         return result;
     }
 
@@ -70,23 +86,25 @@ public class GameServiceImpl implements GameService {
         game.setType(type);
         Elements cells = row.select("td");
         if (cells.size() == 8) {
-            String dateWithDay = cells.get(0).select("span").get(0).html();
-            String time = cells.get(1).select("span").get(0).html();
             try {
+                String dateWithDay = cells.get(0).select("span").get(0).html();
+                String time = cells.get(1).select("span").get(0).html();
                 Date date = formatter.parse(dateWithDay.substring(3) + " " + time);
                 game.setDate(date);
+                String team1 = cells.get(2).select("span").get(0).html();
+                game.setTeam1(team1);
+                String team2 = cells.get(3).select("span").get(0).html();
+                game.setTeam2(team2);
+                int score1 = Integer.parseInt(cells.get(4).select("span").get(0).html());
+                game.setScore1(score1);
+                int score2 = Integer.parseInt(cells.get(6).select("span").get(0).html());
+                game.setScore2(score2);
+                games.add(game);
             } catch (ParseException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
+            } catch(NumberFormatException e){
+//                e.printStackTrace();
             }
-            String team1 = cells.get(2).select("span").get(0).html();
-            game.setTeam1(team1);
-            String team2 = cells.get(3).select("span").get(0).html();
-            game.setTeam2(team2);
-            int score1 = Integer.parseInt(cells.get(4).select("span").get(0).html());
-            game.setScore1(score1);
-            int score2 = Integer.parseInt(cells.get(6).select("span").get(0).html());
-            game.setScore2(score2);
-            games.add(game);
         }
     }
 }

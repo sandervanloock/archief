@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Game {
 
-    private String team2, team1;
+    private String team1, team2;
     private Date date;
     private int score1, score2;
     private Ranking.Type type;

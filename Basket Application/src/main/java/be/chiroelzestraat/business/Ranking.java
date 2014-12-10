@@ -53,13 +53,13 @@ public class Ranking {
     }
 
     public static enum Type {
+        HEREN_3B("Heren 3B"),
         DAMES_1("Dames 1"),
         DAMES_2("Dames 2"),
         HEREN_1("Heren 1"),
         HEREN_2A("Heren 2A"),
         HEREN_2B("Heren 2B"),
         HEREN_3A("Heren 3A"),
-        HEREN_3B("Heren 3B"),
         HEREN_4A("Heren 4A"),
         HEREN_4B("Heren 4B"),
         HEREN_ERE("Heren Ere");
