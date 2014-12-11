@@ -79,8 +79,6 @@
     <div ng-repeat="ranking in rankings">
         <!-- First Featurette -->
         <div class="featurette">
-            <img class="featurette-image img-responsive" ng-class-even="'pull-left'" ng-class-odd="'pull-right'"
-                 src="http://placehold.it/500x500">
 
             <h2 class="featurette-heading">
                 {{ranking.name}}
@@ -112,10 +110,31 @@
                         </td>
                     </tr>
                     </tbody>
-            </table>
+                </table>
+            </div>
+
+            <div class="games">
+                <table st-table="rowCollection" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td>Datum</td>
+                            <td>Team 1</td>
+                            <td>Team 2</td>
+                            <td>Score</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="game in ranking.games" class="unstyled">
+                        <td>{{game.date | date : 'dd/M/yyyy'}}</td>
+                        <td>{{game.team1}}</td>
+                        <td>{{game.team2}}</li>
+                        <td>{{game.score1}} - {{game.score2}}</li>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 </div>
 
 <!-- Footer -->
@@ -131,11 +150,12 @@
 <!-- /.container -->
 
 
-<script src="bower_components/jquery/src/jquery.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-smart-table/dist/smart-table.min.js"></script>
+<script src="bower_components/momentjs/moment.js"></script>
 <script src="app.js"></script>
 <script src="home/home.js"></script>
 <script src="components/version/version.js"></script>

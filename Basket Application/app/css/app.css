@@ -216,8 +216,17 @@ footer {
     }
 }
 
-.ranking table{
-    width:50%;
+
+.ranking{
+    float: left;
+    width:45%;
 }
+
+.games{
+    float: right;
+    width:45%;
+}
+
+
 
 

@@ -31,6 +31,7 @@ public class GameServiceImpl implements GameService {
         try {
             Map<String, String> postData = initializePostData();
             for (int weekend = 1; weekend <= 37; weekend++) {
+                postData.put("ctl00$MainContent$cboWeekend",Integer.toString(weekend));
                 result = getGamesForDate(postData, weekend);
             }
         } catch (IOException e) {
@@ -47,6 +48,7 @@ public class GameServiceImpl implements GameService {
             if (date != null) {
                 int weekend = getDateValue(date);
                 Map<String, String> postData = initializePostData();
+                postData.put("ctl00$MainContent$cboWeekend",Integer.toString(weekend));
                 gamesForDate = getGamesForDate(postData, weekend);
                 gamesForDate = new ArrayList<Game>(CollectionUtils.findAll(gamesForDate, new GameDateChecker(date)));
             } else {
@@ -136,15 +138,21 @@ public class GameServiceImpl implements GameService {
                 game.setTeam1(team1);
                 String team2 = cells.get(3).select("span").get(0).html();
                 game.setTeam2(team2);
-                int score1 = Integer.parseInt(cells.get(4).select("span").get(0).html());
-                game.setScore1(score1);
-                int score2 = Integer.parseInt(cells.get(6).select("span").get(0).html());
-                game.setScore2(score2);
+                String score1String = cells.get(4).select("span").get(0).html();
+                if(!score1String.isEmpty()){
+                    int score1 = Integer.parseInt(score1String);
+                    game.setScore1(score1);
+                }
+                String score2String = cells.get(6).select("span").get(0).html();
+                if(!score2String.isEmpty()){
+                    int score2 = Integer.parseInt(score2String);
+                    game.setScore2(score2);
+                }
                 games.add(game);
             } catch (ParseException e) {
-//                e.printStackTrace();
+                e.printStackTrace();
             } catch (NumberFormatException e) {
-//                e.printStackTrace();
+                e.printStackTrace();
             }
         }
     }
