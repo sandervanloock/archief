@@ -40,6 +40,31 @@ public class GameServiceImpl implements GameService {
         return result;
     }
 
+    @Override
+    public List<Game> getGame(Date date, Ranking.Type type) {
+        try {
+            List<Game> gamesForDate;
+            if (date != null) {
+                int weekend = getDateValue(date);
+                Map<String, String> postData = initializePostData();
+                gamesForDate = getGamesForDate(postData, weekend);
+                gamesForDate = new ArrayList<Game>(CollectionUtils.findAll(gamesForDate, new GameDateChecker(date)));
+            } else {
+                gamesForDate = getGames();
+            }
+            if (type != null) {
+                gamesForDate = new ArrayList<Game>(CollectionUtils.findAll(gamesForDate, new GameTypeChecker(type)));
+            }
+            Collections.sort(gamesForDate, new GameComparator());
+            return gamesForDate;
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return new ArrayList<Game>();
+    }
+
     private Map<String, String> initializePostData() throws IOException {
         Document doc = Jsoup.connect("http://www.kavvv-basket.be/kavvv/results.aspx").get();
         String viewState = doc.select("#__VIEWSTATE").attr("value");
@@ -78,31 +103,6 @@ public class GameServiceImpl implements GameService {
             }
         }
         return result;
-    }
-
-    @Override
-    public List<Game> getGame(Date date, Ranking.Type type) {
-        try {
-            List<Game> gamesForDate;
-            if (date != null) {
-                int weekend = getDateValue(date);
-                Map<String, String> postData = initializePostData();
-                gamesForDate = getGamesForDate(postData, weekend);
-                gamesForDate = new ArrayList<Game>(CollectionUtils.findAll(gamesForDate, new GameDateChecker(date)));
-            } else {
-                gamesForDate = getGames();
-            }
-            if (type != null) {
-                gamesForDate = new ArrayList<Game>(CollectionUtils.findAll(gamesForDate, new GameTypeChecker(type)));
-            }
-            Collections.sort(gamesForDate, new GameComparator());
-            return gamesForDate;
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return new ArrayList<Game>();
     }
 
     private int getDateValue(Date date) throws IOException, ParseException {
