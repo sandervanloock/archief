@@ -1,8 +1,10 @@
 package be.chiroelzestraat.services;
 
 import be.chiroelzestraat.business.Game;
-import be.chiroelzestraat.business.checker.GameTypeChecker;
 import be.chiroelzestraat.business.Ranking;
+import be.chiroelzestraat.business.checker.GameDateChecker;
+import be.chiroelzestraat.business.checker.GameTypeChecker;
+import be.chiroelzestraat.business.comparator.GameComparator;
 import be.chiroelzestraat.business.util.CollectionUtils;
 import org.apache.commons.lang.time.DateUtils;
 import org.jsoup.Jsoup;
@@ -34,20 +36,7 @@ public class GameServiceImpl implements GameService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Collections.sort(result, new Comparator<Game>() {
-            @Override
-            public int compare(Game o1, Game o2) {
-                if (o1.getType() != o2.getType()) {
-                    return o1.getType().compareTo(o2.getType());
-                }
-                return o1.getDate().compareTo(o2.getDate());
-            }
-
-            @Override
-            public boolean equals(Object obj) {
-                return false;
-            }
-        });
+        Collections.sort(result, new GameComparator());
         return result;
     }
 
@@ -94,12 +83,19 @@ public class GameServiceImpl implements GameService {
     @Override
     public List<Game> getGame(Date date, Ranking.Type type) {
         try {
-            int weekend = getDateValue(date);
-            Map<String, String> postData = initializePostData();
-            List<Game> gamesForDate = getGamesForDate(postData, weekend);
+            List<Game> gamesForDate;
+            if (date != null) {
+                int weekend = getDateValue(date);
+                Map<String, String> postData = initializePostData();
+                gamesForDate = getGamesForDate(postData, weekend);
+                gamesForDate = new ArrayList<Game>(CollectionUtils.findAll(gamesForDate, new GameDateChecker(date)));
+            } else {
+                gamesForDate = getGames();
+            }
             if (type != null) {
                 gamesForDate = new ArrayList<Game>(CollectionUtils.findAll(gamesForDate, new GameTypeChecker(type)));
             }
+            Collections.sort(gamesForDate, new GameComparator());
             return gamesForDate;
         } catch (IOException e) {
             e.printStackTrace();

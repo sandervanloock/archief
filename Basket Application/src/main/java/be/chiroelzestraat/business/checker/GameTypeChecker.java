@@ -1,6 +1,5 @@
 package be.chiroelzestraat.business.checker;
 
-import be.chiroelzestraat.business.Checker;
 import be.chiroelzestraat.business.Game;
 import be.chiroelzestraat.business.Ranking;
 

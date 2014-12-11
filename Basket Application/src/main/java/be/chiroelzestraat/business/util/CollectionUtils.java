@@ -1,6 +1,6 @@
 package be.chiroelzestraat.business.util;
 
-import be.chiroelzestraat.business.Checker;
+import be.chiroelzestraat.business.checker.Checker;
 
 import java.util.Collection;
 import java.util.LinkedList;

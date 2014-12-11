@@ -44,7 +44,23 @@ public class TestGameService {
             Assert.assertEquals(expectedType, game.getType());
             Assert.assertEquals(DateUtils.truncate(expectedDate,Calendar.DATE), DateUtils.truncate(game.getDate(),Calendar.DATE));
         }
+    }
 
+    @Test
+    public void testGetOneGameNullType() throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy kk:mm:ss");
+        Date expectedDate = formatter.parse("31/10/2014 21:15:07");
+        Ranking.Type expectedType = null;
+
+        List<Game> actualGames = gameService.getGame(expectedDate, expectedType);
+
+        Assert.assertNotNull(actualGames);
+        Assert.assertTrue(actualGames.size()>2);
+        for(Game game: actualGames){
+            Assert.assertNotNull(game);
+            Assert.assertNotNull(game.getType());
+            Assert.assertEquals(DateUtils.truncate(expectedDate,Calendar.DATE), DateUtils.truncate(game.getDate(),Calendar.DATE));
+        }
     }
 
 }
