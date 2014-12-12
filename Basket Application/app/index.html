@@ -34,14 +34,7 @@
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">KAVVV - Basket</a>
+            <a class="navbar-brand">KAVVV - Basket</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -76,7 +69,7 @@
                     <div class="calendar">
                         <p class="input-group">
                             <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="dt"
-                                   is-open="opened" close-text="Sluiten"/>
+                                   is-open="opened" show-button-bar="false" datepicker-options="dateOptions"/>
                 <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="openDatepicker($event)">
                     <i class="glyphicon glyphicon-calendar"></i>
@@ -190,6 +183,7 @@
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular/angular-locale_nl-be.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-smart-table/dist/smart-table.min.js"></script>
 <script src="bower_components/momentjs/moment.js"></script>

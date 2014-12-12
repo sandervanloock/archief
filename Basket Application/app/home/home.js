@@ -10,10 +10,12 @@ angular.module('myApp.home', ['ngRoute'])
     }])
 
     .controller('HomeCtrl', ['$scope', '$http', function ($scope, $http) {
-        $scope.today = function () {
-            $scope.dt = new Date();
+        $scope.dt = new Date();
+        $scope.dateOptions = {
+            startingDay: 1,
+            showWeeks: false,
+            currentText: 'Vandaag',
         };
-        $scope.today();
         $http.get('/basket/ranking').
             success(function (data, status, headers, config) {
                 $scope.rankings = data;
