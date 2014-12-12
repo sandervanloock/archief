@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
 
     <link rel="stylesheet" href="css/app.css"/>
-    <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet"/>
     <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body ng-controller="HomeCtrl">
@@ -35,25 +34,56 @@
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
-            <!--<span class="sr-only">Toggle navigation</span>-->
-            <!--<span class="icon-bar"></span>-->
-            <!--<span class="icon-bar"></span>-->
-            <!--<span class="icon-bar"></span>-->
-            <!--</button>-->
-            <a class="navbar-brand" href="#">Start Bootstrap</a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">KAVVV - Basket</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="#about">About</a>
+                    <span class="label-filter">Filter competitie:</span>
+
+                    <div class="btn-group type-filter" dropdown is-open="status.isopen" on-toggle="toggled(open)">
+                        <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle
+                                ng-disabled="disabled">
+                            {{typeFilter}} <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a ng-click="setTypeFilter('DAMES_1')">Dames 1</a></li>
+                            <li><a ng-click="setTypeFilter('DAMES_2')">Dames 2</a></li>
+                            <li><a ng-click="setTypeFilter('HEREN_1')">Heren 1</a></li>
+                            <li><a ng-click="setTypeFilter('HEREN_2A')">Heren 2A</a></li>
+                            <li><a ng-click="setTypeFilter('HEREN_2B')">Heren 2B</a></li>
+                            <li><a ng-click="setTypeFilter('HEREN_3A')">Heren 3A</a></li>
+                            <li><a ng-click="setTypeFilter('HEREN_3B')">Heren 3B</a></li>
+                            <li><a ng-click="setTypeFilter('HEREN_4A')">Heren 4A</a></li>
+                            <li><a ng-click="setTypeFilter('HEREN_4B')">Heren 4B</a></li>
+                            <li><a ng-click="setTypeFilter('HEREN_ERE')">Heren Ere</a></li>
+                            <li class="divider"></li>
+                            <li><a ng-click="setTypeFilter('')">Geen filter</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li>
-                    <a href="#services">Services</a>
-                </li>
-                <li>
-                    <a href="#contact">Contact</a>
+                    <span class="label-datepicker">Selecteer datum:</span>
+
+                    <div class="calendar">
+                        <p class="input-group">
+                            <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="dt"
+                                   is-open="opened" close-text="Sluiten"/>
+                <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="openDatepicker($event)">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                </button>
+                </span>
+                        </p>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -76,8 +106,10 @@
 <!-- Page Content -->
 <div class="container">
 
-    <div ng-repeat="ranking in rankings">
-        <!-- First Featurette -->
+    <div ng-repeat="ranking in rankings | filter:typeFilter track by ranking.type">
+
+        <hr class="featurette-divider">
+
         <div class="featurette">
 
             <h2 class="featurette-heading">
@@ -116,35 +148,40 @@
             <div class="games">
                 <table st-table="rowCollection" class="table table-striped">
                     <thead>
-                        <tr>
-                            <td>Datum</td>
-                            <td>Team 1</td>
-                            <td>Team 2</td>
-                            <td>Score</td>
-                        </tr>
+                    <tr>
+                        <td>Datum</td>
+                        <td>Team 1</td>
+                        <td>Team 2</td>
+                        <td>Score</td>
+                    </tr>
                     </thead>
                     <tbody>
                     <tr ng-repeat="game in ranking.games" class="unstyled">
                         <td>{{game.date | date : 'dd/M/yyyy'}}</td>
                         <td>{{game.team1}}</td>
-                        <td>{{game.team2}}</li>
-                        <td>{{game.score1}} - {{game.score2}}</li>
+                        <td>{{game.team2}}</td>
+                        <td>{{game.score1}} - {{game.score2}}</td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
+
     </div>
+    <hr class="featurette-divider">
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Copyright &copy; Your Website 2014</p>
+            </div>
+        </div>
+    </footer>
+
 </div>
 
-<!-- Footer -->
-<footer>
-    <div class="row">
-        <div class="col-lg-12">
-            <p>Copyright &copy; Your Website 2014</p>
-        </div>
-    </div>
-</footer>
 
 </div>
 <!-- /.container -->
@@ -156,6 +193,7 @@
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-smart-table/dist/smart-table.min.js"></script>
 <script src="bower_components/momentjs/moment.js"></script>
+<script src="bower_components/ui-bootstrap/ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
 <script src="app.js"></script>
 <script src="home/home.js"></script>
 <script src="components/version/version.js"></script>

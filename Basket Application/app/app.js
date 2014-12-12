@@ -4,7 +4,8 @@
 angular.module('myApp', [
     'ngRoute',
     'myApp.home',
-    'smart-table'
+    'smart-table',
+    'ui.bootstrap'
 ]).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/home'});
