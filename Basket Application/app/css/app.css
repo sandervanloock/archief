@@ -268,3 +268,6 @@ footer {
     text-transform: capitalize;
 }
 
+.pull-right.caret{
+    margin-top: 8px;
+}

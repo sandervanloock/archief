@@ -55,21 +55,21 @@
                     <div class="btn-group type-filter" dropdown is-open="status.isopen" on-toggle="toggled(open)">
                         <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle
                                 ng-disabled="disabled">
-                            {{typeFilter}} <span class="caret"></span>
+                            {{typeFilter.name}} <span class="pull-right caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a ng-click="setTypeFilter('DAMES_1')">Dames 1</a></li>
-                            <li><a ng-click="setTypeFilter('DAMES_2')">Dames 2</a></li>
-                            <li><a ng-click="setTypeFilter('HEREN_1')">Heren 1</a></li>
-                            <li><a ng-click="setTypeFilter('HEREN_2A')">Heren 2A</a></li>
-                            <li><a ng-click="setTypeFilter('HEREN_2B')">Heren 2B</a></li>
-                            <li><a ng-click="setTypeFilter('HEREN_3A')">Heren 3A</a></li>
-                            <li><a ng-click="setTypeFilter('HEREN_3B')">Heren 3B</a></li>
-                            <li><a ng-click="setTypeFilter('HEREN_4A')">Heren 4A</a></li>
-                            <li><a ng-click="setTypeFilter('HEREN_4B')">Heren 4B</a></li>
-                            <li><a ng-click="setTypeFilter('HEREN_ERE')">Heren Ere</a></li>
+                            <li><a ng-click="setTypeFilter($event,'DAMES_1')">Dames 1</a></li>
+                            <li><a ng-click="setTypeFilter($event,'DAMES_2')">Dames 2</a></li>
+                            <li><a ng-click="setTypeFilter($event,'HEREN_1')">Heren 1</a></li>
+                            <li><a ng-click="setTypeFilter($event,'HEREN_2A')">Heren 2A</a></li>
+                            <li><a ng-click="setTypeFilter($event,'HEREN_2B')">Heren 2B</a></li>
+                            <li><a ng-click="setTypeFilter($event,'HEREN_3A')">Heren 3A</a></li>
+                            <li><a ng-click="setTypeFilter($event,'HEREN_3B')">Heren 3B</a></li>
+                            <li><a ng-click="setTypeFilter($event,'HEREN_4A')">Heren 4A</a></li>
+                            <li><a ng-click="setTypeFilter($event,'HEREN_4B')">Heren 4B</a></li>
+                            <li><a ng-click="setTypeFilter($event,'HEREN_ERE')">Heren Ere</a></li>
                             <li class="divider"></li>
-                            <li><a ng-click="setTypeFilter('')">Geen filter</a></li>
+                            <li><a ng-click="setTypeFilter($event,'')">Geen filter</a></li>
                         </ul>
                     </div>
                 </li>
@@ -110,7 +110,7 @@
 <!-- Page Content -->
 <div class="container">
 
-    <div ng-repeat="ranking in rankings | filter:typeFilter track by ranking.type">
+    <div ng-repeat="ranking in rankings | filter:typeFilter.value track by ranking.type">
 
         <hr class="featurette-divider">
 
@@ -127,6 +127,7 @@
                         <td>#</td>
                         <td>Naam</td>
                         <td>Doelsaldo</td>
+                        <td># Wedstrijden</td>
                         <td>Punten</td>
                     </tr>
                     </thead>
@@ -140,6 +141,9 @@
                         </td>
                         <td class="goalSaldo">
                             {{entry.positivePoints - entry.negativePoints}}
+                        </td>
+                        <td class="numberOfGames">
+                            {{entry.numberOfGames}}
                         </td>
                         <td class="points">
                             {{entry.rankingPoints}}

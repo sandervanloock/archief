@@ -13,9 +13,12 @@ angular.module('myApp.home', ['ngRoute'])
         $scope.dt = new Date();
         $scope.dateOptions = {
             startingDay: 1,
-            showWeeks: false,
-            currentText: 'Vandaag',
+            showWeeks: false
         };
+        $scope.typeFilter = {
+            name: 'Geen filter',
+            value: ''
+        }
         $http.get('/basket/ranking').
             success(function (data, status, headers, config) {
                 $scope.rankings = data;
@@ -42,7 +45,6 @@ angular.module('myApp.home', ['ngRoute'])
             });
         }
         $scope.$watch('dt', function () {
-            console.log($scope.dt);
             updateGameWithDate($scope.dt);
         })
         $scope.openDatepicker = function ($event) {
@@ -51,7 +53,23 @@ angular.module('myApp.home', ['ngRoute'])
 
             $scope.opened = true;
         };
-        $scope.setTypeFilter = function(filter) {
-            $scope.typeFilter = filter;
+        $scope.setTypeFilter = function($event, value) {
+            $scope.typeFilter = {};
+            $scope.typeFilter.name = $event.currentTarget.innerHTML;
+            $scope.typeFilter.value = value;
         };
+        $scope.disableDate = function(date, mode) {
+            return ( mode === 'day' && isDateAvailable(date) );
+        };
+
+        var isDateAvailable = function(date){
+            angular.forEach($scope.rankings, function (ranking) {
+                angular.forEach(ranking.games, function(game){
+                    if(game.date === date){
+                        return true;
+                    }
+                })
+            });
+            return false;
+        }
     }]);
