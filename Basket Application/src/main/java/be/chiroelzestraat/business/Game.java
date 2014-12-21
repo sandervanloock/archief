@@ -8,6 +8,7 @@ public class Game {
     private Date date;
     private int score1, score2;
     private Ranking.Type type;
+    private boolean isFuture, isCanceled;
 
     public void setType(Ranking.Type type) {
         this.type = type;
@@ -55,5 +56,21 @@ public class Game {
 
     public void setScore2(int score2) {
         this.score2 = score2;
+    }
+
+    public boolean isFuture() {
+        return isFuture;
+    }
+
+    public void setFuture(boolean isFuture) {
+        this.isFuture = isFuture;
+    }
+
+    public boolean isCanceled() {
+        return isCanceled;
+    }
+
+    public void setCanceled(boolean isCanceled) {
+        this.isCanceled = isCanceled;
     }
 }

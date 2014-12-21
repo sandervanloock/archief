@@ -148,6 +148,13 @@ public class GameServiceImpl implements GameService {
                     int score2 = Integer.parseInt(score2String);
                     game.setScore2(score2);
                 }
+                if(score1String.isEmpty()&&score2String.isEmpty()){
+                    game.setFuture(true);
+                }
+                String canceledString = cells.get(7).select("span").get(0).html();
+                if(!canceledString.isEmpty()){
+                    game.setCanceled(true);
+                }
                 games.add(game);
             } catch (ParseException e) {
                 e.printStackTrace();

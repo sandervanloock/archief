@@ -168,7 +168,17 @@
                         <td>{{game.date | date : 'dd/M/yyyy HH:mm'}}</td>
                         <td>{{game.team1}}</td>
                         <td>{{game.team2}}</td>
-                        <td>{{game.score1}} - {{game.score2}}</td>
+                        <td>
+                            <div ng-if="game.canceled">
+                                  AFGELAST
+                            </div>
+                            <div ng-if="game.future">
+                                TBA
+                            </div>
+                            <div ng-if="!game.future">
+                                {{game.score1}} - {{game.score2}}
+                            </div>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
