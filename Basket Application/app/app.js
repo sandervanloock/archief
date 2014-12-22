@@ -4,6 +4,7 @@
 angular.module('myApp', [
     'ngRoute',
     'myApp.home',
+    'myApp.cookieService',
     'smart-table',
     'ui.bootstrap'
 ]).

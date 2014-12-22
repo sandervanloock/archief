@@ -9,31 +9,43 @@ angular.module('myApp.home', ['ngRoute'])
         });
     }])
 
-    .controller('HomeCtrl', ['$scope', '$http', function ($scope, $http) {
-        $scope.dt = new Date();
-        $scope.dateOptions = {
-            startingDay: 1,
-            showWeeks: false
+    .controller('HomeCtrl', ['$scope', '$http', 'cookieService', function ($scope, $http, cookieService) {
+        $scope.init = function () {
+            var cookieDate = cookieService.getCookie('datePicker');
+            if (cookieDate) {
+                $scope.dt = new Date(cookieDate);
+            } else {
+                $scope.dt = new Date();
+            }
+            var cookieFilter = cookieService.getCookie('typeFilter');
+            if (cookieFilter) {
+                $scope.typeFilter = cookieFilter;
+            } else {
+                $scope.typeFilter = {
+                    name: 'Geen filter',
+                    value: ''
+                }
+            }
+            $scope.dateOptions = {
+                startingDay: 1,
+                showWeeks: false
+            };
         };
-        $scope.typeFilter = {
-            name: 'Geen filter',
-            value: ''
-        }
         $http.get('/basket/ranking').
             success(function (data, status, headers, config) {
                 $scope.rankings = data;
-                updateGameWithDate(new Date());
+                $scope.updateGameWithDate($scope.dt);
             }).
             error(function (data, status, headers, config) {
                 console.log("error");
             });
-        var updateGameWithDate = function (date) {
+        $scope.updateGameWithDate = function (date) {
             angular.forEach($scope.rankings, function (ranking) {
                 $http({
                     method: 'GET',
                     url: '/basket/game',
                     params: {
-                        date: moment(date).format("DD-MM-YYYY"),
+                        date: moment(date).add(-2).format("DD-MM-YYYY"),
                         type: ranking.name
                     }})
                     .success(function (data, status, headers, config) {
@@ -45,7 +57,8 @@ angular.module('myApp.home', ['ngRoute'])
             });
         }
         $scope.$watch('dt', function () {
-            updateGameWithDate($scope.dt);
+            $scope.updateGameWithDate($scope.dt);
+            cookieService.storeCookie('datePicker', $scope.dt);
         })
         $scope.openDatepicker = function ($event) {
             $event.preventDefault();
@@ -57,19 +70,20 @@ angular.module('myApp.home', ['ngRoute'])
             $scope.typeFilter = {};
             $scope.typeFilter.name = $event.currentTarget.innerHTML;
             $scope.typeFilter.value = value;
+            cookieService.storeCookie('typeFilter', $scope.typeFilter);
         };
-        $scope.disableDate = function(date, mode) {
+        $scope.disableDate = function (date, mode) {
             return ( mode === 'day' && isDateAvailable(date) );
         };
-
-        var isDateAvailable = function(date){
+        var isDateAvailable = function (date) {
             angular.forEach($scope.rankings, function (ranking) {
-                angular.forEach(ranking.games, function(game){
-                    if(game.date === date){
+                angular.forEach(ranking.games, function (game) {
+                    if (game.date === date) {
                         return true;
                     }
                 })
             });
             return false;
         }
+        $scope.init();
     }]);
