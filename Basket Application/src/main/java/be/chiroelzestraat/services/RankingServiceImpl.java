@@ -2,6 +2,7 @@ package be.chiroelzestraat.services;
 
 import be.chiroelzestraat.business.Entry;
 import be.chiroelzestraat.business.Ranking;
+import org.springframework.cache.annotation.Cacheable;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -15,7 +16,9 @@ import java.util.List;
 
 @Service
 public class RankingServiceImpl implements RankingService {
+
     @Override
+    @Cacheable(value="rankingCache")
     public List<Ranking> getRankings() {
         List<Ranking> result = new ArrayList<Ranking>();
         try {

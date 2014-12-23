@@ -1,5 +1,7 @@
 package be.chiroelzestraat.business;
 
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +52,16 @@ public class Ranking {
             }
         }
         return result;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return this.getName().equals(((Ranking) other).getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return this.getName().hashCode();
     }
 
     public static enum Type {

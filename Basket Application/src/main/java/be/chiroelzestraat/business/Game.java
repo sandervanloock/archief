@@ -1,5 +1,7 @@
 package be.chiroelzestraat.business;
 
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
 import java.util.Date;
 
 public class Game {
@@ -72,5 +74,20 @@ public class Game {
 
     public void setCanceled(boolean isCanceled) {
         this.isCanceled = isCanceled;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        Game other1 = (Game) other;
+        return this.getTeam1().equals(other1.getTeam1()) && this.getTeam2().equals(other1.getTeam2()) && this.getDate().equals(other1.getDate()) && this.getScore1() == other1.getScore1() && this.getScore2() == other1.getScore2();
+    }
+
+    @Override
+    public int hashCode() {
+        HashCodeBuilder hashCodeBuilder = new HashCodeBuilder();
+        hashCodeBuilder.append(this.getTeam1());
+        hashCodeBuilder.append(this.getTeam2());
+        hashCodeBuilder.append(this.getDate());
+        return hashCodeBuilder.hashCode();
     }
 }

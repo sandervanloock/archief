@@ -6,6 +6,7 @@ import be.chiroelzestraat.business.checker.GameDateChecker;
 import be.chiroelzestraat.business.checker.GameTypeChecker;
 import be.chiroelzestraat.business.comparator.GameComparator;
 import be.chiroelzestraat.business.util.CollectionUtils;
+import org.springframework.cache.annotation.Cacheable;
 import org.apache.commons.lang.time.DateUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -26,6 +27,7 @@ public class GameServiceImpl implements GameService {
     DateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy");
 
     @Override
+    @Cacheable(value = "gameCache")
     public List<Game> getGames() {
         List<Game> result = new ArrayList<Game>();
         try {
@@ -42,6 +44,7 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
+    @Cacheable(value = "gameCache")
     public List<Game> getGame(Date date, Ranking.Type type) {
         try {
             List<Game> gamesForDate;
