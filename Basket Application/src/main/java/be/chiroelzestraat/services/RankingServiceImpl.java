@@ -9,6 +9,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
+import javax.cache.annotation.CacheResult;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,7 +19,7 @@ import java.util.List;
 public class RankingServiceImpl implements RankingService {
 
     @Override
-    @Cacheable(value="rankingCache")
+    @CacheResult(cacheName= "rankingCache")
     public List<Ranking> getRankings() {
         List<Ranking> result = new ArrayList<Ranking>();
         try {

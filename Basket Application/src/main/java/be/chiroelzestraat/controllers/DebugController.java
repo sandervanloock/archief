@@ -1,8 +1,8 @@
 package be.chiroelzestraat.controllers;
 
-import net.sf.ehcache.Cache;
-import net.sf.ehcache.CacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.Cache;
+import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,14 +29,13 @@ public class DebugController {
 
         if (cacheManager != null) {
 
-            String[] cacheNames = cacheManager.getCacheNames();
+            Iterable<String> cacheNames = cacheManager.getCacheNames();
 
             for (String cacheName : cacheNames) {
                 Cache c = cacheManager.getCache(cacheName);
                 if (flushAllCache || cacheName.equals(clearCacheName)) {
-                    c.removeAll();
+                    c.clear();
                 }
-                c.getSize();
                 caches.add(c);
             }
         }

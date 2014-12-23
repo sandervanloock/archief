@@ -37,17 +37,17 @@
 		<div style="float: left; display: block; clear: none; margin-right: 20px; text-align: center;">
 			<strong>${cache.name}</strong> <a href="?key=resto&clearCacheName=${cache.name}">clear</a>
 			<table border="1" cellpadding="3">
-				<tr><td>Items</td><td>${cache.size}</td></tr>
-				<c:set var="stats" value="${cache.statistics}" />
-				<c:set var="hits" value="${stats.cacheHits}" />
-				<c:set var="misses" value="${stats.cacheMisses}" />
-				<tr><td>Hits</td><td>${hits}</td></tr>
-				<tr><td>Misses</td><td>${stats.cacheMisses}</td></tr>
-				<tr><td>Ratio</td><td><fmt:formatNumber value="${( ( hits * 1.0 / ( hits + misses ) ) * 100 )}"
-				                                        maxFractionDigits="2" minFractionDigits="2" /> %</td></tr>
-				<tr><td>Evictions</td><td>${stats.evictionCount}</td></tr>
-				<tr><td>Avg get time</td><td><fmt:formatNumber value="${stats.averageGetTime}"
-				                                        maxFractionDigits="2" minFractionDigits="2" /> ms</td></tr>
+				<%--<tr><td>Items</td><td>${cache.size}</td></tr>--%>
+				<%--<c:set var="stats" value="${cache.statistics}" />--%>
+				<%--<c:set var="hits" value="${stats.cacheHits}" />--%>
+				<%--<c:set var="misses" value="${stats.cacheMisses}" />--%>
+				<%--<tr><td>Hits</td><td>${hits}</td></tr>--%>
+				<%--<tr><td>Misses</td><td>${stats.cacheMisses}</td></tr>--%>
+				<%--<tr><td>Ratio</td><td><fmt:formatNumber value="${( ( hits * 1.0 / ( hits + misses ) ) * 100 )}"--%>
+				                                        <%--maxFractionDigits="2" minFractionDigits="2" /> %</td></tr>--%>
+				<%--<tr><td>Evictions</td><td>${stats.evictionCount}</td></tr>--%>
+				<%--<tr><td>Avg get time</td><td><fmt:formatNumber value="${stats.averageGetTime}"--%>
+				                                        <%--maxFractionDigits="2" minFractionDigits="2" /> ms</td></tr>--%>
 			</table>
 		</div>
 	</c:forEach>

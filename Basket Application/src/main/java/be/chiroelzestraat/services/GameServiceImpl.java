@@ -14,6 +14,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
+import javax.cache.annotation.CacheResult;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -27,7 +28,7 @@ public class GameServiceImpl implements GameService {
     DateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy");
 
     @Override
-    @Cacheable(value = "gameCache")
+    @CacheResult(cacheName= "gameCache")
     public List<Game> getGames() {
         List<Game> result = new ArrayList<Game>();
         try {
@@ -44,7 +45,7 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    @Cacheable(value = "gameCache")
+    @CacheResult(cacheName= "gameCache")
     public List<Game> getGame(Date date, Ranking.Type type) {
         try {
             List<Game> gamesForDate;
