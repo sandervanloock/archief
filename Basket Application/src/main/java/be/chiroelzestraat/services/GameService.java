@@ -9,5 +9,5 @@ import java.util.List;
 public interface GameService {
     List<Game> getGames();
 
-    List<Game> getGame(Date date, Ranking.Type type);
+    List<Game> getSpecificGames(Date date, Ranking.Type type);
 }

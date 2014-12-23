@@ -26,7 +26,7 @@ public class GameController {
             @RequestParam(required=false, value="type") String type
     ) {
         try {
-            return gameService.getGame(simpleDateFormat.parse(date), Ranking.Type.fromName(type));
+            return gameService.getSpecificGames(simpleDateFormat.parse(date), Ranking.Type.fromName(type));
         } catch (ParseException e) {
             return gameService.getGames();
         }

@@ -46,7 +46,7 @@ public class GameServiceImpl implements GameService {
 
     @Override
     @CacheResult(cacheName= "gameCache")
-    public List<Game> getGame(Date date, Ranking.Type type) {
+    public List<Game> getSpecificGames(Date date, Ranking.Type type) {
         try {
             List<Game> gamesForDate;
             if (date != null) {

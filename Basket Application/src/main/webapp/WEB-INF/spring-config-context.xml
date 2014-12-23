@@ -31,6 +31,7 @@
         </cache:caching>
         <cache:caching cache="gameCache">
             <cache:cache-evict method="getGames" all-entries="true" />
+            <cache:cache-evict method="getSpecificGames" all-entries="true" />
         </cache:caching>
     </cache:advice>
 
