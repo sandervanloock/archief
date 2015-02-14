@@ -27,12 +27,12 @@ class DownloadController extends AbstractActionController
             array_push($files,'uploads/'.$sponsor->logo);
         }
         $zipname = 'uploads/all_logos.zip';
-        $this->create_zip($files, $zipname,true);
-        header('Content-Type: application/zip');
-        header('Content-disposition: attachment; filename=all_logos.zip');
-        header('Content-Length: ' . filesize($zipname));
-        readfile($zipname);
-//        return "ok";
+        if($this->create_zip($files, $zipname,true)){
+            header('Content-Type: application/zip');
+            header('Content-disposition: attachment; filename=all_logos.zip');
+            header('Content-Length: ' . filesize($zipname));
+            readfile($zipname);
+        }
     }
 
     function create_zip($files = array(), $destination = '', $overwrite = false)

@@ -15,7 +15,12 @@ angular.module('rommelmarktApp')
             });
             $scope.showSponsor = function (sponsorId) {
                 window.location = '#/sponsor/' + sponsorId;
-            }
+            };
+            $scope.downloadAllLogos = function(){
+                var url = configuration.BACKEND_SERVER_CONFIG+'sponsor/downloadZip';
+                console.log(url);
+                window.open(url);
+            };
         } ]);
 
 angular.module('rommelmarktApp')
