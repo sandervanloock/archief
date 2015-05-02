@@ -1,0 +1,27 @@
+@charset "UTF-8";
+/*------------------------------------*\
+    FONTS.SCSS
+\*------------------------------------*/
+//
+// Default settings for form elements
+//
+
+
+body{
+  font-family: $brand-main-body-font;
+}
+
+h1{
+  font-family: $brand-face-h1;
+}
+h2 {
+   font-family: $brand-face-h2;
+}
+
+h3 {
+   font-family: $brand-face-h3;
+}
+
+h2, h3 {
+  color: $brand-color;
+}

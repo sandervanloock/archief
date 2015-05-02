@@ -17,6 +17,7 @@ $url = 'https://api.twitter.com/1.1/statuses/user_timeline.json';
 $getfield = '?screen_name=chiroelzestraat&count=5';
 $requestMethod = 'GET';
 $twitter = new TwitterAPIExchange($settings);
+header('Content-Type: application/json');
 echo $twitter->setGetfield($getfield)
              ->buildOauth($url, $requestMethod)
              ->performRequest();

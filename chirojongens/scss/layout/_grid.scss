@@ -1,0 +1,124 @@
+@charset "UTF-8";
+
+/*------------------------------------*\
+    $GRIDS
+\*------------------------------------*/
+/**
+ * Fluid and nestable grid system, e.g.:
+ *
+<div class="l-grid-wrapper">
+    <div class="l-grid">
+        <div class="l-grid__item  one-third">
+            <p>One third grid</p>
+        </div>
+
+        <div class="l-grid__item  two-thirds">
+            <p>Two thirds grid</p>
+        </div>
+
+        <div class="l-grid__item  one-half">
+            <div class="l-grid-wrapper--nogutter">
+                <div class="l-grid">
+                    <div class="l-grid__item  one-half">One half, nested in one half grid no-gutter</div>
+                    <div class="l-grid__item  one-half">One half, nested in one half grid</div>
+                </div>
+            </div>
+        </div>
+        <div class="l-grid__item  one-half">
+            <div class="l-grid-wrapper">
+                <div class="l-grid">
+                    <div class="l-grid__item  one-third">One half, nested in one half grid </div>
+                    <div class="l-grid__item  one-third">One half, nested in one half grid</div>
+                    <div class="l-grid__item  one-third">One half, nested in one half grid</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="l-grid__item  one-quarter">
+            <p>One quarter grid</p>
+        </div>
+
+        <div class="l-grid__item  one-quarter">
+            <p>One quarter grid</p>
+        </div>
+        <div class="l-grid__item  one-quarter">
+            <p>One quarter grid</p>
+        </div>
+
+        <div class="l-grid__item  one-quarter">
+            <p>One quarter grid</p>
+        </div>
+    </div>
+</div>
+ *
+ */
+
+/**
+ * Grid creator mixin - $gutter-vertical and $gutter-horizontal are usually identical, but don't have to be.
+ */
+@mixin gridcreator( $gutter-vertical, $gutter-horizontal ) {
+  @include prop-rem( "padding", $gutter-vertical/2, $gutter-horizontal/2 );
+
+  >.l-grid-wrapper {
+    @include prop-rem( "margin", -$gutter-vertical,  -$gutter-horizontal);
+    overflow: auto; // firefox, opera, ie8,9,10 have a 0.5rem error (next row items push with 0.5 padding-top). this fixes it
+  }
+
+  >.l-grid {
+    width: 100%;
+    >.l-grid__item {
+      @include prop-rem( "padding", $gutter-vertical/2, $gutter-horizontal/2 );
+      float:left;
+      line-height:1.5;
+    }
+  }
+
+  @at-root >.l-grid-wrapper--nogutter &  { padding: 0; }
+}
+
+//
+// general grid props
+//
+.l-grid-wrapper,
+.l-grid,
+.l-grid__item {
+  @include clearfix;
+  display:block;
+  position: relative;
+  zoom: 1;
+}
+
+//
+// here we initiate our grid(s)
+//
+.l-grid-wrapper {
+  @include gridcreator( $base-spacing-unit, $base-spacing-unit );
+}
+
+.l-grid-wrapper--nogutter {
+  @include gridcreator( 0, 0 );
+}
+
+//quickfix...
+.l-grid-wrapper .l-grid-wrapper .l-grid-wrapper{
+  @include prop-rem( "margin", -1,  -1);
+}
+
+// Example: you can add variants like this:
+//.l-grid-wrapper--halfgutter {
+//  @include gridcreator( $base-spacing/2, $base-spacing/2  );
+//}
+
+
+//helper functions to expand layout items within a grid (first-childs)
+.grid--expand{
+  @include prop-rem( "margin", 0, -1 );
+}
+
+.grid--expand-left{
+  @include prop-rem( "margin-left", -1 );
+}
+
+.grid--expand-right{
+  @include prop-rem( "margin-right", -1 );
+}

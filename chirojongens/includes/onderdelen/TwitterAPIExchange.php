@@ -210,6 +210,7 @@ class TwitterAPIExchange
 
         $feed = curl_init();
         curl_setopt_array($feed, $options);
+        curl_setopt($feed, CURLOPT_SSL_VERIFYPEER, false);
         $json = curl_exec($feed);
         curl_close($feed);
 
