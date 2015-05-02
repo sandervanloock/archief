@@ -2,3 +2,5 @@
 *.css
 node_modules
 logs
+js/lib
+bower_components
