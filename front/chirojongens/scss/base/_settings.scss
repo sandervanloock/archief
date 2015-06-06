@@ -1,0 +1,102 @@
+@charset "UTF-8";
+/*------------------------------------*\
+    $SETTINGS
+\*------------------------------------*/
+/**
+ * Set up project-specific variables here which are then used throughout your
+ * build.
+ */
+
+/**
+ * Base stuff
+ */
+$small-font-size:    13px!default;
+$base-font-size:    16px!default;
+$base-line-height:  1.5!default;
+
+/**
+ * How big would you like round corners to be by default?
+ */
+$border-radius-small:	   2px!default;
+$border-radius-base:        4px!default;
+$border-radius-large:        6px!default;
+$border-radius-circle:        100%!default;
+$border-radius-top:   4px!default;
+
+/**
+ * Brand stuff
+ */
+$brand-color:     #2c2d2d!default;
+$brand-text:      #2c2d2d!default;
+
+$brand-face:      'Arial', 'Verdana', 'Helvetica', sans-serif!default;
+$brand-face1:      'Open Sans', sans-serif;
+
+$brand-main-serif-font: 'Cambria', 'Georgia', serif;
+$brand-main-sans-font: $brand-face;
+
+$brand-main-body-font: $brand-main-sans-font;
+$brand-face-h1:     $brand-face;
+$brand-face-h2:     $brand-face;
+$brand-face-h3:     $brand-face;
+$brand-link-font: $brand-main-sans-font;
+
+$brand-background-color:#faf8f3 ;
+$brand-box-background-color:#fcfbf8;
+$brand-color-green:#aecc74;
+$brand-color-white:#ffffff;
+$brand-color-red:#8f192f;
+$brand-color-promo:#fe940a;
+$brand-color-gray:#eeeadf;
+$brand-border-color: #dbd7d4;
+$brand-main-color: #FFFFFF;
+$brand-highlight-color: tint($brand-main-color,95%);
+$brand-active-color: #2DB200;
+$header-color:#9dc677;
+
+$btn-shadow-size: 6px;
+$btn-shadow-small-size: 3px;
+
+/**
+ * Assign our `$base-line-height` to a new spacing var for more transparency.
+ */
+$base-spacing-unit: 1;
+$half-spacing-unit: $base-spacing-unit / 2!default;
+
+/**
+ * Buttons
+ */
+$btn-default-color: #FFFFFF;
+$btn-default-bg : #559FF8 ;
+$btn-choose-color:#3567B8;
+$btn-chosen-color:#3567B8;
+$btn-primary-border: rgba(255,255,255,0.25);
+
+$brand-link-color: #FFFFFF;
+$brand-link-hover-color: shade($brand-link-color,10);
+
+$default-text-shadow-color: rgba(white, 1);
+$default-text-shadow-blur:1px;
+$default-text-shadow-v-offset:1.5px;
+
+/**
+ * Responsive stuff
+ */
+$break-very-small: 20em; // 320 @ 16px
+$break-small: 30em; // 480 @ 16px
+$break-small-medium: 40em; // 640 @ 16px
+$break-medium: 50em; // 800 @ 16px
+$break-medium-large: 60em; // 960 @ 16px
+$break-large: 70em; // 1120 @ 16px
+$break-very-large: 80em; // 1280 @ 16px
+
+$break-mobile: 0; /* No media query since this is the default */
+$break-tablet: $break-small-medium; //  640 @ 16px
+$break-desktop: $break-medium-large; // 960 @ 16px
+
+/**
+ * We need to supply a full code font-stack in order to combat this:
+ * jsfiddle.net/csswizardry/uD6UW
+ */
+
+

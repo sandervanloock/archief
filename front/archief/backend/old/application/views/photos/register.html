@@ -1,0 +1,31 @@
+<h1>Register</h1>
+{if isset($success)}
+    The photo has been added!
+{/if}
+{else}
+    <form method="post">
+        <ol>
+            <li>
+                <label>
+                    Title:
+                    <input type="text" name="title" />
+                    {if isset($title_error)}
+                        {echo $title_error}
+                    {/if}
+                </label>
+            </li>
+            <li>
+                <label>
+                    Directory:
+                    <input type="text" name="directory" />
+                    {if isset($directory_error)}
+                        {echo $directory_error}
+                    {/if}
+                </label>
+            </li>  
+            <li>
+                <input type="submit" name="register" value="register" />
+            </li>
+        </ol>
+    </form>
+{/else}

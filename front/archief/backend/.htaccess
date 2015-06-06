@@ -1,0 +1,4 @@
+SetEnv ZF2_PATH ./ZendFramework/library/
+ <IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+ </IfModule>

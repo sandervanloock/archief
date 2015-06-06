@@ -1,0 +1,16 @@
+*.ini
+backend/data/
+backend/thumbs/
+ZendFramework/
+front/app/bower_components/
+front/config/environments/development.json
+front/app/js/services/config.js
+front/npm-debug.log
+backend/uploads
+rommelmarkt/**/*.png
+rommelmarkt/**/*.jpg
+rommelmarkt/**/*.jpeg
+rommelmarkt/**/*.gif
+
+
+

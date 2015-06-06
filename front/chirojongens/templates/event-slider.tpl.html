@@ -1,0 +1,18 @@
+<div class="calendar">
+    <h2>Opkomende activiteiten</h2>
+
+    <div class="panel" ng-repeat="event in calendar.events">
+        <div class="eventWrapper" ng-show="$index==calendar.currentEvent">
+            <div class="nav nav-left pull-left"><a ng-click="prevEvent()"><i class="fa fa-chevron-circle-left fa-2x"></i></a></div>
+            <div class="nav nav-right pull-right"><a ng-click="nextEvent()"><i class="fa fa-chevron-circle-right fa-2x"></i></a></div>
+            <div class="wrapper">
+                <h3>{{event.summary}}</h3>
+                <img class="left png" ng-src="{{event.image}}" alt="logo" ng-if="event.image"/>
+
+                <p class="description">{{event.description}}</p><br/>
+                <span class="date">Van: {{event.start.date}}</span>
+                <span class="date">Tot: {{event.end.date}}</span>
+            </div>
+        </div>
+    </div>
+</div>
