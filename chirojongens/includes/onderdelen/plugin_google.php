@@ -1,1 +1,0 @@
-<iframe src="includes/onderdelen/verhuur_kalender.php" width="100%" height="300px"></iframe>
