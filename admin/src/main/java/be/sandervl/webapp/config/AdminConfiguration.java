@@ -24,12 +24,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import twitter4j.Twitter;
+import twitter4j.TwitterFactory;
+import twitter4j.conf.ConfigurationBuilder;
 
 import javax.sql.DataSource;
 
 @Configuration
 @EnableAcrossContext
-@PropertySource("classpath:config/${environment.type}/common.properties")
+@PropertySource({"classpath:config/${environment.type}/common.properties",
+        "classpath:config/general.properties"})
 public class AdminConfiguration implements AcrossContextConfigurer {
 
     @Autowired
@@ -82,7 +86,7 @@ public class AdminConfiguration implements AcrossContextConfigurer {
 
     private AdminWebModule adminWebModule() {
         AdminWebModule adminWebModule = new AdminWebModule();
-        adminWebModule.setRootPath("/secure");
+        adminWebModule.setRootPath("/admin");
         adminWebModule.setProperty(AdminWebModuleSettings.REMEMBER_ME_KEY, "subscription-manager");
         return adminWebModule;
     }

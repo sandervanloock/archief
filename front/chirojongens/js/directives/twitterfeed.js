@@ -3,10 +3,10 @@ angular.module('app').directive('twitterFeed',['TwitterService',function(Twitter
         restrict: 'A',
         templateUrl: 'templates/twitter-feed.tpl.html',
         link: function(scope){
-            TwitterService.searchTweets("gntand").then(function(data){
+            TwitterService.searchTweets().then(function(data){
                 scope.tweets = data.data;
                 angular.forEach(scope.tweets,function(tweet){
-                    tweet.created_at = moment(tweet.created_at).toDate();
+                    tweet.created_at = moment(tweet.createdAt).toDate();
                 })
             })
         }

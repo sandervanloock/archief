@@ -19,13 +19,14 @@ var app = angular.module('app', ['ngRoute','ui.bootstrap']);
 app.constant('Constants',
     {
         calendarIds: [
-            'ofnonpgnb4affnd6t51e48fsdo@group.calendar.google.com',
-            '80k5sp0pj8973vrdj5lafga33g@group.calendar.google.com',
-            'vtuadhst93b1h7879gogidqepk@group.calendar.google.com',
-            '25bpqoqdk4j0a6p4m68uqea3ig@group.calendar.google.com',
-            '9aomc83dom4mbdq10m5t8vnkpo@group.calendar.google.com',
-            '2aptde9r90v1dq3iglhh654sns@group.calendar.google.com',
-            'bms3ile8seb4hobrk4vq31nafo@group.calendar.google.com'
+            '52on50vspdubfmmbdenbamr0k0@group.calendar.google.com'
+            //'ofnonpgnb4affnd6t51e48fsdo@group.calendar.google.com',
+            //'80k5sp0pj8973vrdj5lafga33g@group.calendar.google.com',
+            //'vtuadhst93b1h7879gogidqepk@group.calendar.google.com',
+            //'25bpqoqdk4j0a6p4m68uqea3ig@group.calendar.google.com',
+            //'9aomc83dom4mbdq10m5t8vnkpo@group.calendar.google.com',
+            //'2aptde9r90v1dq3iglhh654sns@group.calendar.google.com',
+            //'bms3ile8seb4hobrk4vq31nafo@group.calendar.google.com'
         ],
         groups: [
             {name: 'Speelclub', calendarId: 0},

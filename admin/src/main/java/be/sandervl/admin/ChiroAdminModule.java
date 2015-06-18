@@ -11,7 +11,7 @@ import com.foreach.across.modules.web.AcrossWebModule;
 @AcrossDepends(required = { AcrossWebModule.NAME, AcrossHibernateJpaModule.NAME })
 public class ChiroAdminModule extends AcrossModule implements HibernatePackageConfiguringModule
 {
-    public static final String NAME = "AdminModule";
+    public static final String NAME = "ChiroAdminModule";
 
     @Override
     public String getName() {

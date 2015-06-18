@@ -7,4 +7,6 @@ import com.foreach.across.modules.hibernate.jpa.repositories.IdBasedEntityJpaRep
  * Created by sander on 07/06/2015.
  */
 public interface LeaderShipRepository extends IdBasedEntityJpaRepository<LeaderShip> {
+
+
 }
