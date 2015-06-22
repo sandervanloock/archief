@@ -2,6 +2,7 @@ package be.sandervl.admin.services;
 
 import be.sandervl.admin.business.ChiroGroup;
 import com.google.api.services.calendar.model.Events;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,10 @@ public class GoogleCalendarServiceImpl implements GoogleCalendarService {
     @Override
     public Events getEventsFromGroup(ChiroGroup group) {
         try {
-            return calendarClient.events().list("52on50vspdubfmmbdenbamr0k0@group.calendar.google.com").execute();
+            if(StringUtils.isNotEmpty(group.getCalendarId())){
+                return calendarClient.events().list(group.getCalendarId()).execute();
+            }
+            return new Events();
         } catch (IOException e) {
             e.printStackTrace();
             return null;

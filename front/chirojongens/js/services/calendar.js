@@ -1,20 +1,17 @@
-angular.module("app").factory('CalendarService', ['$q', function ($q) {
-    this.getCalendarEvents = function (calendarId) {
-        return gapi.client.calendar.events.list({
-            calendarId: calendarId,
-            timeMin: moment().toJSON()
-        })
+angular.module("app").factory('CalendarService', ['$q', '$http', function ($q,$http) {
+    this.getCalendarEvents = function (group) {
+        return $http.get("/admin/api/event/"+group.name);
     };
     var _self = this;
     return {
-        getFutureEventsFromGroups: function (calendarIds) {
+        getFutureEventsFromGroups: function (groups) {
             var events = [];
             var deferred = $q.defer();
             var responses = 0;
-            angular.forEach(calendarIds, function (calendarId) {
-                _self.getCalendarEvents(calendarId, $q).then(function (data) {
+            angular.forEach(groups, function (group) {
+                _self.getCalendarEvents(group, $q).then(function (resp) {
                     responses++;
-                    var newEvents = data.result.items;
+                    var newEvents = resp.data.items;
                     for (var i = 0; i < newEvents.length; i++) {
                         if (newEvents[i].start && newEvents[i].start.dateTime) {
                             newEvents[i].start.dateTime = moment(newEvents[i].start.dateTime).toDate();
@@ -24,7 +21,7 @@ angular.module("app").factory('CalendarService', ['$q', function ($q) {
                         }
                         events.push(newEvents[i]);
                     };
-                    if (responses == calendarIds.length) {
+                    if (responses == groups.length) {
                         return deferred.resolve(events);
                     }
                 });

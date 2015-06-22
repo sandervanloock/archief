@@ -18,7 +18,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body ng-controller="HomeController">
+<body ng-app="app" ng-controller="HomeController">
 <div class="pagewrapper container-fluid" id="page-top" >
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12" event-slider data-ids="{{calendarIds}}"/>
+                        <div class="col-lg-12" event-slider data-groups="{{groups}}"/>
                     </div>
                 </div>
             </div>
@@ -95,7 +95,7 @@
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
-                    <a href="#rakkers" class="portfolio-link" data-toggle="modal">
+                    <a href="#Rakkers" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
                                 <i class="fa fa-search-plus fa-3x"></i>
@@ -105,7 +105,7 @@
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
-                    <a href="#toppers" class="portfolio-link" data-toggle="modal">
+                    <a href="#Toppers" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
                                 <i class="fa fa-search-plus fa-3x"></i>
@@ -115,7 +115,7 @@
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
-                    <a href="#kerels" class="portfolio-link" data-toggle="modal">
+                    <a href="#Kerels" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
                                 <i class="fa fa-search-plus fa-3x"></i>
@@ -125,7 +125,7 @@
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
-                    <a href="#aspis" class="portfolio-link" data-toggle="modal">
+                    <a href="#Aspis" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
                                 <i class="fa fa-search-plus fa-3x"></i>
@@ -219,7 +219,7 @@
                         <div class="modal-body">
                             <h2>{{group.name}}</h2>
                             <hr class="star-primary">
-                            <!--<p><div class="col-lg-12" event-slider data-id="{{calendarIds[group.calendarId]}}"/></p>-->
+                            <p><div class="col-lg-12" event-slider data-group="{{group}}"/></p>
                         </div>
                     </div>
                 </div>
@@ -265,22 +265,6 @@
     <!--</div>-->
 </footer>
 
-<script>
-    var googleOnLoadCallback = function () {
-        console.log("Angular bootstrap started");
-        var apisToLoad = 1; // must match number of calls to gapi.client.load()
-        var gCallback = function () {
-            if (--apisToLoad == 0) {
-                //Manual bootstraping of the application
-                angular.bootstrap(document, ['app']);
-                console.log('Angular bootstrap complete ' + gapi);
-            }
-        };
-        gapi.client.setApiKey('AIzaSyAX3IvXqPNa_J3eUPubZAWKR_85fPGkeac');
-        gapi.client.load('calendar', 'v3', gCallback);
-    };
-</script>
-<script type="text/javascript" src="https://apis.google.com/js/client.js?onload=googleOnLoadCallback"></script>
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>

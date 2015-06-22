@@ -4,15 +4,15 @@ angular.module('app').directive('eventSlider',['CalendarService',function(Calend
         templateUrl: 'templates/event-slider.tpl.html',
         link: function(scope, element, attrs){
             scope.calendar = {};
-            var calendarIds = [];
-            if(attrs.ids){
-                calendarIds=scope.$eval(attrs.ids);
+            var groupNames = [];
+            if(attrs.groups){
+                groupNames=scope.$eval(attrs.groups);
             }
-            if(attrs.id){
-                calendarIds.push(attrs.id);
+            if(attrs.group){
+                groupNames.push(scope.$eval(attrs.group));
             }
 
-            CalendarService.getFutureEventsFromGroups(calendarIds).then(function(events) {
+            CalendarService.getFutureEventsFromGroups(groupNames).then(function(events) {
                 scope.calendar.events = events;
             });
             scope.calendar.currentEvent=0;
