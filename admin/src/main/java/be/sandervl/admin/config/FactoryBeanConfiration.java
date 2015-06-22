@@ -1,10 +1,13 @@
 package be.sandervl.admin.config;
 
+import be.sandervl.admin.ChiroAdminModule;
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.calendar.Calendar;
 import com.google.api.services.calendar.CalendarScopes;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +17,6 @@ import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.Collections;
@@ -24,6 +26,8 @@ public class FactoryBeanConfiration {
 
     @Autowired
     private Environment environment;
+
+    private static final Logger LOG = LoggerFactory.getLogger(FactoryBeanConfiration.class);
 
     @Bean
     public Twitter twitter() {
@@ -46,16 +50,17 @@ public class FactoryBeanConfiration {
             GoogleCredential credential = new GoogleCredential.Builder()
                     .setTransport(transport)
                     .setJsonFactory(jacksonFactory)
-                    .setServiceAccountId("717623609503-5cpciuo8b03qf5s6mokktgifap5t090m@developer.gserviceaccount.com")
+                    .setServiceAccountId(environment.getProperty("google.calendar.email"))
                     .setServiceAccountPrivateKeyFromP12File(file)
                     .setServiceAccountScopes(Collections.singleton(CalendarScopes.CALENDAR))
                     .build();
-            return new Calendar.Builder(transport, jacksonFactory, credential).setApplicationName("chiroelzestraat-calendar").build();
+            return new Calendar.Builder(transport, jacksonFactory, credential).setApplicationName(ChiroAdminModule.NAME).build();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.error("failed to read google-acces-key.p12",e);
         } catch (GeneralSecurityException e) {
-            e.printStackTrace();
+            LOG.error("An error occured creating a Google Credential",e);
         }
+        LOG.error("Something went wrong creating the Google Calendar bean");
         return null;
     }
 
