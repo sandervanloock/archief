@@ -1,4 +1,4 @@
-angular.module('app').directive('twitterFeed',['TwitterService',function(TwitterService){
+angular.module("app").directive('twitterFeed',['TwitterService',function(TwitterService){
     return {
         restrict: 'A',
         templateUrl: 'templates/twitter-feed.tpl.html',

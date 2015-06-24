@@ -1,4 +1,4 @@
-angular.module("app").controller('HomeController', ['$scope','$routeParams','Constants',function ($scope, $routeParams, Constants) {
+angular.module("app").controller('HomeController', ['$scope','Constants',function ($scope, Constants) {
     $scope.getDayClass = function(date, mode){}
 
     $scope.groups = Constants.groups;
