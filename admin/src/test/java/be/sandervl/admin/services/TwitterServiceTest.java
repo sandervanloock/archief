@@ -32,8 +32,10 @@ public class TwitterServiceTest {
 
     @Test
     public void testGetStatuses() throws TwitterException {
-        List<Status> actualStatuses = twitterService.getStatuses();
-        verify(twitter).getHomeTimeline();
+        Paging paging = new Paging();
+        paging.setCount(3);
+        List<Status> actualStatuses = twitterService.getStatuses(paging);
+        verify(twitter).getHomeTimeline(paging);
     }
 
 

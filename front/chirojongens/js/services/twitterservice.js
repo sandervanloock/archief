@@ -3,7 +3,7 @@ angular.module('app').factory('TwitterService', ['$http', function ($http) {
         searchTweets: function () {
             return $http(
                 {
-                    url: '/admin/api/tweets'
+                    url: '/admin/api/tweets?amount=5'
                 }
             )
         }
