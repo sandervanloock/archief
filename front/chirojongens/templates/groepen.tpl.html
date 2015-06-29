@@ -1,62 +1,83 @@
-<h1>GROEPNAAM</h1>
+<section id="groups">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Groepen</h2>
+                <hr class="star-primary">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 portfolio-item">
+                <a ng-click="openModal('speelclub')" class="portfolio-link" data-toggle="modal">
+                    <div class="caption">
+                        <div class="caption-content">
+                            <i class="fa fa-search-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img src="images/speelclub.png" class="img-responsive" alt="">
+                </a>
+            </div>
+            <div class="col-sm-4 portfolio-item">
+                <a ng-click="openModal('rakkers')" class="portfolio-link" data-toggle="modal">
+                    <div class="caption">
+                        <div class="caption-content">
+                            <i class="fa fa-search-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img src="images/rakkers.png" class="img-responsive" alt="">
+                </a>
+            </div>
+            <div class="col-sm-4 portfolio-item">
+                <a ng-click="openModal('toppers')" class="portfolio-link" data-toggle="modal">
+                    <div class="caption">
+                        <div class="caption-content">
+                            <i class="fa fa-search-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img src="images/toppers.png" class="img-responsive" alt="">
+                </a>
+            </div>
+            <div class="col-sm-4 portfolio-item">
+                <a ng-click="openModal('kerels')" class="portfolio-link" data-toggle="modal">
+                    <div class="caption">
+                        <div class="caption-content">
+                            <i class="fa fa-search-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img src="images/kerels.png" class="img-responsive" alt="">
+                </a>
+            </div>
+            <div class="col-sm-4 portfolio-item">
+                <a ng-click="openModal('aspiranten')" class="portfolio-link" data-toggle="modal">
+                    <div class="caption">
+                        <div class="caption-content">
+                            <i class="fa fa-search-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img src="images/aspiranten.png" class="img-responsive" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
-<div>
-    <p>Informatie</p>
-    <table>
-        <tr>
-            <td>Leeftijd</td>
-            <td>MINJAAR jaar t.e.m. MAXJAAR jaar</td>
-        </tr>
-        <tr>
-            <td>Chiro van</td>
-            <td>14u t.e.m. EINDUUR</td>
-        </tr>
-    </table>
-</div>
-
-<div class="gridbox">
-    <h2>Leiding</h2>
-    <table id="leiders" width="100%" cellspacing="15">
-        <tr>
-            <th>LEIDER VOORNAAM ACHTERNAAM</th>
-        </tr>
-        <tr>
-            <td class="leider">
-                <!--<img n-src="LEIDERAFBEELDIN" alt="Leider"/>-->
-                Geboortedatum: LEIDERGBDTM
-                <br/>
-                Leeftijd: LEIDERFEEFTIJD
-                <br/>
-                <h3>Contactgegevens</h3>
-                STRAAT NUMMER<br/>
-                POSTCODE STAD<br/>
-                gsm: GSM<br/>
-                EMAIL<br/>
-            </td>
-        </tr>
-    </table>
-</div>
-
-<div id="activiteiten" class="gridbox left" ng-controller="GroupCalendarController">
-    <h2>Opkomende activiteiten</h2>
-
-    <div class="slider-wrap">
-        <div id="slider1" class="csw">
-            <div class="panelContainer">
-                <div class="panel" ng-repeat="event in calendar.events">
-                    <div class="wrapper">
-                        <h2>{{event.summary}}</h2>
-                        <img class="left png" ng-src="images/{{group}}.png" alt="logo"/>
-
-                        <p class="description">{{event.description}}</p><br/>
-                        <span style="top:130px;" id="start" class="date">
-                            Van: {{event.start.dateTime | date : 'dd/M/yyyy H:mm' }}
-                        </span>
-                        <br/>
-                        <span style="top:145px;" id="end" class="date">
-                            Tot: {{event.end.dateTime | date : 'dd/M/yyyy H:mm' }}
-                        </span>
-                        <p class="slider_links"></p>
+<div ng-repeat="group in groups">
+    <div class="portfolio-modal modal fade" id="{{group.name}}" tabindex="-1" role="dialog" aria-hidden="true" >
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>{{group.name}}</h2>
+                            <hr class="star-primary">
+                            <p><div class="col-lg-12" event-slider data-group="{{group}}"/></p>
+                        </div>
                     </div>
                 </div>
             </div>

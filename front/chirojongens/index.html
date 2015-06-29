@@ -32,14 +32,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#page-top">Chirojongens Elzestraat</a>
+                <a class="navbar-brand" href="#/">Chirojongens Elzestraat</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="page-scroll"><a href='#groups'>Groepen</a></li>
-                    <li class="page-scroll"><a href='#photos'>Foto's</a></li>
+                    <li class="page-scroll"><a href='#groepen'>Groepen</a></li>
+                    <li class="page-scroll"><a href='#fotos'>Foto's</a></li>
                     <li class="page-scroll"><a href='#verhuur'>Verhuur</a>
                     </li>
                 </ul>
@@ -49,184 +49,10 @@
         <!-- /.container-fluid -->
     </nav>
 
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div twitter-feed></div>
-                </div>
+    <div ng-view></div>
 
-                <div class="row col-lg-8">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h2>In de Kijker</h2>
-                            <!-- Zet hier altijd dezelfde foto van grootte: 518 breed 250 hoog, in jpg formaat-->
-                            <strong class="image">
-                                <img src="uploads/banner kamp 2014.jpg" alt="In de kijker"/>
-                            </strong>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12" event-slider />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <section id="groups">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>Groepen</h2>
-                    <hr class="star-primary">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#Speelclub" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="images/speelclub.png" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#Rakkers" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="images/rakkers.png" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#Toppers" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="images/toppers.png" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#Kerels" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="images/kerels.png" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#Aspiranten" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="images/aspiranten.png" class="img-responsive" alt="">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="photos">
-        <h2>Foto's</h2>
-    </section>
-
-    <section id="verhuur">
-        <h2>Verhuur Lokalen</h2>
-        <div class="container">
-            <div class="row">
-                <div class="general-info col-lg-6">
-                    <h4>Capaciteit</h4>
-                    Maximum 40 personen
-                    <h4>Prijs</h4>
-                    De vaste kosten zijn vastgelegd op 125 EURO tot 20 personen. Vanaf 21 personen tot maximaal 40
-                    personen bedragen de vaste kosten 200 euro. Het verbruik van gas en elektriciteit wordt berekend
-                    door middel van de meterstanden.
-                    Het contract vindt u <a href="uploads/Huurcontract Chirojongens Elzestraat.pdf">hier</a>.
-                    <h4>Waarborg</h4>
-                    De waarborg van 150 euro wordt ten laatste twee weken op voorhand betaald op rekeningnummer BE16 3631 3876 1974
-                    Indien de huurder het weekend annuleert tot een termijn van 1 week op voorhand, wordt de waarborg
-                    teruggestort aan de huurder. Gebeurt de opzegging later dan wordt de waarborg niet teruggestort.
-                    <h4>Infrastructuur</h4>
-                    <ul>
-                        <li>1 groot heem</li>
-                        <li>4 kleine hemen</li>
-                        <li>volledig uitgeruste keuken (bestek, borden en kookpotten e.d.)</li>
-                        <li>GEEN bedden</li>
-                        <li>sanitair vermogen &amp; douche</li>
-                    </ul>
-                    <h4>Omgeving</h4>
-                    <ul>
-                        <li>Zwembad</li>
-                        <li>Park, basketpleintje</li>
-                        <li>Jeugdhuis</li>
-                        <li>Bakker, frietkot, kruidenier</li>
-                        <li>Colruyt (5 minuten met wagen)</li>
-                    </ul>
-                </div>
-                <div class="col-lg-6">
-                    <div class="row">
-                        <div class="capacity col-lg-12">
-                            <div>
-                                <h4>Beschikbaarheid Lokalen</h4>
-                                <datepicker ng-model="dt" min-date="hire.minDate" show-weeks="false" custom-class="getDayClass(date, mode)"></datepicker>
-                            </div>
-                        </div>
-                        <div class="photoslider col-lg-12">
-                            <div ng-controller="CarouselDemoCtrl">
-                                <div style="height: 305px">
-                                    <carousel interval="myInterval">
-                                        <slide ng-repeat="slide in slides" active="slide.active">
-                                            <img ng-src="{{slide.image}}" style="margin:auto;">
-                                            <div class="carousel-caption">
-                                                <h4>Slide {{$index}}</h4>
-                                                <p>{{slide.text}}</p>
-                                            </div>
-                                        </slide>
-                                    </carousel>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 </div>
-<div ng-repeat="group in groups">
-    <div class="portfolio-modal modal fade" id="{{group.name}}" tabindex="-1" role="dialog" aria-hidden="true" >
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>{{group.name}}</h2>
-                            <hr class="star-primary">
-                            <p><div class="col-lg-12" event-slider data-group="{{group}}"/></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 <!-- Footer -->
 <footer class="text-center">
     <div class="footer-above">
@@ -277,6 +103,7 @@
 <script type="text/javascript" src="js/app.js"></script>
 <script type="text/javascript" src="js/controllers/home.js"></script>
 <script type="text/javascript" src="js/controllers/carousel.js"></script>
+<script type="text/javascript" src="js/controllers/groups.js"></script>
 <script type="text/javascript" src="js/services/calendar.js"></script>
 <script type="text/javascript" src="js/services/twitterservice.js"></script>
 <script type="text/javascript" src="js/directives/eventSlider.js"></script>
