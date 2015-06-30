@@ -21,7 +21,7 @@
 <body ng-app="app" ng-controller="HomeController">
 <div class="pagewrapper container-fluid" id="page-top" >
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavigationController">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -32,15 +32,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#/">Chirojongens Elzestraat</a>
+                <a class="navbar-brand" href="#/" ng-click="setCurrentPage('home')" ng-class="{active:currentPage=='home'}">Chirojongens Elzestraat</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="page-scroll"><a href='#groepen'>Groepen</a></li>
-                    <li class="page-scroll"><a href='#fotos'>Foto's</a></li>
-                    <li class="page-scroll"><a href='#verhuur'>Verhuur</a>
+                    <li class="page-scroll" ng-class="{active:currentPage=='groups'}"><a href='#groepen' ng-click="setCurrentPage('groups')" >Groepen</a></li>
+                    <li class="page-scroll" ng-class="{active:currentPage=='photos'}"><a href='#fotos' ng-click="setCurrentPage('photos')" >Foto's</a></li>
+                    <li class="page-scroll" ng-class="{active:currentPage=='rental'}"><a href='#verhuur' ng-click="setCurrentPage('rental')" >Verhuur</a>
                     </li>
                 </ul>
             </div>
@@ -104,6 +104,7 @@
 <script type="text/javascript" src="js/controllers/home.js"></script>
 <script type="text/javascript" src="js/controllers/carousel.js"></script>
 <script type="text/javascript" src="js/controllers/groups.js"></script>
+<script type="text/javascript" src="js/controllers/navigation.js"></script>
 <script type="text/javascript" src="js/services/calendar.js"></script>
 <script type="text/javascript" src="js/services/twitterservice.js"></script>
 <script type="text/javascript" src="js/directives/eventSlider.js"></script>

@@ -7,7 +7,7 @@ angular.module('app').config(['$routeProvider',
         $routeProvider.
             when('/', {
                 templateUrl: 'templates/home.tpl.html',
-                //controller: 'AddOrderController'
+                controller: 'HomeController'
             }).
             when('/groepen', {
                 templateUrl: 'templates/groepen.tpl.html',
