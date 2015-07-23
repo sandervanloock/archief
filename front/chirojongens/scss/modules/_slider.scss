@@ -308,7 +308,19 @@ Author URI: http://dev7studios.com
 }
 
 .wrapper p {
-	margin: 10px 0 10px 0;
+  margin: 10px 0 0px 0;
+  color: black;
+  text-align: justify;
+  padding: 1em 1em 0;
+}
+
+.event__date-info{
+  padding:1em;
+}
+
+.wrapper h3{
+  padding-top: 1em;
+  margin: 0;
 }
 
 .stripNavL, .stripNavR { /* The left and right arrows */

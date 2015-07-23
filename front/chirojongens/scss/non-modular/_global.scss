@@ -19,6 +19,20 @@
     margin: auto;
     .nav {
       width: 50px;
+      padding-top: 1em;
+      i{
+        cursor: pointer;
+      }
+      &.nav-right{
+        position: absolute;
+        right: 124px;
+        top: 92px;
+      }
+      &.nav-left{
+        position: absolute;
+        left: 124px;
+        top: 92px;
+      }
     }
     .wrapper {
       .date {

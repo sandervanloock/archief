@@ -3,15 +3,17 @@
 
     <div class="panel" ng-repeat="event in calendar.events">
         <div class="eventWrapper" ng-show="$index==calendar.currentEvent">
-            <div class="nav nav-left pull-left"><a ng-click="prevEvent()"><i class="fa fa-chevron-circle-left fa-2x"></i></a></div>
-            <div class="nav nav-right pull-right"><a ng-click="nextEvent()"><i class="fa fa-chevron-circle-right fa-2x"></i></a></div>
+            <div class="nav nav-left pull-left" ng-if="$index>0"><a ng-click="prevEvent()"><i class="fa fa-chevron-circle-left fa-2x"></i></a></div>
+            <div class="nav nav-right pull-right" ng-if="$index<calendar.events.length-1"><a ng-click="nextEvent()"><i class="fa fa-chevron-circle-right fa-2x"></i></a></div>
             <div class="wrapper">
-                <h3>{{event.summary}}</h3>
+                <h3>{{event.organizer.displayName}} : {{event.summary}}</h3>
                 <img class="left png" ng-src="{{event.image}}" alt="logo" ng-if="event.image"/>
 
-                <p class="description">{{event.description}}</p><br/>
-                <span class="date">Van: {{event.start.dateTime.value | date : 'dd/MM/yyyy HH:mm'}}</span>
-                <span class="date">Tot: {{event.end.dateTime.value | date : 'dd/MM/yyyy HH:mm'}}</span>
+                <p class="description">{{event.description}}</p>
+                <div class="event__date-info">
+                    <span class="date">Van: {{event.start.dateTime.value | date : 'dd/MM/yyyy HH:mm'}}</span>
+                    <span class="date">Tot: {{event.end.dateTime.value | date : 'dd/MM/yyyy HH:mm'}}</span>
+                </div>
             </div>
         </div>
     </div>

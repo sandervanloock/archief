@@ -21,7 +21,7 @@ public class GoogleCalendarServiceImpl implements GoogleCalendarService {
         try {
             if(StringUtils.isNotEmpty(group.getCalendarId())){
                 DateTime timeMax = new DateTime(startDate);
-                return calendarClient.events().list(group.getCalendarId()).setTimeMax(timeMax).setMaxResults(1).execute();
+                return calendarClient.events().list(group.getCalendarId()).setTimeMin(timeMax).execute();
             }
             return new Events();
         } catch (IOException e) {
