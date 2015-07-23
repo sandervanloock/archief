@@ -5,6 +5,7 @@ import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.model.Events;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -17,6 +18,7 @@ public class GoogleCalendarServiceImpl implements GoogleCalendarService {
     private com.google.api.services.calendar.Calendar calendarClient;
 
     @Override
+    @Cacheable("calendarCache")
     public Events getEventsFromGroup(ChiroGroup group, Date startDate) {
         try {
             if(StringUtils.isNotEmpty(group.getCalendarId())){

@@ -106,6 +106,10 @@
         </dependency>
         <dependency>
             <groupId>across-standard-modules</groupId>
+            <artifactId>across-ehcache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>across-standard-modules</groupId>
             <artifactId>logging-module</artifactId>
         </dependency>
         <dependency>
@@ -135,7 +139,7 @@
     </dependencies>
 
     <build>
-        <finalName>admin</finalName>
+        <finalName>be.chiroelzestraat.admin</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

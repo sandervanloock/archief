@@ -9,6 +9,8 @@ import com.foreach.across.module.applicationinfo.ApplicationInfoModuleSettings;
 import com.foreach.across.modules.adminweb.AdminWebModule;
 import com.foreach.across.modules.adminweb.AdminWebModuleSettings;
 import com.foreach.across.modules.debugweb.DebugWebModule;
+import com.foreach.across.modules.ehcache.EhcacheModule;
+import com.foreach.across.modules.ehcache.EhcacheModuleSettings;
 import com.foreach.across.modules.entity.EntityModule;
 import com.foreach.across.modules.hibernate.config.PersistenceContextInView;
 import com.foreach.across.modules.hibernate.jpa.AcrossHibernateJpaModule;
@@ -24,8 +26,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
@@ -34,6 +38,7 @@ import twitter4j.conf.ConfigurationBuilder;
 import javax.sql.DataSource;
 
 @Configuration
+@EnableAspectJAutoProxy
 @EnableAcrossContext
 @PropertySource({"classpath:config/${environment.type}/common.properties",
         "classpath:config/general.properties"})
@@ -65,6 +70,7 @@ public class AdminConfiguration implements AcrossContextConfigurer {
         context.addModule(acrossWebModule());
         context.addModule(new ChiroAdminModule());
         context.addModule(debugWebModule());
+        context.addModule(ehcacheModule());
         context.addModule(applicationInfoModule());
         context.addModule(userModule());
         context.addModule(adminWebModule());
@@ -130,5 +136,13 @@ public class AdminConfiguration implements AcrossContextConfigurer {
         debugWebModule.setRootPath("/debug");
 
         return debugWebModule;
+    }
+
+    private EhcacheModule ehcacheModule()
+    {
+        EhcacheModule ehcacheModule = new EhcacheModule();
+        ehcacheModule.setProperty(EhcacheModuleSettings.CACHE_MANAGER_NAME, "chiroAdminCacheManager");
+        ehcacheModule.setProperty( EhcacheModuleSettings.CONFIGURATION_RESOURCE, new ClassPathResource( "/config/ehcache.xml" ) );
+        return ehcacheModule;
     }
 }

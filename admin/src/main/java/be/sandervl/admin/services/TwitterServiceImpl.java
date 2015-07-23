@@ -1,6 +1,7 @@
 package be.sandervl.admin.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import twitter4j.Paging;
 import twitter4j.Status;
@@ -20,6 +21,7 @@ public class TwitterServiceImpl implements TwitterService {
 
     }
 
+    @Cacheable("twitterCache")
     public List<Status> getStatuses(Paging paging) {
         try {
             return twitter.getHomeTimeline(paging);
