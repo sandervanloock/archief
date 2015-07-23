@@ -96,7 +96,7 @@ public class AdminConfiguration implements AcrossContextConfigurer {
 
     private AdminWebModule adminWebModule() {
         AdminWebModule adminWebModule = new AdminWebModule();
-        adminWebModule.setRootPath("/admin");
+        adminWebModule.setRootPath("/");
         adminWebModule.setProperty(AdminWebModuleSettings.REMEMBER_ME_KEY, "subscription-manager");
         return adminWebModule;
     }
