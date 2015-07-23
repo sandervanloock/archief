@@ -10,8 +10,8 @@
                 <img class="left png" ng-src="{{event.image}}" alt="logo" ng-if="event.image"/>
 
                 <p class="description">{{event.description}}</p><br/>
-                <span class="date">Van: {{event.start.date}}</span>
-                <span class="date">Tot: {{event.end.date}}</span>
+                <span class="date">Van: {{event.start.dateTime.value | date : 'dd/MM/yyyy HH:mm'}}</span>
+                <span class="date">Tot: {{event.end.dateTime.value | date : 'dd/MM/yyyy HH:mm'}}</span>
             </div>
         </div>
     </div>

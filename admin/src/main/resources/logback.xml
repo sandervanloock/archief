@@ -1,25 +1,154 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-	<logger name="org.apache" level="WARN"/>
-	<logger name="org.hibernate" level="WARN"/>
-	<logger name="org.hibernate.cfg.AnnotationBinder" level="WARN"/>
-	<logger name="org.hibernate.cfg.annotations" level="WARN"/>
-	<logger name="org.quartz" level="WARN"/>
-	<logger name="org.springframework" level="WARN"/>
-	<logger name="org.thymeleaf" level="WARN" />
-	<logger name="liquibase" level="WARN"/>
-	<logger name="com.foreach.across" level="DEBUG"/>
-	<logger name="com.foreach.across.core" level="INFO" />
-	<logger name="com.foreach.across.modules.web" level="INFO" />
+    <property resource="config/${environment.type}/common.properties"/>
 
-	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-		<encoder>
-			<pattern>%d{ISO8601} [%t] %logger{15} %-5p - %m%n</pattern>
-		</encoder>
-	</appender>
+    <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="application">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.dir}/%d{yyyy'/'MM'/'dd'/application.'yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{ISO8601} [%X{requestId}] [%t] %-5p %c - %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="dao">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.dir}/%d{yyyy'/'MM'/'dd'/dao.'yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{ISO8601} [%X{requestId}] [%t] %-5p %c - %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="errors">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.dir}/%d{yyyy'/'MM'/'dd'/errors.'yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <encoder>
+            <pattern>%d{ISO8601} [%X{requestId}] [%t] %-5p %c - %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="general">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.dir}/%d{yyyy'/'MM'/'dd'/general.'yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{ISO8601} [%X{requestId}] [%t] %-5p %c %C - %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="imagemagick">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.dir}/%d{yyyy'/'MM'/'dd'/imagemagick.'yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{ISO8601} [%X{requestId}] [%t] %-5p %c - %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="methods">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.dir}/%d{yyyy'/'MM'/'dd'/methods.'yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{ISO8601} [%X{requestId}] [%t] %-5p %c - %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="pages">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.dir}/%d{yyyy'/'MM'/'dd'/pages.'yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{ISO8601} [%X{requestId}] [%t] %-5p %c - %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="spring">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.dir}/%d{yyyy'/'MM'/'dd'/spring.'yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{ISO8601} [%X{requestId}] [%t] %-5p %c - %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="solr">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.dir}/%d{yyyy'/'MM'/'dd'/solr.'yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{ISO8601} [%X{requestId}] [%t] %-5p %c - %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="tasks">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.dir}/%d{yyyy'/'MM'/'dd'/tasks.'yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{ISO8601} [%X{requestId}] [%t] %-5p %c - %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="across">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.dir}/%d{yyyy'/'MM'/'dd'/across.'yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{ISO8601} [%X{requestId}] [%t] %-5p %c - %m%n</pattern>
+        </encoder>
+    </appender>
+    <logger additivity="false" name="be.resto" level="${log.threshold}">
+        <appender-ref ref="application"/>
+        <appender-ref ref="errors"/>
+    </logger>
+    <logger additivity="false" name="be.resto.services.image.magick.ImageMagickImpl" level="${log.threshold}">
+        <appender-ref ref="imagemagick"/>
+        <appender-ref ref="errors"/>
+    </logger>
+    <logger additivity="false" name="be.resto.web.aspects.RestoExecutionTimeLogger" level="${log.threshold}">
+        <appender-ref ref="methods"/>
+    </logger>
+    <logger additivity="false" name="com.foreach.common.spring.logging.MethodExecutionTimeLogger" level="${log.threshold}">
+        <appender-ref ref="methods"/>
+    </logger>
+    <logger additivity="false" name="be.resto.data" level="${log.threshold}">
+        <appender-ref ref="dao"/>
+        <appender-ref ref="errors"/>
+    </logger>
+    <logger additivity="false" name="java.sql" level="${log.threshold}">
+        <appender-ref ref="dao"/>
+        <appender-ref ref="errors"/>
+    </logger>
+    <logger additivity="false" name="java.sql.ResultSet" level="${log.threshold}">
+        <appender-ref ref="dao"/>
+    </logger>
+    <logger additivity="false" name="org.mybatis" level="${log.threshold}">
+        <appender-ref ref="dao"/>
+        <appender-ref ref="errors"/>
+    </logger>
+    <logger additivity="false" name="org.springframework" level="${log.threshold}">
+        <appender-ref ref="spring"/>
+        <appender-ref ref="errors"/>
+    </logger>
+    <root level="${log.threshold}">
+        <appender-ref ref="general"/>
+        <appender-ref ref="errors"/>
+    </root>
 
-	<root level="DEBUG">
-		<appender-ref ref="console"/>
-	</root>
+    <logger name="org.apache" level="WARN"/>
+    <logger name="org.hibernate" level="WARN"/>
+    <logger name="org.hibernate.cfg.AnnotationBinder" level="WARN"/>
+    <logger name="org.hibernate.cfg.annotations" level="WARN"/>
+    <logger name="org.quartz" level="WARN"/>
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="liquibase" level="WARN"/>
+    <logger name="com.foreach.across.modules.hibernate" level="WARN"/>
+    <logger name="org.thymeleaf" level="WARN"/>
+
+    <logger name="com.foreach.across" level="DEBUG">
+        <appender-ref ref="across"/>
+    </logger>
+    <logger name="com.foreach.across.core" level="INFO" additivity="false">
+        <appender-ref ref="across"/>
+    </logger>
+    <logger name="com.foreach.across.modules.web" level="INFO" additivity="false">
+        <appender-ref ref="across"/>
+    </logger>
 
 </configuration>

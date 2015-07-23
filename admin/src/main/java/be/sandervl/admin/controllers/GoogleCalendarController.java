@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.thymeleaf.util.StringUtils;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -26,7 +27,7 @@ public class GoogleCalendarController {
         Events result = new Events();
         result.setItems(new ArrayList<Event>());
         for(ChiroGroup groups: ChiroGroup.values()){
-            List<Event> items = calendarService.getEventsFromGroup(groups).getItems();
+            List<Event> items = calendarService.getEventsFromGroup(groups, new Date()).getItems();
             if(items!=null){
                 result.getItems().addAll(items);
             }
@@ -38,6 +39,6 @@ public class GoogleCalendarController {
     public Events getEventFromGroup(
             @PathVariable("group") String groupName
     ) {
-        return calendarService.getEventsFromGroup(ChiroGroup.valueOf(groupName.toUpperCase()));
+        return calendarService.getEventsFromGroup(ChiroGroup.valueOf(groupName.toUpperCase()),new Date());
     }
 }

@@ -135,7 +135,7 @@
     </dependencies>
 
     <build>
-        <finalName>be.chiroelzestraat.admin</finalName>
+        <finalName>admin</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

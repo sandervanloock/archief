@@ -2,10 +2,10 @@ angular.module("app").factory('CalendarService', ['$q', '$http', function ($q,$h
     function convertDates(newEvents) {
         for (var i = 0; i < newEvents.length; i++) {
             if (newEvents[i].start && newEvents[i].start.dateTime) {
-                newEvents[i].start.dateTime = moment(newEvents[i].start.dateTime).toDate();
+                newEvents[i].start.dateTime.value = moment(newEvents[i].start.dateTime.value).toDate();
             }
             if (newEvents[i].end && newEvents[i].end.dateTime) {
-                newEvents[i].end.dateTime = moment(newEvents[i].end.dateTime).toDate();
+                newEvents[i].end.dateTime.value = moment(newEvents[i].end.dateTime.value).toDate();
             }
         };
     }

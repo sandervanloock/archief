@@ -18,12 +18,15 @@ import com.foreach.across.modules.spring.security.SpringSecurityModule;
 import com.foreach.across.modules.user.UserModule;
 import com.foreach.across.modules.web.AcrossWebModule;
 import com.foreach.across.modules.web.AcrossWebViewSupport;
+import com.foreach.common.spring.logging.LogbackConfigurer;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.core.io.Resource;
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
@@ -38,6 +41,13 @@ public class AdminConfiguration implements AcrossContextConfigurer {
 
     @Autowired
     private Environment environment;
+
+    @Bean
+    public LogbackConfigurer logbackConfigurer(
+            @Value("classpath:logback.xml") Resource defaultConfig, @Value("classpath:logback.xml") Resource environmentConfig )
+    {
+        return new LogbackConfigurer( environment.getRequiredProperty( "log.dir" ), defaultConfig, environmentConfig );
+    }
 
     @Bean
     public DataSource acrossDataSource() {
