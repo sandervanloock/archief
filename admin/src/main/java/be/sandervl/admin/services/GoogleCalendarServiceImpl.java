@@ -18,12 +18,12 @@ public class GoogleCalendarServiceImpl implements GoogleCalendarService {
     private com.google.api.services.calendar.Calendar calendarClient;
 
     @Override
-    @Cacheable("calendarCache")
-    public Events getEventsFromGroup(ChiroGroup group, Date startDate) {
+    @Cacheable(value="calendarCache")
+    public Events getEventsFromGroup(ChiroGroup group, int amount) {
         try {
             if(StringUtils.isNotEmpty(group.getCalendarId())){
-                DateTime timeMax = new DateTime(startDate);
-                return calendarClient.events().list(group.getCalendarId()).setTimeMin(timeMax).execute();
+                DateTime timeMax = new DateTime(new Date());
+                return calendarClient.events().list(group.getCalendarId()).setTimeMin(timeMax).setMaxResults(amount).execute();
             }
             return new Events();
         } catch (IOException e) {

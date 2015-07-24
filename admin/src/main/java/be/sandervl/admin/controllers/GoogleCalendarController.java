@@ -27,7 +27,7 @@ public class GoogleCalendarController {
         Events result = new Events();
         result.setItems(new ArrayList<Event>());
         for(ChiroGroup groups: ChiroGroup.values()){
-            List<Event> items = calendarService.getEventsFromGroup(groups, new Date()).getItems();
+            List<Event> items = calendarService.getEventsFromGroup(groups, Integer.MAX_VALUE).getItems();
             if(items!=null){
                 result.getItems().addAll(items);
             }
@@ -39,6 +39,6 @@ public class GoogleCalendarController {
     public Events getEventFromGroup(
             @PathVariable("group") String groupName
     ) {
-        return calendarService.getEventsFromGroup(ChiroGroup.valueOf(groupName.toUpperCase()),new Date());
+        return calendarService.getEventsFromGroup(ChiroGroup.valueOf(groupName.toUpperCase()),Integer.MAX_VALUE);
     }
 }

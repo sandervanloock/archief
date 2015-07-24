@@ -7,5 +7,5 @@ import java.util.Date;
 
 public interface GoogleCalendarService {
 
-    Events getEventsFromGroup(ChiroGroup group, Date startDate);
+    Events getEventsFromGroup(ChiroGroup group, int amount);
 }
