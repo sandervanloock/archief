@@ -19,7 +19,7 @@ angular.module('app').config(['$routeProvider',
             }).
             when('/verhuur', {
                 templateUrl: 'templates/verhuur.tpl.html',
-                //controller: 'ShowOrdersController'
+                controller: 'RentController'
             }).
             otherwise({
                 redirectTo: '/'
@@ -34,6 +34,8 @@ angular.module('app').constant('Constants',
             {name: 'toppers'},
             {name: 'kerels'},
             {name: 'aspiranten'},
+            {name: 'verhuur'},
+            {name: 'test'},
         ]
     }
 );
