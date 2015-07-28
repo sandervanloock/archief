@@ -352,3 +352,15 @@ Author URI: http://dev7studios.com
 .stripNavR {
 	background: url(../../images/slider-next.png) no-repeat center;
 }
+
+.photoslider{
+  .carousel-control{
+    background-image:none;
+  }
+  .glyphicon{
+    color: black;
+  }
+  img{
+    max-height: 305px;
+  }
+}

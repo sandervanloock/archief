@@ -41,22 +41,19 @@
                     <div class="capacity col-lg-12">
                         <div>
                             <h4>Beschikbaarheid Lokalen</h4>
-                            <datepicker ng-model="dateModel" min-date="rent.minDate" show-weeks="false" custom-class="getDayClass(date, mode)"></datepicker>
+                            <datepicker ng-model="dateModel" class="well well-sm" min-date="rent.minDate" no-wrap="1" starting-day="1" show-weeks="false" custom-class="getDayClass(date, mode)"></datepicker>
                         </div>
                     </div>
                     <div class="photoslider col-lg-12">
                         <div ng-controller="CarouselDemoCtrl">
-                            <div style="height: 305px">
                                 <carousel interval="myInterval">
                                     <slide ng-repeat="slide in slides" active="slide.active">
                                         <img ng-src="{{slide.image}}" style="margin:auto;">
                                         <div class="carousel-caption">
-                                            <h4>Slide {{$index}}</h4>
                                             <p>{{slide.text}}</p>
                                         </div>
                                     </slide>
                                 </carousel>
-                            </div>
                         </div>
                     </div>
                 </div>
