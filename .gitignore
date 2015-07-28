@@ -4,3 +4,4 @@ Thumbs.db
 crossdomain.xml
 *.iml
 .idea/**/*.*
+scripts/private-key.key
