@@ -1,25 +1,43 @@
 package be.sandervl.admin.business;
 
-public enum ChiroGroup {
-    SPEELCLUB("ofnonpgnb4affnd6t51e48fsdo@group.calendar.google.com"),
-    RAKKERS("80k5sp0pj8973vrdj5lafga33g@group.calendar.google.com"),
-    TOPPERS("vtuadhst93b1h7879gogidqepk@group.calendar.google.com"),
-    KERELS("25bpqoqdk4j0a6p4m68uqea3ig@group.calendar.google.com"),
-    ASPIRANTEN("9aomc83dom4mbdq10m5t8vnkpo@group.calendar.google.com"),
-    LEIDING("");
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import java.io.File;
+import java.util.Date;
 
-    private String calendarId;
+@Entity
+public class ChiroGroup extends CalendarOwner {
 
-    ChiroGroup(String calendarId) {
-        this.calendarId = calendarId;
+    @Column(name="start_hour")
+    private Date startHour;
+
+    @Column(name="end_hour")
+    private Date endHour;
+
+    @Column(name="logo")
+    private File logo;
+
+    public Date getStartHour() {
+        return startHour;
     }
 
-    public String getCalendarId() {
-        return calendarId;
+    public void setStartHour(Date startHour) {
+        this.startHour = startHour;
     }
 
-    public void setCalendarId(String calendarId) {
-        this.calendarId = calendarId;
+    public Date getEndHour() {
+        return endHour;
     }
 
+    public void setEndHour(Date endHour) {
+        this.endHour = endHour;
+    }
+
+    public File getLogo() {
+        return logo;
+    }
+
+    public void setLogo(File logo) {
+        this.logo = logo;
+    }
 }

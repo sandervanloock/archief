@@ -28,13 +28,15 @@ public class LeaderShip extends SettableIdBasedEntity<LeaderShip> {
     @JoinColumn(name = "leader_id", nullable = false)
     private Leader leader;
 
-
     @NotNull
-    @Enumerated(EnumType.STRING)
+    @ManyToOne
+    @JoinColumn(name = "chirogroup_id", nullable = false)
     private ChiroGroup chiroGroup;
 
-    @NotNull
-    private Date date;
+    //TODO make chiroyear as entity
+//    @NotNull
+//    @Column("year")
+//    private Date date;
 
     @Override
     public void setId(Long id) {
@@ -62,12 +64,12 @@ public class LeaderShip extends SettableIdBasedEntity<LeaderShip> {
         this.chiroGroup = chiroGroup;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
+//    public Date getDate() {
+//        return date;
+//    }
+//
+//    public void setDate(Date date) {
+//        this.date = date;
+//    }
 }
 

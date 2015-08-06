@@ -1,6 +1,7 @@
 package be.sandervl.admin.controllers;
 
 import be.sandervl.admin.business.ChiroGroup;
+import be.sandervl.admin.repositories.ChiroGroupRepository;
 import be.sandervl.admin.services.GoogleCalendarService;
 import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.Events;
@@ -22,11 +23,14 @@ public class GoogleCalendarController {
     @Autowired
     private GoogleCalendarService calendarService;
 
+    @Autowired
+    private ChiroGroupRepository chiroGroupRepository;
+
     @RequestMapping(value = "/event", method = RequestMethod.GET)
     public Events getEventFromAllGroups() {
         Events result = new Events();
         result.setItems(new ArrayList<Event>());
-        for(ChiroGroup groups: ChiroGroup.values()){
+        for(ChiroGroup groups: chiroGroupRepository.findAll()){
             List<Event> items = calendarService.getEventsFromGroup(groups, Integer.MAX_VALUE).getItems();
             if(items!=null){
                 result.getItems().addAll(items);
@@ -39,6 +43,7 @@ public class GoogleCalendarController {
     public Events getEventFromGroup(
             @PathVariable("group") String groupName
     ) {
-        return calendarService.getEventsFromGroup(ChiroGroup.valueOf(groupName.toUpperCase()),Integer.MAX_VALUE);
+        ChiroGroup group = chiroGroupRepository.findByName(groupName.toUpperCase());
+        return calendarService.getEventsFromGroup(group,Integer.MAX_VALUE);
     }
 }
