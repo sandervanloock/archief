@@ -1,4 +1,4 @@
-package be.sandervl.admin.services;
+package be.sandervl.admin.services.api;
 
 import twitter4j.Paging;
 import twitter4j.Status;

@@ -1,4 +1,4 @@
-package be.sandervl.admin.services;
+package be.sandervl.admin.services.api;
 
 import be.sandervl.admin.business.ChiroGroup;
 import com.google.api.services.calendar.model.Events;

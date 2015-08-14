@@ -1,4 +1,4 @@
-package be.sandervl.admin.services;
+package be.sandervl.admin.services.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class TwitterServiceImpl implements TwitterService {
 
-    @Autowired
+    @Autowired(required=false)
     private Twitter twitter;
 
     public TwitterServiceImpl() {

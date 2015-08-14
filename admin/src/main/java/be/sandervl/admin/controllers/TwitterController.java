@@ -1,6 +1,6 @@
 package be.sandervl.admin.controllers;
 
-import be.sandervl.admin.services.TwitterService;
+import be.sandervl.admin.services.api.TwitterService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

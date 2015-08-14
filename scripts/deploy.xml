@@ -11,6 +11,11 @@
         <fileset dir="${basedir}/scripts" includes="**/*.jar"/>
     </path>
 
+    <target name="deploy.all">
+        <antcall target="deploy.admin"/>
+        <antcall target="deploy.front"/>
+    </target>
+
     <target name="deploy.admin">
         <antcall target="prepare.deploy.admin"/>
         <antcall target="deploy.admin.remote"/>

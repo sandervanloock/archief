@@ -1,4 +1,4 @@
-package be.sandervl.admin.services;
+package be.sandervl.admin.services.api;
 
 import be.sandervl.admin.business.ChiroGroup;
 import com.google.api.client.util.DateTime;
@@ -14,7 +14,7 @@ import java.util.Date;
 @Service
 public class GoogleCalendarServiceImpl implements GoogleCalendarService {
 
-    @Autowired
+    @Autowired(required=false)
     private com.google.api.services.calendar.Calendar calendarClient;
 
     @Override

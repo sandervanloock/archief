@@ -1,6 +1,7 @@
 package be.sandervl.admin.services;
 
-import org.junit.Assert;
+import be.sandervl.admin.services.api.TwitterService;
+import be.sandervl.admin.services.api.TwitterServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -8,11 +9,9 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import twitter4j.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 public class TwitterServiceTest {
 

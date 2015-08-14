@@ -78,10 +78,13 @@ public class AdminConfiguration implements AcrossContextConfigurer {
         context.addModule(propertiesModule());
         context.addModule(springSecurityModule());
         context.addModule(entityModule());
+        context.setDevelopmentMode(true);
     }
 
     private EntityModule entityModule() {
-        return new EntityModule();
+        EntityModule entityModule = new EntityModule();
+        entityModule.addApplicationContextConfigurer(EntityTypeConfiguration.class);
+        return entityModule;
     }
 
     private PropertiesModule propertiesModule() {

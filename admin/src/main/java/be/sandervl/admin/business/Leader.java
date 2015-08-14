@@ -2,18 +2,28 @@ package be.sandervl.admin.business;
 
 import com.foreach.across.modules.hibernate.business.SettableIdBasedEntity;
 import com.foreach.across.modules.hibernate.id.AcrossSequenceGenerator;
+import org.apache.commons.io.FileUtils;
+import org.apache.tika.mime.MimeType;
+import org.apache.tika.mime.MimeTypeException;
+import org.apache.tika.mime.MimeTypes;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 
 @Entity
 public class Leader extends SettableIdBasedEntity<Leader> {
+
+    private static Logger LOG = LoggerFactory.getLogger(Leader.class);
 
     @Id
     @GeneratedValue(generator = "seq_leader_id")
@@ -56,6 +66,10 @@ public class Leader extends SettableIdBasedEntity<Leader> {
     @Min(0)
     @Max(9999)
     private int zipCode;
+
+    @Column(name="avatar", nullable=true)
+    private String avatar;
+
 
     public Long getId() {
         return id;
@@ -121,4 +135,30 @@ public class Leader extends SettableIdBasedEntity<Leader> {
     public void setZipCode(int zipCode) {
         this.zipCode = zipCode;
     }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    //    public void setAvatar(File avatar) {
+//        this.avatar = avatar;
+//    }
+
+//    public void setAvatar(MultipartFile avatar) {
+//        try {
+//            MimeTypes allTypes = MimeTypes.getDefaultMimeTypes();
+//            MimeType mimeType = allTypes.forName(avatar.getContentType());
+//            File tmpFile = File.createTempFile(avatar.getName(), mimeType.getExtension());
+//            FileUtils.copyInputStreamToFile(avatar.getInputStream(), tmpFile);
+//            this.avatar = tmpFile.getName();
+//        } catch (IOException e) {
+//            LOG.error("Exception while opening uploaded file ",e.getMessage(), e.getStackTrace());
+//        } catch (MimeTypeException e) {
+//            LOG.error("Uploaded Content-type could not be found ", e.getMessage(), e.getStackTrace());
+//        }
+//    }
 }
