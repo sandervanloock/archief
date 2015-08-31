@@ -143,22 +143,4 @@ public class Leader extends SettableIdBasedEntity<Leader> {
     public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
-
-    //    public void setAvatar(File avatar) {
-//        this.avatar = avatar;
-//    }
-
-//    public void setAvatar(MultipartFile avatar) {
-//        try {
-//            MimeTypes allTypes = MimeTypes.getDefaultMimeTypes();
-//            MimeType mimeType = allTypes.forName(avatar.getContentType());
-//            File tmpFile = File.createTempFile(avatar.getName(), mimeType.getExtension());
-//            FileUtils.copyInputStreamToFile(avatar.getInputStream(), tmpFile);
-//            this.avatar = tmpFile.getName();
-//        } catch (IOException e) {
-//            LOG.error("Exception while opening uploaded file ",e.getMessage(), e.getStackTrace());
-//        } catch (MimeTypeException e) {
-//            LOG.error("Uploaded Content-type could not be found ", e.getMessage(), e.getStackTrace());
-//        }
-//    }
 }

@@ -22,7 +22,10 @@ import com.foreach.across.modules.adminweb.AdminWeb;
 import com.foreach.across.modules.adminweb.annotations.AdminWebController;
 import com.foreach.across.modules.adminweb.menu.AdminMenu;
 import com.foreach.across.modules.adminweb.menu.EntityAdminMenu;
+import com.foreach.across.modules.entity.controllers.entity.EntityControllerSupport;
 import com.foreach.across.modules.web.menu.MenuFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,7 +45,10 @@ import java.net.URI;
 
 @AdminWebController
 @RequestMapping(LeaderController.PATH)
-public class LeaderController {
+public class LeaderController extends EntityControllerSupport{
+
+    private static Logger LOG = LoggerFactory.getLogger(LeaderController.class);
+
     public static final String PATH = "/entities/leader";
 
     @Autowired
@@ -62,7 +68,7 @@ public class LeaderController {
         model.addAttribute("entityMenu", this.menuFactory.buildMenu(new EntityAdminMenu(Leader.class)));
         model.addAttribute("existing", Boolean.valueOf(false));
         model.addAttribute("leader", new Leader());
-        return "th/admin/leader/edit";
+        return "th/entities/leader/edit";
     }
 
     @RequestMapping("/{id}")
@@ -84,7 +90,7 @@ public class LeaderController {
                            AdminMenu adminMenu,
                            Model model,
                            MultipartHttpServletRequest request) {
-        MultipartFile multipartFile = request.getFile("avatar");
+        MultipartFile multipartFile = request.getFile("avatar-upload");
         File avatar = new File(multipartFile.getOriginalFilename());
         try {
             avatar.createNewFile();
@@ -93,8 +99,9 @@ public class LeaderController {
             fos.close();
             URI test = transferServiceManager.uploadFile(avatar);
             leader.setAvatar(test.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
+        }
+        catch (IOException e) {
+            LOG.error("Something went wrong converting mulitipart file to output stream",e.getMessage(),e.getStackTrace());
         }
         if (!bindingResult.hasErrors()) {
             leaderService.save(leader);
@@ -117,5 +124,10 @@ public class LeaderController {
 
             return "th/admin/leader/edit";
         }
+    }
+
+    @Override
+    protected String getDefaultViewName() {
+        return "leader";
     }
 }
