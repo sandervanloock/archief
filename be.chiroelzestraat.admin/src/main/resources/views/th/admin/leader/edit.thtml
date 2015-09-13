@@ -25,62 +25,13 @@
 
     <div class="tab-content">
         <div class="tab-pane active">
-            <form method="post"
-                  th:action="@{${@adminWeb.path('/entities/leader/' + (leader.new ? 'create' : leader.id))}}"
-                  role="form" enctype="multipart/form-data" th:object="${leader}">
-                <div class="row">
-                    <div class="col-md-6">
-                        <input type="hidden" th:field="*{id}"/>
-
-                        <div class="form-group">
-                            <label for="lastName">Lastname</label>
-                            <input class="form-control" type="text" th:field="*{lastName}"/>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="firstName">first name</label>
-                            <input class="form-control" type="text" th:field="*{firstName}"/>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="birthDay">Birth day</label>
-                            <input class="form-control js-form-element-datepicker hasDatepicker" type="text" th:field="*{birthDay}"/>
-                        </div>
-
-                        <div class="form-group">
-                            <img th:src="*{avatar}" th:if="*{avatar}"/>
-                            <label for="avatar">Avatar</label>
-                            <input class="form-control" type="file" name="avatar-upload" id="avatar-upload"/>
-                        </div>
-
-                        <input class="btn btn-primary" type="submit" value="Save"/>
-                        <a class="btn btn-link" th:href="@{${@adminWeb.path('/entities/leader')}}">Cancel</a>
-                    </div>
-                    <div class="col-md-6"></div>
-                </div>
+            <form method="post" th:action="@{${@adminWeb.path(formAction)}}" th:object="${viewRequest}" role="form" enctype='multipart/form-data'>
+                <div th:replace="th/entity/formFields :: form_fields(${properties})"/>
             </form>
         </div>
     </div>
 
 </div>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
-
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.js"></script>
-
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
-
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/i18n/jquery-ui-i18n.min.js"></script>
-<script src="/admin/static/js/adminweb/main.js"></script>
-
-<script src="/admin/static/js/adminweb/ie10-viewport-bug-workaround.js"></script>
-
-<script src="/admin/static/js/entity/entity-module.js"></script>
-
-
-<script src="/admin/static/js/entity/dependson.js"></script>
-
-<script src="/admin/static/js/entity/form-elements.js"></script>
-<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
 
 </body>
 </html>

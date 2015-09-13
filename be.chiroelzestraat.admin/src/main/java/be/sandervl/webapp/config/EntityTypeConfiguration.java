@@ -1,9 +1,7 @@
 package be.sandervl.webapp.config;
 
-import be.sandervl.admin.controllers.LeaderController;
 import be.sandervl.admin.views.elements.CustomViewElementTypeLookupStrategy;
 import be.sandervl.admin.views.elements.form.file.FileBuilderFactoryAssembler;
-import com.foreach.across.modules.entity.registry.properties.EntityPropertyRegistry;
 import com.foreach.across.modules.entity.views.elements.ViewElementTypeLookupStrategy;
 import com.foreach.across.modules.entity.views.elements.form.FormElementBuilderFactoryAssemblerSupport;
 import com.foreach.across.modules.entity.views.elements.form.FormElementBuilderSupport;

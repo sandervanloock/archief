@@ -67,8 +67,9 @@ public class Leader extends SettableIdBasedEntity<Leader> {
     @Max(9999)
     private int zipCode;
 
-    @Column(name="avatar", nullable=true)
-    private String avatar;
+    @OneToOne
+    @JoinColumn(name = "file_upload_id")
+    private FileUpload avatar;
 
 
     public Long getId() {
@@ -136,11 +137,11 @@ public class Leader extends SettableIdBasedEntity<Leader> {
         this.zipCode = zipCode;
     }
 
-    public String getAvatar() {
+    public FileUpload getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(String avatar) {
+    public void setAvatar(FileUpload avatar) {
         this.avatar = avatar;
     }
 }
