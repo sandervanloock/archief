@@ -24,10 +24,7 @@ import com.foreach.common.spring.logging.LogbackConfigurer;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -42,6 +39,7 @@ import javax.sql.DataSource;
 @EnableAcrossContext
 @PropertySource({"classpath:config/${environment.type}/common.properties",
         "classpath:config/general.properties"})
+@ComponentScan("be.sandervl.webapp.config")
 public class AdminConfiguration implements AcrossContextConfigurer {
 
     @Autowired

@@ -1,10 +1,13 @@
 package be.sandervl.admin.services.upload;
 
+import com.foreach.across.core.annotations.Exposed;
+
 import java.io.File;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
+@Exposed
 public class TransferServiceManager {
     private List<TransferService> transferServices;
 

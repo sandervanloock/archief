@@ -10,7 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class FileUpload  extends SettableIdBasedEntity<FileUpload> {
+public class FileUpload extends SettableIdBasedEntity<FileUpload> {
 
     @Id
     @GeneratedValue(generator = "seq_file_upload_id")

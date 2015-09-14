@@ -71,7 +71,6 @@ public class Leader extends SettableIdBasedEntity<Leader> {
     @JoinColumn(name = "file_upload_id")
     private FileUpload avatar;
 
-
     public Long getId() {
         return id;
     }

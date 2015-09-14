@@ -28,6 +28,7 @@
                em:dependencies="${element.dependencies}"
                em:attributes="${element.attributes}"
                 />
+        <img th:src="${entity.avatar.path}" th:if="${entity.avatar != null and entity.avatar.path != null}"/>
 </th:block>
 </body>
 </html>
