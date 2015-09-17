@@ -1,4 +1,4 @@
-package be.sandervl.admin.controllers;
+package be.sandervl.admin.controllers.rest;
 
 import be.sandervl.admin.business.ChiroGroup;
 import be.sandervl.admin.business.Leader;

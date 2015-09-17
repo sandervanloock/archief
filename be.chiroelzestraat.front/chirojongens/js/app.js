@@ -6,16 +6,14 @@ angular.module('app').config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
             when('/', {
-                templateUrl: 'templates/home.tpl.html',
-                controller: 'HomeController'
+                templateUrl: 'templates/home.tpl.html'
             }).
             when('/groepen', {
                 templateUrl: 'templates/groepen.tpl.html',
                 controller: 'GroupController'
             }).
             when('/fotos', {
-                templateUrl: 'templates/media.tpl.html',
-                //controller: 'ShowOrdersController'
+                templateUrl: 'templates/media.tpl.html'
             }).
             when('/verhuur', {
                 templateUrl: 'templates/verhuur.tpl.html',

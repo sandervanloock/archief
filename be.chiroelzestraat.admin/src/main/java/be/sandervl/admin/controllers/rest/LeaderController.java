@@ -14,9 +14,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class LeaderAPIController {
+public class LeaderController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(LeaderAPIController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(LeaderController.class);
 
     @Autowired
     private LeaderRepository leaderRepository;

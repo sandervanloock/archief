@@ -5,16 +5,15 @@
                 <div twitter-feed></div>
             </div>
 
-            <div class="row col-lg-8">
+            <div class="row col-lg-8 event-slider">
                 <div class="row">
                     <div class="col-lg-12" event-slider />
                 </div>
-                <div class="row picture">
+                <div class="row picture" ng-if="{{latestPicture}}">
                     <div class="col-lg-12">
                         <h2>In de Kijker</h2>
-                        <!-- Zet hier altijd dezelfde foto van grootte: 518 breed 250 hoog, in jpg formaat-->
                         <strong class="image">
-                            <img src="uploads/banner kamp 2014.jpg" alt="In de kijker"/>
+                            <img src="{{latestPicture}}" alt="In de kijker"/>
                         </strong>
                     </div>
                 </div>

@@ -24,7 +24,7 @@
             <sup th:if="${element.required}"><strong>*</strong></sup>
         </label>
         <input th:id="${#ids.seq(element.name)}" type="file" th:name="${element.name}"
-               class="form-control" th:value="${element.print(entity)}"
+               class="form-control" value="1234"
                em:dependencies="${element.dependencies}"
                em:attributes="${element.attributes}"
                 />
