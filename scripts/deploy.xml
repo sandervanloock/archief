@@ -29,7 +29,7 @@
 
     <target name="zip.front" description="Puts front content zip for deploy in production">
         <zip destfile="${basedir}/front/target/static.zip">
-            <fileset dir="${basedir}/front/chirojongens">
+            <fileset dir="${basedir}/be.chiroelzestraat.front/chirojongens">
                 <include name="**/*"/>
                 <exclude name="pom.xml"/>
                 <exclude name="static.iml"/>
@@ -59,7 +59,7 @@
     </target>
 
     <target name="prepare.deploy.admin" description="Copy admin war to production">
-        <upload-war dir="${basedir}/admin/target" dns="${host.ip}" package="admin.war"/>
+        <upload-war dir="${basedir}/be.chiroelzestraat.admin/target" dns="${host.ip}" package="admin.war"/>
     </target>
 
     <target name="deploy.admin.remote">

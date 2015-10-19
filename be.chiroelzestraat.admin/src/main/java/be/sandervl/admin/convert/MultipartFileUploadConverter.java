@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.core.env.Environment;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -31,11 +32,15 @@ public class MultipartFileUploadConverter implements Converter<MultipartFile, Fi
     @Lazy
     private TransferServiceManager transferServiceManager;
 
+    @Autowired
+    @Lazy
+    private Environment environment;
+
     @Override
     public FileUpload convert(MultipartFile multipartFile) {
         try {
-            File file = new File(multipartFile.getOriginalFilename());
-            file.createNewFile();
+            String uploadDirectory = environment.getProperty("upload.dir") != null ? environment.getProperty("upload.dir") : "";
+            File file = new File(uploadDirectory +multipartFile.getOriginalFilename());
             FileOutputStream fos = new FileOutputStream(file);
             fos.write(multipartFile.getBytes());
             fos.close();
@@ -46,7 +51,7 @@ public class MultipartFileUploadConverter implements Converter<MultipartFile, Fi
             return fileUpload;
         }
         catch (IOException e) {
-            LOG.error("Something went wrong converting mulitipart file to output stream",e.getMessage(),e.getStackTrace());
+            LOG.error("Something went wrong converting mulitipart file to output stream",e);
         }
         return null;
     }

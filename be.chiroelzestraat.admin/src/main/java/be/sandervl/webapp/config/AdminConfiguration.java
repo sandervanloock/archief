@@ -28,9 +28,6 @@ import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import twitter4j.Twitter;
-import twitter4j.TwitterFactory;
-import twitter4j.conf.ConfigurationBuilder;
 
 import javax.sql.DataSource;
 
@@ -47,9 +44,8 @@ public class AdminConfiguration implements AcrossContextConfigurer {
 
     @Bean
     public LogbackConfigurer logbackConfigurer(
-            @Value("classpath:logback.xml") Resource defaultConfig, @Value("classpath:logback.xml") Resource environmentConfig )
-    {
-        return new LogbackConfigurer( environment.getRequiredProperty( "log.dir" ), defaultConfig, environmentConfig );
+            @Value("classpath:logback.xml") Resource defaultConfig, @Value("classpath:logback.xml") Resource environmentConfig) {
+        return new LogbackConfigurer(environment.getRequiredProperty("log.dir"), defaultConfig, environmentConfig);
     }
 
     @Bean
@@ -97,7 +93,7 @@ public class AdminConfiguration implements AcrossContextConfigurer {
         AcrossHibernateJpaModule jpaModule = new AcrossHibernateJpaModule();
         jpaModule.setProperty(AcrossHibernateJpaModuleSettings.PERSISTENCE_CONTEXT_VIEW_HANDLER,
                 PersistenceContextInView.FILTER);
-        jpaModule.setHibernateProperty("hibernate.hbm2ddl.auto", "create-drop");
+        jpaModule.setHibernateProperty("hibernate.hbm2ddl.auto", "update");
         return jpaModule;
     }
 
@@ -139,11 +135,10 @@ public class AdminConfiguration implements AcrossContextConfigurer {
         return debugWebModule;
     }
 
-    private EhcacheModule ehcacheModule()
-    {
+    private EhcacheModule ehcacheModule() {
         EhcacheModule ehcacheModule = new EhcacheModule();
         ehcacheModule.setProperty(EhcacheModuleSettings.CACHE_MANAGER_NAME, "chiroAdminCacheManager");
-        ehcacheModule.setProperty( EhcacheModuleSettings.CONFIGURATION_RESOURCE, new ClassPathResource( "/config/ehcache.xml" ) );
+        ehcacheModule.setProperty(EhcacheModuleSettings.CONFIGURATION_RESOURCE, new ClassPathResource("/config/ehcache.xml"));
         return ehcacheModule;
     }
 }
