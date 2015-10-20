@@ -3,7 +3,7 @@ angular.module('app').controller('RentController',['$scope','CalendarService', '
         minDate: new Date()
     }
     var availableDates = [];
-    calendar.getFutureEventsFromGroup(constants.groups[6]).then(function(events){
+    calendar.getRentCalendar().then(function(events){
         $scope.dateModel =  new Date();
         availableDates = events;
     });

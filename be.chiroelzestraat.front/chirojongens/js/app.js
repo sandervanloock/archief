@@ -32,8 +32,12 @@ angular.module('app').constant('Constants',
             {name: 'toppers'},
             {name: 'kerels'},
             {name: 'aspiranten'},
-            {name: 'verhuur'},
-            {name: 'test'},
         ]
+    }
+);
+
+angular.module('app').constant('Properties',
+    {
+        apiHost: "http://chiro.sandervl.be"
     }
 );

@@ -21,7 +21,7 @@ public class GoogleCalendarServiceImpl implements GoogleCalendarService {
     @Cacheable(value="calendarCache")
     public Events getEventsFromGroup(ChiroGroup group, int amount) {
         try {
-            if(StringUtils.isNotEmpty(group.getCalendarId())){
+            if(group != null && StringUtils.isNotEmpty(group.getCalendarId())){
                 DateTime timeMax = new DateTime(new Date());
                 return calendarClient.events().list(group.getCalendarId()).setTimeMin(timeMax).setMaxResults(amount).execute();
             }

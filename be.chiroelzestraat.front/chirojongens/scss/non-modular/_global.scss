@@ -1,9 +1,38 @@
+body {
+  font-size: 14px;
+  color: white;
+}
+
+h2{
+  color:white;
+}
+
+header,section{
+  background-color: $background-red;
+}
+
+.navbar,.footer-above{
+  background-color: $header-blue;
+}
+
+hr.star-primary{
+  border-color: white;
+  &:after{
+    color: white;
+    background-color: $background-red;
+  }
+}
+
+
+
+//LEGACY CODE STARTS HERE
+
 .pagewrapper {
   background-color: white;
 }
 
-.event-slider{
-  .calendar{
+.event-slider {
+  .calendar {
     margin-bottom: 1em;
   }
 }
@@ -15,15 +44,15 @@
     .nav {
       width: 50px;
       padding-top: 1em;
-      i{
+      i {
         cursor: pointer;
       }
-      &.nav-right{
+      &.nav-right {
         position: absolute;
         right: 124px;
         top: 92px;
       }
-      &.nav-left{
+      &.nav-left {
         position: absolute;
         left: 124px;
         top: 92px;
@@ -38,19 +67,19 @@
   }
 }
 
-.capacity{
-  text-align:center;
-  table{
+.capacity {
+  text-align: center;
+  table {
     margin: auto;
   }
 }
 
-.photoslider{
+.photoslider {
   margin-top: 2em;
 }
 
-footer{
-  h3{
+footer {
+  h3 {
     color: white;
   }
 }
