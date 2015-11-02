@@ -1,4 +1,4 @@
-angular.module("app").factory('CalendarService', ['$q', '$http', 'Properties', function ($q, $http, properties) {
+angular.module("app").factory('CalendarService', ['$q', '$http', function ($q,$http) {
     function convertDates(newEvents) {
         for (var i = 0; i < newEvents.length; i++) {
             if (newEvents[i].start && newEvents[i].start.dateTime) {
@@ -12,7 +12,7 @@ angular.module("app").factory('CalendarService', ['$q', '$http', 'Properties', f
 
     this.getCalendarEvents = function () {
         var def = $q.defer();
-        $http.get(properties.apiHost + "/admin/api/event").success(function (data) {
+        $http.get("/admin/api/event").success(function(data){
             var newEvents = data.items;
             convertDates(newEvents);
             def.resolve(newEvents);
@@ -21,7 +21,7 @@ angular.module("app").factory('CalendarService', ['$q', '$http', 'Properties', f
     };
     this.getCalendarEventsFromGroup = function (group) {
         var def = $q.defer();
-        $http.get(properties.apiHost + "/admin/api/event/" + group).success(function (data) {
+        $http.get("/admin/api/event/"+group.name).success(function(data){
             var newEvents = data.items;
             convertDates(newEvents);
             def.resolve(newEvents);
@@ -38,13 +38,7 @@ angular.module("app").factory('CalendarService', ['$q', '$http', 'Properties', f
 
         getFutureEventsFromGroup: function (group) {
             var deferred = $q.defer();
-            deferred.resolve(_self.getCalendarEventsFromGroup(group.name));
-            return deferred.promise;
-        },
-
-        getRentCalendar: function(){
-            var deferred = $q.defer();
-            deferred.resolve(_self.getCalendarEventsFromGroup("verhuur"));
+            deferred.resolve(_self.getCalendarEventsFromGroup(group));
             return deferred.promise;
         }
     }

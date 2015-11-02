@@ -3,6 +3,7 @@ angular.module("app").controller('GroupController', ['$scope','GroupService','Co
     $scope.groups = Constants.groups;
 
     $scope.openModal = function(groupName){
+        console.log("Opening Modal: ",groupName);
         $('#'+groupName).modal();
         GroupService.getGroupInfo(groupName).success(function(data){
            $scope.activeGroup = data;
