@@ -8,6 +8,7 @@ import com.foreach.across.module.applicationinfo.ApplicationInfoModule;
 import com.foreach.across.module.applicationinfo.ApplicationInfoModuleSettings;
 import com.foreach.across.modules.adminweb.AdminWebModule;
 import com.foreach.across.modules.adminweb.AdminWebModuleSettings;
+import com.foreach.across.modules.bootstrapui.BootstrapUiModule;
 import com.foreach.across.modules.debugweb.DebugWebModule;
 import com.foreach.across.modules.ehcache.EhcacheModule;
 import com.foreach.across.modules.ehcache.EhcacheModuleSettings;
@@ -112,7 +113,7 @@ public class AdminConfiguration implements AcrossContextConfigurer {
         ApplicationInfoModule applicationInfoModule = new ApplicationInfoModule();
 
         applicationInfoModule.setProperty(ApplicationInfoModuleSettings.APPLICATION_ID, "chiroelzestraat.admin");
-        applicationInfoModule.setProperty(ApplicationInfoModuleSettings.APPLICATION_NAME, "chiroelzestraat.admin");
+        applicationInfoModule.setProperty(ApplicationInfoModuleSettings.APPLICATION_NAME, "Admin Chiro Elzestraat");
 
         applicationInfoModule.setProperty(ApplicationInfoModuleSettings.ENVIRONMENT_ID, "development");
         applicationInfoModule.setProperty(ApplicationInfoModuleSettings.ENVIRONMENT_NAME, "development");

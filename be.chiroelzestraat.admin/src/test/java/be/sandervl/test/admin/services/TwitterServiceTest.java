@@ -1,4 +1,4 @@
-package be.sandervl.admin.services;
+package be.sandervl.test.admin.services;
 
 import be.sandervl.admin.services.api.TwitterService;
 import be.sandervl.admin.services.api.TwitterServiceImpl;

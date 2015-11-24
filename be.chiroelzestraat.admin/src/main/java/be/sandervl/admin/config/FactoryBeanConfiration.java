@@ -56,11 +56,12 @@ public class FactoryBeanConfiration {
                     .build();
             return new Calendar.Builder(transport, jacksonFactory, credential).setApplicationName(ChiroAdminModule.NAME).build();
         } catch (IOException e) {
-            LOG.error("failed to read google-acces-key.p12",e);
+            LOG.error("failed to read google-acces-key.p12", e);
         } catch (GeneralSecurityException e) {
-            LOG.error("An error occured creating a Google Credential",e);
+            LOG.error("An error occured creating a Google Credential", e);
+        } catch (Exception e) {
+            LOG.error("Something went wrong creating the Google Calendar bean",e);
         }
-        LOG.error("Something went wrong creating the Google Calendar bean");
         return null;
     }
 

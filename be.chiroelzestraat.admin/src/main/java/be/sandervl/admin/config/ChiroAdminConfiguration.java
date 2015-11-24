@@ -1,13 +1,17 @@
 package be.sandervl.admin.config;
 
 import be.sandervl.admin.ChiroAdminModule;
+import be.sandervl.admin.views.elements.EntityFileFormViewFactory;
 import com.foreach.across.core.annotations.AcrossDepends;
+import com.foreach.across.core.annotations.Exposed;
 import com.foreach.across.modules.entity.EntityModule;
 import com.foreach.across.modules.entity.controllers.ViewRequestValidator;
+import com.foreach.across.modules.entity.views.EntityFormViewFactory;
 import com.foreach.across.modules.hibernate.jpa.config.HibernateJpaConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration

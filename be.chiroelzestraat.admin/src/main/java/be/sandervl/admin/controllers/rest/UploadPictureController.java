@@ -24,7 +24,7 @@ public class UploadPictureController {
     @RequestMapping(value = "/picture/latest", method = RequestMethod.GET)
     public FileUpload uploadPicture() {
         List<UploadPicture> pictures =
-                uploadPictureRepository.findAll();
+                uploadPictureRepository.findByDateBetweenOnlineDateAndOfflineDateAndActiveIsTrue();
         if (pictures.size() > 0) {
             return pictures.get(0).getAvatar();
         }

@@ -17,18 +17,18 @@
 <head>
 </head>
 <body>
-<th:block th:fragment="file">
-    <!--/* file */-->
-        <label th:for="${#ids.next(element.name)}">
-            <span th:text="${element.label}">label text</span>
-            <sup th:if="${element.required}"><strong>*</strong></sup>
-        </label>
-        <input th:id="${#ids.seq(element.name)}" type="file" th:name="${element.name}"
-               class="form-control" value="1234"
-               em:dependencies="${element.dependencies}"
-               em:attributes="${element.attributes}"
-                />
-        <img th:src="${entity.avatar.path}" th:if="${entity.avatar != null and entity.avatar.path != null}"/>
+<th:block th:fragment="render(file)">
+    <div class="form-group container-fluid">
+        <label class="control-label" for="entity.avatar">Afbeelding</label>
+        <span class="btn btn-default btn-file">
+            <div class="row">
+                <input class="col-md-12" type="file" id="entity.avatar" name="entity.avatar"></input>
+            </div>
+            <div class="row">
+                <img th:src="${entity.avatar.path}" th:if="${entity.avatar}" alt="Avatar" class=" col-md-12 img-responsive img-rounded"/>
+            </div>
+        </span>
+    </div>
 </th:block>
 </body>
 </html>

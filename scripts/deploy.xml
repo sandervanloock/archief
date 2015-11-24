@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="Resto Execute Deploy" basedir="../">
+<project name="Chiroelzestraat Admin Execute Deploy" basedir="../">
 
     <property name="environment" value="production"/>
     <fail unless="environment">environment not set</fail>

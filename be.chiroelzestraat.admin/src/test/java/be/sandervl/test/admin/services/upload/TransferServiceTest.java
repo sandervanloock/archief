@@ -1,4 +1,4 @@
-package be.sandervl.admin.services.upload;
+package be.sandervl.test.admin.services.upload;
 
 import be.sandervl.admin.services.upload.ftp.FTPTransferHost;
 import be.sandervl.admin.services.upload.ftp.FTPTransferService;
