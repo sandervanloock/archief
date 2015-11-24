@@ -1,0 +1,8 @@
+<dataset>
+    <fileUpload id="1" path="/temp"/>
+    <uploadPicture id="1" active="1" offline_date="2015-05-05" online_date="2014-05-05" file_upload_id="1"/>
+    <uploadPicture id="2" active="0" offline_date="2015-05-05" online_date="2014-05-05" file_upload_id="1"/>
+    <uploadPicture id="3" active="0" offline_date="2033-05-05" online_date="2015-05-04" file_upload_id="1"/>
+    <uploadPicture id="4" active="1" offline_date="2033-05-05" online_date="2015-05-04" file_upload_id="1"/>
+    <uploadPicture id="5" active="1" offline_date="2033-05-05" online_date="2015-11-12" file_upload_id="1"/>
+</dataset>

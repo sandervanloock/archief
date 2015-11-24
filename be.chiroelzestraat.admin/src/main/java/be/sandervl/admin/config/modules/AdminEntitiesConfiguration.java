@@ -39,6 +39,8 @@ public class AdminEntitiesConfiguration implements EntityConfigurer {
                 "lastName"
         );
 
+        configuration.entity(Leader.class).label("firstName");
+
         // Use the LeaderService for persisting Leader - as that one takes care of avatar handling
         EntityModelImpl userModel = (EntityModelImpl) entityRegistry.getMutableEntityConfiguration( Leader.class )
                 .getEntityModel();

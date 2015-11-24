@@ -1,7 +1,7 @@
 package be.sandervl.admin;
 
 import be.sandervl.admin.business.Leader;
-import be.sandervl.admin.installers.ChiroGroupInstaller;
+import be.sandervl.admin.installers.InitalChiroDataInstaller;
 import com.foreach.across.core.AcrossModule;
 import com.foreach.across.core.annotations.AcrossDepends;
 import com.foreach.across.modules.entity.EntityModule;
@@ -38,7 +38,7 @@ public class ChiroAdminModule extends AcrossModule implements HibernatePackageCo
     @Override
     public Object[] getInstallers() {
         return new Object[]{
-                ChiroGroupInstaller.class
+                InitalChiroDataInstaller.class
         };
     }
 }

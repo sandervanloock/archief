@@ -1,4 +1,4 @@
-package be.sandervl.admin.controllers;
+package be.sandervl.test.admin.controllers;
 
 import be.sandervl.admin.ChiroAdminModule;
 import com.foreach.across.core.AcrossContext;
@@ -30,10 +30,10 @@ import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@DirtiesContext
-@WebAppConfiguration
-@ContextConfiguration(classes = LeaderControllerTest.Config.class)
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@DirtiesContext
+//@WebAppConfiguration
+//@ContextConfiguration(classes = LeaderControllerTest.Config.class)
 public class LeaderControllerTest {
 
     @Autowired
@@ -60,7 +60,7 @@ public class LeaderControllerTest {
                 });
     }
 
-    @Configuration
+//    @Configuration
     static class Config {
         @Bean
         public DataSource dataSource() throws Exception {

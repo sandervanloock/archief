@@ -13,6 +13,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URLEncoder;
 
 /**
  * Created by sander on 11/08/2015.
@@ -63,19 +64,20 @@ public class FTPTransferService extends AbstractTransferService<FTPTransferHost>
             if (ftp.isConnected()) {
                 try {
                     ftp.disconnect();
+                    String url = result.toString().replace(" ","%20");
                     LOG.info("Successfully disconnected for FTP ", transferHost.getName());
-                    return new URI(result.toString());
+                    return new URI(url);
                 } catch (IOException ioe) {
-                    LOG.error("Something went wrong while disconnecting from FTP ", transferHost.getName(), ioe.getStackTrace());
+                    LOG.error("Something went wrong while disconnecting from FTP ", ioe.getStackTrace());
                     return null;
                 } catch (URISyntaxException e) {
-                    LOG.error("Something went wrong while forming the URI after upload string: ", result, e.getStackTrace());
+                    LOG.error("Something went wrong while forming the URI after upload string: ", e.getStackTrace());
                     e.printStackTrace();
                 }
             }
         }
         try {
-            return new URI(result.toString());
+            return new URI("");
         } catch (URISyntaxException e) {
             LOG.error("Something went wrong while forming the URI after upload string: ", result, e.getStackTrace());
             return null;
