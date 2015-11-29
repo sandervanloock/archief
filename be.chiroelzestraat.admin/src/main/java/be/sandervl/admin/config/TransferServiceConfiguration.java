@@ -4,6 +4,8 @@ package be.sandervl.admin.config;
 import be.sandervl.admin.services.upload.TransferServiceManager;
 import be.sandervl.admin.services.upload.ftp.FTPTransferHost;
 import be.sandervl.admin.services.upload.ftp.FTPTransferService;
+import be.sandervl.admin.services.upload.imageserver.ImageServerHost;
+import be.sandervl.admin.services.upload.imageserver.ImageServerTransferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,9 +20,8 @@ public class TransferServiceConfiguration {
     @Autowired
     private Environment environment;
 
-    @Bean
-    public TransferServiceManager transferServiceManager(){
-        TransferServiceManager transferServiceManager = new TransferServiceManager();
+    /*@Bean
+    public FTPTransferService ftpTransferService() {
         FTPTransferHost transferHost = new FTPTransferHost();
         transferHost.setName("FTP - Chiro Elzestraat");
         transferHost.setHost("ftp.chiroelzestraat.be");
@@ -29,11 +30,30 @@ public class TransferServiceConfiguration {
         transferHost.setBasePath("http://www.chiroelzestraat.be");
         transferHost.setUploadDirectory("/chirojongens/uploads/admin");
 
-        FTPTransferService transferService = new FTPTransferService(transferHost);
-
-        transferServiceManager.register(transferService);
-
-        return transferServiceManager;
+        return new FTPTransferService(transferHost);
     }
 
+    @Bean
+    public TransferServiceManager transferServiceManager() {
+        TransferServiceManager transferServiceManager = new TransferServiceManager();
+        transferServiceManager.register(ftpTransferService());
+        return transferServiceManager;
+    } */
+
+    @Bean
+    public ImageServerTransferService imageServerTransferService() {
+        ImageServerHost transferHost = new ImageServerHost();
+        transferHost.setName("Image Server - Chiro Elzestraat");
+        transferHost.setHost("http://localhost:8078/resources/images");
+        transferHost.setAccessToken("standalone-access-token");
+        transferHost.setImageServerKeyPrefix("chiroelzestraat-dev");
+        return new ImageServerTransferService(transferHost);
+    }
+
+    @Bean
+    public TransferServiceManager transferServiceManager() {
+        TransferServiceManager transferServiceManager = new TransferServiceManager();
+        transferServiceManager.register(imageServerTransferService());
+        return transferServiceManager;
+    }
 }

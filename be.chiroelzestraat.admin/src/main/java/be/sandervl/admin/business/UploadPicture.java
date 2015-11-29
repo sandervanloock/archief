@@ -26,6 +26,9 @@ public class UploadPicture extends SettableIdBasedEntity<UploadPicture> {
     )
     private Long id;
 
+    @Column(name="name")
+    private String name;
+
     @Column(name="online_date")
     private Date online_date;
 
@@ -47,6 +50,14 @@ public class UploadPicture extends SettableIdBasedEntity<UploadPicture> {
     @Override
     public Long getId() {
         return this.id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Date getOnline_date() {

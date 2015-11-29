@@ -40,6 +40,6 @@ angular.module('app').constant('Constants',
 
 angular.module('app').constant('Properties',
     {
-        apiHost: "http://chiro.sandervl.be/"
+        apiHost: "http://localhost:8080/"
     }
 );

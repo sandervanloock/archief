@@ -25,7 +25,7 @@
                 <input class="col-md-12" type="file" id="entity.avatar" name="entity.avatar"></input>
             </div>
             <div class="row">
-                <img th:src="${entity.avatar.path}" th:if="${entity.avatar}" alt="Avatar" class=" col-md-12 img-responsive img-rounded"/>
+                <img th:src="${entity.avatar.path}" th:if="${entity} and ${entity.avatar}" alt="Avatar" class=" col-md-12 img-responsive img-rounded"/>
             </div>
         </span>
     </div>

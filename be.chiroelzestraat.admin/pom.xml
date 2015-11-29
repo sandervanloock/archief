@@ -159,6 +159,11 @@
             <artifactId>bootstrap-ui-module</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.foreach.imageserver</groupId>
+            <artifactId>imageserver-client</artifactId>
+            <version>3.4.RELEASE</version>
+        </dependency>
+        <dependency>
             <groupId>org.twitter4j</groupId>
             <artifactId>twitter4j-core</artifactId>
         </dependency>
