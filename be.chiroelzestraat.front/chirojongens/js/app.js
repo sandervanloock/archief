@@ -32,8 +32,7 @@ angular.module('app').constant('Constants',
             {name: 'toppers'},
             {name: 'kerels'},
             {name: 'aspiranten'},
-            {name: 'verhuur'},
-            {name: 'test'},
+            {name: 'verhuur'}
         ]
     }
 );

@@ -15,11 +15,17 @@
             <name>Foreach nexus</name>
             <url>http://repository.foreach.be/nexus/content/groups/public/</url>
         </repository>
+        <repository>
+            <id>foreach-custom-externals</id>
+            <name>Foreach Custom repository</name>
+            <url>http://repository.foreach.be/nexus/content/repositories/foreach-custom-externals</url>
+        </repository>
     </repositories>
 
     <modules>
         <module>be.chiroelzestraat.admin</module>
         <module>be.chiroelzestraat.front</module>
+        <module>be.chiroelzestraat.imageserver</module>
     </modules>
 
 </project>

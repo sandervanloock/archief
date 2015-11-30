@@ -18,6 +18,10 @@
         <deploy-war dns="${host.ip}:${host.port}" package="admin" path="/admin" />
     </target>
 
+    <target name="deploy.images">
+        <deploy-war dns="${host.ip}:${host.port}" package="images"/>
+    </target>
+
     <macrodef name="deploy-war">
         <attribute name="dns" />
         <attribute name="package" />

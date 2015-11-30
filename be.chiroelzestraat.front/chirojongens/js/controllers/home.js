@@ -1,7 +1,7 @@
 angular.module("app").controller('HomeController', ['$scope', '$http', 'Properties', function ($scope,$http,properties) {
 
     $http.get(properties.apiHost+"admin/api/picture/latest").then(function(response){
-        $scope.latestPicture = response.data.path+"&width=640&height=480";
+        $scope.latestPicture = response.data.path;
     })
 
     $scope.viewLoaded = function(){

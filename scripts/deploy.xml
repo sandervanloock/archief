@@ -62,8 +62,16 @@
         <upload-war dir="${basedir}/be.chiroelzestraat.admin/target" dns="${host.ip}" package="admin.war"/>
     </target>
 
+    <target name="prepare.deploy.imageserver" description="Copy imageserver war to production">
+        <upload-war dir="${basedir}/be.chiroelzestraat.imageserver/target" dns="${host.ip}" package="images.war"/>
+    </target>
+
     <target name="deploy.admin.remote">
         <deploy-remote dns="${host.ip}" target="deploy.admin"/>
+    </target>
+
+    <target name="deploy.images.remote">
+        <deploy-remote dns="${host.ip}" target="deploy.images"/>
     </target>
 
     <macrodef name="deploy-remote">

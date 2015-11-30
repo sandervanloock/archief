@@ -44,9 +44,9 @@ public class TransferServiceConfiguration {
     public ImageServerTransferService imageServerTransferService() {
         ImageServerHost transferHost = new ImageServerHost();
         transferHost.setName("Image Server - Chiro Elzestraat");
-        transferHost.setHost("http://localhost:8078/resources/images");
-        transferHost.setAccessToken("standalone-access-token");
-        transferHost.setImageServerKeyPrefix("chiroelzestraat-dev");
+        transferHost.setHost(environment.getProperty("imageserver.host"));
+        transferHost.setAccessToken(environment.getProperty("imageserver.accesstoken"));
+        transferHost.setImageServerKeyPrefix(environment.getProperty("imageserver.prefix"));
         return new ImageServerTransferService(transferHost);
     }
 
