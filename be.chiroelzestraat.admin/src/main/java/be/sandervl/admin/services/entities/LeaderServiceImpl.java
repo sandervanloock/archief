@@ -23,12 +23,6 @@ public class LeaderServiceImpl implements LeaderService {
 
     @Override
     public Leader save(Leader leader) {
-        if(leader.getAvatar() == null && leader.getId() != null){
-            Leader oldLeader = leaderRepository.findOne(leader.getId());
-            if(oldLeader != null){
-                leader.setAvatar(oldLeader.getAvatar());
-            }
-        }
         return leaderRepository.save(leader);
     }
 
