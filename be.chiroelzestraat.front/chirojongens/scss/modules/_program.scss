@@ -1,0 +1,21 @@
+@charset "UTF-8";
+//
+// Buttons  for the bookingsmodule detailspage
+//
+
+.chiro-program {
+  .chiro-program__content {
+    margin: 2em auto;
+    width: 640px;
+    color: black;
+  }
+  .chiro-program__title {
+    color: black;
+  }
+  .chiro-program__from, .chiro-program__to {
+    font-size: 18px;
+    width: 45%;
+    display: inline-block;
+  }
+
+}

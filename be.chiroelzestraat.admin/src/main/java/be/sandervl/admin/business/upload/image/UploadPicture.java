@@ -1,4 +1,4 @@
-package be.sandervl.admin.business;
+package be.sandervl.admin.business.upload.image;
 
 import com.foreach.across.modules.hibernate.business.SettableIdBasedEntity;
 import com.foreach.across.modules.hibernate.id.AcrossSequenceGenerator;
@@ -40,7 +40,7 @@ public class UploadPicture extends SettableIdBasedEntity<UploadPicture> {
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "file_upload_id")
-    private FileUpload avatar;
+    private Image file;
 
     @Override
     public void setId(Long aLong) {
@@ -84,11 +84,11 @@ public class UploadPicture extends SettableIdBasedEntity<UploadPicture> {
         this.active = active;
     }
 
-    public FileUpload getAvatar() {
-        return avatar;
+    public Image getFile() {
+        return file;
     }
 
-    public void setAvatar(FileUpload avatar) {
-        this.avatar = avatar;
+    public void setFile(Image file) {
+        this.file = file;
     }
 }

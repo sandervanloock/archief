@@ -19,19 +19,19 @@
 <body>
 <th:block th:fragment="render(file)">
     <div class="form-group container-fluid">
-        <label class="control-label" for="entity.avatar">Afbeelding</label>
+        <label class="control-label" for="entity.file">TODO</label>
         <span class="row btn btn-default btn-file">
-            <input class="col-md-12" type="file" id="entity.avatar" name="entity.avatar"></input>
+            <input class="col-md-12" type="file" id="entity.file" name="entity.file"></input>
         </span>
         <div class="row">
             <img class="col-md-12 img-responsive img-rounded"
-                 alt="Avatar"
-                 th:src="${entity.avatar.path}"
-                 th:if="${entity} and ${entity.avatar}"
+                 alt="file"
+                 th:src="${entity.file.path}"
+                 th:if="${entity} and ${entity.file}"
             />
-            <input type="hidden" id="entity.avatar.id" name="entity.avatar.id"
-                   th:value="${entity.avatar.id}"
-                   th:if="${entity} and ${entity.avatar}">
+            <input type="hidden" id="entity.file.id" name="entity.file.id"
+                   th:value="${entity.file.id}"
+                   th:if="${entity} and ${entity.file}">
             </input>
         </div>
     </div>

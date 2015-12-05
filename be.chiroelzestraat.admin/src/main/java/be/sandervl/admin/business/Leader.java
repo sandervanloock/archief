@@ -1,23 +1,17 @@
 package be.sandervl.admin.business;
 
+import be.sandervl.admin.business.upload.image.Image;
 import com.foreach.across.modules.hibernate.business.SettableIdBasedEntity;
 import com.foreach.across.modules.hibernate.id.AcrossSequenceGenerator;
-import org.apache.commons.io.FileUtils;
-import org.apache.tika.mime.MimeType;
-import org.apache.tika.mime.MimeTypeException;
-import org.apache.tika.mime.MimeTypes;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotBlank;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
-import java.io.File;
-import java.io.IOException;
 import java.util.Date;
 
 @Entity
@@ -39,15 +33,15 @@ public class Leader extends SettableIdBasedEntity<Leader> {
 
     @NotBlank
     @Size(max = 255)
-    @Column(name="last_name")
+    @Column(name = "last_name")
     private String lastName;
 
     @NotBlank
     @Size(max = 255)
-    @Column(name="first_name")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name="birth_day")
+    @Column(name = "birth_day")
     private Date birthDay;
 
     @Column(name = "street")
@@ -69,7 +63,7 @@ public class Leader extends SettableIdBasedEntity<Leader> {
 
     @OneToOne
     @JoinColumn(name = "file_upload_id")
-    private FileUpload avatar;
+    private Image file;
 
     public Long getId() {
         return id;
@@ -136,11 +130,11 @@ public class Leader extends SettableIdBasedEntity<Leader> {
         this.zipCode = zipCode;
     }
 
-    public FileUpload getAvatar() {
-        return avatar;
+    public Image getFile() {
+        return file;
     }
 
-    public void setAvatar(FileUpload avatar) {
-        this.avatar = avatar;
+    public void setFile(Image file) {
+        this.file = file;
     }
 }

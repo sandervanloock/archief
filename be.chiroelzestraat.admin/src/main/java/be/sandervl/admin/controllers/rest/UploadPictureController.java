@@ -1,8 +1,8 @@
 package be.sandervl.admin.controllers.rest;
 
-import be.sandervl.admin.business.FileUpload;
-import be.sandervl.admin.business.UploadPicture;
-import be.sandervl.admin.repositories.UploadPictureRepository;
+import be.sandervl.admin.business.upload.image.Image;
+import be.sandervl.admin.business.upload.image.UploadPicture;
+import be.sandervl.admin.repositories.upload.image.UploadPictureRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +22,11 @@ public class UploadPictureController {
     private UploadPictureRepository uploadPictureRepository;
 
     @RequestMapping(value = "/picture/latest", method = RequestMethod.GET)
-    public FileUpload uploadPicture() {
+    public Image uploadPicture() {
         List<UploadPicture> pictures =
                 uploadPictureRepository.findByDateBetweenOnlineDateAndOfflineDateAndActiveIsTrue();
         if (pictures.size() > 0) {
-            return pictures.get(0).getAvatar();
+            return pictures.get(0).getFile();
         }
         return null;
     }

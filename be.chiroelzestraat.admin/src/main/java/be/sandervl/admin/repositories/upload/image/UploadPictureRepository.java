@@ -1,6 +1,6 @@
-package be.sandervl.admin.repositories;
+package be.sandervl.admin.repositories.upload.image;
 
-import be.sandervl.admin.business.UploadPicture;
+import be.sandervl.admin.business.upload.image.UploadPicture;
 import com.foreach.across.core.annotations.Exposed;
 import com.foreach.across.modules.hibernate.jpa.repositories.IdBasedEntityJpaRepository;
 import org.springframework.data.jpa.repository.Query;

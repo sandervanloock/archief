@@ -1,9 +1,8 @@
 package be.sandervl.webapp.config;
 
-import be.sandervl.admin.convert.MultipartFileUploadConverter;
-import com.foreach.across.core.annotations.Exposed;
+import be.sandervl.admin.convert.MultipartFileImageConverter;
+import be.sandervl.admin.convert.MultipartFilePdfConverter;
 import com.foreach.common.spring.convert.CustomConversionServiceFactoryBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ConversionServiceFactoryBean;
@@ -11,7 +10,6 @@ import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.support.GenericConversionService;
 import org.springframework.format.support.DefaultFormattingConversionService;
 
-import javax.annotation.PostConstruct;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -35,13 +33,19 @@ public class ConversionServiceConfiguration {
         ConversionServiceFactoryBean conversionService = new CustomFormattingConversionServiceFactoryBean();
         Set<Object> converters = new HashSet<>();
         converters.add(multipartFileUploadConverter());
+        converters.add(multipartFilePdfConverter());
 
         conversionService.setConverters(converters);
         return conversionService;
     }
 
     @Bean
-    public MultipartFileUploadConverter multipartFileUploadConverter() {
-        return new MultipartFileUploadConverter();
+    public MultipartFileImageConverter multipartFileUploadConverter() {
+        return new MultipartFileImageConverter();
+    }
+
+    @Bean
+    public MultipartFilePdfConverter multipartFilePdfConverter() {
+        return new MultipartFilePdfConverter();
     }
 }

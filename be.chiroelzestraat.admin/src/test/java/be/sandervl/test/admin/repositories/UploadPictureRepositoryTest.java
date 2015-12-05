@@ -1,13 +1,12 @@
 package be.sandervl.test.admin.repositories;
 
-import be.sandervl.admin.business.UploadPicture;
-import be.sandervl.admin.repositories.UploadPictureRepository;
+import be.sandervl.admin.business.upload.image.UploadPicture;
+import be.sandervl.admin.repositories.upload.image.UploadPictureRepository;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;

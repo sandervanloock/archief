@@ -39,6 +39,7 @@ angular.module('app').constant('Constants',
 
 angular.module('app').constant('Properties',
     {
+        //TODO make this as property
         apiHost: "http://localhost:8080/"
     }
 );

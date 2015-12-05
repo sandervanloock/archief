@@ -1,6 +1,7 @@
 package be.sandervl.admin.views.elements;
 
-import be.sandervl.admin.business.FileUpload;
+import be.sandervl.admin.business.upload.image.Image;
+import be.sandervl.admin.business.upload.pdf.Pdf;
 import com.foreach.across.modules.entity.registry.properties.EntityPropertyDescriptor;
 import com.foreach.across.modules.entity.views.ViewElementMode;
 import com.foreach.across.modules.entity.views.ViewElementTypeLookupStrategy;
@@ -15,7 +16,8 @@ public class CustomViewElementTypeLookupStrategy implements ViewElementTypeLooku
     @Override
     public String findElementType(EntityPropertyDescriptor entityPropertyDescriptor, ViewElementMode viewElementMode) {
         if (entityPropertyDescriptor.getPropertyType() != null &&
-                ClassUtils.isAssignable(FileUpload.class, entityPropertyDescriptor.getPropertyType()))
+                ClassUtils.isAssignable(Image.class, entityPropertyDescriptor.getPropertyType()) ||
+                ClassUtils.isAssignable(Pdf.class, entityPropertyDescriptor.getPropertyType()))
         {
             return "file";
         }

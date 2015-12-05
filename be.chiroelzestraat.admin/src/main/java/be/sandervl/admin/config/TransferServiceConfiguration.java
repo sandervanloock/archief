@@ -1,11 +1,11 @@
 
 package be.sandervl.admin.config;
 
-import be.sandervl.admin.services.upload.TransferServiceManager;
 import be.sandervl.admin.services.upload.ftp.FTPTransferHost;
 import be.sandervl.admin.services.upload.ftp.FTPTransferService;
 import be.sandervl.admin.services.upload.imageserver.ImageServerHost;
 import be.sandervl.admin.services.upload.imageserver.ImageServerTransferService;
+import com.foreach.across.core.annotations.Exposed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +20,8 @@ public class TransferServiceConfiguration {
     @Autowired
     private Environment environment;
 
-    /*@Bean
+    @Bean
+    @Exposed
     public FTPTransferService ftpTransferService() {
         FTPTransferHost transferHost = new FTPTransferHost();
         transferHost.setName("FTP - Chiro Elzestraat");
@@ -34,13 +35,7 @@ public class TransferServiceConfiguration {
     }
 
     @Bean
-    public TransferServiceManager transferServiceManager() {
-        TransferServiceManager transferServiceManager = new TransferServiceManager();
-        transferServiceManager.register(ftpTransferService());
-        return transferServiceManager;
-    } */
-
-    @Bean
+    @Exposed
     public ImageServerTransferService imageServerTransferService() {
         ImageServerHost transferHost = new ImageServerHost();
         transferHost.setName("Image Server - Chiro Elzestraat");
@@ -48,12 +43,5 @@ public class TransferServiceConfiguration {
         transferHost.setAccessToken(environment.getProperty("imageserver.accesstoken"));
         transferHost.setImageServerKeyPrefix(environment.getProperty("imageserver.prefix"));
         return new ImageServerTransferService(transferHost);
-    }
-
-    @Bean
-    public TransferServiceManager transferServiceManager() {
-        TransferServiceManager transferServiceManager = new TransferServiceManager();
-        transferServiceManager.register(imageServerTransferService());
-        return transferServiceManager;
     }
 }

@@ -1,7 +1,12 @@
-angular.module("app").controller('HomeController', ['$scope', '$http', 'Properties', function ($scope,$http,properties) {
+angular.module("app").controller('HomeController', ['$scope', '$http', '$sce','Properties', function ($scope,$http,$sce,properties) {
 
     $http.get(properties.apiHost+"admin/api/picture/latest").then(function(response){
         $scope.latestPicture = response.data.path;
+    })
+
+    $http.get(properties.apiHost+"admin/api/program/latest").then(function(response){
+        $scope.latestProgram = response.data;
+        $scope.latestProgram.file.path = $sce.trustAsResourceUrl("js/lib/pdf.js/web/viewer.html?file="+response.data.file.path);
     })
 
     $scope.viewLoaded = function(){

@@ -34,7 +34,7 @@ public class FTPTransferService extends AbstractTransferService<FTPTransferHost>
         FTPClient ftp = new FTPClient();
         FTPClientConfig config = new FTPClientConfig();
         ftp.configure(config);
-        boolean error = false;
+        boolean success = true;
         try {
             int reply;
             ftp.connect(transferHost.getHost());
@@ -42,7 +42,7 @@ public class FTPTransferService extends AbstractTransferService<FTPTransferHost>
                 ftp.logout();
                 return null;
             }
-            ftp.changeWorkingDirectory(transferHost.getUploadDirectory());
+            success &= ftp.changeWorkingDirectory(transferHost.getUploadDirectory());
             LOG.info("Connected to " + transferHost.getName() + ".");
             LOG.info(ftp.getReplyString());
 
@@ -54,14 +54,17 @@ public class FTPTransferService extends AbstractTransferService<FTPTransferHost>
             }
             ftp.setFileType(FTP.BINARY_FILE_TYPE, FTP.BINARY_FILE_TYPE);
             ftp.setFileTransferMode(FTP.BINARY_FILE_TYPE);
-            ftp.storeFile(file.getName(), new FileInputStream(file));
+            success &= ftp.storeFile(file.getName(), new FileInputStream(file));
             result.append("/");
             result.append(file.getName());
             ftp.logout();
         } catch (IOException e) {
             LOG.error(e.getMessage());
         } finally {
-            if (ftp.isConnected()) {
+            if(!success){
+                LOG.error("Something went wrong while uploading file via FTP ");
+            }
+            else if (ftp.isConnected()) {
                 try {
                     ftp.disconnect();
                     String url = result.toString().replace(" ","%20");

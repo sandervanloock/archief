@@ -1,4 +1,4 @@
-package be.sandervl.admin.business;
+package be.sandervl.admin.business.upload.pdf;
 
 import com.foreach.across.modules.hibernate.business.SettableIdBasedEntity;
 import com.foreach.across.modules.hibernate.id.AcrossSequenceGenerator;
@@ -10,15 +10,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class FileUpload extends SettableIdBasedEntity<FileUpload> {
+public class Pdf extends SettableIdBasedEntity<Pdf> {
 
     @Id
-    @GeneratedValue(generator = "seq_file_upload_id")
+    @GeneratedValue(generator = "seq_pdf_upload_id")
     @GenericGenerator(
-            name = "seq_file_upload_id",
+            name = "seq_pdf_upload_id",
             strategy = AcrossSequenceGenerator.STRATEGY,
             parameters = {
-                    @org.hibernate.annotations.Parameter(name = "sequenceName", value = "seq_file_upload_id"),
+                    @org.hibernate.annotations.Parameter(name = "sequenceName", value = "seq_pdf_upload_id"),
                     @org.hibernate.annotations.Parameter(name = "allocationSize", value = "1")
             }
     )
