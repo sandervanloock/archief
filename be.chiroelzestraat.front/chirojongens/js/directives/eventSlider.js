@@ -6,6 +6,9 @@ angular.module('app').directive('eventSlider',['CalendarService',function(Calend
             scope.calendar = {};
             var onSuccess = function (events) {
                 scope.calendar.events = events;
+                scope.$$postDigest(function(){
+                    $(element).find(".chiro-calendar__panel").bxSlider();
+                })
             };
             if(attrs.group){
                 var group = scope.$eval(attrs.group);

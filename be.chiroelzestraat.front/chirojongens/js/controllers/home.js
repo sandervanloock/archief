@@ -4,11 +4,6 @@ angular.module("app").controller('HomeController', ['$scope', '$http', '$sce','P
         $scope.latestPicture = response.data.path;
     })
 
-    $http.get(properties.apiHost+"admin/api/program/latest").then(function(response){
-        $scope.latestProgram = response.data;
-        $scope.latestProgram.file.path = $sce.trustAsResourceUrl("js/lib/pdf.js/web/viewer.html?file="+response.data.file.path);
-    })
-
     $scope.viewLoaded = function(){
         $('.social-feed-container').socialfeed({
             twitter: {

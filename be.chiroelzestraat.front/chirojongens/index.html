@@ -9,6 +9,7 @@
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet"/>
     <link href="bower_components/social-feed/css/jquery.socialfeed.css" rel="stylesheet" type="text/css">
+    <link href="js/lib/jquery-bxslider/jquery.bxslider.css" rel="stylesheet" type="text/css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link href="css/stylesheet.css" rel="stylesheet"/>
 
@@ -40,7 +41,8 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="page-scroll" ng-class="{active:currentPage=='groups'}"><a href='#groepen' ng-click="setCurrentPage('groups')" >Groepen</a></li>
-                    <li class="page-scroll" ng-class="{active:currentPage=='photos'}"><a href='#fotos' ng-click="setCurrentPage('photos')" >Foto's</a></li>
+                    <!--<li class="page-scroll" ng-class="{active:currentPage=='photos'}"><a href='#fotos' ng-click="setCurrentPage('photos')" >Foto's</a></li>-->
+                    <li class="page-scroll" ng-class="{active:currentPage=='program'}"><a href='#program' ng-click="setCurrentPage('program')" >'t Program</a></li>
                     <li class="page-scroll" ng-class="{active:currentPage=='rental'}"><a href='#verhuur' ng-click="setCurrentPage('rental')" >Verhuur</a>
                     </li>
                 </ul>
@@ -100,6 +102,8 @@
 <script type="text/javascript" src="bower_components/social-feed/js/jquery.socialfeed.js"></script>
 <script type="text/javascript" src="bower_components/codebird-js/codebird.js"></script>
 <script type="text/javascript" src="js/lib/ui-bootstrap/ui-bootstrap-custom-tpls-0.13.0.min.js"></script>
+<script type="text/javascript" src="js/lib/jquery-bxslider/jquery.bxslider.min.js"></script>
+
 
 <script type="text/javascript" src="js/lib/jquery-easing/jquery.easing.min.js"></script>
 <script type="text/javascript" src="bower_components/startbootstrap-freelancer-1.0.3/js/classie.js"></script>
@@ -111,6 +115,7 @@
 <script type="text/javascript" src="js/controllers/groups.js"></script>
 <script type="text/javascript" src="js/controllers/navigation.js"></script>
 <script type="text/javascript" src="js/controllers/rent.js"></script>
+<script type="text/javascript" src="js/controllers/program.js"></script>
 <script type="text/javascript" src="js/services/calendar.js"></script>
 <script type="text/javascript" src="js/services/twitterservice.js"></script>
 <script type="text/javascript" src="js/services/groups.js"></script>
@@ -118,6 +123,7 @@
 <script type="text/javascript" src="js/directives/twitterfeed.js"></script>
 
 <script type="text/javascript" src="js/lib/moment-js/momentjs.min.js"></script>
+<script type="text/javascript" src="js/lib/moment-js/locale-nl.js"></script>
 <script type="text/javascript">
 
     var _gaq = _gaq || [];

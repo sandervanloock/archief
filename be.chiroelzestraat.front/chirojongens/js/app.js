@@ -19,6 +19,10 @@ angular.module('app').config(['$routeProvider',
                 templateUrl: 'templates/verhuur.tpl.html',
                 controller: 'RentController'
             }).
+            when('/program', {
+                templateUrl: 'templates/program.tpl.html',
+                controller:'ProgramController'
+            }).
             otherwise({
                 redirectTo: '/'
             });

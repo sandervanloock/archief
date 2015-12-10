@@ -23,49 +23,9 @@ hr.star-primary{
   }
 }
 
-
-
 //LEGACY CODE STARTS HERE
-
 .pagewrapper {
   background-color: white;
-}
-
-.event-slider {
-  .calendar {
-    margin-bottom: 1em;
-  }
-}
-
-.calendar {
-  .panel {
-    width: 640px;
-    margin: auto;
-    border-radius: 0;
-    .nav {
-      width: 50px;
-      padding-top: 1em;
-      i {
-        cursor: pointer;
-      }
-      &.nav-right {
-        position: absolute;
-        right: 124px;
-        top: 92px;
-      }
-      &.nav-left {
-        position: absolute;
-        left: 124px;
-        top: 92px;
-      }
-    }
-    .wrapper {
-      .date {
-        color: black;
-      }
-    }
-    border: none;
-  }
 }
 
 .capacity {
@@ -73,10 +33,6 @@ hr.star-primary{
   table {
     margin: auto;
   }
-}
-
-.photoslider {
-  margin-top: 2em;
 }
 
 footer {
