@@ -120,7 +120,7 @@
         <dependency>
             <groupId>com.foreach.across.modules</groupId>
             <artifactId>entity-module</artifactId>
-            <version>1.2.0-SNAPSHOT</version>
+            <version>1.2.0-SNAPSHOT-svl</version>
         </dependency>
         <dependency>
             <groupId>com.foreach.across.modules</groupId>

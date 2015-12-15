@@ -32,9 +32,19 @@
 
     <dependencies>
         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.0.8-bin</version>
+        </dependency>
+        <dependency>
             <groupId>com.foreach.across</groupId>
             <artifactId>across-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.foreach.across.modules</groupId>
+            <artifactId>entity-module</artifactId>
+            <version>1.2.0-SNAPSHOT-svl</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

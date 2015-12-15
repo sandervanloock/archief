@@ -45,10 +45,10 @@ public class StandaloneWebConfiguration implements AcrossContextConfigurer
 	@Bean
 	public DataSource acrossDataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
-		dataSource.setDriverClassName( "org.hsqldb.jdbc.JDBCDriver" );
-		dataSource.setUrl( "jdbc:hsqldb:mem:/hsql/standaloneImageServer" );
-		dataSource.setUsername( "sa" );
-		dataSource.setPassword( "" );
+		dataSource.setDriverClassName( environment.getProperty("database.driver") );
+		dataSource.setUrl( environment.getProperty("database.url") );
+		dataSource.setUsername( environment.getProperty("database.username") );
+		dataSource.setPassword( environment.getProperty("database.password") );
 
 		return dataSource;
 	}
