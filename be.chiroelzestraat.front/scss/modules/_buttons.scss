@@ -1,0 +1,39 @@
+@charset "UTF-8";
+//
+// Buttons  for the bookingsmodule detailspage
+//
+
+.bookings-form {
+  button {
+    width: 100%;
+    border: 0px solid red;
+    padding: 15px 0px;
+    border-radius: $border-radius-base;
+    color: #fff;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-top: 5px;
+    @include respond-to('printer') {
+      display: none;
+    }
+    &.btn-red {
+      color: #ffffff;
+      background: $brand-color-red;
+      border-bottom: 5px solid #590b1a;
+      margin-bottom: 15px;
+      padding: 15px 0px;
+      &:hover {
+        background: #a3132d
+      }
+    }
+    &.btn-green {
+      background: #82b155;
+      border-bottom: 5px solid #6a8b4b;
+      margin-bottom: 15px;
+      &:hover {
+        background: #6f9946
+      }
+    }
+  }
+
+}

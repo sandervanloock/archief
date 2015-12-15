@@ -1,0 +1,41 @@
+<div class="container-fluid center-block">
+	<div class="modal-header">
+		<form class="form-horizontal photoForm">
+            <table class="container-fluid" style="display:table; width: 100%;">
+                <tr class="row-fluid" style="display:table-row;">
+                    <td class="span1"><img class="icon" src="images/glyphicons/png/glyphicons_195_circle_info.png"/></td>
+                    <td class="span5">
+                        <input type="text" style="width:90%;" id="exampleInputEmail1" placeholder="Naam van foto" value="{{photo.title}}">
+                    </td>
+                    <td class="span5">
+                        <select id="chiroGroup" ng-model="eventid" style="width:90%;">
+                            <option ng-repeat="event in events" value="{{event.id}}">{{event.name}}</option>
+                        </select>
+                    </td>
+                    <td class="span1"><img class="icon" ng-click="close()" src="images/glyphicons/png/glyphicons_192_circle_remove.png"/></td>
+                </tr>
+            </table>
+		</form>
+	</div>
+	<div class="modal-body max-height">
+		<img class="popup" ng-click="toggleState()" ng-class="{active: photo.live==1, inactive: photo.live==0}" ng-src="{{staticServer + 'data/' +  photo.directory}}" title="{{photo.title}}"/>
+	</div>
+	<div clas="modal-footer">
+		<p>
+			<button ng-click="save()" class="btn btn-block btn-primary" type="button" style="margin-bottom: 1em;">
+				Opslaan
+			</button>
+			<button ng-click="remove()" class="btn btn-block btn-danger" type="button">
+				Delete
+			</button>
+		</p>
+	</div>
+</div>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		console.log("resize");
+		$(".popup").photoResize({
+			bottomSpacing : 150
+		});
+	}); 
+</script>

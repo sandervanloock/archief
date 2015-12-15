@@ -1,0 +1,285 @@
+@charset "UTF-8";
+
+/*
+  $condition can be any of these sizes:
+  - very-small
+  - small
+  - small-medium
+  - medium
+  - medium-large
+  - large
+  - very-large
+
+  - only-very-small
+  - only-small
+  - only-small-medium
+  - only-medium
+  - only-medium-large
+  - only-large
+  - only-very-large
+
+  (or these "shortcuts":)
+  - mobile
+  - tablet
+  - desktop
+
+  - only-mobile
+  - only-tablet
+  - only-desktop
+
+  - a breakpoint or a HTML class (IE, modernizr class)
+*/
+
+// @include respond-to( );
+@mixin respond-to($condition) {
+  //
+  // sizes
+  //
+  @if $condition == 'very-small' {
+    @media only screen and (min-width: $break-very-small) {
+      @content;
+    }
+  }
+  @if $condition == 'small' {
+    @media only screen and (min-width: $break-small) {
+      @content;
+    }
+  }
+  @if $condition == 'small-medium' {
+    @media only screen and (min-width: $break-small-medium) {
+      @content;
+    }
+  }
+  @if $condition == 'small-portrait' {
+    @media only screen and (min-width: $break-very-small) and (max-width: $break-small-medium) and (orientation: portrait) {
+      @content;
+    }
+  }
+  @if $condition == 'medium' {
+    @media only screen and (min-width: $break-medium) {
+      @content;
+    }
+  }
+  @if $condition == 'medium-large' {
+    @media only screen and (min-width: $break-medium-large) {
+      @content;
+    }
+  }
+  @if $condition == 'large' {
+    @media only screen and (min-width: $break-large) {
+      @content;
+    }
+  }
+  @if $condition == 'very-large' or  $condition ==  'very-large-only' {
+    @media only screen and (min-width: $break-very-large) {
+      @content;
+    }
+  }
+  @if $condition == 'printer' {
+    @media print {
+      @content;
+    }
+  }
+
+  //
+  // only-sizes
+  //
+
+  @if $condition ==   'very-small-only' {
+    @media only screen and (min-width: $break-very-small) and (max-width: $break-small) {
+      @content;
+    }
+  }
+  @if $condition ==   'small-only' {
+    @media only screen and (min-width: $break-small) and (max-width: $break-small-medium) {
+      @content;
+    }
+  }
+  @if $condition ==   'small-medium-only' {
+    @media only screen and (min-width: $break-small-medium) and (max-width: $break-medium) {
+      @content;
+    }
+  }
+  @if $condition ==   'medium-only' {
+    @media only screen and (min-width: $break-medium) and (max-width: $break-medium-large) {
+      @content;
+    }
+  }
+  @if $condition ==   'medium-large-only' {
+    @media only screen and (min-width: $break-medium-large) and (max-width: $break-large) {
+      @content;
+    }
+  }
+  @if $condition ==   'large-only' {
+    @media only screen and (min-width: $break-large) and (max-width: $break-very-large) {
+      @content;
+    }
+  }
+
+  //
+  // shortcut sizes
+  //
+  @if $condition ==   'smallest-mobile' {
+    @media only screen and (min-width: 0) and (max-width: $break-small) {
+      @content;
+    }
+  }
+  @if $condition == 'mobile' {
+    @media only screen and (min-width: $break-mobile) {
+      @content;
+    }
+  }
+  @if $condition == 'tablet' {
+    @media only screen and (min-width: $break-tablet) {
+      @content;
+    }
+  }
+  @if $condition == 'desktop' or $condition == 'desktop-only' {
+    @media only screen and (min-width: $break-desktop) {
+      @content;
+    }
+  }
+
+  //
+  // only-shortcut sizes
+  //
+  @if $condition == 'mobile-only' {
+    @media only screen and (min-width: $break-mobile) and (max-width: $break-tablet) {
+      @content;
+    }
+  }
+  @if $condition == 'tablet-only' {
+    @media only screen and (min-width: $break-tablet) and (max-width: $break-desktop) {
+      @content;
+    }
+  }
+
+  //
+  // make it happen if the browser doesn't understand mediaqueries:
+  // ... unless using an -only respond-to:
+  //
+  @if $condition !=  "very-small-only" and
+      $condition != "'small-only" and
+      $condition != "small-medium-only" and
+      $condition != "medium-only" and
+      $condition != "medium-large-only" and
+      $condition != "large-only" and
+      $condition != "very-large-only" and
+      $condition != "mobile-only" and
+      $condition != "smallest-mobile" and
+      $condition != "tablet-only" and
+      $condition != "ie7" and
+      $condition != "ie8" and
+      $condition != "ie9" and
+      $condition != "lt-ie7" and
+      $condition != "lt-ie8" and
+      $condition != "lt-ie9" {
+    .no-mq & {
+      @content;
+    }
+  }
+  //
+  // IE
+  //
+  @if $condition ==  "ie7" {
+    @at-root .ie7 & {
+      @content;
+    }
+  }
+  @if $condition ==  "ie8" {
+    @at-root .ie8 & {
+      @content;
+    }
+  }
+  @if $condition ==  "ie9" {
+    @at-root .ie9 & {
+      @content;
+    }
+  }
+
+  @if $condition ==  "lt-ie7" {
+    @at-root .lt-ie7 & {
+      @content;
+    }
+  }
+  @if $condition ==  "lt-ie8" {
+    @at-root .lt-ie8 & {
+      @content;
+    }
+  }
+  @if $condition ==  "lt-ie9" {
+    @at-root .lt-ie9 & {
+      @content;
+    }
+  }
+  @media print {
+    @content;
+  }
+}
+
+//
+// Mixins
+// --------------------------------------------------
+
+// @include rem( );
+@mixin rem($sizeValue: 1.6) {
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
+}
+
+//  @include prop-rem( );
+@mixin prop-rem($property, $values...) {
+  $max: length($values);
+  $pxValues: '';
+  $remValues: '';
+
+  @for $i from 1 through $max {
+    $value: strip-unit(nth($values, $i));
+    $pxValues: #{$pxValues + $value*16}px;
+
+    @if $i < $max {
+      $pxValues: #{$pxValues + " "};
+    }
+  }
+
+  @for $i from 1 through $max {
+    $value: strip-unit(nth($values, $i));
+    $remValues: #{$remValues + $value}rem;
+
+    @if $i < $max {
+      $remValues: #{$remValues + " "};
+    }
+  }
+
+  #{$property}: $pxValues;
+  #{$property}: $remValues;
+}
+
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+// Utilities
+// -------------------------
+
+// Clearfix
+// Source: http://nicolasgallagher.com/micro-clearfix-hack/
+//
+// For modern browsers
+// 1. The space content is one way to avoid an Opera bug when the
+//    contenteditable attribute is included anywhere else in the document.
+//    Otherwise it causes space to appear at the top and bottom of elements
+//    that are clearfixed.
+// 2. The use of `table` rather than `block` is only necessary if using
+//    `:before` to contain the top-margins of child elements.
+@mixin clearfix() {
+  zoom: 1;
+  &:before,
+  &:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+  }
+  &:after {
+    clear: both;
+  }
+}

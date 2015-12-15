@@ -1,0 +1,24 @@
+@charset "UTF-8";
+/*
+  Example markup:
+    <div class="m-box m-box--centered m-box_is-disabled">
+      <div class="m-box__header">headertext</div>
+      <div class="m-box__body">body content</div>
+    </div>
+*/
+
+.m-box{ /* module */
+  border: 1px solid black;
+  &.m-box--centered{ /* modifier */
+    text-align: center;
+  }
+  &.m-box_is-disabled{ /* state */
+    border-color: grey;
+  }
+  .m-box__header{ /* module component */
+    font-weight:bold;
+  }
+  .m-box__body{ /* module component */
+    padding: 10px;
+  }
+}

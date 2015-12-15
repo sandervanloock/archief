@@ -1,0 +1,59 @@
+<html>
+<body>
+
+<form action="load_db_fotos.php" method="post" enctype="multipart/form-data">
+<label for="file">Filename:</label>
+<input type="file" name="file" id="file" /> 
+<br />
+<input type="submit" name="submit" value="Submit" />
+</form>
+
+</body>
+</html>
+
+<!--//include "connect.php";
+
+/*if ($handle = opendir('../../../archief/50 jaar Chiro Elzestraat/fotosNils')) {*/
+
+    /* This is the correct way to loop over the directory. */
+   /* while (false !== ($entry = readdir($handle))) {
+        	echo "$entry\n";
+        	//$query = "INSERT INTO `chiroelzestraat`.`foto` (`id`, `directory`, `kamp`) VALUES "'(NULL, "'.$entry.'", NULL);"';
+        	$query = "INSERT INTO `chiroelzestraat`.`foto` (`id`, `directory`, `kamp`) VALUES (NULL, 'archief/50 jaar Chiro Elzestraat/fotosNils/".$entry."', NULL);";
+			$sql = mysql_query($query) or die(mysql_error());
+			echo $sql;
+    }
+
+    closedir($handle);*/
+//}-->
+
+<!--
+<?php if($path != "") { ?>
+<a href="<?php = $_SERVER["PHP_SELF"] ?>?path=<?php = $parent ?>">..</a>
+<br />
+<?php } ?>
+
+<?php for($index = 0; $index < sizeof($file_list); $index++) { ?>
+
+   <?php
+   $file_size = ftp_size($ftp_connection, $file_list[$index]);
+
+   //Format the file name so that it doesn't include the full path.
+   if($path == "")
+      $file_name = $file_list[$index];
+   else
+      $file_name = substr($file_list[$index], strrpos($file_list[$index], "/") + 1,
+                          strlen($file_list[$index]) -  strrpos($file_list[$index], "/"));
+   ?>
+
+   <?php //Find out if it's a file or a directory. ?>
+   <?php if($file_size == -1) { ?>
+   <a href="<?php = $_SERVER["PHP_SELF"] ?>?path=<?php = $file_list[$index] ?>"><?php } ?>
+   <?php = $file_name ?><?php if($file_size == -1) { ?></a><?php } ?>
+   <br />
+
+<?php } ?>
+
+<?php
+ftp_close($ftp_connection);
+?>-->

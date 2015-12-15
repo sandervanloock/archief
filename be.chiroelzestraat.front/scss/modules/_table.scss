@@ -1,0 +1,20 @@
+//
+//
+//
+.m-table {
+    display: table;
+    -dt-display: table;
+    table-layout: fixed;
+    width: 100%;
+    .m-table__row {
+        display: table-row;
+        -dt-display: table-row;
+    }
+    .m-table__cell {
+        display: table-cell;
+        -dt-display: table-cell;
+    }
+    @include respond-to( "lt-ie9") {
+        behavior: url("polyfills/display-table.min.htc") !important;
+    }
+}

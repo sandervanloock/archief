@@ -1,0 +1,150 @@
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" ng-app="app" lang="nl"> <!--<![endif]-->
+<head>
+    <title>Archief - Chirojongens Elzestraat</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Archief van Chirojongens en Chiromeisjes van Elzestraat">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <link rel="stylesheet" href="bower_components/fancybox/source/jquery.fancybox.css" type="text/css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" type="text/css">
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="css/vendor/bootstrapv2/css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="css/vendor/nivo-slider/nivo-slider.css" type="text/css"/>
+    <link rel="stylesheet" href="css/vendor/nivo-slider/style.css" type="text/css"/>
+    <link rel="stylesheet" href="css/vendor/nivo-slider/themes/default/default.css" type="text/css"/>
+    <link rel="stylesheet" href="css/main.css" type="text/css"/>
+    <link rel="stylesheet" href="css/album.css" type="text/css"/>
+    <link rel="stylesheet" href="css/admin.css" type="text/css"/>
+    <!-- endbuild -->
+    <script type="text/javascript">
+
+        function stopRKey(evt) {
+            var evt = (evt) ? evt : ((event) ? event : null);
+            var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+            if ((evt.keyCode == 13) && (node.type=="text"))  {return false;}
+        }
+
+        document.onkeypress = stopRKey;
+
+    </script>
+</head>
+<body class="container">
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="navbar" ng-controller="HeaderCtrl">
+    <div class="navbar-inner">
+        <a class="brand" href="#home" ng-click="changePage('home')">Archief Chiro Elzestraat</a>
+        <ul class="nav pull-left" ng-show="isAuthenticated()">
+            <li ng-class="{active: activePage=='users'}">
+                <a href="#users" ng-click="changePage('users')" ng-cloak>Gebruikers</a>
+            </li>
+            <li ng-class="{active: activePage=='photos'}">
+                <a href="#photos" ng-click="changePage('photos')" ng-cloak>Foto's</a>
+            </li>
+            <li ng-class="{active: activePage=='events'}" class="dropdown">
+                <a class="dropdown-toggle" href="#events" ng-click="changePage('events')" ng-cloak>Evenementen</a>
+                <ul class="dropdown-menu">
+                    <li><a ng-click="changePage('events')" href="#events?type=1">Chirojaren</a></li>
+                    <li><a ng-click="changePage('events')" href="#events?type=2">Kampen</a></li>
+                    <li><a ng-click="changePage('events')" href="#events?type=3">Feest</a></li>
+                    <li><a ng-click="changePage('events')" href="#events?type=4">Andere</a></li>
+                </ul>
+            </li>
+        </ul>
+        <login-toolbar></login-toolbar>
+    </div>
+</div>
+<div ng-view class="view-frame"></div>
+
+<!-- Google Analytics -->
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-30791822-3', 'chiroelzestraat.be');
+    ga('send', 'pageview');
+
+</script>
+
+<!--[if lt IE 9]>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/json3/lib/json3.min.js"></script>
+<![endif]-->
+
+<!-- build:js scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/momentjs/moment.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js scripts/vendor2.js -->
+<script src="js/vendor/jquery/jquery-photo-resize.js"></script>
+<script src="js/vendor/angular-spinner/angular-spinner.js"></script>
+<script src="js/vendor/angular-spinner/spin.js"></script>
+<script src="js/vendor/angular-ui/bootstrap/ui-bootstrap-custom-0.1.0-SNAPSHOT.js"></script>
+<script src="js/vendor/bootstrapv2/bootstrap.js"></script>
+<script src="js/vendor/timeline/timeline.js"></script>
+<script src="js/vendor/timeline/storyjs-embed.js"></script>
+<script src="js/vendor/nivo-slider/jquery.nivo.slider.pack.js"></script>
+<script src="js/vendor/angular/ngAutocomplete.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false&key=AIzaSyDf9dMmmkQW_73N7upIOoWTq72JYq2WEXU"></script>
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/controllers.js"></script>
+<script type="text/javascript" src="js/services.js"></script>
+<script type="text/javascript" src="js/filters.js"></script>
+<script type="text/javascript" src="js/security/authorization.js"></script>
+<script type="text/javascript" src="js/security/index.js"></script>
+<script type="text/javascript" src="js/security/interceptor.js"></script>
+<script type="text/javascript" src="js/security/retryQueue.js"></script>
+<script type="text/javascript" src="js/security/security.js"></script>
+<script type="text/javascript" src="js/security/login/LoginFormController.js"></script>
+<script type="text/javascript" src="js/security/login/login.js"></script>
+<script type="text/javascript" src="js/security/login/toolbar.js"></script>
+<script type="text/javascript" src="js/users/users.js"></script>
+<script type="text/javascript" src="js/photos/photos.js"></script>
+<script type="text/javascript" src="js/photos/upload.js"></script>
+<script type="text/javascript" src="js/services/config.js"></script>
+<!-- endbuild -->
+
+<script>
+    $(document).ready(function() {
+        $("a.popup-image").fancybox({
+            'transitionIn'	:	'elastic',
+            'transitionOut'	:	'elastic',
+            'speedIn'		:	600,
+            'speedOut'		:	200,
+            'overlayShow'	:	false
+        });
+    });
+</script>
+</body>
+</html>

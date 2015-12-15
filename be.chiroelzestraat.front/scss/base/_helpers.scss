@@ -1,0 +1,212 @@
+@charset "UTF-8";
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Image replacement
+ */
+
+.ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  /* IE 6/7 fallback */
+  *text-indent: -9999px;
+}
+
+.ir:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 150%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+.invisible {
+  visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+  content: " "; /* 1 */
+  line-height: 0;
+  display: table; /* 2 */
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+  *zoom: 1;
+}
+
+/*
+ * Other - TODO: revise
+ */
+
+
+/*
+.filled{
+  background: $brand-background-color;
+}
+
+.centered{
+  margin: 0 auto;
+}
+
+.mobile-hidden{
+  //display:inline;
+  @include respond-to( "mobile-only") {  display: none !important; }
+
+}
+.mobile-portrait-hidden{
+  @include respond-to( "smallest-mobile" ) {  display: none !important; }
+}
+.big-mobile-hidden{
+  @include respond-to( "small-only" ) {  display: none !important; }
+}
+
+
+.tablet-hidden{
+  @include respond-to( "tablet-only" ) {  display: none !important;  }
+}
+
+.desk-hidden{
+  @include respond-to( "desktop-only" ) {  display: none !important;  }
+}
+
+.little-padding{padding:0.5em;}
+.no-padding{padding:0;}
+.no-margin{margin:0}
+
+.align-center {
+  text-align:center;
+}
+.margin-top {
+
+  margin-top:1em !important;
+  &.x2{margin-top:2em !important;}
+  &.x3{margin-top:3em !important;}
+  &.x4{margin-top:4em !important;}
+  &.x5{margin-top:5em !important;}
+
+}
+.fl-l{float:left}
+.fl-r{float:right}
+
+.drop-shadow{
+  box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.05);
+
+}
+.pos-relative{
+  position: relative;
+}
+*/
+
+
+.text-center {text-align:center;}
+.text-left {text-align:left;}
+.text-right {text-align:right;}
+
+.fleft{float:left;}
+.fright{float:right;}
+
+
+.mobile-hidden{
+  //display:inline;
+  @include respond-to( "mobile-only") {  display: none !important; }
+
+}
+.mobile-portrait-hidden{
+  @include respond-to( "smallest-mobile" ) {  display: none !important; }
+}
+.big-mobile-hidden{
+  @include respond-to( "small-only" ) {  display: none !important; }
+}
+
+
+
+.clearfix:before,
+.clearfix:after {
+  content: " "; /* 1 */
+  line-height: 0;
+  display: table; /* 2 */
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.promo-active{
+  background: $brand-color-promo;
+}
+.fa.promo-active{
+ color: $brand-color-promo;
+}
+.date-active{
+  background: $brand-color-green;
+}
+.fa.date-active{
+  color: $brand-color-green;
+}

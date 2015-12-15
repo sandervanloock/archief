@@ -1,0 +1,4 @@
+{
+  "ARCHIVE_SERVER_CONFIG": "http://localhost:8888/public/",
+  "STATIC_SERVER_CONFIG": "http://localhost:8888/"
+}

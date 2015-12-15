@@ -1,0 +1,150 @@
+@charset "UTF-8";
+/*------------------------------------*\
+    $WIDTHS
+\*------------------------------------*/
+/**
+ * Sizes in human readable format. These are used in conjunction with other
+ * objects and abstractions found in inuit.css, most commonly the grid system
+ * and faux flexbox.
+ *
+ * We have a mixin to generate our widths and their breakpoint-specific
+ * variations.
+ */
+.grid__item{
+  max-width: 100%;
+  &.one-whole{
+    max-width: 100%;
+  }
+
+}
+@mixin grid-setup($namespace: "") {
+
+  $respondto-namespace: $namespace;
+
+  @if $namespace ==  "desktop" {
+    $namespace : 'desk';
+  }
+
+  @if $namespace !=  "" {
+    $namespace: $namespace + "-";
+  }
+
+  /**
+  * Whole
+  */
+  .#{$namespace}one-whole         { @if $namespace == "" { width: 100%; } @include respond-to( $respondto-namespace ) { width:100%; } }
+
+  /**
+  * Halves
+  */
+  .#{$namespace}one-half          { @if $namespace == "" { width: 50%; } @include respond-to( $respondto-namespace ) { width:50%; } }
+
+  /**
+  * Thirds
+  */
+  .#{$namespace}one-third         { @if $namespace == "" { width: 33.333%; } @include respond-to( $respondto-namespace ) { width:33.333%; } }
+  .#{$namespace}two-thirds        { @if $namespace == "" { width: 66.666%; } @include respond-to( $respondto-namespace ) { width:66.666%; } }
+
+  /**
+  * Quarters
+  */
+  .#{$namespace}one-quarter       { @if $namespace == "" { width: 25%; } @include respond-to( $respondto-namespace ) { width:25%; } }
+  .#{$namespace}two-quarters      { @if $namespace == "" { width: 50%; } @include respond-to( $respondto-namespace ) { width:50%; } }
+  .#{$namespace}three-quarters    { @if $namespace == "" { width: 75%; } @include respond-to( $respondto-namespace ) { width:75%; } }
+
+  /**
+  * Fifths
+  */
+  .#{$namespace}one-fifth         { @if $namespace == "" { width: 20%; } @include respond-to( $respondto-namespace ) { width:20%; } }
+  .#{$namespace}two-fifths        { @if $namespace == "" { width: 40%; } @include respond-to( $respondto-namespace ) { width:40%; } }
+  .#{$namespace}three-fifths      { @if $namespace == "" { width: 60%; } @include respond-to( $respondto-namespace ) { width:60%; } }
+  .#{$namespace}four-fifths       { @if $namespace == "" { width: 80%; } @include respond-to( $respondto-namespace ) { width:80%; } }
+
+  /**
+  * Sixths
+  */
+  .#{$namespace}one-sixth         { @if $namespace == "" { width: 16.666%; } @include respond-to( $respondto-namespace ) { width:16.666%; } }
+  .#{$namespace}two-sixths        { @if $namespace == "" { width: 33.333%; } @include respond-to( $respondto-namespace ) { width:33.333%; } }
+  .#{$namespace}three-sixths      { @if $namespace == "" { width: 50%; } @include respond-to( $respondto-namespace ) { width:50%; } }
+  .#{$namespace}four-sixths       { @if $namespace == "" { width: 66.666%; } @include respond-to( $respondto-namespace ) { width:66.666%; } }
+  .#{$namespace}five-sixths       { @if $namespace == "" { width: 83.333%; } @include respond-to( $respondto-namespace ) { width:83.333%; } }
+
+  /**
+  * Eighths
+  */
+  .#{$namespace}one-eighth        { @if $namespace == "" { width: 12.5%; } @include respond-to( $respondto-namespace ) { width:12.5%; } }
+  .#{$namespace}two-eighths       { @if $namespace == "" { width: 25%; } @include respond-to( $respondto-namespace ) { width:25%; } }
+  .#{$namespace}three-eighths     { @if $namespace == "" { width: 37.5%; } @include respond-to( $respondto-namespace ) { width:37.5%; } }
+  .#{$namespace}four-eighths      { @if $namespace == "" { width: 50%; } @include respond-to( $respondto-namespace ) { width:50%; } }
+  .#{$namespace}five-eighths      { @if $namespace == "" { width: 62.5%; } @include respond-to( $respondto-namespace ) { width:62.5%; } }
+  .#{$namespace}six-eighths       { @if $namespace == "" { width: 75%; } @include respond-to( $respondto-namespace ) { width:75%; } }
+  .#{$namespace}seven-eighths     { @if $namespace == "" { width: 87.5%; } @include respond-to( $respondto-namespace ) { width:87.5%; } }
+
+  /**
+* Ninths
+*/
+  .#{$namespace}one-ninth        { @if $namespace == "" { width: 11.1111%; } @include respond-to( $respondto-namespace ) { width:11.1111%; } }
+  .#{$namespace}two-ninths        { @if $namespace == "" { width: 22.2222%; } @include respond-to( $respondto-namespace ) { width:22.2222%; } }
+  .#{$namespace}three-ninths     { @if $namespace == "" { width: 33.3333%; } @include respond-to( $respondto-namespace ) { width:33.3333%; } }
+  .#{$namespace}four-ninths      { @if $namespace == "" { width: 44.4444%; } @include respond-to( $respondto-namespace ) { width:44.4444%; } }
+  .#{$namespace}five-ninths      { @if $namespace == "" { width: 55.5555%; } @include respond-to( $respondto-namespace ) { width:55.5555%; } }
+  .#{$namespace}six-ninths       { @if $namespace == "" { width: 66.6666%; } @include respond-to( $respondto-namespace ) { width:66.6666%; } }
+  .#{$namespace}seven-ninths    { @if $namespace == "" { width: 77.7777%; } @include respond-to( $respondto-namespace ) { width:77.7777%; } }
+  #{$namespace}eight-ninths    { @if $namespace == "" { width: 88.88888%; } @include respond-to( $respondto-namespace ) { width:88.88888%; } }
+
+  /**
+  * Tenths
+  */
+  .#{$namespace}one-tenth         { @if $namespace == "" { width: 10%; } @include respond-to( $respondto-namespace ) { width:10%; } }
+  .#{$namespace}two-tenths        { @if $namespace == "" { width: 20%; } @include respond-to( $respondto-namespace ) { width:20%; } }
+  .#{$namespace}three-tenths      { @if $namespace == "" { width: 30%; } @include respond-to( $respondto-namespace ) { width:30%; } }
+  .#{$namespace}four-tenths       { @if $namespace == "" { width: 40%; } @include respond-to( $respondto-namespace ) { width:40%; } }
+  .#{$namespace}five-tenths       { @if $namespace == "" { width: 50%; } @include respond-to( $respondto-namespace ) { width:50%; } }
+  .#{$namespace}six-tenths        { @if $namespace == "" { width: 60%; } @include respond-to( $respondto-namespace ) { width:60%; } }
+  .#{$namespace}seven-tenths      { @if $namespace == "" { width: 70%; } @include respond-to( $respondto-namespace ) { width:70%; } }
+  .#{$namespace}eight-tenths      { @if $namespace == "" { width: 80%; } @include respond-to( $respondto-namespace ) { width:80%; } }
+  .#{$namespace}nine-tenths       { @if $namespace == "" { width: 90%; } @include respond-to( $respondto-namespace ) { width:90%; } }
+
+  /**
+  * Twelfths
+  */
+  .#{$namespace}one-twelfth       { @if $namespace == "" { width: 8.333%; } @include respond-to( $respondto-namespace ) { width:8.333%; } }
+  .#{$namespace}two-twelfths      { @if $namespace == "" { width: 16.666%; } @include respond-to( $respondto-namespace ) { width:16.666%; } }
+  .#{$namespace}three-twelfths    { @if $namespace == "" { width: 25%; } @include respond-to( $respondto-namespace ) { width:25%; } }
+  .#{$namespace}four-twelfths     { @if $namespace == "" { width: 33.333%; } @include respond-to( $respondto-namespace ) { width:33.333%; } }
+  .#{$namespace}five-twelfths     { @if $namespace == "" { width: 41.666%; } @include respond-to( $respondto-namespace ) { width:41.666% } }
+  .#{$namespace}six-twelfths      { @if $namespace == "" { width: 50%; } @include respond-to( $respondto-namespace ) { width:50%; } }
+  .#{$namespace}seven-twelfths    { @if $namespace == "" { width: 58.333%; } @include respond-to( $respondto-namespace ) { width:58.333%; } }
+  .#{$namespace}eight-twelfths    { @if $namespace == "" { width: 66.666%; } @include respond-to( $respondto-namespace ) { width:66.6666%; } }
+  .#{$namespace}nine-twelfths     { @if $namespace == "" { width: 75%;; } @include respond-to( $respondto-namespace ) { width:75%; } }
+  .#{$namespace}ten-twelfths      { @if $namespace == "" { width: 83.333%; } @include respond-to( $respondto-namespace ) { width:83.333%; } }
+  .#{$namespace}eleven-twelfths   { @if $namespace == "" { width: 91.666%; } @include respond-to( $respondto-namespace ) { width:91.666%; } }
+
+  /**
+  *  Weird numbers
+  */
+  .#{$namespace}one-fourth-of-three-fourth { @if $namespace == "" { width: 18.75%; } @include respond-to( $respondto-namespace ) { width: 18.75%; } }
+}
+
+@include grid-setup();
+
+/**
+ *
+ * `<div class="one-quarter  tablet-one-half desk-one-whole"> ... </div>`
+ *
+ * This would create a `div` that, at ‘mobile’ sizes, takes up a quarter of the
+ * horizontal space, a half of that space at ‘tablet’ sizes, and goes full width
+ * at ‘desktop’ sizes.
+ *
+ */
+
+@include grid-setup("very-small");
+@include grid-setup("small");
+@include grid-setup("small-medium");
+@include grid-setup("medium");
+@include grid-setup("medium-large");
+@include grid-setup("large");
+@include grid-setup("very-large");
+
+@include grid-setup("tablet");
+@include grid-setup("desktop");
