@@ -112,7 +112,7 @@ public class StandaloneWebConfiguration implements AcrossContextConfigurer
 	private ImageServerCoreModule imageServerCoreModule() {
 		ImageServerCoreModule coreModule = new ImageServerCoreModule();
 		coreModule.setProperty( ImageServerCoreModuleSettings.IMAGE_STORE_FOLDER,
-		                        new File( environment.getProperty("imageServerCore.store.folder"), UUID.randomUUID().toString() ) );
+		                        new File( environment.getProperty("imageServerCore.store.folder")) );
 		coreModule.setProperty( ImageServerCoreModuleSettings.PROVIDE_STACKTRACE, true );
 		coreModule.setProperty( ImageServerCoreModuleSettings.IMAGEMAGICK_ENABLED, true );
 		coreModule.setProperty( ImageServerCoreModuleSettings.IMAGEMAGICK_USE_GRAPHICSMAGICK, true );
