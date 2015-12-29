@@ -28,7 +28,7 @@
     </target>
 
     <target name="zip.front" description="Puts front content zip for deploy in production">
-        <zip destfile="${basedir}/front/target/static.zip">
+        <zip destfile="${basedir}/be.chiroelzestraat.front/target/static.zip">
             <fileset dir="${basedir}/be.chiroelzestraat.front">
                 <include name="**/*"/>
                 <exclude name="pom.xml"/>
@@ -36,15 +36,17 @@
                 <exclude name="**/.sass-cache/**"/>
                 <exclude name="**/scss/**"/>
                 <exclude name="**/target/**"/>
-                <exclude name="**/dummies/**"/>
-                <exclude name="**/translations/**"/>
+                <exclude name="**/uploads/**"/>
+                <exclude name="**/includes/**"/>
+                <exclude name="**/gulp/**"/>
+                <exclude name="**/node_modules/**"/>
             </fileset>
         </zip>
     </target>
 
     <target name="prepare.deploy.front" description="Puts front content zip for deploy in production">
         <scp todir="${ssh.username}@${host.ip}:${deploy.dir}" keyfile="${ssh.keyfile}" passphrase="${ssh.passphrase}" trust="yes">
-            <fileset dir="${basedir}/front/target">
+            <fileset dir="${basedir}/be.chiroelzestraat.front/target">
                 <include name="static.zip"/>
             </fileset>
             <fileset dir="${basedir}/scripts/deploy">
