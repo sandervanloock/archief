@@ -19,7 +19,7 @@
     </target>
 
     <target name="deploy.images">
-        <deploy-war dns="${host.ip}:${host.port}" package="images"/>
+        <deploy-war dns="${images.dns}:${host.port}" package="images"/>
     </target>
 
     <macrodef name="deploy-war">

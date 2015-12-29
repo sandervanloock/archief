@@ -1,11 +1,9 @@
 package be.sandervl.admin.services.api;
 
-import be.sandervl.admin.business.ChiroGroup;
+import be.sandervl.admin.business.CalendarOwner;
 import com.google.api.services.calendar.model.Events;
-
-import java.util.Date;
 
 public interface GoogleCalendarService {
 
-    Events getEventsFromGroup(ChiroGroup group, int amount);
+    Events getEventsFromGroup(CalendarOwner group, int amount);
 }

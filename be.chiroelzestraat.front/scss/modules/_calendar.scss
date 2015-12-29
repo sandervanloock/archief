@@ -1,8 +1,34 @@
 .capacity{
   .unavailable{
     button{
+      opacity: 0.90;
+      filter: alpha(opacity=90);
       background-color: red;
+      color: white;
+    }
+  }
+//  button{
+//    cursor: auto;
+//  }
+  .btn-default{
+    text-shadow: none;
+    background-image: none;
+    box-shadow: none;
+    &:hover{
+      background-color: white;
+    }
+    .text-info{
+      color: black;
+      background-color: white;
       background-image: none;
     }
   }
+  .btn-info{
+    color: black;
+    background-color: white;
+    background-image: none;
+    border-color: white;
+    box-shadow: none;
+  }
+  margin-bottom: 1em;
 }

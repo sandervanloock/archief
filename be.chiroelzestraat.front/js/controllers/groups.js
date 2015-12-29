@@ -1,4 +1,5 @@
-angular.module("app").controller('GroupController', ['$scope','GroupService','Constants',function ($scope,GroupService,Constants) {
+angular.module("app").controller('GroupController', ['$scope','$compile','GroupService','Constants',
+    function ($scope,$compile,GroupService,Constants) {
 
     $scope.groups = Constants.groups;
 
@@ -7,6 +8,9 @@ angular.module("app").controller('GroupController', ['$scope','GroupService','Co
         $('#'+groupName).modal();
         GroupService.getGroupInfo(groupName).success(function(data){
            $scope.activeGroup = data;
+            var eventSliderHtml = $compile("<div class='lg-12' event-slider data-group='"+groupName+"'/>")($scope);
+            $('#'+groupName).find(".chiro-groups__event-slider").html(eventSliderHtml)
+
         });
     }
 

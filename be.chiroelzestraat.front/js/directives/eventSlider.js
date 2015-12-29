@@ -11,8 +11,7 @@ angular.module('app').directive('eventSlider',['CalendarService',function(Calend
                 })
             };
             if(attrs.group){
-                var group = scope.$eval(attrs.group);
-                CalendarService.getFutureEventsFromGroup(group).then(onSuccess);
+                CalendarService.getFutureEventsFromGroupName(attrs.group).then(onSuccess);
             } else{
                 CalendarService.getFutureEvents().then(onSuccess);
             }

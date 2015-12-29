@@ -1,13 +1,15 @@
 angular.module("app").factory('CalendarService', ['$q', '$http', function ($q,$http) {
     function convertDates(newEvents) {
-        for (var i = 0; i < newEvents.length; i++) {
-            if (newEvents[i].start && newEvents[i].start.dateTime) {
-                newEvents[i].start.dateTime.value = moment(newEvents[i].start.dateTime.value).toDate();
-            }
-            if (newEvents[i].end && newEvents[i].end.dateTime) {
-                newEvents[i].end.dateTime.value = moment(newEvents[i].end.dateTime.value).toDate();
-            }
-        };
+        if(newEvents){
+            for (var i = 0; i < newEvents.length; i++) {
+                if (newEvents[i].start && newEvents[i].start.dateTime) {
+                    newEvents[i].start.dateTime.value = moment(newEvents[i].start.dateTime.value).toDate();
+                }
+                if (newEvents[i].end && newEvents[i].end.dateTime) {
+                    newEvents[i].end.dateTime.value = moment(newEvents[i].end.dateTime.value).toDate();
+                }
+            };
+        }
     }
 
     this.getCalendarEvents = function () {
@@ -19,9 +21,9 @@ angular.module("app").factory('CalendarService', ['$q', '$http', function ($q,$h
         });
         return def.promise;
     };
-    this.getCalendarEventsFromGroup = function (group) {
+    this.getCalendarEventsFromGroupName = function (group) {
         var def = $q.defer();
-        $http.get("/admin/api/event/"+group.name).success(function(data){
+        $http.get("/admin/api/event/"+group).success(function(data){
             var newEvents = data.items;
             convertDates(newEvents);
             def.resolve(newEvents);
@@ -36,9 +38,9 @@ angular.module("app").factory('CalendarService', ['$q', '$http', function ($q,$h
             return deferred.promise;
         },
 
-        getFutureEventsFromGroup: function (group) {
+        getFutureEventsFromGroupName: function (group) {
             var deferred = $q.defer();
-            deferred.resolve(_self.getCalendarEventsFromGroup(group));
+            deferred.resolve(_self.getCalendarEventsFromGroupName(group));
             return deferred.promise;
         }
     }

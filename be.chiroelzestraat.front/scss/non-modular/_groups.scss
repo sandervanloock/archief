@@ -8,6 +8,15 @@ section[id=groupinfo] {
     }
   }
 }
+section[id=groups]{
+  .portfolio-item{
+    .portfolio-link{
+      .caption{
+        background: $background-red-opacity !important;
+      }
+    }
+  }
+}
 
 //LEGACY CODE STARTS HERE
 

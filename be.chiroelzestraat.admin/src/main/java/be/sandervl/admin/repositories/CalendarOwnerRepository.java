@@ -9,4 +9,6 @@ import com.foreach.across.modules.hibernate.jpa.repositories.IdBasedEntityJpaRep
  */
 public interface CalendarOwnerRepository extends IdBasedEntityJpaRepository<CalendarOwner> {
 
+    CalendarOwner findByName(String name);
+
 }

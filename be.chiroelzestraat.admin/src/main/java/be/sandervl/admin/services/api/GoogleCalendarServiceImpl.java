@@ -1,5 +1,6 @@
 package be.sandervl.admin.services.api;
 
+import be.sandervl.admin.business.CalendarOwner;
 import be.sandervl.admin.business.ChiroGroup;
 import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.model.Events;
@@ -19,7 +20,7 @@ public class GoogleCalendarServiceImpl implements GoogleCalendarService {
 
     @Override
     @Cacheable(value="calendarCache")
-    public Events getEventsFromGroup(ChiroGroup group, int amount) {
+    public Events getEventsFromGroup(CalendarOwner group, int amount) {
         try {
             if(group != null && StringUtils.isNotEmpty(group.getCalendarId())){
                 DateTime timeMax = new DateTime(new Date());
