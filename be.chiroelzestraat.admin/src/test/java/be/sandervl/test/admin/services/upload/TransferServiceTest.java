@@ -5,12 +5,14 @@ import be.sandervl.admin.services.upload.ftp.FTPTransferService;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;
 import java.io.InputStream;
 import java.net.URI;
 
+@Ignore
 public class TransferServiceTest {
 
     private FTPTransferService ftpTransferService;
