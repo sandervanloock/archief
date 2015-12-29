@@ -4,6 +4,8 @@ import be.sandervl.admin.business.ChiroGroup;
 import be.sandervl.admin.business.Leader;
 import be.sandervl.admin.business.LeaderShip;
 import com.foreach.across.modules.hibernate.jpa.repositories.IdBasedEntityJpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.Set;
 

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,7 +34,9 @@ public class ChiroGroupController {
         result.setChiroGroup(chiroGroup);
         Set<Leader> leaders = new HashSet<Leader>();
         for(LeaderShip leaderShip: leaderShips){
-            leaders.add(leaderShip.getLeader());
+            if(leaderShip.getChiroYear().getFrom_year().before(new Date()) && leaderShip.getChiroYear().getTo_year().after(new Date())){
+                leaders.add(leaderShip.getLeader());
+            }
         }
         result.setLeaders(leaders);
         return result;
