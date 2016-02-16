@@ -38,6 +38,11 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
+                <groupId>com.foreach.across.modules</groupId>
+                <artifactId>entity-module</artifactId>
+                <version>1.2.0-SNAPSHOT-svl</version>
+            </dependency>
+            <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>5.1.35</version>
@@ -242,6 +247,11 @@
             <groupId>com.jolbox</groupId>
             <artifactId>bonecp</artifactId>
             <version>0.8.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.kenai.nbpwr</groupId>
+            <artifactId>com-sun-pdfview</artifactId>
+            <version>1.0.5-201003191900</version>
         </dependency>
 
     </dependencies>

@@ -6,5 +6,5 @@ import com.foreach.across.core.annotations.Exposed;
 import com.foreach.across.modules.hibernate.jpa.repositories.IdBasedEntityJpaRepository;
 
 @Exposed
-public interface ImageRepository extends IdBasedEntityJpaRepository<ChiroImage> {
+public interface ChiroImageRepository extends IdBasedEntityJpaRepository<ChiroImage> {
 }

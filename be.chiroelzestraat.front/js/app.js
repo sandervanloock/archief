@@ -44,6 +44,6 @@ angular.module('app').constant('Constants',
 angular.module('app').constant('Properties',
     {
         //TODO make this as property
-        apiHost: "http://chiro.sandervl.be"
+        apiHost: "http://localhost:8080"
     }
 );

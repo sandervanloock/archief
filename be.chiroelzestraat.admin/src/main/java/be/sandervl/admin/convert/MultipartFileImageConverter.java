@@ -1,7 +1,7 @@
 package be.sandervl.admin.convert;
 
 import be.sandervl.admin.business.upload.image.ChiroImage;
-import be.sandervl.admin.repositories.upload.image.ImageRepository;
+import be.sandervl.admin.repositories.upload.image.ChiroImageRepository;
 import be.sandervl.admin.services.upload.imageserver.ImageServerTransferService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -30,7 +30,7 @@ public class MultipartFileImageConverter implements Converter<MultipartFile, Chi
 
     @Autowired
     @Lazy
-    ImageRepository fileUploadRepository;
+    ChiroImageRepository fileUploadRepository;
 
     @Autowired
     @Lazy

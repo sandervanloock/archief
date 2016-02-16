@@ -1,13 +1,12 @@
 package be.sandervl.admin.business.upload.pdf;
 
+import be.sandervl.admin.business.upload.image.ChiroImage;
 import com.foreach.across.modules.hibernate.business.SettableIdBasedEntity;
 import com.foreach.across.modules.hibernate.id.AcrossSequenceGenerator;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Pdf extends SettableIdBasedEntity<Pdf> {
@@ -27,6 +26,9 @@ public class Pdf extends SettableIdBasedEntity<Pdf> {
     @Column(name="path")
     private String path;
 
+    @OneToMany
+    private List<ChiroImage> images;
+
     public String getPath() {
         return path;
     }
@@ -43,5 +45,13 @@ public class Pdf extends SettableIdBasedEntity<Pdf> {
     @Override
     public Long getId() {
         return this.id;
+    }
+
+    public List<ChiroImage> getImages() {
+        return images;
+    }
+
+    public void setImages(List<ChiroImage> images) {
+        this.images = images;
     }
 }

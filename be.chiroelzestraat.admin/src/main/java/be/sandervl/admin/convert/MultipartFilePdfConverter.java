@@ -1,7 +1,10 @@
 package be.sandervl.admin.convert;
 
+import be.sandervl.admin.business.upload.image.ChiroImage;
 import be.sandervl.admin.business.upload.pdf.Pdf;
+import be.sandervl.admin.repositories.upload.image.ChiroImageRepository;
 import be.sandervl.admin.repositories.upload.pdf.PdfRepository;
+import be.sandervl.admin.services.pdf.PdfService;
 import be.sandervl.admin.services.upload.ftp.FTPTransferService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -19,6 +22,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -30,11 +35,19 @@ public class MultipartFilePdfConverter implements Converter<MultipartFile, Pdf> 
 
     @Autowired
     @Lazy
-    PdfRepository pdfRepository;
+    private PdfRepository pdfRepository;
+
+    @Autowired
+    @Lazy
+    ChiroImageRepository chiroImageRepository;
 
     @Autowired
     @Lazy
     private FTPTransferService ftpTransferService;
+
+    @Autowired
+    @Lazy
+    private PdfService pdfService;
 
     @Autowired
     @Lazy
@@ -58,6 +71,15 @@ public class MultipartFilePdfConverter implements Converter<MultipartFile, Pdf> 
             URI url = ftpTransferService.transferFile(file);
             Pdf pdf = new Pdf();
             pdf.setPath(url.toString());
+            ArrayList<ChiroImage> images = new ArrayList<>();
+            List<URI> imageUris = pdfService.convert(file);
+            for(URI uri : imageUris){
+                ChiroImage e = new ChiroImage();
+                e.setPath(uri.toString());
+                images.add(e);
+                chiroImageRepository.save(e);
+            }
+            pdf.setImages(images);
             pdfRepository.save(pdf);
             return pdf;
         } catch (IOException e) {

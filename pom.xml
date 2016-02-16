@@ -25,7 +25,6 @@
     <modules>
         <module>be.chiroelzestraat.admin</module>
         <module>be.chiroelzestraat.front</module>
-        <module>be.chiroelzestraat.imageserver</module>
     </modules>
 
 </project>
