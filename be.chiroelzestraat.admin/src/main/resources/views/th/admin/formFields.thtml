@@ -19,7 +19,7 @@
 <body>
 <th:block th:fragment="render(file)">
     <div class="form-group container-fluid">
-        <label class="control-label" for="entity.file">TODO</label>
+        <!--<label class="control-label" for="entity.file">TODO</label>-->
         <span class="row btn btn-default btn-file">
             <input class="col-md-12" type="file" id="entity.file" name="entity.file"></input>
         </span>

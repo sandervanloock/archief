@@ -37,8 +37,8 @@ public class GoogleCalendarController {
             Events eventsFromGroup = calendarService.getEventsFromGroup(groups, Integer.MAX_VALUE);
             if(eventsFromGroup != null){
                 List<Event> items = eventsFromGroup.getItems();
-                if(items!=null){
-                    result.getItems().addAll(items);
+                if(items!=null && items.size() > 0){
+                    result.getItems().add(items.get(0));
                 }
             }
         }

@@ -4,7 +4,7 @@ import be.sandervl.admin.business.ChiroGroup;
 import be.sandervl.admin.business.ChiroYear;
 import be.sandervl.admin.business.Leader;
 import be.sandervl.admin.business.LeaderShip;
-import be.sandervl.admin.business.upload.image.Image;
+import be.sandervl.admin.business.upload.image.ChiroImage;
 import be.sandervl.admin.business.upload.image.UploadPicture;
 import be.sandervl.admin.business.upload.pdf.Pdf;
 import be.sandervl.admin.business.upload.pdf.Program;
@@ -29,7 +29,7 @@ public class AdminEntitiesConfiguration implements EntityConfigurer {
 
 //        configuration.entity(CalendarOwner.class).hide();
 
-        configuration.entity(Image.class).hide();
+        configuration.entity(ChiroImage.class).hide();
         configuration.entity(Pdf.class).hide();
 
         //LEADER CONFIGURATION

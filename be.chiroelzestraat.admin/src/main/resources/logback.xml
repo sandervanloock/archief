@@ -136,23 +136,24 @@
         <appender-ref ref="errors"/>
     </root>
 
-    <logger name="org.apache" level="WARN"/>
-    <logger name="org.hibernate" level="WARN"/>
-    <logger name="org.hibernate.cfg.AnnotationBinder" level="WARN"/>
-    <logger name="org.hibernate.cfg.annotations" level="WARN"/>
-    <logger name="org.quartz" level="WARN"/>
-    <logger name="org.springframework" level="WARN"/>
-    <logger name="liquibase" level="WARN"/>
-    <logger name="com.foreach.across.modules.hibernate" level="WARN"/>
-    <logger name="org.thymeleaf" level="WARN"/>
+    <!--<logger name="org.apache" level="${log.threshold}"/>-->
+    <!--<logger name="org.hibernate" level="${log.threshold}"/>-->
+    <!--<logger name="org.hibernate.cfg.AnnotationBinder" level="${log.threshold}"/>-->
+    <!--<logger name="org.hibernate.cfg.annotations" level="${log.threshold}"/>-->
+    <!--<logger name="org.quartz" level="${log.threshold}"/>-->
+    <logger name="org.springframework" level="${log.threshold}"/>
+    <logger name="be.sandervl" level="${log.threshold}"/>
+    <!--<logger name="liquibase" level="${log.threshold}"/>-->
+    <!--<logger name="com.foreach.across.modules.hibernate" level="${log.threshold}"/>-->
+    <!--<logger name="org.thymeleaf" level="${log.threshold}"/>-->
 
-    <logger name="com.foreach.across" level="DEBUG">
+    <logger name="com.foreach.across" level="${log.threshold}">
         <appender-ref ref="across"/>
     </logger>
-    <logger name="com.foreach.across.core" level="INFO" additivity="false">
+    <logger name="com.foreach.across.core" level="${log.threshold}" additivity="false">
         <appender-ref ref="across"/>
     </logger>
-    <logger name="com.foreach.across.modules.web" level="INFO" additivity="false">
+    <logger name="com.foreach.across.modules.web" level="${log.threshold}" additivity="false">
         <appender-ref ref="across"/>
     </logger>
     <root level="DEBUG">

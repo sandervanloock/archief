@@ -1,6 +1,6 @@
 package be.sandervl.admin.views.elements;
 
-import be.sandervl.admin.business.upload.image.Image;
+import be.sandervl.admin.business.upload.image.ChiroImage;
 import com.foreach.across.modules.bootstrapui.elements.Grid;
 import com.foreach.across.modules.bootstrapui.elements.Style;
 import com.foreach.across.modules.bootstrapui.elements.builder.FormViewElementBuilder;
@@ -82,7 +82,7 @@ public class EntityFileFormViewFactory<V extends ViewCreationContext> extends En
                                                 )
                                 )
                 );
-        Predicate<EntityPropertyDescriptor> fileUploadPropertyPredicate = p -> p.getClass().isAssignableFrom(Image.class);
+        Predicate<EntityPropertyDescriptor> fileUploadPropertyPredicate = p -> p.getClass().isAssignableFrom(ChiroImage.class);
         List<EntityPropertyDescriptor> properties = viewCreationContext.getEntityConfiguration().getPropertyRegistry().getProperties();
         if (properties.stream().filter(fileUploadPropertyPredicate).findAny().isPresent()) {
             builder.multipart();

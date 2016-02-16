@@ -2,19 +2,19 @@
 <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd" updateCheck="false">
 
-	<defaultCache eternal="false" maxElementsInMemory="1000" statistics="true"
-	              overflowToDisk="false" diskPersistent="false" timeToIdleSeconds="3600"
-	              timeToLiveSeconds="3600" memoryStoreEvictionPolicy="LRU"/>
+	<!--<defaultCache eternal="false" maxElementsInMemory="1000" statistics="true"-->
+	              <!--overflowToDisk="false" diskPersistent="false" timeToIdleSeconds="3600"-->
+	              <!--timeToLiveSeconds="3600" memoryStoreEvictionPolicy="LRU"/>-->
 
-	<cache name="twitterCache" eternal="false" statistics="true"
-	       maxElementsInMemory="10000" overflowToDisk="false" diskPersistent="false"
-           timeToIdleSeconds="3600" timeToLiveSeconds="7200"
-	       memoryStoreEvictionPolicy="LRU"/>
+	<!--<cache name="twitterCache" eternal="false" statistics="true"-->
+	       <!--maxElementsInMemory="10000" overflowToDisk="false" diskPersistent="false"-->
+           <!--timeToIdleSeconds="3600" timeToLiveSeconds="7200"-->
+	       <!--memoryStoreEvictionPolicy="LRU"/>-->
 
-    <cache name="calendarCache" eternal="false" statistics="true"
-           maxElementsInMemory="10000" overflowToDisk="false" diskPersistent="false"
-           timeToIdleSeconds="3600" timeToLiveSeconds="7200"
-           memoryStoreEvictionPolicy="LRU"/>
+    <!--<cache name="calendarCache" eternal="false" statistics="true"-->
+           <!--maxElementsInMemory="10000" overflowToDisk="false" diskPersistent="false"-->
+           <!--timeToIdleSeconds="3600" timeToLiveSeconds="7200"-->
+           <!--memoryStoreEvictionPolicy="LRU"/>-->
 
 
 </ehcache>

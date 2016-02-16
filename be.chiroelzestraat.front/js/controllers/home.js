@@ -1,6 +1,6 @@
 angular.module("app").controller('HomeController', ['$scope', '$http', '$sce','Properties', function ($scope,$http,$sce,properties) {
 
-    $http.get(properties.apiHost+"admin/api/picture/latest").then(function(response){
+    $http.get(properties.apiHost+"/admin/api/picture/latest").then(function(response){
         $scope.latestPicture = response.data.path;
     })
 

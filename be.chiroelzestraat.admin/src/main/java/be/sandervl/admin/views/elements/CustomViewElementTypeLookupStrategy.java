@@ -1,6 +1,6 @@
 package be.sandervl.admin.views.elements;
 
-import be.sandervl.admin.business.upload.image.Image;
+import be.sandervl.admin.business.upload.image.ChiroImage;
 import be.sandervl.admin.business.upload.pdf.Pdf;
 import com.foreach.across.modules.entity.registry.properties.EntityPropertyDescriptor;
 import com.foreach.across.modules.entity.views.ViewElementMode;
@@ -15,10 +15,11 @@ public class CustomViewElementTypeLookupStrategy implements ViewElementTypeLooku
 
     @Override
     public String findElementType(EntityPropertyDescriptor entityPropertyDescriptor, ViewElementMode viewElementMode) {
-        if (entityPropertyDescriptor.getPropertyType() != null &&
-                ClassUtils.isAssignable(Image.class, entityPropertyDescriptor.getPropertyType()) ||
-                ClassUtils.isAssignable(Pdf.class, entityPropertyDescriptor.getPropertyType()))
-        {
+        if (entityPropertyDescriptor.getPropertyType() == null) {
+            return null;
+        }
+        if (ClassUtils.isAssignable(ChiroImage.class, entityPropertyDescriptor.getPropertyType()) ||
+                ClassUtils.isAssignable(Pdf.class, entityPropertyDescriptor.getPropertyType())) {
             return "file";
         }
         return null;

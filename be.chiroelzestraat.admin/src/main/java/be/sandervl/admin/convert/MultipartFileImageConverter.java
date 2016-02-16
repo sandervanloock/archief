@@ -1,6 +1,6 @@
 package be.sandervl.admin.convert;
 
-import be.sandervl.admin.business.upload.image.Image;
+import be.sandervl.admin.business.upload.image.ChiroImage;
 import be.sandervl.admin.repositories.upload.image.ImageRepository;
 import be.sandervl.admin.services.upload.imageserver.ImageServerTransferService;
 import org.apache.commons.lang3.StringUtils;
@@ -24,7 +24,7 @@ import java.net.URI;
 /**
  * Created by sander on 14/09/2015.
  */
-public class MultipartFileImageConverter implements Converter<MultipartFile, Image> {
+public class MultipartFileImageConverter implements Converter<MultipartFile, ChiroImage> {
 
     private static Logger LOG = LoggerFactory.getLogger(MultipartFileImageConverter.class);
 
@@ -41,7 +41,7 @@ public class MultipartFileImageConverter implements Converter<MultipartFile, Ima
     private Environment environment;
 
     @Override
-    public Image convert(MultipartFile multipartFile) {
+    public ChiroImage convert(MultipartFile multipartFile) {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String currentFilePath = request.getParameter("entity.file.id");
         if (currentFilePath != null && StringUtils.isEmpty(multipartFile.getOriginalFilename())) {
@@ -56,7 +56,7 @@ public class MultipartFileImageConverter implements Converter<MultipartFile, Ima
             fos.write(multipartFile.getBytes());
             fos.close();
             URI url = imageServerTransferService.transferFile(file);
-            Image fileUpload = new Image();
+            ChiroImage fileUpload = new ChiroImage();
             fileUpload.setPath(url.toString());
             fileUploadRepository.save(fileUpload);
             return fileUpload;

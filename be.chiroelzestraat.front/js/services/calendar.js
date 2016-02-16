@@ -1,4 +1,4 @@
-angular.module("app").factory('CalendarService', ['$q', '$http', function ($q,$http) {
+angular.module("app").factory('CalendarService', ['$q', '$http', 'Properties', function ($q,$http,properties) {
     function convertDates(newEvents) {
         if(newEvents){
             for (var i = 0; i < newEvents.length; i++) {
@@ -14,7 +14,7 @@ angular.module("app").factory('CalendarService', ['$q', '$http', function ($q,$h
 
     this.getCalendarEvents = function () {
         var def = $q.defer();
-        $http.get("/admin/api/event").success(function(data){
+        $http.get(properties.apiHost+"/admin/api/event").success(function(data){
             var newEvents = data.items;
             convertDates(newEvents);
             def.resolve(newEvents);
@@ -23,7 +23,7 @@ angular.module("app").factory('CalendarService', ['$q', '$http', function ($q,$h
     };
     this.getCalendarEventsFromGroupName = function (group) {
         var def = $q.defer();
-        $http.get("/admin/api/event/"+group).success(function(data){
+        $http.get(properties.apiHost+"/admin/api/event/"+group).success(function(data){
             var newEvents = data.items;
             convertDates(newEvents);
             def.resolve(newEvents);

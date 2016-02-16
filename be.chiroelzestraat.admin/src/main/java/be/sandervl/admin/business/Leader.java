@@ -1,6 +1,6 @@
 package be.sandervl.admin.business;
 
-import be.sandervl.admin.business.upload.image.Image;
+import be.sandervl.admin.business.upload.image.ChiroImage;
 import com.foreach.across.modules.hibernate.business.SettableIdBasedEntity;
 import com.foreach.across.modules.hibernate.id.AcrossSequenceGenerator;
 import org.hibernate.annotations.GenericGenerator;
@@ -63,7 +63,7 @@ public class Leader extends SettableIdBasedEntity<Leader> {
 
     @OneToOne
     @JoinColumn(name = "file_upload_id")
-    private Image file;
+    private ChiroImage file;
 
     public Long getId() {
         return id;
@@ -130,11 +130,11 @@ public class Leader extends SettableIdBasedEntity<Leader> {
         this.zipCode = zipCode;
     }
 
-    public Image getFile() {
+    public ChiroImage getFile() {
         return file;
     }
 
-    public void setFile(Image file) {
+    public void setFile(ChiroImage file) {
         this.file = file;
     }
 }

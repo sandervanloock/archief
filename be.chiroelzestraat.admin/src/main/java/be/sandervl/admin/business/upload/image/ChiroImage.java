@@ -10,15 +10,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Image extends SettableIdBasedEntity<Image> {
+public class ChiroImage extends SettableIdBasedEntity<ChiroImage> {
 
     @Id
-    @GeneratedValue(generator = "seq_file_upload_id")
+    @GeneratedValue(generator = "seq_chiro_image_id")
     @GenericGenerator(
-            name = "seq_file_upload_id",
+            name = "seq_chiro_image_id",
             strategy = AcrossSequenceGenerator.STRATEGY,
             parameters = {
-                    @org.hibernate.annotations.Parameter(name = "sequenceName", value = "seq_file_upload_id"),
+                    @org.hibernate.annotations.Parameter(name = "sequenceName", value = "seq_chiro_image_id"),
                     @org.hibernate.annotations.Parameter(name = "allocationSize", value = "1")
             }
     )

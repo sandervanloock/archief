@@ -1,4 +1,4 @@
-package com.foreach.imageserver.test.standalone.module.installers;
+package be.sandervl.admin.installers;
 
 import com.foreach.across.core.annotations.Installer;
 import com.foreach.across.core.annotations.InstallerMethod;

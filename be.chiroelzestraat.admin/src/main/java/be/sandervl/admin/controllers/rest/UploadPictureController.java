@@ -1,6 +1,6 @@
 package be.sandervl.admin.controllers.rest;
 
-import be.sandervl.admin.business.upload.image.Image;
+import be.sandervl.admin.business.upload.image.ChiroImage;
 import be.sandervl.admin.business.upload.image.UploadPicture;
 import be.sandervl.admin.repositories.upload.image.UploadPictureRepository;
 import org.slf4j.Logger;
@@ -22,7 +22,7 @@ public class UploadPictureController {
     private UploadPictureRepository uploadPictureRepository;
 
     @RequestMapping(value = "/picture/latest", method = RequestMethod.GET)
-    public Image uploadPicture() {
+    public ChiroImage uploadPicture() {
         List<UploadPicture> pictures =
                 uploadPictureRepository.findByDateBetweenOnlineDateAndOfflineDateAndActiveIsTrue();
         if (pictures.size() > 0) {

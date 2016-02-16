@@ -40,7 +40,7 @@ public class UploadPicture extends SettableIdBasedEntity<UploadPicture> {
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "file_upload_id")
-    private Image file;
+    private ChiroImage file;
 
     @Override
     public void setId(Long aLong) {
@@ -84,11 +84,11 @@ public class UploadPicture extends SettableIdBasedEntity<UploadPicture> {
         this.active = active;
     }
 
-    public Image getFile() {
+    public ChiroImage getFile() {
         return file;
     }
 
-    public void setFile(Image file) {
+    public void setFile(ChiroImage file) {
         this.file = file;
     }
 }

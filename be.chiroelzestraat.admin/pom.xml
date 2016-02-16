@@ -33,7 +33,7 @@
             <dependency>
                <groupId>com.foreach.across</groupId>
                 <artifactId>platform-bom</artifactId>
-                <version>1.2.0-SNAPSHOT</version>
+                <version>1.2.1-SNAPSHOT</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -115,17 +115,14 @@
         <dependency>
             <groupId>com.foreach.across.modules</groupId>
             <artifactId>across-hibernate-module</artifactId>
-            <version>1.1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.foreach.across.modules</groupId>
             <artifactId>entity-module</artifactId>
-            <version>1.2.0-SNAPSHOT-svl</version>
         </dependency>
         <dependency>
             <groupId>com.foreach.across.modules</groupId>
             <artifactId>user-module</artifactId>
-            <version>1.2.0-SNAPSHOT</version>
             <exclusions>
                 <exclusion>
                     <groupId>javax.el</groupId>
@@ -136,7 +133,6 @@
         <dependency>
             <groupId>com.foreach.across.modules</groupId>
             <artifactId>ehcache-module</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.foreach.across.modules</groupId>
@@ -161,6 +157,22 @@
         <dependency>
             <groupId>com.foreach.imageserver</groupId>
             <artifactId>imageserver-client</artifactId>
+            <version>3.4.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.foreach.imageserver</groupId>
+            <artifactId>imageserver-core</artifactId>
+            <version>3.4.RELEASE</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-validator</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.foreach.imageserver</groupId>
+            <artifactId>imageserver-admin</artifactId>
             <version>3.4.RELEASE</version>
         </dependency>
         <dependency>

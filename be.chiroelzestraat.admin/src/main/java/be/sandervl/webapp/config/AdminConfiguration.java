@@ -4,11 +4,10 @@ import be.sandervl.admin.ChiroAdminModule;
 import com.foreach.across.config.AcrossContextConfigurer;
 import com.foreach.across.config.EnableAcrossContext;
 import com.foreach.across.core.AcrossContext;
-import com.foreach.across.module.applicationinfo.ApplicationInfoModule;
-import com.foreach.across.module.applicationinfo.ApplicationInfoModuleSettings;
 import com.foreach.across.modules.adminweb.AdminWebModule;
 import com.foreach.across.modules.adminweb.AdminWebModuleSettings;
-import com.foreach.across.modules.bootstrapui.BootstrapUiModule;
+import com.foreach.across.modules.applicationinfo.ApplicationInfoModule;
+import com.foreach.across.modules.applicationinfo.ApplicationInfoModuleSettings;
 import com.foreach.across.modules.debugweb.DebugWebModule;
 import com.foreach.across.modules.ehcache.EhcacheModule;
 import com.foreach.across.modules.ehcache.EhcacheModuleSettings;
@@ -22,6 +21,10 @@ import com.foreach.across.modules.user.UserModule;
 import com.foreach.across.modules.web.AcrossWebModule;
 import com.foreach.across.modules.web.AcrossWebViewSupport;
 import com.foreach.common.spring.logging.LogbackConfigurer;
+import com.foreach.imageserver.admin.ImageServerAdminWebModule;
+import com.foreach.imageserver.admin.ImageServerAdminWebModuleSettings;
+import com.foreach.imageserver.core.ImageServerCoreModule;
+import com.foreach.imageserver.core.ImageServerCoreModuleSettings;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -66,6 +69,8 @@ public class AdminConfiguration implements AcrossContextConfigurer {
         context.addModule(new ChiroAdminModule());
         context.addModule(debugWebModule());
         context.addModule(ehcacheModule());
+        context.addModule(imageServerCoreModule());
+        context.addModule(imageServerAdminModule());
         context.addModule(applicationInfoModule());
         context.addModule(userModule());
         context.addModule(adminWebModule());
@@ -141,5 +146,29 @@ public class AdminConfiguration implements AcrossContextConfigurer {
         ehcacheModule.setProperty(EhcacheModuleSettings.CACHE_MANAGER_NAME, "chiroAdminCacheManager");
         ehcacheModule.setProperty(EhcacheModuleSettings.CONFIGURATION_RESOURCE, new ClassPathResource("/config/ehcache.xml"));
         return ehcacheModule;
+    }
+
+    private ImageServerCoreModule imageServerCoreModule() {
+        ImageServerCoreModule coreModule = new ImageServerCoreModule();
+        coreModule.setProperty(ImageServerCoreModuleSettings.IMAGE_STORE_FOLDER, environment.getProperty("imageServerCore.store.folder"));
+        coreModule.setProperty(ImageServerCoreModuleSettings.PROVIDE_STACKTRACE, true);
+        coreModule.setProperty(ImageServerCoreModuleSettings.IMAGEMAGICK_ENABLED, true);
+        coreModule.setProperty(ImageServerCoreModuleSettings.IMAGEMAGICK_USE_GRAPHICSMAGICK, true);
+        coreModule.setProperty(ImageServerCoreModuleSettings.IMAGEMAGICK_PATH, environment.getProperty("imageServerCore.transformers.imageMagick.path"));
+
+        coreModule.setProperty(ImageServerCoreModuleSettings.ROOT_PATH, "/resources/images");
+        coreModule.setProperty(ImageServerCoreModuleSettings.ACCESS_TOKEN, "standalone-access-token");
+
+        return coreModule;
+    }
+
+    private ImageServerAdminWebModule imageServerAdminModule() {
+        ImageServerAdminWebModule imageServerAdminWebModule = new ImageServerAdminWebModule();
+        imageServerAdminWebModule.setProperty(ImageServerAdminWebModuleSettings.IMAGE_SERVER_URL,
+                "/resources/images");
+        imageServerAdminWebModule.setProperty(ImageServerAdminWebModuleSettings.ACCESS_TOKEN,
+                "standalone-access-token");
+
+        return imageServerAdminWebModule;
     }
 }
