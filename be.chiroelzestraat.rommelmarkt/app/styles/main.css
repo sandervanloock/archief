@@ -81,3 +81,7 @@ body {
 tr:hover {
     cursor:pointer;
 }
+
+.sponsors-wrapper{
+  text-align: center;
+  margin:20px 0; }

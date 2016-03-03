@@ -7,7 +7,9 @@ angular.module('rommelmarktApp')
             $scope.staticServer = configuration.UPLOAD_SERVER_CONFIG;
             $scope.totalAmount = 0;
             $scope.totalNumberSponsors = 0;
+            $scope.showLoading= true;
             $scope.sponsors = Sponsor.query({},function(sponsors){
+                $scope.showLoading = false;
                 $scope.totalNumberSponsors = sponsors.length;
                 angular.forEach(sponsors, function(sponsor){
                     $scope.totalAmount += eval(sponsor.amount);
