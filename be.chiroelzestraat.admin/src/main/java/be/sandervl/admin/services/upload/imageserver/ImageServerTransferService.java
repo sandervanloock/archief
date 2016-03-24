@@ -36,7 +36,7 @@ public class ImageServerTransferService extends AbstractTransferService<ImageSer
     public URI transferFile(File file) {
         String url = "";
         try {
-            String imageKey = transferHost.getImageServerKeyPrefix() + ":" + UUID.randomUUID().toString();
+                String imageKey = transferHost.getImageServerKeyPrefix() + ":" + UUID.randomUUID().toString();
             ImageInfoDto image = imageServerClient.loadImage(imageKey, IOUtils.toByteArray(new FileInputStream(file)), new Date());
             url = imageServerClient.imageUrl(image.getExternalId(), "default",0,0);
             return new URI(url);

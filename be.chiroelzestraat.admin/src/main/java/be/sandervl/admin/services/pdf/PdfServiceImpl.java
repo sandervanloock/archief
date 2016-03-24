@@ -55,7 +55,7 @@ public class PdfServiceImpl implements PdfService {
             ByteBuffer buf = channel.map(FileChannel.MapMode.READ_ONLY, 0, channel.size());
             PDFFile pdffile = new PDFFile(buf);
             int numPgs = pdffile.getNumPages();
-            for (int i = 0; i < numPgs; i++) {
+            for (int i = 1; i <= numPgs; i++) {
                 // draw the first page to an image
                 PDFPage page = pdffile.getPage(i);
                 // get the width and height for the doc at the default zoom

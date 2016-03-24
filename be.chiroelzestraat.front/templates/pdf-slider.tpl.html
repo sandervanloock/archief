@@ -1,7 +1,7 @@
 <div class="flipbook-viewport">
     <div class="container">
-        <div class="flipbook">
-            <img ng-src="{{image.path}}" ng-repeat="image in images"/>
-        </div>
+        <ul class="flipbook">
+            <li ng-repeat="image in images"><img ng-src="{{image.path}}"/></li>
+        </ul>
     </div>
 </div>
