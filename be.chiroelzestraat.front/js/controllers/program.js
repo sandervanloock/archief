@@ -1,4 +1,4 @@
-angular.module("app").controller('ProgramController', ['$scope', '$http', '$sce','Properties', function ($scope,$http,$sce,properties) {
+angular.module("app").controller('ProgramController', [function () {
 
 
 
