@@ -2,7 +2,12 @@ angular.module("app").controller('GroupController', ['$scope','$compile','GroupS
     function ($scope,$compile,GroupService,Constants) {
 
     $scope.groups = Constants.groups;
-
+    //hide overlay when backbutton
+    //see http://www.competa.com/blog/2013/11/how-to-stop-twitter-bootstrap-modal-dialogs-breaking-on-browser-history-navigation-in-angularjs/
+    window.onhashchange = function() {
+        $('.modal').modal('hide');
+        $('.modal-backdrop').remove();
+    };
     $scope.openModal = function(groupName){
         console.log("Opening Modal: ",groupName);
         $('#'+groupName).modal();
