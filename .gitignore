@@ -5,3 +5,4 @@ crossdomain.xml
 *.iml
 .idea/**/*.*
 scripts/private-key.key
+scripts/deploy/production.properties
