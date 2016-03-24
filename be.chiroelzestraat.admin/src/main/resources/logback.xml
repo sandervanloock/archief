@@ -140,7 +140,7 @@
     <!--<logger name="com.foreach.across.modules.web" level="${log.threshold}" additivity="false">-->
         <!--<appender-ref ref="across"/>-->
     <!--</logger>-->
-    <root level="DEBUG">
+    <root level="${log.threshold}">
         <appender-ref ref="STDOUT" />
     </root>
 
