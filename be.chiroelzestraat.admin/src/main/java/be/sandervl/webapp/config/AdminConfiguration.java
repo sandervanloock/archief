@@ -33,6 +33,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
+import javax.crypto.KeyGenerator;
 import javax.sql.DataSource;
 
 @Configuration
@@ -107,6 +108,7 @@ public class AdminConfiguration implements AcrossContextConfigurer {
         AdminWebModule adminWebModule = new AdminWebModule();
         adminWebModule.setRootPath("/secure");
         adminWebModule.setProperty(AdminWebModuleSettings.REMEMBER_ME_KEY, "subscription-manager");
+        adminWebModule.setProperty(AdminWebModuleSettings.DASHBOARD_PATH,"/dashboard");
         return adminWebModule;
     }
 

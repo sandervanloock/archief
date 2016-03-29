@@ -127,6 +127,7 @@
     <!--<logger name="org.quartz" level="${log.threshold}"/>-->
     <logger name="org.springframework" level="WARN"/>
     <logger name="be.sandervl" level="${log.threshold}"/>
+    <logger name="com.foreach.across" level="WARN"/>
     <!--<logger name="liquibase" level="${log.threshold}"/>-->
     <!--<logger name="com.foreach.across.modules.hibernate" level="${log.threshold}"/>-->
     <logger name="org.thymeleaf" level="WARN"/>

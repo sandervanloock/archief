@@ -13,7 +13,7 @@ import com.foreach.across.modules.web.AcrossWebModule;
 import com.foreach.imageserver.core.ImageServerCoreModule;
 
 @AcrossDepends(required = { AcrossWebModule.NAME, AcrossHibernateJpaModule.NAME, EntityModule.NAME, ImageServerCoreModule.NAME})
-public class ChiroAdminModule extends AcrossModule implements HibernatePackageConfiguringModule
+    public class ChiroAdminModule extends AcrossModule implements HibernatePackageConfiguringModule
 {
     public static final String NAME = "ChiroAdminModule";
     private static final String RESOURCES = "admin";

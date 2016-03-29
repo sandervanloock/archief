@@ -61,6 +61,14 @@ public class Leader extends SettableIdBasedEntity<Leader> {
     @Max(9999)
     private int zipCode;
 
+    @Column(name="email")
+    @Size(max = 255)
+    private String email;
+
+    @Column(name="phone")
+    @Size(max = 255)
+    private String phone;
+
     @OneToOne
     @JoinColumn(name = "file_upload_id")
     private ChiroImage file;
@@ -128,6 +136,22 @@ public class Leader extends SettableIdBasedEntity<Leader> {
 
     public void setZipCode(int zipCode) {
         this.zipCode = zipCode;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public ChiroImage getFile() {

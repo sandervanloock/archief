@@ -1,0 +1,10 @@
+<html>
+<head>
+
+</head>
+<body>
+<div th:fragment="content">
+    <h1 th:text="'Hallo, '+${currentUser.firstName}">Hello world</h1>
+</div>
+</body>
+</html>

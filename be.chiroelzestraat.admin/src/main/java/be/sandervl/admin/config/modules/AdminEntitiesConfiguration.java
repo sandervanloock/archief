@@ -1,9 +1,6 @@
 package be.sandervl.admin.config.modules;
 
-import be.sandervl.admin.business.ChiroGroup;
-import be.sandervl.admin.business.ChiroYear;
-import be.sandervl.admin.business.Leader;
-import be.sandervl.admin.business.LeaderShip;
+import be.sandervl.admin.business.*;
 import be.sandervl.admin.business.upload.image.ChiroImage;
 import be.sandervl.admin.business.upload.image.UploadPicture;
 import be.sandervl.admin.business.upload.pdf.Pdf;
@@ -27,7 +24,9 @@ public class AdminEntitiesConfiguration implements EntityConfigurer {
     @Override
     public void configure(EntitiesConfigurationBuilder configuration) {
 
-//        configuration.entity(CalendarOwner.class).hide();
+        configuration.entity(CalendarOwner.class).listView(EntityListView.VIEW_NAME).properties(
+                "name"
+        );
 
         configuration.entity(ChiroImage.class).hide();
         configuration.entity(Pdf.class).hide();
