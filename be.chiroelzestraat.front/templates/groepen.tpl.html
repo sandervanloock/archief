@@ -102,6 +102,24 @@
                                                         {{leader.birthDay | date: 'dd/MM/yyyy'}}
                                                     </div>
                                                 </div>
+                                                <div class="form-group" ng-if="leader.email">
+                                                    <label class="col-sm-6 control-label">E-mail</label>
+
+                                                    <div class="col-sm-6 form-control-static">
+                                                        <div>
+                                                            {{leader.email}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" ng-if="leader.phone">
+                                                    <label class="col-sm-6 control-label">Gsm</label>
+
+                                                    <div class="col-sm-6 form-control-static">
+                                                        <div>
+                                                            {{leader.phone}}
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="form-group" ng-if="leader.street && leader.number && leader.zipCode && leader.city">
                                                     <label class="col-sm-6 control-label">Adres</label>
 
