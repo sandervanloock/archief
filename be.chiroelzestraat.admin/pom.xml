@@ -10,21 +10,24 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
+    <groupId>be.chiroelzestraat</groupId>
     <artifactId>be.chiroelzestraat.admin</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>Chiro Elzestraat Admin</name>
+
+    <properties>
+        <across.version>1.2.0-SNAPSHOT</across.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <timestamp>${maven.build.timestamp}</timestamp>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+    </properties>
+
 
     <repositories>
         <repository>
-            <id>foreach-nexus-releases</id>
-            <name>Foreach nexus - releases</name>
-            <url>http://repository.foreach.be/nexus/content/repositories/releases</url>
-        </repository>
-        <repository>
-            <id>foreach-nexus-snapshots</id>
-            <name>Foreach nexus - snapshots</name>
-            <url>http://repository.foreach.be/nexus/content/repositories/snapshots</url>
+            <id>foreach-nexus</id>
+            <name>Foreach nexus</name>
+            <url>http://java.libs.foreach.com/nexus/content/repositories/public</url>
         </repository>
     </repositories>
 
@@ -33,7 +36,7 @@
             <dependency>
                <groupId>com.foreach.across</groupId>
                 <artifactId>platform-bom</artifactId>
-                <version>1.2.1-SNAPSHOT</version>
+                <version>${across.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -110,8 +113,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-           <groupId>com.foreach.across</groupId>
-            <artifactId>across-web</artifactId>
+           <groupId>com.foreach.across.modules</groupId>
+            <artifactId>admin-web-module</artifactId>
         </dependency>
         <dependency>
             <groupId>com.foreach.across.modules</groupId>
@@ -150,10 +153,6 @@
         <dependency>
             <groupId>com.foreach.across.modules</groupId>
             <artifactId>debug-web-module</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.foreach.across.modules</groupId>
-            <artifactId>admin-web-module</artifactId>
         </dependency>
         <dependency>
             <groupId>com.foreach.across.modules</groupId>
