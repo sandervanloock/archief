@@ -26,6 +26,7 @@ import com.foreach.imageserver.admin.ImageServerAdminWebModuleSettings;
 import com.foreach.imageserver.core.ImageServerCoreModule;
 import com.foreach.imageserver.core.ImageServerCoreModuleSettings;
 import org.apache.commons.dbcp.BasicDataSource;
+import org.apache.commons.lang3.LocaleUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
@@ -33,7 +34,6 @@ import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
-import javax.crypto.KeyGenerator;
 import javax.sql.DataSource;
 
 @Configuration
@@ -107,8 +107,9 @@ public class AdminConfiguration implements AcrossContextConfigurer {
     private AdminWebModule adminWebModule() {
         AdminWebModule adminWebModule = new AdminWebModule();
         adminWebModule.setRootPath("/secure");
-        adminWebModule.setProperty(AdminWebModuleSettings.REMEMBER_ME_KEY, "subscription-manager");
-        adminWebModule.setProperty(AdminWebModuleSettings.DASHBOARD_PATH,"/dashboard");
+//        adminWebModule.setProperty(AdminWebModuleSettings.REMEMBER_ME_KEY, "subscription-manager");
+        adminWebModule.setProperty(AdminWebModuleSettings.DASHBOARD_PATH, "/dashboard");
+        adminWebModule.setProperty(AdminWebModuleSettings.LOCALE_DEFAULT, LocaleUtils.toLocale("nl"));
         return adminWebModule;
     }
 
