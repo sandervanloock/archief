@@ -25,6 +25,43 @@
         <antcall target="zip.front"/>
         <antcall target="prepare.deploy.front"/>
         <antcall target="deploy.front.remote"/>
+
+    </target>
+
+    <target name="deploy.front.production" description="Puts all the resouce files on ftp server">
+        <!--<antcall target="grunt.build">-->
+            <!--<param name="param1" value="production"/>-->
+        <!--</antcall>-->
+        <ftp server="${ftp.host}"
+             remotedir="/chirojongens"
+             userid="${ftp.user}"
+             password="${ftp.password}"
+             verbose="yes"
+             passive="yes"
+             depends="yes">
+            <fileset dir="${basedir}/be.chiroelzestraat.front">
+                <include name="index.html"/>
+                <include name="**/bower_components/*"/>
+                <include name="**/css/*"/>
+                <include name="**/fonts/*"/>
+                <include name="**/images/*"/>
+                <include name="**/js/**"/>
+                <include name="**/templates/*"/>
+                <exclude name="*.iml"/>
+                <exclude name="pom.xml"/>
+                <exclude name="static.iml"/>
+                <exclude name="**/.sass-cache/**"/>
+                <exclude name="**/scss/**"/>
+                <exclude name="**/target/**"/>
+                <exclude name="**/uploads/**"/>
+                <exclude name="**/includes/**"/>
+                <exclude name="**/gulp/**"/>
+                <exclude name="**/node_modules/**"/>
+            </fileset>
+        </ftp>
+        <!--<antcall target="grunt.build">-->
+            <!--<param name="param1" value="development"/>-->
+        <!--</antcall>-->
     </target>
 
     <target name="zip.front" description="Puts front content zip for deploy in production">
