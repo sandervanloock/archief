@@ -24,7 +24,9 @@ class DownloadController extends AbstractActionController
         $sponsors =  $this->getSponsorTable()->fetchAll();
         $files = array();
         foreach($sponsors as $sponsor){
-            array_push($files,'uploads/'.$sponsor->logo);
+            if($sponsor->year == '2017'){
+                array_push($files,'uploads/'.$sponsor->logo);
+            }
         }
         $zipname = 'uploads/all_logos.zip';
         if($this->create_zip($files, $zipname,true)){

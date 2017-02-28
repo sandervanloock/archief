@@ -26,16 +26,17 @@ class SponsorController extends AbstractRestfulController
         $variables = array();
         $json = new JsonModel();
         foreach ($sponsors as $sponsor) {
-            //TODO make this cleaner
             if ($sponsor->amount == null) {
                 $sponsor->amount = 0;
             }
-            array_push($variables, $sponsor);
+            if($sponsor->year == '2017'){
+                array_push($variables, $sponsor);
+            }
         }
         $json->setVariables($variables);
         return $json;
     }
-
+    
     public function get($id)
     {
         $sponsor = $this->getSponsorTable()->getSponsor($id);
@@ -69,6 +70,7 @@ class SponsorController extends AbstractRestfulController
                 array("logo" => $file['name'])
             );
             $sponsor->exchangeArray($post);
+            $sponsor->year = 2017;
             $this->getSponsorTable()->saveSponsor($sponsor);
             $variables["success"] = "true";
             $variables["message"] = "Sponsor toegevoegd";

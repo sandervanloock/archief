@@ -13,6 +13,7 @@ class Sponsor implements InputFilterAwareInterface
     public $dimension;
     public $object;
     public $logo;
+    public $year;
     protected $inputFilter;
 
     public function exchangeArray($data)
@@ -23,6 +24,7 @@ class Sponsor implements InputFilterAwareInterface
         $this->dimension  = (!empty($data['dimension'])) ? $data['dimension'] : null;
         $this->object  = (!empty($data['object'])) ? $data['object'] : null;
         $this->logo  = (!empty($data['logo'])) ? $data['logo'] : null;
+        $this->year = (!empty($data['year'])) ? $data['year'] : null;
     }
 
     public function getArrayCopy()

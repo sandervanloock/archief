@@ -401,7 +401,6 @@ module.exports = function (grunt) {
         'clean:dist',
         'bower-install',
         'useminPrepare',
-        'concurrent:dist',
         'autoprefixer',
         'concat',
         'ngmin',

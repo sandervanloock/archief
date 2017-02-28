@@ -38,6 +38,7 @@ class SponsorTable
             'dimension'  => $sponsor->dimension,
             'object'  => $sponsor->object,
             'logo'  => $sponsor->logo,
+            'year'  => $sponsor->year,
         );
 
         $id = (int) $sponsor->id;

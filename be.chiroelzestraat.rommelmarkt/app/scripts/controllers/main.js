@@ -10,6 +10,7 @@ angular.module('rommelmarktApp')
             $scope.showLoading= true;
             $scope.sponsors = Sponsor.query({},function(sponsors){
                 $scope.showLoading = false;
+                sponsors = $(sponsors).filter(function(sponsor){return sponsor.year == '2017'});
                 $scope.totalNumberSponsors = sponsors.length;
                 angular.forEach(sponsors, function(sponsor){
                     $scope.totalAmount += eval(sponsor.amount);
