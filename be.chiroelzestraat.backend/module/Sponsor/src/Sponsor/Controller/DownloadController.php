@@ -24,7 +24,7 @@ class DownloadController extends AbstractActionController
         $sponsors =  $this->getSponsorTable()->fetchAll();
         $files = array();
         foreach($sponsors as $sponsor){
-            if($sponsor->year == '2017'){
+            if($sponsor->year == '2018'){
                 array_push($files,'uploads/'.$sponsor->logo);
             }
         }

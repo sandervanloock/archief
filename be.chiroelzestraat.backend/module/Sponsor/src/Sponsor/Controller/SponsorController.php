@@ -29,7 +29,7 @@ class SponsorController extends AbstractRestfulController
             if ($sponsor->amount == null) {
                 $sponsor->amount = 0;
             }
-            if($sponsor->year == '2017'){
+            if($sponsor->year == '2018'){
                 array_push($variables, $sponsor);
             }
         }
@@ -70,7 +70,7 @@ class SponsorController extends AbstractRestfulController
                 array("logo" => $file['name'])
             );
             $sponsor->exchangeArray($post);
-            $sponsor->year = 2017;
+            $sponsor->year = 2018;
             $this->getSponsorTable()->saveSponsor($sponsor);
             $variables["success"] = "true";
             $variables["message"] = "Sponsor toegevoegd";

@@ -1,11 +1,11 @@
 <div class="header">
-    <h3 class="text-muted">Rommelmarkt 21/06/2016 - Sponsering</h3>
+    <h3 class="text-muted">Rommelmarkt 19/05/2018 - Sponsering</h3>
     <a href="#">Terug</a>
 </div>
 
 <div class="sponsor-container">
     <!-- SHOW ERROR/SUCCESS MESSAGES -->
-    <div id="messages" ng-show="message" class="jumbotron">{{ message }}</div>
+    <div id="messages" ng-show="message" class="jumbotron" ng-if="message">{{ message }}</div>
     <form role="form" ng-submit="submitSponsor()">
         <div class="form-group">
             <label for="sponsorName">Naam</label>
